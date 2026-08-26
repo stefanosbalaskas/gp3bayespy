@@ -38,7 +38,16 @@ bayes = [
   "xarray>=2024.1",
 ]
 plots = ["matplotlib>=3.8"]
-dev = ["pytest>=8", "pytest-cov>=5", "hypothesis>=6", "ruff>=0.6", "mypy>=1.10", "build>=1.2", "twine>=5"]
+dev = [
+  "pytest>=8",
+  "pytest-cov>=5",
+  "hypothesis>=6",
+  "ruff>=0.6",
+  "mypy>=1.10",
+  "pandas-stubs>=2.2",
+  "build>=1.2",
+  "twine>=5",
+]
 docs = ["mkdocs>=1.6", "mkdocs-material>=9.5", "mkdocstrings[python]>=0.25"]
 all = ["gp3bayespy[bayes,plots,dev,docs]"]
 

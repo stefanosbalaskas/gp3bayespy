@@ -251,3 +251,9 @@ def test_bayes_extra_caps_pytensor_numba_numpy_compatibility():
     assert "numpy>=2.0,<2.5; python_version >= '3.12'" in bayes
     assert "numba>=0.64,<=0.66.0; python_version >= '3.12'" in bayes
     assert "python_version" not in project["tool"]["mypy"]
+
+
+def test_dev_extra_keeps_pandas_typing_stubs():
+    root = Path(__file__).resolve().parents[1]
+    pyproject = (root / "pyproject.toml").read_text(encoding="utf-8")
+    assert '"pandas-stubs>=2.2"' in pyproject

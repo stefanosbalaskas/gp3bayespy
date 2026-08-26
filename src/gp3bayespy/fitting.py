@@ -40,7 +40,7 @@ def _numeric_scalar(
         or not math.isfinite(float(value))
     ):
         raise GP3BayesError(f"`{name}` must be one finite numeric value.")
-    number = float(value)
+    number = float(cast(Any, value))
     lower_ok = number > lower if lower_open else number >= lower
     upper_ok = number < upper if upper_open else number <= upper
     if not lower_ok or not upper_ok:
@@ -143,7 +143,7 @@ def _validate_sampling_controls(
 
 
 def _prior_number(value: object) -> str:
-    number = float(value)
+    number = float(cast(Any, value))
     if not math.isfinite(number):
         raise GP3BayesError("Prior text cannot contain non-finite numeric values.")
     text = f"{number:.15f}".rstrip("0").rstrip(".")

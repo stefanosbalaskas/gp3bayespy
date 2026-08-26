@@ -942,10 +942,13 @@ def check_binary_prior_predictive(
     rng = np.random.RandomState(seed)
     rows: list[dict[str, float]] = []
     for _ in range(draws):
-        coefficients = rng.normal(
-            loc=float(coefficient_prior["location"]),
-            scale=float(coefficient_prior["scale"]),
-            size=model_matrix.shape[1],
+        coefficients: np.ndarray = np.asarray(
+            rng.normal(
+                loc=float(coefficient_prior["location"]),
+                scale=float(coefficient_prior["scale"]),
+                size=model_matrix.shape[1],
+            ),
+            dtype=float,
         )
         coefficients[0] = rng.normal(
             loc=float(intercept_prior["location"]),
