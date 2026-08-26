@@ -70,3 +70,30 @@ after installing the `bayes` extra.
 ## Backend inspection
 
 ::: gp3bayespy.backend_capabilities
+
+## Posterior extraction, summaries, and sampling diagnostics
+
+The posterior layer retains the R 0.5.0 public names while adapting the
+`brms`/`posterior` containers to PyMC/ArviZ-native Python structures. Posterior
+parameter names are canonicalized back to the R-facing `b_*`, `sd_*`, `cor_*`,
+and `sigma` conventions where the fitted design supplies an unambiguous
+mapping. R `quantile(type = 8)` intervals use NumPy's `median_unbiased` method.
+
+`extract_posterior_draws(..., format="array")` returns an xarray DataArray;
+`"matrix"` and `"df"` return pandas DataFrames; and the R-only `rvars` format
+is intentionally adapted to a mapping of variable names to chain-by-draw NumPy
+arrays.
+
+Diagnostic status reports prespecified numerical thresholds only. Neither a
+`pass` status nor a posterior summary automatically establishes convergence,
+posterior adequacy, causal identification, or substantive validity.
+
+::: gp3bayespy.extract_posterior_draws
+
+::: gp3bayespy.diagnose_binary_fit
+
+::: gp3bayespy.summarise_binary_posterior
+
+::: gp3bayespy.diagnose_duration_fit
+
+::: gp3bayespy.summarise_duration_posterior

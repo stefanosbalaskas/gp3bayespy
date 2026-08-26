@@ -11,9 +11,11 @@ from .binary import (
     BinaryPriorPredictiveCheck,
     BinarySimulation,
     check_binary_prior_predictive,
+    diagnose_binary_fit,
     fit_binary_model,
     prepare_hierarchical_binary_data,
     simulate_hierarchical_binary_data,
+    summarise_binary_posterior,
     specify_binary_model,
     translate_binary_model_to_brms,
 )
@@ -26,13 +28,16 @@ from .duration import (
     DurationPriorPredictiveCheck,
     DurationSimulation,
     check_duration_prior_predictive,
+    diagnose_duration_fit,
     fit_duration_model,
     prepare_hierarchical_duration_data,
     simulate_hierarchical_duration_data,
+    summarise_duration_posterior,
     specify_duration_model,
     translate_duration_model_to_brms,
 )
 from .exceptions import BackendUnavailableError, GP3BayesError
+from .postfit_exploration import extract_posterior_draws
 from .parity import parity_counts, read_parity_manifest, reference_metadata
 from .readiness import AuditCheck, ReadinessAudit, audit_model_readiness
 from .specification import (
@@ -73,10 +78,13 @@ __all__ = [
     "build_model_formula",
     "check_binary_prior_predictive",
     "check_duration_prior_predictive",
+    "diagnose_binary_fit",
+    "diagnose_duration_fit",
     "create_model_contract",
     "create_model_specification",
     "create_prior_specification",
     "fit_binary_model",
+    "extract_posterior_draws",
     "fit_duration_model",
     "parity_counts",
     "prepare_hierarchical_binary_data",
@@ -87,6 +95,8 @@ __all__ = [
     "simulate_hierarchical_duration_data",
     "specify_binary_model",
     "specify_duration_model",
+    "summarise_binary_posterior",
+    "summarise_duration_posterior",
     "translate_binary_model_to_brms",
     "translate_duration_model_to_brms",
     "validate_prior_specification",

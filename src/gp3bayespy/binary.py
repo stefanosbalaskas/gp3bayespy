@@ -29,6 +29,7 @@ from .fitting import (
     _validate_sampling_controls,
 )
 from .readiness import ReadinessAudit, audit_model_readiness
+from .posterior import diagnose_fit as _diagnose_fit, summarise_binary as _summarise_binary
 from .specification import (
     ModelSpecification,
     PriorSpecification,
@@ -1397,3 +1398,40 @@ def fit_binary_model(
         sampling=controls.as_dict(),
         package_versions=_backend_versions(),
     )
+
+
+def diagnose_binary_fit(
+    fit: BinaryFit,
+    rhat_pass: float = 1.01,
+    rhat_fail: float = 1.05,
+    ess_per_chain_pass: float = 100,
+    ess_per_chain_fail: float = 50,
+    maximum_treedepth_fraction: float = 0.01,
+    ebfmi_pass: float = 0.30,
+    ebfmi_fail: float = 0.20,
+):
+    """Apply the frozen sampling-diagnostic thresholds to a binary fit."""
+    if not isinstance(fit, BinaryFit):
+        raise GP3BayesError("`fit` must inherit from `gp3bayes_fit`.")
+    return _diagnose_fit(
+        fit,
+        family="binary",
+        rhat_pass=rhat_pass,
+        rhat_fail=rhat_fail,
+        ess_per_chain_pass=ess_per_chain_pass,
+        ess_per_chain_fail=ess_per_chain_fail,
+        maximum_treedepth_fraction=maximum_treedepth_fraction,
+        ebfmi_pass=ebfmi_pass,
+        ebfmi_fail=ebfmi_fail,
+    )
+
+
+def summarise_binary_posterior(
+    fit: BinaryFit,
+    probability: float = 0.95,
+    variables: Sequence[str] | str | None = None,
+):
+    """Summarise approved binary posterior parameters and odds-ratio transforms."""
+    if not isinstance(fit, BinaryFit):
+        raise GP3BayesError("`fit` must inherit from `gp3bayes_fit`.")
+    return _summarise_binary(fit, probability=probability, variables=variables)

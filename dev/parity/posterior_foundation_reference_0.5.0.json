@@ -1,0 +1,51 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "kind": "R-derived structural expectations",
+  "runtime_captured_from_R": false,
+  "exports": {
+    "extract_posterior_draws": {
+      "source": "R/postfit-exploration.R",
+      "signature": ["fit", "variables", "regex", "format"],
+      "formats": ["array", "matrix", "df", "rvars"],
+      "parity": "semantic with documented Python container adaptation"
+    },
+    "diagnose_binary_fit": {
+      "source": "R/binary-posterior-validation.R",
+      "signature": ["fit", "rhat_pass", "rhat_fail", "ess_per_chain_pass", "ess_per_chain_fail", "maximum_treedepth_fraction", "ebfmi_pass", "ebfmi_fail"],
+      "components": ["rhat", "bulk_ess_per_chain", "tail_ess_per_chain", "divergences", "treedepth_saturation", "energy_ebfmi"],
+      "parity": "semantic/numerical threshold parity"
+    },
+    "summarise_binary_posterior": {
+      "source": "R/binary-posterior-validation.R",
+      "signature": ["fit", "probability", "variables"],
+      "transform": "population coefficients exponentiated to odds ratios",
+      "parity": "numerical tolerance"
+    },
+    "diagnose_duration_fit": {
+      "source": "R/duration-posterior-validation.R",
+      "signature": ["fit", "rhat_pass", "rhat_fail", "ess_per_chain_pass", "ess_per_chain_fail", "maximum_treedepth_fraction", "ebfmi_pass", "ebfmi_fail"],
+      "components": ["rhat", "bulk_ess_per_chain", "tail_ess_per_chain", "divergences", "treedepth_saturation", "energy_ebfmi"],
+      "parity": "semantic/numerical threshold parity"
+    },
+    "summarise_duration_posterior": {
+      "source": "R/duration-posterior-validation.R",
+      "signature": ["fit", "probability", "variables"],
+      "transform": "population coefficients exponentiated to conditional median-duration ratios",
+      "parity": "numerical tolerance"
+    }
+  },
+  "python_adaptations": {
+    "backend": "PyMC InferenceData/ArviZ replaces brms+rstan+posterior",
+    "array": "xarray.DataArray with chain/draw/variable dimensions",
+    "matrix": "pandas.DataFrame with posterior variable column names",
+    "df": "pandas.DataFrame with .chain/.iteration/.draw metadata",
+    "rvars": "mapping of variable names to chain-by-draw NumPy arrays",
+    "quantiles": "NumPy median_unbiased method corresponds to R quantile type 8"
+  },
+  "governance": {
+    "diagnostic_status_is_threshold_report": true,
+    "automatic_convergence_claim": false,
+    "posterior_adequacy_established": false
+  }
+}

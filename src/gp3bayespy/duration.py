@@ -39,6 +39,7 @@ from .fitting import (
     _validate_sampling_controls,
 )
 from .readiness import ReadinessAudit, audit_model_readiness
+from .posterior import diagnose_fit as _diagnose_fit, summarise_duration as _summarise_duration
 from .specification import (
     ModelSpecification,
     create_model_specification,
@@ -1313,3 +1314,40 @@ def fit_duration_model(
         sampling=controls.as_dict(),
         package_versions=_backend_versions(),
     )
+
+
+def diagnose_duration_fit(
+    fit: DurationFit,
+    rhat_pass: float = 1.01,
+    rhat_fail: float = 1.05,
+    ess_per_chain_pass: float = 100,
+    ess_per_chain_fail: float = 50,
+    maximum_treedepth_fraction: float = 0.01,
+    ebfmi_pass: float = 0.30,
+    ebfmi_fail: float = 0.20,
+):
+    """Apply the frozen sampling-diagnostic thresholds to a duration fit."""
+    if not isinstance(fit, DurationFit):
+        raise GP3BayesError("`fit` must inherit from `gp3bayes_fit`.")
+    return _diagnose_fit(
+        fit,
+        family="duration",
+        rhat_pass=rhat_pass,
+        rhat_fail=rhat_fail,
+        ess_per_chain_pass=ess_per_chain_pass,
+        ess_per_chain_fail=ess_per_chain_fail,
+        maximum_treedepth_fraction=maximum_treedepth_fraction,
+        ebfmi_pass=ebfmi_pass,
+        ebfmi_fail=ebfmi_fail,
+    )
+
+
+def summarise_duration_posterior(
+    fit: DurationFit,
+    probability: float = 0.95,
+    variables: Sequence[str] | str | None = None,
+):
+    """Summarise duration posterior parameters and median-ratio transforms."""
+    if not isinstance(fit, DurationFit):
+        raise GP3BayesError("`fit` must inherit from `gp3bayes_fit`.")
+    return _summarise_duration(fit, probability=probability, variables=variables)
