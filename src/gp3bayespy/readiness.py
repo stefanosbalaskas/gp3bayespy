@@ -67,9 +67,10 @@ class ReadinessAudit:
         if not issues.empty:
             lines.append("  Issues:")
             for row in issues.itertuples(index=False):
-                lines.append(
-                    f"    [{row.status.upper()}] {row.check_id}: {row.message}"
-                )
+                status = cast(str, row.status)
+                check_id = cast(str, row.check_id)
+                message = cast(str, row.message)
+                lines.append(f"    [{status.upper()}] {check_id}: {message}")
         return "\n".join(lines)
 
 
