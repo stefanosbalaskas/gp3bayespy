@@ -4,25 +4,33 @@ Frozen R reference: gp3bayes 0.5.0.
 """
 from .backends import backend_capabilities
 from .binary import (
+    BinaryBackendSpecification,
+    BinaryFit,
     BinaryModelSpecification,
     BinaryPrepared,
     BinaryPriorPredictiveCheck,
     BinarySimulation,
     check_binary_prior_predictive,
+    fit_binary_model,
     prepare_hierarchical_binary_data,
     simulate_hierarchical_binary_data,
     specify_binary_model,
+    translate_binary_model_to_brms,
 )
 from .contracts import ModelContract, create_model_contract
 from .duration import (
+    DurationBackendSpecification,
+    DurationFit,
     DurationModelSpecification,
     DurationPrepared,
     DurationPriorPredictiveCheck,
     DurationSimulation,
     check_duration_prior_predictive,
+    fit_duration_model,
     prepare_hierarchical_duration_data,
     simulate_hierarchical_duration_data,
     specify_duration_model,
+    translate_duration_model_to_brms,
 )
 from .exceptions import BackendUnavailableError, GP3BayesError
 from .parity import parity_counts, read_parity_manifest, reference_metadata
@@ -43,10 +51,14 @@ __r_reference_sha256__ = "537eb05f949de1bcc1d6f8234066f064597951ecfa9cbbdf938d0a
 __all__ = [
     "AuditCheck",
     "BackendUnavailableError",
+    "BinaryBackendSpecification",
+    "BinaryFit",
     "BinaryModelSpecification",
     "BinaryPrepared",
     "BinaryPriorPredictiveCheck",
     "BinarySimulation",
+    "DurationBackendSpecification",
+    "DurationFit",
     "DurationModelSpecification",
     "DurationPrepared",
     "DurationPriorPredictiveCheck",
@@ -64,6 +76,8 @@ __all__ = [
     "create_model_contract",
     "create_model_specification",
     "create_prior_specification",
+    "fit_binary_model",
+    "fit_duration_model",
     "parity_counts",
     "prepare_hierarchical_binary_data",
     "prepare_hierarchical_duration_data",
@@ -73,5 +87,7 @@ __all__ = [
     "simulate_hierarchical_duration_data",
     "specify_binary_model",
     "specify_duration_model",
+    "translate_binary_model_to_brms",
+    "translate_duration_model_to_brms",
     "validate_prior_specification",
 ]

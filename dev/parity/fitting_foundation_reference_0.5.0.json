@@ -1,0 +1,55 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "reference_commit": "0ad32d8921c3b267d2021324c3b3568edf3ae01f",
+  "fixture_kind": "R-derived source-and-test contract; not an R-runtime snapshot",
+  "tranche": "GPB-PY-04 restricted fitting/backend bridge",
+  "functions": {
+    "translate_binary_model_to_brms": {
+      "r_source": "R/binary-model-fitting.R",
+      "r_source_line": 296,
+      "r_signature": "specification",
+      "parity": "semantic with documented backend adaptation"
+    },
+    "fit_binary_model": {
+      "r_source": "R/binary-model-fitting.R",
+      "r_source_line": 475,
+      "r_signature": "specification, chains = 4L, iter = 2000L, warmup = 1000L, cores = .gp3b_default_cores(chains), seed = 1L, adapt_delta = 0.95, max_treedepth = 12L, refresh = 0L",
+      "parity": "semantic with documented backend adaptation"
+    },
+    "translate_duration_model_to_brms": {
+      "r_source": "R/duration-model-fitting.R",
+      "r_source_line": 229,
+      "r_signature": "specification",
+      "parity": "semantic with documented backend adaptation"
+    },
+    "fit_duration_model": {
+      "r_source": "R/duration-model-fitting.R",
+      "r_source_line": 378,
+      "r_signature": "specification, chains = 4L, iter = 2000L, warmup = 1000L, cores = .gp3b_default_cores(chains), seed = 1L, adapt_delta = 0.95, max_treedepth = 12L, refresh = 0L",
+      "parity": "semantic with documented backend adaptation"
+    }
+  },
+  "backend_adaptation": {
+    "r_interface": "brms",
+    "r_sampling_backend": "rstan",
+    "r_algorithm": "sampling",
+    "python_interface": "pymc",
+    "python_sampling_backend": "pymc",
+    "python_algorithm": "NUTS",
+    "reason": "Python-native execution preserves the approved likelihood, link, formula, prior classes, sampling controls, and no-unrestricted-backend-arguments governance while avoiding an R runtime dependency.",
+    "translation_dependency_behavior": "R translation requires brms. Python translation can still construct the restricted plan when PyMC is unavailable, but probes whether PyMC imports successfully and records backend_available; fitting requires a successful import."
+  },
+  "required_invariants": [
+    "translation does not compile or fit",
+    "formula and likelihood are inherited from the approved model specification",
+    "no unrestricted formula/family/backend/algorithm/prior/stanvars arguments are exposed",
+    "chains are positive integers",
+    "iter is at least 100 and warmup is smaller than iter",
+    "cores cannot exceed chains",
+    "adapt_delta lies strictly between zero and one",
+    "max_treedepth is at least five",
+    "a returned fit never implies diagnostics or posterior adequacy"
+  ],
+  "python_default_difference": "cores=None resolves at call time to min(chains, os.cpu_count(), 2), the Python analogue of the R default-core helper."
+}

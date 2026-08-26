@@ -16,10 +16,17 @@ from typing import Any, cast
 
 import numpy as np
 import pandas as pd
-from scipy.special import expit  # type: ignore[import-untyped]
+from scipy.special import expit
 
 from .contracts import ModelContract
 from .exceptions import GP3BayesError
+from .fitting import (
+    _backend_versions,
+    _pymc_available,
+    _require_pymc,
+    _translation_parameter_table,
+    _validate_sampling_controls,
+)
 from .readiness import ReadinessAudit, audit_model_readiness
 from .specification import (
     ModelSpecification,
@@ -450,7 +457,7 @@ def simulate_hierarchical_binary_data(
         "selected",
         "true_probability",
     ]
-    data = cast(pd.DataFrame, pd.DataFrame(data_dict).loc[:, preferred])
+    data = pd.DataFrame(data_dict).loc[:, preferred]
 
     fixed_effects = {
         "(Intercept)": intercept,
@@ -1072,4 +1079,317 @@ def check_binary_prior_predictive(
             "maximum_extreme_probability": maximum_extreme_probability,
         },
         seed=seed,
+    )
+
+
+def _validate_binary_model_specification(
+    specification: BinaryModelSpecification,
+) -> BinaryModelSpecification:
+    if not isinstance(specification, BinaryModelSpecification):
+        raise GP3BayesError(
+            "`specification` must inherit from `gp3bayes_binary_model_specification`."
+        )
+    if specification.family != "binary":
+        raise GP3BayesError("`specification` must use the approved binary family.")
+    _validate_binary_contract(specification.contract)
+    if not isinstance(specification.prepared, BinaryPrepared):
+        raise GP3BayesError(
+            "`specification$prepared` must inherit from `gp3bayes_binary_prepared`."
+        )
+    if not specification.audit.ready:
+        raise GP3BayesError("`specification$audit` must pass the readiness gate.")
+    if specification.contract.link != "logit":
+        raise GP3BayesError("Binary model fitting requires the approved logit link.")
+    if specification.contract.likelihood != "Bernoulli":
+        raise GP3BayesError(
+            "Binary model fitting requires the approved Bernoulli likelihood."
+        )
+    return specification
+
+
+@dataclass(frozen=True, slots=True)
+class BinaryBackendSpecification:
+    """Restricted Python backend translation of the R brms specification contract."""
+
+    translation_version: str
+    family: str
+    model_family: str
+    formula: str
+    formula_text: str
+    family_object: Mapping[str, str]
+    priors: Mapping[str, str]
+    prior_text: Mapping[str, str]
+    validated_priors: pd.DataFrame
+    parameter_table: pd.DataFrame
+    specification: BinaryModelSpecification
+    backend_interface: str
+    sampling_backend: str
+    algorithm: str
+    backend_available: bool
+    unrestricted_formula: bool = False
+    compiled: bool = False
+    fit_performed: bool = False
+    diagnostics_assessed: bool = False
+    source_backend_interface: str = "brms"
+    source_sampling_backend: str = "rstan"
+    source_algorithm: str = "sampling"
+    intentional_python_divergence: str = (
+        "The frozen R implementation translates to brms/rstan. The Python port preserves "
+        "the restricted formula/prior contract and executes with optional PyMC NUTS."
+    )
+
+    def __repr__(self) -> str:
+        return "\n".join(
+            [
+                "<gp3bayes_binary_backend_specification>",
+                f"  Formula: {self.formula_text}",
+                "  Family: Bernoulli-logit",
+                f"  Interface: {self.backend_interface}",
+                f"  Sampling backend: {self.sampling_backend}",
+                f"  Algorithm: {self.algorithm}",
+                f"  Backend available: {str(self.backend_available).upper()}",
+                "  Compiled: FALSE",
+                "  Fit performed: FALSE",
+            ]
+        )
+
+
+def translate_binary_model_to_brms(
+    specification: BinaryModelSpecification,
+) -> BinaryBackendSpecification:
+    """Translate an approved binary specification to the restricted Python backend plan.
+
+    The public name mirrors gp3bayes 0.5.0.  In Python, execution is intentionally
+    adapted from the R brms/rstan stack to optional PyMC NUTS while retaining the
+    same locked likelihood, link, formula, prior classes, and no-escape-hatch policy.
+    """
+    specification = _validate_binary_model_specification(specification)
+    parameter_table = _translation_parameter_table(
+        specification.priors,
+        include_sigma=False,
+        random_slope=specification.contract.random_slope,
+    )
+    prior_text = {
+        str(row.parameter_class): str(row.prior)
+        for row in parameter_table.itertuples(index=False)
+    }
+    return BinaryBackendSpecification(
+        translation_version="0.1",
+        family="binary",
+        model_family="hierarchical_binary",
+        formula=specification.formula,
+        formula_text=specification.formula_text,
+        family_object={"family": "Bernoulli", "link": "logit"},
+        priors=prior_text,
+        prior_text=prior_text,
+        validated_priors=parameter_table.copy(),
+        parameter_table=parameter_table,
+        specification=specification,
+        backend_interface="pymc",
+        sampling_backend="pymc",
+        algorithm="NUTS",
+        backend_available=_pymc_available(),
+    )
+
+
+@dataclass(frozen=True, slots=True)
+class BinaryFit:
+    """Fitted restricted hierarchical binary model and sampling provenance."""
+
+    fit_version: str
+    family: str
+    model_family: str
+    specification: BinaryModelSpecification
+    translation: BinaryBackendSpecification
+    backend_fit: Any
+    backend_model: Any
+    backend_interface: str
+    sampling_backend: str
+    algorithm: str
+    sampling: Mapping[str, int | float]
+    package_versions: Mapping[str, str]
+    unrestricted_formula: bool = False
+    fit_performed: bool = True
+    diagnostics_assessed: bool = False
+    posterior_adequacy_established: bool = False
+
+    def __repr__(self) -> str:
+        return "\n".join(
+            [
+                "<gp3bayes_binary_fit>",
+                f"  Formula: {self.translation.formula_text}",
+                "  Family: Bernoulli-logit",
+                f"  Interface: {self.backend_interface}",
+                f"  Sampling backend: {self.sampling_backend}",
+                f"  Algorithm: {self.algorithm}",
+                f"  Chains: {self.sampling['chains']}",
+                f"  Iterations per chain: {self.sampling['iter']}",
+                f"  Warmup per chain: {self.sampling['warmup']}",
+                "  Fit performed: TRUE",
+                "  Diagnostics assessed: FALSE",
+                "  Posterior adequacy established: FALSE",
+            ]
+        )
+
+
+def _run_binary_pymc(
+    specification: BinaryModelSpecification,
+    controls: Mapping[str, int | float],
+) -> tuple[Any, Any]:
+    import pymc as pm  # type: ignore[import-untyped]
+
+    prepared = cast(BinaryPrepared, specification.prepared)
+    data = prepared.data
+    contract = specification.contract
+    matrix, _ = _fixed_model_matrix(data, contract)
+    outcome_col = cast(str, contract.mappings["outcome"])
+    participant_col = cast(str, contract.mappings["participant"])
+    y = pd.to_numeric(data[outcome_col], errors="raise").to_numpy(dtype=int)
+
+    intercept_prior = _prior_row(specification.priors, "Intercept")
+    coefficient_prior = _prior_row(specification.priors, "b")
+    group_sd_prior = _prior_row(specification.priors, "sd")
+
+    participant_codes, participant_levels = pd.factorize(
+        data[participant_col], sort=False
+    )
+    item_col = contract.mappings["item"]
+    condition_col = contract.mappings["condition"]
+
+    with pm.Model() as model:
+        intercept = pm.Normal(
+            "b_Intercept",
+            mu=float(intercept_prior["location"]),
+            sigma=float(intercept_prior["scale"]),
+        )
+        eta = intercept
+        if matrix.shape[1] > 1:
+            beta = pm.Normal(
+                "b",
+                mu=float(coefficient_prior["location"]),
+                sigma=float(coefficient_prior["scale"]),
+                shape=matrix.shape[1] - 1,
+            )
+            eta = eta + pm.math.dot(matrix[:, 1:], beta)
+
+        if contract.random_slope:
+            correlation_prior = _prior_row(specification.priors, "cor")
+            sd_dist = pm.HalfStudentT.dist(
+                nu=float(group_sd_prior["df"]),
+                sigma=float(group_sd_prior["scale"]),
+            )
+            chol, _, _ = pm.LKJCholeskyCov(
+                "participant_chol",
+                n=2,
+                eta=float(correlation_prior["shape"]),
+                sd_dist=sd_dist,
+                compute_corr=True,
+            )
+            z = pm.Normal(
+                "participant_z",
+                mu=0.0,
+                sigma=1.0,
+                shape=(len(participant_levels), 2),
+            )
+            participant_re = pm.Deterministic(
+                "participant_re", pm.math.dot(z, chol.T)
+            )
+            if condition_col is None:
+                raise GP3BayesError(
+                    "`condition_col` must be supplied when `random_slope` is TRUE."
+                )
+            condition = pd.to_numeric(
+                data[condition_col], errors="raise"
+            ).to_numpy(dtype=float)
+            eta = (
+                eta
+                + participant_re[participant_codes, 0]
+                + participant_re[participant_codes, 1] * condition
+            )
+        else:
+            participant_sd = pm.HalfStudentT(
+                "sd_participant",
+                nu=float(group_sd_prior["df"]),
+                sigma=float(group_sd_prior["scale"]),
+            )
+            participant_z = pm.Normal(
+                "participant_z",
+                mu=0.0,
+                sigma=1.0,
+                shape=len(participant_levels),
+            )
+            eta = eta + participant_sd * participant_z[participant_codes]
+
+        if item_col is not None:
+            item_codes, item_levels = pd.factorize(data[item_col], sort=False)
+            item_sd = pm.HalfStudentT(
+                "sd_item",
+                nu=float(group_sd_prior["df"]),
+                sigma=float(group_sd_prior["scale"]),
+            )
+            item_z = pm.Normal(
+                "item_z", mu=0.0, sigma=1.0, shape=len(item_levels)
+            )
+            eta = eta + item_sd * item_z[item_codes]
+
+        pm.Bernoulli("observed", logit_p=eta, observed=y)
+        idata = pm.sample(
+            draws=int(controls["post_warmup_iterations"]),
+            tune=int(controls["warmup"]),
+            chains=int(controls["chains"]),
+            cores=int(controls["cores"]),
+            random_seed=int(controls["seed"]),
+            progressbar=int(controls["refresh"]) > 0,
+            compute_convergence_checks=False,
+            return_inferencedata=True,
+            idata_kwargs={"log_likelihood": True},
+            nuts={
+                "target_accept": float(controls["adapt_delta"]),
+                "max_treedepth": int(controls["max_treedepth"]),
+            },
+        )
+    return model, idata
+
+
+def fit_binary_model(
+    specification: BinaryModelSpecification,
+    chains: int = 4,
+    iter: int = 2000,
+    warmup: int = 1000,
+    cores: int | None = None,
+    seed: int = 1,
+    adapt_delta: float = 0.95,
+    max_treedepth: int = 12,
+    refresh: int = 0,
+) -> BinaryFit:
+    """Fit the approved hierarchical binary model with optional PyMC NUTS."""
+    specification = _validate_binary_model_specification(specification)
+    controls = _validate_sampling_controls(
+        chains=chains,
+        iter=iter,
+        warmup=warmup,
+        cores=cores,
+        seed=seed,
+        adapt_delta=adapt_delta,
+        max_treedepth=max_treedepth,
+        refresh=refresh,
+    )
+    translation = translate_binary_model_to_brms(specification)
+    _require_pymc("fit a binary model through the approved Python sampling backend")
+    backend_model, backend_fit = _run_binary_pymc(
+        specification, controls.as_dict()
+    )
+    return BinaryFit(
+        fit_version="0.1",
+        family="binary",
+        model_family="hierarchical_binary",
+        specification=specification,
+        translation=translation,
+        backend_fit=backend_fit,
+        backend_model=backend_model,
+        backend_interface="pymc",
+        sampling_backend="pymc",
+        algorithm="NUTS",
+        sampling=controls.as_dict(),
+        package_versions=_backend_versions(),
     )
