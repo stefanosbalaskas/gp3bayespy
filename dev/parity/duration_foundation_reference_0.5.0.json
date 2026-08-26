@@ -1,0 +1,102 @@
+{
+  "fixture_version": "0.1",
+  "r_package": "gp3bayes",
+  "r_version": "0.5.0",
+  "r_reference_sha256": "537eb05f949de1bcc1d6f8234066f064597951ecfa9cbbdf938d0a895ce5dd8a",
+  "source_file": "R/duration-workflow-foundation.R",
+  "runtime_capture": false,
+  "provenance": "Derived from the frozen gp3bayes 0.5.0 source, Rd files, and tests/testthat/test-duration-workflow.R; no R runtime was executed for this fixture.",
+  "r_functions": {
+    "check_duration_prior_predictive": {
+      "source_line": 1323,
+      "signature_raw": "specification,\n  draws = 500L,\n  seed = 1L,\n  plausible_median = NULL,\n  maximum_q99 = NULL,\n  maximum_cv = 5,\n  maximum_condition_ratio = 10,\n  maximum_extreme_probability = 0.25",
+      "help_file": "check_duration_prior_predictive.Rd"
+    },
+    "prepare_hierarchical_duration_data": {
+      "source_line": 838,
+      "signature_raw": "data,\n  contract,\n  condition_levels = NULL,\n  condition_coding = c(\n    -0.5,\n    0.5\n  ),\n  scale_predictors = character(),\n  scale_time = FALSE,\n  outcome_multiplier = 1,\n  converted_unit = NULL,\n  missing = c(\n    \"error\",\n    \"drop\"\n  )",
+      "help_file": "prepare_hierarchical_duration_data.Rd"
+    },
+    "simulate_hierarchical_duration_data": {
+      "source_line": 372,
+      "signature_raw": "n_participants = 40L,\n  trials_per_participant = 20L,\n  n_items = 20L,\n  baseline_median = 500,\n  condition_effect = log(1.15),\n  participant_covariate_effect =\n    log(1.08),\n  trial_covariate_effect =\n    log(1.04),\n  interaction_effect =\n    log(1.05),\n  participant_sd = 0.35,\n  item_sd = 0.20,\n  random_slope_sd = 0.15,\n  random_slope_cor = 0,\n  residual_sd = 0.40,\n  condition_probability = 0.5,\n  balanced_condition = TRUE,\n  include_items = TRUE,\n  outcome_unit = \"milliseconds\",\n  seed = 1L",
+      "help_file": "simulate_hierarchical_duration_data.Rd"
+    },
+    "specify_duration_model": {
+      "source_line": 1220,
+      "signature_raw": "prepared,\n  baseline,\n  intercept_scale = 1,\n  coefficient_scale = 0.5,\n  group_sd_scale = 1,\n  residual_scale = 1,\n  correlation_eta = 2,\n  student_df = 3",
+      "help_file": "specify_duration_model.Rd"
+    }
+  },
+  "python_signatures": {
+    "simulate_hierarchical_duration_data": [
+      "n_participants",
+      "trials_per_participant",
+      "n_items",
+      "baseline_median",
+      "condition_effect",
+      "participant_covariate_effect",
+      "trial_covariate_effect",
+      "interaction_effect",
+      "participant_sd",
+      "item_sd",
+      "random_slope_sd",
+      "random_slope_cor",
+      "residual_sd",
+      "condition_probability",
+      "balanced_condition",
+      "include_items",
+      "outcome_unit",
+      "seed"
+    ],
+    "prepare_hierarchical_duration_data": [
+      "data",
+      "contract",
+      "condition_levels",
+      "condition_coding",
+      "scale_predictors",
+      "scale_time",
+      "outcome_multiplier",
+      "converted_unit",
+      "missing"
+    ],
+    "specify_duration_model": [
+      "prepared",
+      "baseline",
+      "intercept_scale",
+      "coefficient_scale",
+      "group_sd_scale",
+      "residual_scale",
+      "correlation_eta",
+      "student_df"
+    ],
+    "check_duration_prior_predictive": [
+      "specification",
+      "draws",
+      "seed",
+      "plausible_median",
+      "maximum_q99",
+      "maximum_cv",
+      "maximum_condition_ratio",
+      "maximum_extreme_probability"
+    ]
+  },
+  "parity_modes": {
+    "simulate_hierarchical_duration_data": "stochastic_distributional_and_structural",
+    "prepare_hierarchical_duration_data": "structural_semantic",
+    "specify_duration_model": "structural_semantic",
+    "check_duration_prior_predictive": "stochastic_distributional_and_structural"
+  },
+  "tested_contracts": [
+    "deterministic seeded simulation within Python",
+    "strictly positive finite uncensored duration generation",
+    "optional item and random-slope structures",
+    "explicit source-to-analysis unit conversion and provenance",
+    "explicit missing-row decision and one-based dropped-row positions",
+    "sample-SD predictor scaling",
+    "approved lognormal prior class set including sigma and optional cor",
+    "backend-independent deterministic seeded prior-predictive simulation within Python",
+    "condition-median-ratio not_applicable semantics when condition is absent",
+    "no fitting and no posterior adequacy declaration"
+  ]
+}

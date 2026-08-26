@@ -14,6 +14,16 @@ from .binary import (
     specify_binary_model,
 )
 from .contracts import ModelContract, create_model_contract
+from .duration import (
+    DurationModelSpecification,
+    DurationPrepared,
+    DurationPriorPredictiveCheck,
+    DurationSimulation,
+    check_duration_prior_predictive,
+    prepare_hierarchical_duration_data,
+    simulate_hierarchical_duration_data,
+    specify_duration_model,
+)
 from .exceptions import BackendUnavailableError, GP3BayesError
 from .parity import parity_counts, read_parity_manifest, reference_metadata
 from .readiness import AuditCheck, ReadinessAudit, audit_model_readiness
@@ -37,6 +47,10 @@ __all__ = [
     "BinaryPrepared",
     "BinaryPriorPredictiveCheck",
     "BinarySimulation",
+    "DurationModelSpecification",
+    "DurationPrepared",
+    "DurationPriorPredictiveCheck",
+    "DurationSimulation",
     "GP3BayesError",
     "ModelContract",
     "ModelSpecification",
@@ -46,14 +60,18 @@ __all__ = [
     "backend_capabilities",
     "build_model_formula",
     "check_binary_prior_predictive",
+    "check_duration_prior_predictive",
     "create_model_contract",
     "create_model_specification",
     "create_prior_specification",
     "parity_counts",
     "prepare_hierarchical_binary_data",
+    "prepare_hierarchical_duration_data",
     "read_parity_manifest",
     "reference_metadata",
     "simulate_hierarchical_binary_data",
+    "simulate_hierarchical_duration_data",
     "specify_binary_model",
+    "specify_duration_model",
     "validate_prior_specification",
 ]
