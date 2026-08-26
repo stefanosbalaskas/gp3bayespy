@@ -1,0 +1,61 @@
+{
+  "validation_version": "0.1",
+  "tranche": "GPB-PY-06 predictive foundation",
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "validated_commit": "a8feb83",
+  "validated_commit_sha": "a8feb83cb2aab15b91190569fd79373fcd0a809a",
+  "platform": {
+    "os": "Windows",
+    "python": "3.13.15",
+    "project": "gp3bayespy 0.1.0.dev0"
+  },
+  "quality_gates": {
+    "ruff": {
+      "status": "pass"
+    },
+    "mypy": {
+      "status": "pass",
+      "source_files": 14
+    },
+    "pytest": {
+      "status": "pass",
+      "tests": 192
+    },
+    "build": {
+      "status": "pass",
+      "sdist": true,
+      "wheel": true
+    }
+  },
+  "backend_smoke": {
+    "status": "pass",
+    "script": "validation/smoke_predictive_backend.py",
+    "sampling_backend": "PyMC/NUTS",
+    "binary_prediction_path": "pass",
+    "duration_prediction_path": "pass",
+    "binary_prediction_shape": [
+      25,
+      2
+    ],
+    "duration_prediction_shape": [
+      25,
+      2
+    ],
+    "automatic_support_rejection": false,
+    "causal_claim": false,
+    "out_of_sample_adequacy_claim": false,
+    "short_sampling_smoke": true,
+    "nonfatal_messages": [
+      "g++ not available",
+      "Only 50 samples per chain",
+      "PyMC log_likelihood idata_kwargs FutureWarning"
+    ]
+  },
+  "governance": {
+    "prediction_mutates_fit": false,
+    "prediction_establishes_causality": false,
+    "prediction_establishes_out_of_sample_adequacy": false,
+    "support_flags_reject_rows_automatically": false
+  }
+}

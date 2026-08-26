@@ -93,7 +93,7 @@ audit_model_readiness_strict,audit_model_readiness_strict,specification-closure.
   duration_allowed_range = NULL,
   censor_col = NULL,
   run_separation = TRUE",audit_model_readiness_strict.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-audit_prediction_support,audit_prediction_support,prediction-support.R,281,"fit, newdata",audit_prediction_support.Rd,gp3bayespy.predictive,mapped_not_implemented
+audit_prediction_support,audit_prediction_support,prediction-support.R,281,"fit, newdata",audit_prediction_support.Rd,gp3bayespy.predictive,implemented
 audit_pupil_computational_budget,audit_pupil_computational_budget,pupil-advanced-specification.R,611,x,audit_pupil_computational_budget.Rd,gp3bayespy.pupil,mapped_not_implemented
 audit_pupil_measurement_context,audit_pupil_measurement_context,pupil-preparation.R,613,x,audit_pupil_measurement_context.Rd,gp3bayespy.pupil,mapped_not_implemented
 audit_pupil_measurement_model,audit_pupil_measurement_model,pupil-advanced-estimands.R,350,specification,audit_pupil_measurement_model.Rd,gp3bayespy.pupil,mapped_not_implemented
@@ -354,7 +354,7 @@ create_prediction_grid,create_prediction_grid,prediction-support.R,156,"x,
   variables = NULL,
   at = list(),
   numeric_at = c(""median"", ""mean""),
-  max_rows = 5000L",create_prediction_grid.Rd,gp3bayespy.predictive,mapped_not_implemented
+  max_rows = 5000L",create_prediction_grid.Rd,gp3bayespy.predictive,implemented
 create_prediction_profile,create_prediction_profile,prediction-surfaces.R,50,"fit,
   variable,
   values = NULL,
@@ -559,12 +559,12 @@ extract_expected_predictions,extract_expected_predictions,prediction-support.R,5
   newdata = NULL,
   include_group_effects = FALSE,
   allow_new_levels = FALSE,
-  ndraws = NULL",extract_expected_predictions.Rd,gp3bayespy.predictive,mapped_not_implemented
+  ndraws = NULL",extract_expected_predictions.Rd,gp3bayespy.predictive,implemented
 extract_linear_predictions,extract_linear_predictions,prediction-support.R,568,"fit,
   newdata = NULL,
   include_group_effects = FALSE,
   allow_new_levels = FALSE,
-  ndraws = NULL",extract_linear_predictions.Rd,gp3bayespy.predictive,mapped_not_implemented
+  ndraws = NULL",extract_linear_predictions.Rd,gp3bayespy.predictive,implemented
 extract_log_likelihood,extract_log_likelihood,postfit-exploration.R,261,"fit,
   newdata = NULL,
   include_group_effects = TRUE,
@@ -578,7 +578,7 @@ extract_posterior_predictions,extract_posterior_predictions,prediction-support.R
   include_group_effects = FALSE,
   allow_new_levels = FALSE,
   ndraws = NULL,
-  seed = 1L",extract_posterior_predictions.Rd,gp3bayespy.predictive,mapped_not_implemented
+  seed = 1L",extract_posterior_predictions.Rd,gp3bayespy.predictive,implemented
 extract_sampler_diagnostics,extract_sampler_diagnostics,postfit-exploration.R,236,fit,extract_sampler_diagnostics.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
 fit_advanced_pupil_model,fit_advanced_pupil_model,pupil-advanced-fit.R,639,"specification,
     chains = 4L,
@@ -944,7 +944,7 @@ predict_binary_probability,predict_binary_probability,prediction-support.R,591,"
   include_group_effects = FALSE,
   allow_new_levels = FALSE,
   ndraws = NULL,
-  probs = c(0.025, 0.5, 0.975)",predict_binary_probability.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",predict_binary_probability.Rd,gp3bayespy.predictive,implemented
 predict_duration,predict_duration,prediction-support.R,618,"fit,
   newdata = NULL,
   type = c(""median"", ""expected"", ""predictive""),
@@ -952,7 +952,7 @@ predict_duration,predict_duration,prediction-support.R,618,"fit,
   allow_new_levels = FALSE,
   ndraws = NULL,
   probs = c(0.025, 0.5, 0.975),
-  seed = 1L",predict_duration.Rd,gp3bayespy.predictive,mapped_not_implemented
+  seed = 1L",predict_duration.Rd,gp3bayespy.predictive,implemented
 predict_model,predict_model,prediction-support.R,412,"fit,
   newdata = NULL,
   type = c(""expected"", ""predictive"", ""linear"", ""median""),
@@ -960,7 +960,7 @@ predict_model,predict_model,prediction-support.R,412,"fit,
   allow_new_levels = FALSE,
   ndraws = NULL,
   probs = c(0.025, 0.5, 0.975),
-  seed = 1L",predict_model.Rd,gp3bayespy.predictive,mapped_not_implemented
+  seed = 1L",predict_model.Rd,gp3bayespy.predictive,implemented
 predict_pupil_trajectory,predict_pupil_trajectory,pupil-estimands.R,114,"fit, newdata = NULL,
     type = c(""expected"", ""posterior_predictive"", ""linear""),
     ndraws = 500L,
@@ -997,9 +997,9 @@ prediction_score_uncertainty,prediction_score_uncertainty,predictive-distributio
   ndraws = 1000L,
   probs = c(0.025, 0.5, 0.975)",prediction_score_uncertainty.Rd,gp3bayespy.predictive,mapped_not_implemented
 prediction_score_uncertainty_table,prediction_score_uncertainty_table,predictive-distribution-atlas.R,251,x,prediction_score_uncertainty_table.Rd,gp3bayespy.predictive,mapped_not_implemented
-prediction_support_table,prediction_support_table,prediction-support.R,386,x,prediction_support_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+prediction_support_table,prediction_support_table,prediction-support.R,386,x,prediction_support_table.Rd,gp3bayespy.predictive,implemented
 prediction_surface_table,prediction_surface_table,prediction-surfaces.R,319,x,prediction_surface_table.Rd,gp3bayespy.predictive,mapped_not_implemented
-prediction_table,prediction_table,prediction-support.R,507,x,prediction_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+prediction_table,prediction_table,prediction-support.R,507,x,prediction_table.Rd,gp3bayespy.predictive,implemented
 prediction_uncertainty_decomposition,prediction_uncertainty_decomposition,prediction-support.R,749,"fit,
   newdata = NULL,
   include_group_effects = FALSE,

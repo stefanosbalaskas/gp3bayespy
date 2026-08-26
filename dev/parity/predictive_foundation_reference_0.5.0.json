@@ -91,5 +91,5 @@
     "Python mappings replace R named lists in create_prediction_grid(at=...).",
     "New grouping levels with allow_new_levels=True use posterior-draw uncertainty from fitted group effects; they are never accepted silently when allow_new_levels=False."
   ],
-  "ledger_promoted": false
+  "ledger_promoted": true
 }

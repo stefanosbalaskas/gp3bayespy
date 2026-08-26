@@ -49,3 +49,14 @@ The Python port preserves the R-facing posterior parameter naming convention whi
 A real Windows/Python 3.13.15 PyMC/ArviZ smoke completed both binary and duration posterior paths. The deliberately short two-chain, 50-draw smoke failed the prespecified diagnostic thresholds for both families; this is expected and confirms conservative reporting rather than a backend failure. Runtime evidence is frozen in `dev/parity/posterior_backend_validation_0.1.0.dev0.json`.
 
 Current ledger counts: 23 `implemented`, 1 `implemented_initial`, 434 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` until its broader capability contract is separately closed.
+
+## GPB-PY-06 predictive foundation checkpoint
+
+The governed prediction layer is frozen against the R gp3bayes 0.5.0 `prediction-support.R` contracts. Ten additional exports are now `implemented`: `create_prediction_grid`, `audit_prediction_support`, `prediction_support_table`, `predict_model`, `prediction_table`, `extract_expected_predictions`, `extract_posterior_predictions`, `extract_linear_predictions`, `predict_binary_probability`, and `predict_duration`.
+
+Expected-response, posterior-predictive, linear-predictor, and duration-median quantities remain distinct. Population-level predictions omit fitted grouping effects by default; grouping effects require explicit inclusion, and unseen grouping levels require explicit permission. Support auditing is advisory and never removes or rejects rows automatically. Prediction remains descriptive under the fitted model and does **not** establish causal effects or out-of-sample adequacy.
+
+A real Windows/Python 3.13.15 PyMC/NUTS smoke completed binary and duration predictive paths with 25 draws over two prediction rows for each family. Runtime evidence is frozen against implementation commit `a8feb83` in `dev/parity/predictive_backend_validation_0.1.0.dev0.json`.
+
+Current ledger counts: 33 `implemented`, 1 `implemented_initial`, 424 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` until its broader capability contract is separately closed.
+
