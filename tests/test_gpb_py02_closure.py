@@ -1,5 +1,4 @@
 import csv
-from collections import Counter
 from pathlib import Path
 
 from gp3bayespy import parity_counts, read_parity_manifest
@@ -33,7 +32,12 @@ def _normalize(rows):
 def test_gpb_py02_promoted_exports_are_exact():
     manifest = read_parity_manifest()
     status_by_export = {row["r_export"]: row["status"] for row in manifest}
-    assert {name for name, status in status_by_export.items() if status == "implemented"} == IMPLEMENTED
+    implemented = {
+        name
+        for name, status in status_by_export.items()
+        if status == "implemented"
+    }
+    assert implemented == IMPLEMENTED
     assert status_by_export["backend_capabilities"] == "implemented_initial"
 
 
