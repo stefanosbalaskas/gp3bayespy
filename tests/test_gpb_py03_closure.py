@@ -16,32 +16,50 @@ IMPLEMENTED = {
     "prepare_hierarchical_binary_data",
     "specify_binary_model",
     "check_binary_prior_predictive",
+    "simulate_hierarchical_duration_data",
+    "prepare_hierarchical_duration_data",
+    "specify_duration_model",
+    "check_duration_prior_predictive",
 }
 
 
 def _normalize(rows):
     return [
         {
-            key: (value.replace("\r\n", "\n").replace("\r", "\n") if value else value)
+            key: (
+                value.replace("\r\n", "\n").replace("\r", "\n")
+                if value
+                else value
+            )
             for key, value in row.items()
         }
         for row in rows
     ]
 
 
-def test_gpb_py02_promotions_remain_truthful():
+def test_gpb_py03_promoted_exports_are_exact():
     manifest = read_parity_manifest()
     status_by_export = {row["r_export"]: row["status"] for row in manifest}
-    for name in IMPLEMENTED:
-        assert status_by_export[name] == "implemented"
+    implemented = {
+        name
+        for name, status in status_by_export.items()
+        if status == "implemented"
+    }
+    assert implemented == IMPLEMENTED
     assert status_by_export["backend_capabilities"] == "implemented_initial"
 
 
-def test_gpb_py02_ledger_total_remains_frozen():
-    assert sum(parity_counts().values()) == 458
+def test_gpb_py03_ledger_counts_are_frozen():
+    counts = parity_counts()
+    assert counts == {
+        "implemented": 14,
+        "implemented_initial": 1,
+        "mapped_not_implemented": 443,
+    }
+    assert sum(counts.values()) == 458
 
 
-def test_gpb_py02_dev_and_packaged_ledgers_match_semantically():
+def test_gpb_py03_dev_and_packaged_ledgers_match_semantically():
     with (ROOT / "dev/parity/function_map.csv").open(
         newline="", encoding="utf-8"
     ) as handle:
@@ -49,6 +67,6 @@ def test_gpb_py02_dev_and_packaged_ledgers_match_semantically():
     assert _normalize(dev_rows) == _normalize(read_parity_manifest())
 
 
-def test_gpb_py02_binary_fixture_is_present():
-    fixture = ROOT / "dev/parity/binary_foundation_reference_0.5.0.json"
+def test_gpb_py03_duration_fixture_is_present():
+    fixture = ROOT / "dev/parity/duration_foundation_reference_0.5.0.json"
     assert fixture.is_file()

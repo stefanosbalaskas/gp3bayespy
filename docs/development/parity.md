@@ -20,3 +20,14 @@ Simulation and prior-predictive parity are stochastic/semantic rather than bit-i
 Current ledger counts: 10 `implemented`, 1 `implemented_initial`, 447 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial`.
 
 The fixture `dev/parity/binary_foundation_reference_0.5.0.json` records the frozen signatures, reference provenance, and parity classification for this tranche.
+
+## GPB-PY-03 duration foundation checkpoint
+
+The backend-independent duration workflow foundation is frozen against R gp3bayes 0.5.0 source and test expectations. Four additional exports are now `implemented`: `simulate_hierarchical_duration_data`, `prepare_hierarchical_duration_data`, `specify_duration_model`, and `check_duration_prior_predictive`.
+
+Duration preparation preserves explicit source/analysis-unit provenance, strictly positive finite outcomes, one-based dropped-row provenance, and R-style sample-SD predictor scaling. Simulation and prior-predictive parity are stochastic/semantic rather than bit-identical because R and NumPy use different random-number generators.
+
+Current ledger counts: 14 `implemented`, 1 `implemented_initial`, 443 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial`.
+
+The fixture `dev/parity/duration_foundation_reference_0.5.0.json` records the frozen signatures, reference provenance, and parity classification for this tranche.
+
