@@ -911,3 +911,353 @@ def predict_duration(
         probs=probs,
         seed=seed,
     )
+
+
+
+def _prediction_inputs(
+    x: Prediction | Sequence[float] | np.ndarray[Any, Any] | pd.Series,
+    observed: Sequence[float] | np.ndarray[Any, Any] | pd.Series | None = None,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray | None]:
+    """Normalize prediction-object or numeric-vector scoring inputs."""
+    if isinstance(x, Prediction):
+        if x.observed is None:
+            raise GP3BayesError("The prediction object has no observed outcome.")
+        return (
+            x.summary["predicted_mean"].to_numpy(dtype=float, copy=True),
+            pd.to_numeric(x.observed, errors="raise").to_numpy(dtype=float),
+            np.asarray(x.draws, dtype=float),
+        )
+
+    try:
+        predicted = np.asarray(x, dtype=float)
+    except (TypeError, ValueError) as exc:
+        raise GP3BayesError(
+            "Supply a gp3bayes prediction, or numeric predictions plus `observed`."
+        ) from exc
+    if predicted.ndim != 1 or observed is None:
+        raise GP3BayesError(
+            "Supply a gp3bayes prediction, or numeric predictions plus `observed`."
+        )
+    try:
+        observed_values = np.asarray(observed, dtype=float)
+    except (TypeError, ValueError) as exc:
+        raise GP3BayesError(
+            "Supply a gp3bayes prediction, or numeric predictions plus `observed`."
+        ) from exc
+    if observed_values.ndim != 1 or len(predicted) != len(observed_values):
+        raise GP3BayesError(
+            "Supply a gp3bayes prediction, or numeric predictions plus `observed`."
+        )
+    return predicted, observed_values, None
+
+
+def _finite_scalar(value: object, name: str) -> float:
+    if (
+        isinstance(value, bool)
+        or not isinstance(value, numbers.Real)
+        or not math.isfinite(float(value))
+    ):
+        raise GP3BayesError(f"`{name}` must be one finite number.")
+    return float(value)
+
+
+def _probability_vector(
+    values: Sequence[float],
+    name: str,
+    *,
+    open_interval: bool,
+) -> tuple[float, ...]:
+    try:
+        result = tuple(float(value) for value in values)
+    except (TypeError, ValueError) as exc:
+        raise GP3BayesError(f"`{name}` must contain probabilities.") from exc
+    if not result or any(not math.isfinite(value) for value in result):
+        raise GP3BayesError(f"`{name}` must contain probabilities.")
+    if open_interval:
+        invalid = any(value <= 0 or value >= 1 for value in result)
+        interval = "strictly inside (0,1)"
+    else:
+        invalid = any(value < 0 or value > 1 for value in result)
+        interval = "in [0,1]"
+    if invalid:
+        raise GP3BayesError(f"`{name}` must contain probabilities {interval}.")
+    return result
+
+
+def binary_prediction_scores(
+    x: Prediction | Sequence[float] | np.ndarray[Any, Any] | pd.Series,
+    observed: Sequence[float] | np.ndarray[Any, Any] | pd.Series | None = None,
+    threshold: float = 0.5,
+    epsilon: float = 1e-12,
+) -> pd.DataFrame:
+    """Return descriptive binary predictive scores without an automatic decision."""
+    p, y, _ = _prediction_inputs(x, observed)
+    if (
+        not np.isfinite(p).all()
+        or np.any((p < 0) | (p > 1))
+        or not np.isfinite(y).all()
+        or np.any(~np.isin(y, (0.0, 1.0)))
+    ):
+        raise GP3BayesError(
+            "Binary scores require outcomes in {0,1} and probabilities in [0,1]."
+        )
+    threshold_value = _finite_scalar(threshold, "threshold")
+    if threshold_value < 0 or threshold_value > 1:
+        raise GP3BayesError("`threshold` must lie in [0, 1].")
+    epsilon_value = _finite_scalar(epsilon, "epsilon")
+    if epsilon_value <= 0 or epsilon_value >= 0.5:
+        raise GP3BayesError(
+            "`epsilon` must be one finite number strictly inside (0, 0.5)."
+        )
+
+    clipped = np.clip(p, epsilon_value, 1 - epsilon_value)
+    predicted = (p >= threshold_value).astype(int)
+    y_int = y.astype(int)
+    true_positive = int(np.sum((predicted == 1) & (y_int == 1)))
+    true_negative = int(np.sum((predicted == 0) & (y_int == 0)))
+    false_positive = int(np.sum((predicted == 1) & (y_int == 0)))
+    false_negative = int(np.sum((predicted == 0) & (y_int == 1)))
+    sensitivity = (
+        true_positive / (true_positive + false_negative)
+        if true_positive + false_negative > 0
+        else math.nan
+    )
+    specificity = (
+        true_negative / (true_negative + false_positive)
+        if true_negative + false_positive > 0
+        else math.nan
+    )
+
+    n1 = int(np.sum(y_int == 1))
+    n0 = int(np.sum(y_int == 0))
+    if n1 > 0 and n0 > 0:
+        ranks = pd.Series(p).rank(method="average").to_numpy(dtype=float)
+        auc = float((np.sum(ranks[y_int == 1]) - n1 * (n1 + 1) / 2) / (n1 * n0))
+    else:
+        auc = math.nan
+
+    balanced_parts = [value for value in (sensitivity, specificity) if math.isfinite(value)]
+    balanced_accuracy = (
+        float(np.mean(balanced_parts)) if balanced_parts else math.nan
+    )
+    return pd.DataFrame(
+        [
+            {
+                "n": int(len(y_int)),
+                "brier": float(np.mean((p - y) ** 2)),
+                "log_loss": float(
+                    -np.mean(y * np.log(clipped) + (1 - y) * np.log(1 - clipped))
+                ),
+                "auc": auc,
+                "threshold": threshold_value,
+                "accuracy": float(np.mean(predicted == y_int)),
+                "sensitivity": sensitivity,
+                "specificity": specificity,
+                "balanced_accuracy": balanced_accuracy,
+                "automatic_decision": False,
+            }
+        ]
+    )
+
+
+def binary_threshold_metrics(
+    x: Prediction | Sequence[float] | np.ndarray[Any, Any] | pd.Series,
+    observed: Sequence[float] | np.ndarray[Any, Any] | pd.Series | None = None,
+    thresholds: Sequence[float] = tuple(np.arange(0.1, 0.9000001, 0.05)),
+) -> pd.DataFrame:
+    """Return binary classification summaries over declared thresholds."""
+    values = _probability_vector(thresholds, "thresholds", open_interval=False)
+    rows = [
+        binary_prediction_scores(x, observed, threshold=threshold)
+        for threshold in values
+    ]
+    return pd.concat(rows, ignore_index=True)
+
+
+def binary_calibration_table(
+    x: Prediction,
+    bins: int = 10,
+    probs: Sequence[float] = (0.025, 0.5, 0.975),
+) -> pd.DataFrame:
+    """Compare binary observed rates with posterior event probabilities by bin."""
+    if (
+        not isinstance(x, Prediction)
+        or x.family != "binary"
+        or x.type != "expected"
+        or x.observed is None
+    ):
+        raise GP3BayesError(
+            "`x` must be a binary expected-response prediction with outcomes."
+        )
+    bins_value = _positive_integer(bins, "bins")
+    if bins_value < 2:
+        raise GP3BayesError("`bins` must be one integer >= 2.")
+    probs_value = _probabilities(probs)
+    pmean = x.summary["predicted_mean"].to_numpy(dtype=float)
+    breaks = np.unique(
+        np.quantile(
+            pmean,
+            np.linspace(0, 1, bins_value + 1),
+            method="linear",
+        )
+    )
+    if breaks.size < 3:
+        bin_ids = np.ones(len(pmean), dtype=int)
+    else:
+        pmean_values = [float(value) for value in pmean]
+        break_values = [float(value) for value in breaks]
+        cut = pd.cut(
+            pmean_values,
+            bins=break_values,
+            include_lowest=True,
+            labels=False,
+        )
+        bin_ids = np.asarray(cut, dtype=int) + 1
+
+    observed_values = pd.to_numeric(x.observed, errors="raise").to_numpy(dtype=float)
+    rows: list[dict[str, float | int]] = []
+    for bin_id in sorted(np.unique(bin_ids).tolist()):
+        indices = np.flatnonzero(bin_ids == bin_id)
+        draw_mean = np.mean(x.draws[:, indices], axis=1)
+        quantiles = np.quantile(draw_mean, probs_value, method="linear")
+        rows.append(
+            {
+                "bin": int(bin_id),
+                "n": int(len(indices)),
+                "mean_predicted_probability": float(np.mean(pmean[indices])),
+                "observed_rate": float(np.mean(observed_values[indices])),
+                "posterior_lower": float(quantiles[0]),
+                "posterior_median": float(quantiles[1]),
+                "posterior_upper": float(quantiles[2]),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def duration_prediction_scores(
+    x: Prediction | Sequence[float] | np.ndarray[Any, Any] | pd.Series,
+    observed: Sequence[float] | np.ndarray[Any, Any] | pd.Series | None = None,
+) -> pd.DataFrame:
+    """Return descriptive duration prediction errors on response and log scales."""
+    predicted, y, _ = _prediction_inputs(x, observed)
+    if (
+        not np.isfinite(predicted).all()
+        or not np.isfinite(y).all()
+        or np.any(predicted <= 0)
+        or np.any(y <= 0)
+    ):
+        raise GP3BayesError(
+            "Duration scores require finite positive predictions and outcomes."
+        )
+    error = predicted - y
+    log_error = np.log(predicted) - np.log(y)
+    return pd.DataFrame(
+        [
+            {
+                "n": int(len(y)),
+                "mae": float(np.mean(np.abs(error))),
+                "rmse": float(np.sqrt(np.mean(error**2))),
+                "median_absolute_error": float(np.median(np.abs(error))),
+                "log_mae": float(np.mean(np.abs(log_error))),
+                "log_rmse": float(np.sqrt(np.mean(log_error**2))),
+                "mean_log_error": float(np.mean(log_error)),
+                "automatic_decision": False,
+            }
+        ]
+    )
+
+
+def duration_quantile_calibration(
+    x: Prediction,
+    quantiles: Sequence[float] = (0.1, 0.25, 0.5, 0.75, 0.9),
+) -> pd.DataFrame:
+    """Compare nominal duration predictive quantiles with empirical coverage."""
+    if (
+        not isinstance(x, Prediction)
+        or x.family != "duration"
+        or x.type != "predictive"
+        or x.observed is None
+    ):
+        raise GP3BayesError(
+            "`x` must be a duration posterior predictive object with outcomes."
+        )
+    values = _probability_vector(quantiles, "quantiles", open_interval=True)
+    observed_values = pd.to_numeric(x.observed, errors="raise").to_numpy(dtype=float)
+    rows = []
+    for probability in values:
+        predictive_quantile = np.quantile(
+            x.draws,
+            probability,
+            axis=0,
+            method="linear",
+        )
+        empirical = float(np.mean(observed_values <= predictive_quantile))
+        rows.append(
+            {
+                "nominal": probability,
+                "empirical": empirical,
+                "calibration_gap": empirical - probability,
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def duration_pit_table(x: Prediction) -> pd.DataFrame:
+    """Return empirical posterior-predictive PIT values for duration outcomes."""
+    if (
+        not isinstance(x, Prediction)
+        or x.family != "duration"
+        or x.type != "predictive"
+        or x.observed is None
+    ):
+        raise GP3BayesError(
+            "`x` must be a duration posterior predictive object with outcomes."
+        )
+    observed_values = pd.to_numeric(x.observed, errors="raise").to_numpy(dtype=float)
+    pit = np.mean(x.draws <= observed_values[None, :], axis=0)
+    return pd.DataFrame(
+        {
+            "observation": np.arange(1, len(pit) + 1, dtype=int),
+            "pit": pit,
+        }
+    )
+
+
+def predictive_coverage_table(
+    x: Prediction,
+    levels: Sequence[float] = (0.5, 0.8, 0.9, 0.95),
+) -> pd.DataFrame:
+    """Return empirical coverage and width for posterior-predictive intervals."""
+    if not isinstance(x, Prediction) or x.type != "predictive" or x.observed is None:
+        raise GP3BayesError(
+            "`x` must be a posterior predictive object with observed outcomes."
+        )
+    coverage_levels = _probability_vector(levels, "levels", open_interval=True)
+    observed_values = pd.to_numeric(x.observed, errors="raise").to_numpy(dtype=float)
+    rows = []
+    for level in coverage_levels:
+        alpha = (1 - level) / 2
+        lower = np.quantile(x.draws, alpha, axis=0, method="linear")
+        upper = np.quantile(x.draws, 1 - alpha, axis=0, method="linear")
+        rows.append(
+            {
+                "nominal_coverage": level,
+                "empirical_coverage": float(
+                    np.mean((observed_values >= lower) & (observed_values <= upper))
+                ),
+                "mean_interval_width": float(np.mean(upper - lower)),
+            }
+        )
+    return pd.DataFrame(rows)
+
+
+def posterior_predictive_summary_table(
+    x: Prediction,
+    probs: Sequence[float] = (0.025, 0.5, 0.975),
+) -> pd.DataFrame:
+    """Return observation-level summaries for posterior-predictive draws."""
+    if not isinstance(x, Prediction) or x.type != "predictive":
+        raise GP3BayesError(
+            "`x` must be a posterior predictive gp3bayes prediction."
+        )
+    return _prediction_summary(x.draws, _probabilities(probs), x.observed)

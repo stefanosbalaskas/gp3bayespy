@@ -1,0 +1,74 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "reference_commit": "0ad32d8921c3b267d2021324c3b3568edf3ae01f",
+  "source_file": "R/prediction-support.R",
+  "tranche": "GPB-PY-08 predictive scoring and calibration",
+  "exports": [
+    {
+      "name": "binary_prediction_scores",
+      "source_line": 984,
+      "r_signature": "x,\n  observed = NULL,\n  threshold = 0.5,\n  epsilon = 1e-12",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "binary_threshold_metrics",
+      "source_line": 1055,
+      "r_signature": "x,\n  observed = NULL,\n  thresholds = seq(0.1, 0.9, by = 0.05)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "binary_calibration_table",
+      "source_line": 1080,
+      "r_signature": "x,\n  bins = 10L,\n  probs = c(0.025, 0.5, 0.975)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "duration_prediction_scores",
+      "source_line": 1137,
+      "r_signature": "x, observed = NULL",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "duration_quantile_calibration",
+      "source_line": 1168,
+      "r_signature": "x,\n  quantiles = c(0.1, 0.25, 0.5, 0.75, 0.9)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "duration_pit_table",
+      "source_line": 1201,
+      "r_signature": "x",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "predictive_coverage_table",
+      "source_line": 1227,
+      "r_signature": "x,\n  levels = c(0.5, 0.8, 0.9, 0.95)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "posterior_predictive_summary_table",
+      "source_line": 1261,
+      "r_signature": "x,\n  probs = c(0.025, 0.5, 0.975)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    }
+  ],
+  "governance_invariants": [
+    "Predictive scores and calibration summaries are descriptive diagnostics only.",
+    "Binary threshold summaries never make an automatic threshold decision.",
+    "Duration scores require finite strictly positive predictions and outcomes.",
+    "Calibration and coverage tables do not establish model adequacy.",
+    "Posterior-predictive interval summaries use the frozen R default quantile convention (type 7).",
+    "No unrestricted backend, likelihood, formula, or prior arguments are exposed."
+  ],
+  "ledger_promoted": false
+}

@@ -154,3 +154,33 @@ substantive, causal, or out-of-sample adequacy.
 ::: gp3bayespy.check_binary_posterior_predictive
 
 ::: gp3bayespy.check_duration_posterior_predictive
+
+## Predictive scoring and calibration diagnostics
+
+The scoring layer ports the compact frozen R 0.5.0 prediction-diagnostic
+contracts for binary and duration outcomes. Binary summaries include Brier
+score, log loss, AUC, threshold accuracy, sensitivity, specificity, balanced
+accuracy, equal-frequency calibration summaries, and threshold curves.
+Duration summaries include response-scale and log-scale errors, predictive
+quantile calibration, and empirical posterior-predictive PIT values.
+
+Generic posterior-predictive coverage and summary tables are also exposed.
+These diagnostics are descriptive: no score, threshold, calibration result, or
+coverage table makes an automatic decision or establishes global model
+adequacy.
+
+::: gp3bayespy.binary_prediction_scores
+
+::: gp3bayespy.binary_threshold_metrics
+
+::: gp3bayespy.binary_calibration_table
+
+::: gp3bayespy.duration_prediction_scores
+
+::: gp3bayespy.duration_quantile_calibration
+
+::: gp3bayespy.duration_pit_table
+
+::: gp3bayespy.predictive_coverage_table
+
+::: gp3bayespy.posterior_predictive_summary_table
