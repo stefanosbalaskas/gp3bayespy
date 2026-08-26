@@ -1,0 +1,15 @@
+site_name: gp3bayespy
+site_url: https://stefanosbalaskas.github.io/gp3bayespy/
+repo_url: https://github.com/stefanosbalaskas/gp3bayespy
+repo_name: stefanosbalaskas/gp3bayespy
+theme:
+  name: material
+nav:
+  - Home: index.md
+  - API: api.md
+  - Articles: articles/index.md
+  - Development:
+      - R → Python parity: development/parity.md
+plugins:
+  - search
+  - mkdocstrings

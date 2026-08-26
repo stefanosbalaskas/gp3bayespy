@@ -1,0 +1,4582 @@
+[
+  {
+    "r_export": "advanced_pupil_trajectory_table",
+    "python_name": "advanced_pupil_trajectory_table",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 183,
+    "r_signature_raw": "prediction, probability = 0.95",
+    "r_help_file": "advanced_pupil_trajectory_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "analysis_bundle_table",
+    "python_name": "analysis_bundle_table",
+    "r_source_file": "analysis-bundle.R",
+    "r_source_line": 154,
+    "r_signature_raw": "x",
+    "r_help_file": "analysis_bundle_table.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "analysis_manifest_table",
+    "python_name": "analysis_manifest_table",
+    "r_source_file": "analysis-manifest.R",
+    "r_source_line": 479,
+    "r_signature_raw": "manifest",
+    "r_help_file": "analysis_manifest_table.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "apply_transformation_recipe",
+    "python_name": "apply_transformation_recipe",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 1014,
+    "r_signature_raw": "new_data,\n  recipe,\n  input_scale = c(\"raw\", \"prepared\"),\n  require_outcome = FALSE,\n  input_unit = NULL",
+    "r_help_file": "apply_transformation_recipe.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "as_pupil_prediction_draws",
+    "python_name": "as_pupil_prediction_draws",
+    "r_source_file": "pupil-estimands.R",
+    "r_source_line": 39,
+    "r_signature_raw": "draws, grid, unit,\n    type = c(\"expected\", \"posterior_predictive\", \"linear\"),\n    max_cells = 5000000L",
+    "r_help_file": "as_pupil_prediction_draws.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "assess_binary_prior_sensitivity",
+    "python_name": "assess_binary_prior_sensitivity",
+    "r_source_file": "binary-posterior-validation.R",
+    "r_source_line": 685,
+    "r_signature_raw": "fit,\n  scale_multipliers = c(\n    tighter = 0.5,\n    wider = 2\n  ),\n  chains = fit$sampling$chains,\n  iter = fit$sampling$iter,\n  warmup = fit$sampling$warmup,\n  cores = fit$sampling$cores,\n  seed = fit$sampling$seed + 1000L,\n  adapt_delta =\n    fit$sampling$adapt_delta,\n  max_treedepth =\n    fit$sampling$max_treedepth,\n  refresh = 0L,\n  maximum_standardized_shift = 0.25,\n  review_standardized_shift = 0.50,\n  retain_fits = FALSE",
+    "r_help_file": "assess_binary_prior_sensitivity.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "assess_duration_prior_sensitivity",
+    "python_name": "assess_duration_prior_sensitivity",
+    "r_source_file": "duration-posterior-validation.R",
+    "r_source_line": 544,
+    "r_signature_raw": "fit,\n  scale_multipliers = c(\n    tighter = 0.5,\n    wider = 2\n  ),\n  chains = fit$sampling$chains,\n  iter = fit$sampling$iter,\n  warmup = fit$sampling$warmup,\n  cores = fit$sampling$cores,\n  seed = fit$sampling$seed + 2000L,\n  adapt_delta =\n    fit$sampling$adapt_delta,\n  max_treedepth =\n    fit$sampling$max_treedepth,\n  refresh = 0L,\n  maximum_standardized_shift = 0.25,\n  review_standardized_shift = 0.50,\n  retain_fits = FALSE",
+    "r_help_file": "assess_duration_prior_sensitivity.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "assess_powerscaled_sensitivity",
+    "python_name": "assess_powerscaled_sensitivity",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1372,
+    "r_signature_raw": "fit,\n  variable = NULL,\n  prior_selection = NULL,\n  likelihood_selection = NULL",
+    "r_help_file": "assess_powerscaled_sensitivity.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_advanced_pupil_identifiability",
+    "python_name": "audit_advanced_pupil_identifiability",
+    "r_source_file": "pupil-advanced-audit.R",
+    "r_source_line": 23,
+    "r_signature_raw": "specification",
+    "r_help_file": "audit_advanced_pupil_identifiability.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_backend_parity",
+    "python_name": "audit_backend_parity",
+    "r_source_file": "backend-reliability.R",
+    "r_source_line": 376,
+    "r_signature_raw": "rstan_fit,\n  cmdstanr_fit,\n  variables = NULL,\n  mcse_multiplier = 3,\n  absolute_tolerance = 0,\n  relative_sd_tolerance = 0.10",
+    "r_help_file": "audit_backend_parity.Rd",
+    "python_module": "gp3bayespy.backends",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_binocular_pupil_readiness",
+    "python_name": "audit_binocular_pupil_readiness",
+    "r_source_file": "pupil-binocular.R",
+    "r_source_line": 66,
+    "r_signature_raw": "prepared",
+    "r_help_file": "audit_binocular_pupil_readiness.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_design_support",
+    "python_name": "audit_design_support",
+    "r_source_file": "design-support-diagnostics.R",
+    "r_source_line": 590,
+    "r_signature_raw": "x,\n  contract = NULL,\n  separation = FALSE,\n  strict_readiness = TRUE",
+    "r_help_file": "audit_design_support.Rd",
+    "python_module": "gp3bayespy.design_support_diagnostics",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_duration_boundaries",
+    "python_name": "audit_duration_boundaries",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 588,
+    "r_signature_raw": "data,\n  contract,\n  allowed_range = NULL,\n  censor_col = NULL,\n  detect_candidate_columns = TRUE",
+    "r_help_file": "audit_duration_boundaries.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_duration_unit_invariance",
+    "python_name": "audit_duration_unit_invariance",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2332,
+    "r_signature_raw": "reference,\n  converted,\n  multiplier,\n  tolerance = 0.02",
+    "r_help_file": "audit_duration_unit_invariance.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_estimand_invariance",
+    "python_name": "audit_estimand_invariance",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2125,
+    "r_signature_raw": "reference,\n  alternative,\n  quantity = reference$primary_quantity,\n  tolerance",
+    "r_help_file": "audit_estimand_invariance.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_fixed_effect_design",
+    "python_name": "audit_fixed_effect_design",
+    "r_source_file": "design-support-diagnostics.R",
+    "r_source_line": 230,
+    "r_signature_raw": "x,\n  contract = NULL,\n  condition_number_review = 30,\n  condition_number_fail = 100,\n  leverage_multiplier = 3",
+    "r_help_file": "audit_fixed_effect_design.Rd",
+    "python_module": "gp3bayespy.design_support_diagnostics",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_missingness_structure",
+    "python_name": "audit_missingness_structure",
+    "r_source_file": "design-support-diagnostics.R",
+    "r_source_line": 108,
+    "r_signature_raw": "x,\n  contract = NULL,\n  review_fraction = 0.05,\n  fail_fraction = 0.20",
+    "r_help_file": "audit_missingness_structure.Rd",
+    "python_module": "gp3bayespy.design_support_diagnostics",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_model_readiness",
+    "python_name": "audit_model_readiness",
+    "r_source_file": "model-readiness-audit.R",
+    "r_source_line": 61,
+    "r_signature_raw": "data, contract",
+    "r_help_file": "audit_model_readiness.Rd",
+    "python_module": "gp3bayespy.readiness",
+    "status": "implemented_initial"
+  },
+  {
+    "r_export": "audit_model_readiness_strict",
+    "python_name": "audit_model_readiness_strict",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 711,
+    "r_signature_raw": "data,\n  contract,\n  condition_warning_fraction = 0.10,\n  condition_failure_fraction = 0.02,\n  identifier_unique_fraction = 0.90,\n  duration_allowed_range = NULL,\n  censor_col = NULL,\n  run_separation = TRUE",
+    "r_help_file": "audit_model_readiness_strict.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_prediction_support",
+    "python_name": "audit_prediction_support",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 281,
+    "r_signature_raw": "fit, newdata",
+    "r_help_file": "audit_prediction_support.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_pupil_computational_budget",
+    "python_name": "audit_pupil_computational_budget",
+    "r_source_file": "pupil-advanced-specification.R",
+    "r_source_line": 611,
+    "r_signature_raw": "x",
+    "r_help_file": "audit_pupil_computational_budget.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_pupil_measurement_context",
+    "python_name": "audit_pupil_measurement_context",
+    "r_source_file": "pupil-preparation.R",
+    "r_source_line": 613,
+    "r_signature_raw": "x",
+    "r_help_file": "audit_pupil_measurement_context.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_pupil_measurement_model",
+    "python_name": "audit_pupil_measurement_model",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 350,
+    "r_signature_raw": "specification",
+    "r_help_file": "audit_pupil_measurement_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_pupil_missingness",
+    "python_name": "audit_pupil_missingness",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 385,
+    "r_signature_raw": "specification",
+    "r_help_file": "audit_pupil_missingness.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_pupil_predictive_calibration",
+    "python_name": "audit_pupil_predictive_calibration",
+    "r_source_file": "pupil-advanced-audit.R",
+    "r_source_line": 213,
+    "r_signature_raw": "fit,\n    newdata,\n    ndraws = 500L,\n    probability = 0.90,\n    population_only = FALSE,\n    allow_new_levels = FALSE",
+    "r_help_file": "audit_pupil_predictive_calibration.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_pupil_readiness",
+    "python_name": "audit_pupil_readiness",
+    "r_source_file": "pupil-preparation.R",
+    "r_source_line": 377,
+    "r_signature_raw": "x, contract = NULL",
+    "r_help_file": "audit_pupil_readiness.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_pupil_temporal_dependence",
+    "python_name": "audit_pupil_temporal_dependence",
+    "r_source_file": "pupil-advanced-diagnostics.R",
+    "r_source_line": 12,
+    "r_signature_raw": "x, max_lag = 10L",
+    "r_help_file": "audit_pupil_temporal_dependence.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "audit_random_effects_support",
+    "python_name": "audit_random_effects_support",
+    "r_source_file": "design-support-diagnostics.R",
+    "r_source_line": 441,
+    "r_signature_raw": "x,\n  contract = NULL,\n  minimum_repeated_rows = 2L,\n  minimum_group_levels = 2L,\n  minimum_condition_cell_rows = 2L",
+    "r_help_file": "audit_random_effects_support.Rd",
+    "python_module": "gp3bayespy.design_support_diagnostics",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "backend_capabilities",
+    "python_name": "backend_capabilities",
+    "r_source_file": "backend-reliability.R",
+    "r_source_line": 55,
+    "r_signature_raw": "",
+    "r_help_file": "backend_capabilities.Rd",
+    "python_module": "gp3bayespy.backends",
+    "status": "implemented_initial"
+  },
+  {
+    "r_export": "backend_environment_table",
+    "python_name": "backend_environment_table",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 42,
+    "r_signature_raw": "x",
+    "r_help_file": "backend_environment_table.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "backend_parity_table",
+    "python_name": "backend_parity_table",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 33,
+    "r_signature_raw": "x",
+    "r_help_file": "backend_parity_table.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "bayesian_backend_capabilities",
+    "python_name": "bayesian_backend_capabilities",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 163,
+    "r_signature_raw": "",
+    "r_help_file": "bayesian_backend_capabilities.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_calibration_error",
+    "python_name": "binary_calibration_error",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 390,
+    "r_signature_raw": "x,\n  observed = NULL,\n  bins = 10L",
+    "r_help_file": "binary_calibration_error.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_calibration_table",
+    "python_name": "binary_calibration_table",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 1080,
+    "r_signature_raw": "x,\n  bins = 10L,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "binary_calibration_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_calibration_uncertainty",
+    "python_name": "binary_calibration_uncertainty",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 271,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  bins = 10L,\n  include_group_effects = FALSE,\n  ndraws = 1000L,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "binary_calibration_uncertainty.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_calibration_uncertainty_table",
+    "python_name": "binary_calibration_uncertainty_table",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 346,
+    "r_signature_raw": "x",
+    "r_help_file": "binary_calibration_uncertainty_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_confusion_table",
+    "python_name": "binary_confusion_table",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 259,
+    "r_signature_raw": "x, observed = NULL, threshold = 0.5",
+    "r_help_file": "binary_confusion_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_group_calibration",
+    "python_name": "binary_group_calibration",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 438,
+    "r_signature_raw": "x, group",
+    "r_help_file": "binary_group_calibration.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_precision_recall_curve",
+    "python_name": "binary_precision_recall_curve",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 342,
+    "r_signature_raw": "x,\n  observed = NULL,\n  thresholds = NULL",
+    "r_help_file": "binary_precision_recall_curve.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_prediction_scores",
+    "python_name": "binary_prediction_scores",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 984,
+    "r_signature_raw": "x,\n  observed = NULL,\n  threshold = 0.5,\n  epsilon = 1e-12",
+    "r_help_file": "binary_prediction_scores.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_roc_curve",
+    "python_name": "binary_roc_curve",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 296,
+    "r_signature_raw": "x, observed = NULL, thresholds = NULL",
+    "r_help_file": "binary_roc_curve.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "binary_threshold_metrics",
+    "python_name": "binary_threshold_metrics",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 1055,
+    "r_signature_raw": "x,\n  observed = NULL,\n  thresholds = seq(0.1, 0.9, by = 0.05)",
+    "r_help_file": "binary_threshold_metrics.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "build_model_formula",
+    "python_name": "build_model_formula",
+    "r_source_file": "model-specification.R",
+    "r_source_line": 39,
+    "r_signature_raw": "contract",
+    "r_help_file": "build_model_formula.Rd",
+    "python_module": "gp3bayespy.specification",
+    "status": "implemented"
+  },
+  {
+    "r_export": "capture_gp3bayes_schema",
+    "python_name": "capture_gp3bayes_schema",
+    "r_source_file": "backend-reliability.R",
+    "r_source_line": 602,
+    "r_signature_raw": "x, max_depth = 3L",
+    "r_help_file": "capture_gp3bayes_schema.Rd",
+    "python_module": "gp3bayespy.backends",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_advanced_pupil_prior_predictive",
+    "python_name": "check_advanced_pupil_prior_predictive",
+    "r_source_file": "pupil-advanced-fit.R",
+    "r_source_line": 517,
+    "r_signature_raw": "specification,\n    backend = c(\"rstan\", \"cmdstanr\"),\n    chains = 2L,\n    iter = 800L,\n    warmup = 400L,\n    cores = min(2L, chains),\n    seed = 2026",
+    "r_help_file": "check_advanced_pupil_prior_predictive.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_binary_posterior_predictive",
+    "python_name": "check_binary_posterior_predictive",
+    "r_source_file": "binary-posterior-validation.R",
+    "r_source_line": 363,
+    "r_signature_raw": "fit,\n  draws = 500,\n  seed = 1,\n  pass_probability = 0.80,\n  review_probability = 0.95",
+    "r_help_file": "check_binary_posterior_predictive.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_binary_ppc_details",
+    "python_name": "check_binary_ppc_details",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2456,
+    "r_signature_raw": "fit,\n  draws = 300L,\n  seed = 1L,\n  calibration_bins = 10L,\n  sparse_cell_min = 3L",
+    "r_help_file": "check_binary_ppc_details.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_binary_prior_predictive",
+    "python_name": "check_binary_prior_predictive",
+    "r_source_file": "binary-workflow-foundation.R",
+    "r_source_line": 1258,
+    "r_signature_raw": "specification,\n  draws = 500,\n  seed = 1,\n  plausible_rate = c(0.01, 0.99),\n  boundary_probability = c(0.01, 0.99),\n  extreme_contrast = 0.8,\n  maximum_degenerate_participant_fraction = 0.5,\n  maximum_boundary_mass = 0.5,\n  maximum_extreme_probability = 0.25",
+    "r_help_file": "check_binary_prior_predictive.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_cmdstan_backend",
+    "python_name": "check_cmdstan_backend",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 236,
+    "r_signature_raw": "strict = FALSE",
+    "r_help_file": "check_cmdstan_backend.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_duration_posterior_predictive",
+    "python_name": "check_duration_posterior_predictive",
+    "r_source_file": "duration-posterior-validation.R",
+    "r_source_line": 263,
+    "r_signature_raw": "fit,\n  draws = 500L,\n  seed = 1L,\n  pass_probability = 0.80,\n  review_probability = 0.95",
+    "r_help_file": "check_duration_posterior_predictive.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_duration_ppc_details",
+    "python_name": "check_duration_ppc_details",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2567,
+    "r_signature_raw": "fit,\n  draws = 300L,\n  seed = 1L,\n  quantiles = c(0.5, 0.9, 0.95),\n  tail_threshold = NULL",
+    "r_help_file": "check_duration_ppc_details.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_duration_prior_predictive",
+    "python_name": "check_duration_prior_predictive",
+    "r_source_file": "duration-workflow-foundation.R",
+    "r_source_line": 1323,
+    "r_signature_raw": "specification,\n  draws = 500L,\n  seed = 1L,\n  plausible_median = NULL,\n  maximum_q99 = NULL,\n  maximum_cv = 5,\n  maximum_condition_ratio = 10,\n  maximum_extreme_probability = 0.25",
+    "r_help_file": "check_duration_prior_predictive.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_model_ppc",
+    "python_name": "check_model_ppc",
+    "r_source_file": "unified-workflow-api.R",
+    "r_source_line": 313,
+    "r_signature_raw": "fit, ...",
+    "r_help_file": "check_model_ppc.Rd",
+    "python_module": "gp3bayespy.unified_workflow_api",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_pupil_posterior_predictive",
+    "python_name": "check_pupil_posterior_predictive",
+    "r_source_file": "pupil-diagnostics.R",
+    "r_source_line": 416,
+    "r_signature_raw": "fit, ndraws = 200L, probability = 0.90, window = NULL,\n    max_cells = 3000000L",
+    "r_help_file": "check_pupil_posterior_predictive.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "check_pupil_prior_predictive",
+    "python_name": "check_pupil_prior_predictive",
+    "r_source_file": "pupil-specification.R",
+    "r_source_line": 406,
+    "r_signature_raw": "specification,\n    execute = FALSE,\n    backend = c(\"rstan\", \"cmdstanr\"),\n    draws = 200L,\n    chains = 2L,\n    iter = 1000L,\n    warmup = 500L,\n    cores = min(2L, chains),\n    seed = 2026,\n    probability = 0.95,\n    max_cells = 3000000L",
+    "r_help_file": "check_pupil_prior_predictive.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "collect_model_evidence",
+    "python_name": "collect_model_evidence",
+    "r_source_file": "sensitivity-evidence-suite.R",
+    "r_source_line": 317,
+    "r_signature_raw": "fit = NULL,\n  design = NULL,\n  diagnostics = NULL,\n  posterior = NULL,\n  ppc = NULL,\n  estimands = NULL,\n  loo = NULL,\n  kfold = NULL,\n  sensitivity = NULL,\n  manifest = NULL,\n  compute = character()",
+    "r_help_file": "collect_model_evidence.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compare_analysis_manifests",
+    "python_name": "compare_analysis_manifests",
+    "r_source_file": "analysis-manifest.R",
+    "r_source_line": 429,
+    "r_signature_raw": "x, y",
+    "r_help_file": "compare_analysis_manifests.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compare_estimand_sensitivity",
+    "python_name": "compare_estimand_sensitivity",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2065,
+    "r_signature_raw": "reference,\n  alternatives,\n  quantity = reference$primary_quantity",
+    "r_help_file": "compare_estimand_sensitivity.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compare_gp3bayes_schemas",
+    "python_name": "compare_gp3bayes_schemas",
+    "r_source_file": "backend-reliability.R",
+    "r_source_line": 635,
+    "r_signature_raw": "x, y, compare_lengths = FALSE",
+    "r_help_file": "compare_gp3bayes_schemas.Rd",
+    "python_module": "gp3bayespy.backends",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compare_psis_loo",
+    "python_name": "compare_psis_loo",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1198,
+    "r_signature_raw": "models,\n  moment_match = FALSE,\n  reloo = FALSE,\n  cores = 1L",
+    "r_help_file": "compare_psis_loo.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compare_pupil_autocorrelation",
+    "python_name": "compare_pupil_autocorrelation",
+    "r_source_file": "pupil-advanced-diagnostics.R",
+    "r_source_line": 100,
+    "r_signature_raw": "..., max_lag = 10L, ndraws = 300L",
+    "r_help_file": "compare_pupil_autocorrelation.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compare_pupil_lfo",
+    "python_name": "compare_pupil_lfo",
+    "r_source_file": "pupil-model-comparison.R",
+    "r_source_line": 274,
+    "r_signature_raw": "...",
+    "r_help_file": "compare_pupil_lfo.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compare_pupil_models",
+    "python_name": "compare_pupil_models",
+    "r_source_file": "pupil-model-comparison.R",
+    "r_source_line": 47,
+    "r_signature_raw": "model_set,\n    criterion = c(\"loo\", \"kfold\"),\n    K = 10L,\n    group = NULL,\n    moment_match = FALSE,\n    save_psis = TRUE",
+    "r_help_file": "compare_pupil_models.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compare_pupil_sensitivity_estimands",
+    "python_name": "compare_pupil_sensitivity_estimands",
+    "r_source_file": "pupil-sensitivity.R",
+    "r_source_line": 343,
+    "r_signature_raw": "results",
+    "r_help_file": "compare_pupil_sensitivity_estimands.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compute_kfold_cv",
+    "python_name": "compute_kfold_cv",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2774,
+    "r_signature_raw": "fit,\n  K = 10L,\n  folds = c(\"random\", \"stratified\", \"grouped\"),\n  group = NULL,\n  joint = c(\"obs\", \"fold\", \"group\"),\n  save_fits = FALSE,\n  seed = 1L",
+    "r_help_file": "compute_kfold_cv.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compute_loo_model_weights",
+    "python_name": "compute_loo_model_weights",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1271,
+    "r_signature_raw": "x,\n  method = c(\"stacking\", \"pseudobma\"),\n  cores = 1L",
+    "r_help_file": "compute_loo_model_weights.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compute_psis_loo",
+    "python_name": "compute_psis_loo",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1084,
+    "r_signature_raw": "fit,\n  moment_match = FALSE,\n  reloo = FALSE,\n  cores = 1L,\n  save_psis = TRUE",
+    "r_help_file": "compute_psis_loo.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "compute_psis_loo_from_log_lik",
+    "python_name": "compute_psis_loo_from_log_lik",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1117,
+    "r_signature_raw": "log_lik,\n  chain_id = NULL,\n  cores = 1L,\n  save_psis = TRUE",
+    "r_help_file": "compute_psis_loo_from_log_lik.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_advanced_pupil_prior_specification",
+    "python_name": "create_advanced_pupil_prior_specification",
+    "r_source_file": "pupil-advanced-fit.R",
+    "r_source_line": 271,
+    "r_signature_raw": "specification",
+    "r_help_file": "create_advanced_pupil_prior_specification.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_analysis_bundle",
+    "python_name": "create_analysis_bundle",
+    "r_source_file": "analysis-bundle.R",
+    "r_source_line": 27,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  ndraws = 1000L,\n  include_group_effects = FALSE,\n  include_loo = FALSE",
+    "r_help_file": "create_analysis_bundle.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_analysis_figure_set",
+    "python_name": "create_analysis_figure_set",
+    "r_source_file": "analysis-bundle.R",
+    "r_source_line": 202,
+    "r_signature_raw": "x",
+    "r_help_file": "create_analysis_figure_set.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_analysis_manifest",
+    "python_name": "create_analysis_manifest",
+    "r_source_file": "analysis-manifest.R",
+    "r_source_line": 215,
+    "r_signature_raw": "specification = NULL,\n  fit = NULL,\n  data = NULL,\n  estimands = character(),\n  sensitivity_plan = NULL,\n  seed = NULL,\n  label = NULL,\n  notes = character()",
+    "r_help_file": "create_analysis_manifest.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_binary_model_report",
+    "python_name": "create_binary_model_report",
+    "r_source_file": "binary-posterior-validation.R",
+    "r_source_line": 1473,
+    "r_signature_raw": "fit,\n  diagnostics = NULL,\n  posterior_summary = NULL,\n  posterior_predictive = NULL,\n  prior_sensitivity = NULL,\n  recovery = NULL,\n  file,\n  overwrite = FALSE",
+    "r_help_file": "create_binary_model_report.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_brms_sbc_plan",
+    "python_name": "create_brms_sbc_plan",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1869,
+    "r_signature_raw": "specification,\n  n_sims = 20L,\n  backend = c(\"rstan\", \"cmdstanr\"),\n  chains = 2L,\n  iter = 1000L,\n  warmup = 500L,\n  thin = 1L,\n  seed = 1L,\n  generator_iter = 3000L,\n  generator_warmup = 2000L",
+    "r_help_file": "create_brms_sbc_plan.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_complete_evidence_inventory",
+    "python_name": "create_complete_evidence_inventory",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 289,
+    "r_signature_raw": "..., label = NULL",
+    "r_help_file": "create_complete_evidence_inventory.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_contrast_coding_sensitivity_specification",
+    "python_name": "create_contrast_coding_sensitivity_specification",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2164,
+    "r_signature_raw": "specification,\n  condition_coding,\n  baseline",
+    "r_help_file": "create_contrast_coding_sensitivity_specification.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_custom_sbc_plan",
+    "python_name": "create_custom_sbc_plan",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1979,
+    "r_signature_raw": "generator_function,\n  backend,\n  n_sims = 20L,\n  generator_args = list(),\n  seed = 1L",
+    "r_help_file": "create_custom_sbc_plan.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_diagnostic_dashboard",
+    "python_name": "create_diagnostic_dashboard",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 358,
+    "r_signature_raw": "fit = NULL,\n  analysis_bundle = NULL,\n  model_card = NULL,\n  loo = NULL,\n  prior_posterior = NULL,\n  sensitivity = NULL,\n  recovery = NULL,\n  sbc = NULL,\n  label = NULL",
+    "r_help_file": "create_diagnostic_dashboard.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_diagnostic_dashboard_figures",
+    "python_name": "create_diagnostic_dashboard_figures",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 456,
+    "r_signature_raw": "x",
+    "r_help_file": "create_diagnostic_dashboard_figures.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_duration_model_report",
+    "python_name": "create_duration_model_report",
+    "r_source_file": "duration-posterior-validation.R",
+    "r_source_line": 1329,
+    "r_signature_raw": "fit,\n  diagnostics = NULL,\n  posterior_summary = NULL,\n  posterior_predictive = NULL,\n  prior_sensitivity = NULL,\n  recovery = NULL,\n  file,\n  overwrite = FALSE",
+    "r_help_file": "create_duration_model_report.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_duration_unit_sensitivity_specification",
+    "python_name": "create_duration_unit_sensitivity_specification",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2293,
+    "r_signature_raw": "specification,\n  multiplier,\n  new_unit",
+    "r_help_file": "create_duration_unit_sensitivity_specification.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_figure_set",
+    "python_name": "create_figure_set",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 857,
+    "r_signature_raw": "..., title = \"gp3bayes figure set\"",
+    "r_help_file": "create_figure_set.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_group_deletion_sensitivity_plan",
+    "python_name": "create_group_deletion_sensitivity_plan",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 1767,
+    "r_signature_raw": "specification,\n  group = c(\"participant\", \"item\"),\n  units = NULL,\n  max_units = 20L",
+    "r_help_file": "create_group_deletion_sensitivity_plan.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_loo_influence_atlas",
+    "python_name": "create_loo_influence_atlas",
+    "r_source_file": "loo-influence-atlas.R",
+    "r_source_line": 171,
+    "r_signature_raw": "x, data = NULL, threshold = 0.7",
+    "r_help_file": "create_loo_influence_atlas.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_model_card",
+    "python_name": "create_model_card",
+    "r_source_file": "model-card.R",
+    "r_source_line": 22,
+    "r_signature_raw": "fit,\n  analysis_bundle = NULL,\n  manifest = NULL,\n  label = NULL",
+    "r_help_file": "create_model_card.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_model_contract",
+    "python_name": "create_model_contract",
+    "r_source_file": "model-contract.R",
+    "r_source_line": 81,
+    "r_signature_raw": "family,\n  outcome_col,\n  participant_col,\n  item_col = NULL,\n  trial_col = NULL,\n  condition_col = NULL,\n  time_col = NULL,\n  predictors = character(),\n  interaction = NULL,\n  random_slope = FALSE,\n  outcome_unit = NULL,\n  notes = character()",
+    "r_help_file": "create_model_contract.Rd",
+    "python_module": "gp3bayespy.contracts",
+    "status": "implemented"
+  },
+  {
+    "r_export": "create_model_evidence_report",
+    "python_name": "create_model_evidence_report",
+    "r_source_file": "sensitivity-evidence-suite.R",
+    "r_source_line": 398,
+    "r_signature_raw": "evidence, file, overwrite = FALSE",
+    "r_help_file": "create_model_evidence_report.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_model_specification",
+    "python_name": "create_model_specification",
+    "r_source_file": "model-specification.R",
+    "r_source_line": 795,
+    "r_signature_raw": "contract,\n  audit,\n  priors",
+    "r_help_file": "create_model_specification.Rd",
+    "python_module": "gp3bayespy.specification",
+    "status": "implemented"
+  },
+  {
+    "r_export": "create_prediction_contrast_profile",
+    "python_name": "create_prediction_contrast_profile",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 393,
+    "r_signature_raw": "fit,\n  variable,\n  contrast_variable,\n  contrast_levels = NULL,\n  values = NULL,\n  n = 40L,\n  at = list(),\n  measure = c(\"difference\", \"ratio\", \"odds_ratio\"),\n  include_group_effects = FALSE,\n  ndraws = NULL,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "create_prediction_contrast_profile.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_prediction_grid",
+    "python_name": "create_prediction_grid",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 156,
+    "r_signature_raw": "x,\n  variables = NULL,\n  at = list(),\n  numeric_at = c(\"median\", \"mean\"),\n  max_rows = 5000L",
+    "r_help_file": "create_prediction_grid.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_prediction_profile",
+    "python_name": "create_prediction_profile",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 50,
+    "r_signature_raw": "fit,\n  variable,\n  values = NULL,\n  n = 50L,\n  at = list(),\n  type = c(\"expected\", \"predictive\", \"linear\", \"median\"),\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  probs = c(0.025, 0.5, 0.975),\n  seed = 1L",
+    "r_help_file": "create_prediction_profile.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_prediction_surface",
+    "python_name": "create_prediction_surface",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 246,
+    "r_signature_raw": "fit,\n  x,\n  y,\n  x_values = NULL,\n  y_values = NULL,\n  n = 30L,\n  at = list(),\n  type = c(\"expected\", \"predictive\", \"linear\", \"median\"),\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  probs = c(0.025, 0.5, 0.975),\n  seed = 1L,\n  max_rows = 2500L",
+    "r_help_file": "create_prediction_surface.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_predictive_distribution_atlas",
+    "python_name": "create_predictive_distribution_atlas",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 31,
+    "r_signature_raw": "fit,\n  ndraws = 500L,\n  include_group_effects = TRUE,\n  seed = 1L",
+    "r_help_file": "create_predictive_distribution_atlas.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_predictor_scaling_sensitivity_specification",
+    "python_name": "create_predictor_scaling_sensitivity_specification",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2235,
+    "r_signature_raw": "specification,\n  predictor,\n  scale_factor,\n  coefficient_scale,\n  interaction_scale = NULL",
+    "r_help_file": "create_predictor_scaling_sensitivity_specification.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_prior_specification",
+    "python_name": "create_prior_specification",
+    "r_source_file": "model-specification.R",
+    "r_source_line": 183,
+    "r_signature_raw": "contract,\n  baseline = NULL,\n  intercept_scale = NULL,\n  coefficient_scale = NULL,\n  group_sd_scale = 1,\n  residual_scale = NULL,\n  correlation_eta = 2,\n  student_df = 3",
+    "r_help_file": "create_prior_specification.Rd",
+    "python_module": "gp3bayespy.specification",
+    "status": "implemented"
+  },
+  {
+    "r_export": "create_publication_registry",
+    "python_name": "create_publication_registry",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 24,
+    "r_signature_raw": "label = NULL",
+    "r_help_file": "create_publication_registry.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_publication_table_set",
+    "python_name": "create_publication_table_set",
+    "r_source_file": "analysis-bundle.R",
+    "r_source_line": 167,
+    "r_signature_raw": "x",
+    "r_help_file": "create_publication_table_set.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_advanced_sensitivity_suite",
+    "python_name": "create_pupil_advanced_sensitivity_suite",
+    "r_source_file": "pupil-advanced-governance.R",
+    "r_source_line": 100,
+    "r_signature_raw": "specification,\n    include = c(\"likelihood\", \"residual_scale\", \"autocorrelation\", \"temporal\", \"gp_kernel\")",
+    "r_help_file": "create_pupil_advanced_sensitivity_suite.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_arma_spec",
+    "python_name": "create_pupil_arma_spec",
+    "r_source_file": "pupil-advanced-specification.R",
+    "r_source_line": 166,
+    "r_signature_raw": "p = 1L, q = 0L, covariance = FALSE",
+    "r_help_file": "create_pupil_arma_spec.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_contract",
+    "python_name": "create_pupil_contract",
+    "r_source_file": "pupil-contract.R",
+    "r_source_line": 193,
+    "r_signature_raw": "outcome_col,\n    participant_col,\n    trial_col,\n    time_col,\n    pupil_unit,\n    sampling_frequency,\n    time_unit = c(\"seconds\", \"milliseconds\"),\n    item_col = NULL,\n    condition_col = NULL,\n    timestamp_col = NULL,\n    eye = c(\"unknown\", \"left\", \"right\", \"combined\"),\n    left_pupil_col = NULL,\n    right_pupil_col = NULL,\n    channel_audit_unit = NULL,\n    validity_col = NULL,\n    interpolation_col = NULL,\n    blink_col = NULL,\n    gaze_x_col = NULL,\n    gaze_y_col = NULL,\n    luminance_col = NULL,\n    contrast_col = NULL,\n    screen_width = NA_real_,\n    screen_height = NA_real_,\n    baseline_window = NULL,\n    baseline_method = c(\"unknown\", \"none\", \"subtract\", \"divide\",\n                        \"proportion_change\", \"percent_change\"),\n    baseline_applied = FALSE,\n    pfe_corrected = FALSE,\n    pfe_method = NULL,\n    source_vendor = NA_character_,\n    device_model = NA_character_,\n    preprocessing_provenance = NA_character_,\n    upstream_package = NA_character_,\n    upstream_version = NA_character_,\n    notes = character()",
+    "r_help_file": "create_pupil_contract.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_gp_spec",
+    "python_name": "create_pupil_gp_spec",
+    "r_source_file": "pupil-advanced-specification.R",
+    "r_source_line": 133,
+    "r_signature_raw": "kernel = c(\"matern32\", \"matern52\", \"exp_quad\"),\n    basis = c(\"approximate\", \"exact\"),\n    k = 30L,\n    scale = TRUE",
+    "r_help_file": "create_pupil_gp_spec.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_lfo_plan",
+    "python_name": "create_pupil_lfo_plan",
+    "r_source_file": "pupil-model-comparison.R",
+    "r_source_line": 153,
+    "r_signature_raw": "fit,\n    initial_fraction = 0.6,\n    horizon = 5L,\n    step = 5L,\n    max_refits = 8L",
+    "r_help_file": "create_pupil_lfo_plan.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_measurement_model",
+    "python_name": "create_pupil_measurement_model",
+    "r_source_file": "pupil-advanced-specification.R",
+    "r_source_line": 16,
+    "r_signature_raw": "baseline_error = NULL,\n    luminance_error = NULL,\n    gaze_error = NULL,\n    response_error = NULL,\n    covariate_errors = NULL",
+    "r_help_file": "create_pupil_measurement_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_missingness_spec",
+    "python_name": "create_pupil_missingness_spec",
+    "r_source_file": "pupil-advanced-specification.R",
+    "r_source_line": 91,
+    "r_signature_raw": "response = c(\"exclude\", \"model\"),\n    predictors = character(),\n    assumptions = \"MAR\",\n    auxiliary_predictors = character()",
+    "r_help_file": "create_pupil_missingness_spec.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_model_set",
+    "python_name": "create_pupil_model_set",
+    "r_source_file": "pupil-model-comparison.R",
+    "r_source_line": 10,
+    "r_signature_raw": "...,\n    predictive_target = c(\"new_trial_known_participant\", \"new_participant\", \"future_segment\", \"new_sample_known_trial\")",
+    "r_help_file": "create_pupil_model_set.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_sensitivity_suite",
+    "python_name": "create_pupil_sensitivity_suite",
+    "r_source_file": "pupil-sensitivity.R",
+    "r_source_line": 65,
+    "r_signature_raw": "specification,\n    baseline_windows = list(),\n    baseline_window_operation = NULL,\n    baseline_operations = character(),\n    interpolation_policy = character(),\n    blink_adjacent_margins = numeric(),\n    gaze_adjustment = character(),\n    luminance_adjustment = character(),\n    pfe_prepared = list(),\n    smooth_basis_dimensions = integer(),\n    autocorrelation = character(),\n    analysis_windows = list()",
+    "r_help_file": "create_pupil_sensitivity_suite.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_pupil_validation_plan",
+    "python_name": "create_pupil_validation_plan",
+    "r_source_file": "pupil-validation.R",
+    "r_source_line": 62,
+    "r_signature_raw": "x,\n    target = c(\n      \"new_trial_known_participant\", \"new_participant\",\n      \"future_segment\", \"new_sample_known_trial\"\n    ),\n    K = 5L,\n    future_fraction = 0.20,\n    seed = 2026",
+    "r_help_file": "create_pupil_validation_plan.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_random_slope_sensitivity_plan",
+    "python_name": "create_random_slope_sensitivity_plan",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 1727,
+    "r_signature_raw": "specification",
+    "r_help_file": "create_random_slope_sensitivity_plan.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_reporting_checklist",
+    "python_name": "create_reporting_checklist",
+    "r_source_file": "model-card.R",
+    "r_source_line": 136,
+    "r_signature_raw": "x",
+    "r_help_file": "create_reporting_checklist.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_sensitivity_suite_plan",
+    "python_name": "create_sensitivity_suite_plan",
+    "r_source_file": "sensitivity-evidence-suite.R",
+    "r_source_line": 69,
+    "r_signature_raw": "prior_scale = FALSE,\n  powerscale = FALSE,\n  psis_loo = FALSE,\n  random_slope_plan = NULL,\n  group_deletion_plan = NULL,\n  alternative_estimands = list(),\n  duration_unit = NULL,\n  prior_scale_args = list(),\n  powerscale_args = list(),\n  psis_args = list(),\n  random_slope_args = list(),\n  group_deletion_args = list()",
+    "r_help_file": "create_sensitivity_suite_plan.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "create_transformation_recipe",
+    "python_name": "create_transformation_recipe",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 974,
+    "r_signature_raw": "prepared",
+    "r_help_file": "create_transformation_recipe.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "design_support_table",
+    "python_name": "design_support_table",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 69,
+    "r_signature_raw": "x",
+    "r_help_file": "design_support_table.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "detect_binary_separation",
+    "python_name": "detect_binary_separation",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 814,
+    "r_signature_raw": "x, formula = NULL, data = NULL",
+    "r_help_file": "detect_binary_separation.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "diagnose_advanced_pupil_fit",
+    "python_name": "diagnose_advanced_pupil_fit",
+    "r_source_file": "pupil-advanced-diagnostics.R",
+    "r_source_line": 147,
+    "r_signature_raw": "fit, rhat_threshold = 1.01, ess_threshold = 400",
+    "r_help_file": "diagnose_advanced_pupil_fit.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "diagnose_binary_fit",
+    "python_name": "diagnose_binary_fit",
+    "r_source_file": "binary-posterior-validation.R",
+    "r_source_line": 233,
+    "r_signature_raw": "fit,\n  rhat_pass = 1.01,\n  rhat_fail = 1.05,\n  ess_per_chain_pass = 100,\n  ess_per_chain_fail = 50,\n  maximum_treedepth_fraction = 0.01,\n  ebfmi_pass = 0.30,\n  ebfmi_fail = 0.20",
+    "r_help_file": "diagnose_binary_fit.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "diagnose_duration_fit",
+    "python_name": "diagnose_duration_fit",
+    "r_source_file": "duration-posterior-validation.R",
+    "r_source_line": 123,
+    "r_signature_raw": "fit,\n  rhat_pass = 1.01,\n  rhat_fail = 1.05,\n  ess_per_chain_pass = 100,\n  ess_per_chain_fail = 50,\n  maximum_treedepth_fraction = 0.01,\n  ebfmi_pass = 0.30,\n  ebfmi_fail = 0.20",
+    "r_help_file": "diagnose_duration_fit.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "diagnose_model_fit",
+    "python_name": "diagnose_model_fit",
+    "r_source_file": "unified-workflow-api.R",
+    "r_source_line": 281,
+    "r_signature_raw": "fit, ...",
+    "r_help_file": "diagnose_model_fit.Rd",
+    "python_module": "gp3bayespy.unified_workflow_api",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "diagnose_pupil_fit",
+    "python_name": "diagnose_pupil_fit",
+    "r_source_file": "pupil-diagnostics.R",
+    "r_source_line": 297,
+    "r_signature_raw": "fit, ndraws = 200L, max_lag = 10L, max_cells = 3000000L",
+    "r_help_file": "diagnose_pupil_fit.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "diagnostic_dashboard_table",
+    "python_name": "diagnostic_dashboard_table",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 436,
+    "r_signature_raw": "x",
+    "r_help_file": "diagnostic_dashboard_table.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "duration_pit_table",
+    "python_name": "duration_pit_table",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 1201,
+    "r_signature_raw": "x",
+    "r_help_file": "duration_pit_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "duration_prediction_scores",
+    "python_name": "duration_prediction_scores",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 1137,
+    "r_signature_raw": "x, observed = NULL",
+    "r_help_file": "duration_prediction_scores.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "duration_qq_table",
+    "python_name": "duration_qq_table",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 472,
+    "r_signature_raw": "x,\n  probs = seq(0.05, 0.95, by = 0.05)",
+    "r_help_file": "duration_qq_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "duration_quantile_calibration",
+    "python_name": "duration_quantile_calibration",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 1168,
+    "r_signature_raw": "x,\n  quantiles = c(0.1, 0.25, 0.5, 0.75, 0.9)",
+    "r_help_file": "duration_quantile_calibration.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "duration_tail_check",
+    "python_name": "duration_tail_check",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 516,
+    "r_signature_raw": "x, threshold",
+    "r_help_file": "duration_tail_check.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimand_sensitivity_table",
+    "python_name": "estimand_sensitivity_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 71,
+    "r_signature_raw": "x",
+    "r_help_file": "estimand_sensitivity_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_binocular_pupil_trajectory",
+    "python_name": "estimate_binocular_pupil_trajectory",
+    "r_source_file": "pupil-binocular.R",
+    "r_source_line": 647,
+    "r_signature_raw": "fit, newdata = NULL, ndraws = 500L, probability = 0.95",
+    "r_help_file": "estimate_binocular_pupil_trajectory.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_model_estimands",
+    "python_name": "estimate_model_estimands",
+    "r_source_file": "unified-workflow-api.R",
+    "r_source_line": 333,
+    "r_signature_raw": "fit, ...",
+    "r_help_file": "estimate_model_estimands.Rd",
+    "python_module": "gp3bayespy.unified_workflow_api",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_auc",
+    "python_name": "estimate_pupil_auc",
+    "r_source_file": "pupil-estimands.R",
+    "r_source_line": 351,
+    "r_signature_raw": "prediction, window, probability = 0.95",
+    "r_help_file": "estimate_pupil_auc.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_dynamic_contrast",
+    "python_name": "estimate_pupil_dynamic_contrast",
+    "r_source_file": "pupil-functional-estimands.R",
+    "r_source_line": 114,
+    "r_signature_raw": "prediction, contrast, threshold = 0, probability = 0.95",
+    "r_help_file": "estimate_pupil_dynamic_contrast.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_peak",
+    "python_name": "estimate_pupil_peak",
+    "r_source_file": "pupil-estimands.R",
+    "r_source_line": 368,
+    "r_signature_raw": "prediction, window, probability = 0.95",
+    "r_help_file": "estimate_pupil_peak.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_peak_latency",
+    "python_name": "estimate_pupil_peak_latency",
+    "r_source_file": "pupil-estimands.R",
+    "r_source_line": 385,
+    "r_signature_raw": "prediction, window, probability = 0.95",
+    "r_help_file": "estimate_pupil_peak_latency.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_residual_scale",
+    "python_name": "estimate_pupil_residual_scale",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 199,
+    "r_signature_raw": "fit,\n    newdata = NULL,\n    ndraws = 500L,\n    probability = 0.95",
+    "r_help_file": "estimate_pupil_residual_scale.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_response_parameters",
+    "python_name": "estimate_pupil_response_parameters",
+    "r_source_file": "pupil-response-shape.R",
+    "r_source_line": 265,
+    "r_signature_raw": "fit, probability = 0.95",
+    "r_help_file": "estimate_pupil_response_parameters.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_threshold_duration",
+    "python_name": "estimate_pupil_threshold_duration",
+    "r_source_file": "pupil-functional-estimands.R",
+    "r_source_line": 193,
+    "r_signature_raw": "contrast,\n    direction = c(\"above\", \"below\", \"absolute\"),\n    threshold = contrast$threshold,\n    probability = 0.95",
+    "r_help_file": "estimate_pupil_threshold_duration.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_trajectory",
+    "python_name": "estimate_pupil_trajectory",
+    "r_source_file": "pupil-estimands.R",
+    "r_source_line": 208,
+    "r_signature_raw": "prediction, probability = 0.95,\n    interval = c(\"pointwise\", \"simultaneous\")",
+    "r_help_file": "estimate_pupil_trajectory.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_trajectory_derivative",
+    "python_name": "estimate_pupil_trajectory_derivative",
+    "r_source_file": "pupil-functional-estimands.R",
+    "r_source_line": 59,
+    "r_signature_raw": "prediction, order = 1L, probability = 0.95",
+    "r_help_file": "estimate_pupil_trajectory_derivative.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_pupil_window",
+    "python_name": "estimate_pupil_window",
+    "r_source_file": "pupil-estimands.R",
+    "r_source_line": 334,
+    "r_signature_raw": "prediction, window, probability = 0.95",
+    "r_help_file": "estimate_pupil_window.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_standardized_duration_estimands",
+    "python_name": "estimate_standardized_duration_estimands",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 1421,
+    "r_signature_raw": "fit,\n  target_data = NULL,\n  target_scale = c(\"prepared\", \"raw\"),\n  predictive_quantile = 0.90,\n  ndraws = NULL,\n  include_group_effects = FALSE,\n  seed = 1L",
+    "r_help_file": "estimate_standardized_duration_estimands.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "estimate_standardized_probability_contrast",
+    "python_name": "estimate_standardized_probability_contrast",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 1344,
+    "r_signature_raw": "fit,\n  target_data = NULL,\n  target_scale = c(\"prepared\", \"raw\"),\n  ndraws = NULL,\n  include_group_effects = FALSE",
+    "r_help_file": "estimate_standardized_probability_contrast.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "evaluate_pathological_simulation",
+    "python_name": "evaluate_pathological_simulation",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1713,
+    "r_signature_raw": "x",
+    "r_help_file": "evaluate_pathological_simulation.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "evidence_inventory_table",
+    "python_name": "evidence_inventory_table",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 327,
+    "r_signature_raw": "x",
+    "r_help_file": "evidence_inventory_table.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "extract_expected_predictions",
+    "python_name": "extract_expected_predictions",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 520,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL",
+    "r_help_file": "extract_expected_predictions.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "extract_linear_predictions",
+    "python_name": "extract_linear_predictions",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 568,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL",
+    "r_help_file": "extract_linear_predictions.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "extract_log_likelihood",
+    "python_name": "extract_log_likelihood",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 261,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  include_group_effects = TRUE,\n  ndraws = NULL",
+    "r_help_file": "extract_log_likelihood.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "extract_posterior_draws",
+    "python_name": "extract_posterior_draws",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 185,
+    "r_signature_raw": "fit,\n  variables = NULL,\n  regex = NULL,\n  format = c(\"array\", \"matrix\", \"df\", \"rvars\")",
+    "r_help_file": "extract_posterior_draws.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "extract_posterior_predictions",
+    "python_name": "extract_posterior_predictions",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 543,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  seed = 1L",
+    "r_help_file": "extract_posterior_predictions.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "extract_sampler_diagnostics",
+    "python_name": "extract_sampler_diagnostics",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 236,
+    "r_signature_raw": "fit",
+    "r_help_file": "extract_sampler_diagnostics.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_advanced_pupil_model",
+    "python_name": "fit_advanced_pupil_model",
+    "r_source_file": "pupil-advanced-fit.R",
+    "r_source_line": 639,
+    "r_signature_raw": "specification,\n    chains = 4L,\n    iter = 2000L,\n    warmup = 1000L,\n    cores = min(2L, chains),\n    seed = 2026,\n    adapt_delta = 0.95,\n    max_treedepth = 12L,\n    refresh = 0L",
+    "r_help_file": "fit_advanced_pupil_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_advanced_pupil_model_backend",
+    "python_name": "fit_advanced_pupil_model_backend",
+    "r_source_file": "pupil-advanced-fit.R",
+    "r_source_line": 578,
+    "r_signature_raw": "specification,\n    backend = c(\"rstan\", \"cmdstanr\"),\n    chains = 4L,\n    iter = 2000L,\n    warmup = 1000L,\n    cores = min(2L, chains),\n    seed = 2026,\n    adapt_delta = 0.95,\n    max_treedepth = 12L,\n    refresh = 0L",
+    "r_help_file": "fit_advanced_pupil_model_backend.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_advanced_pupil_model_cmdstanr",
+    "python_name": "fit_advanced_pupil_model_cmdstanr",
+    "r_source_file": "pupil-advanced-fit.R",
+    "r_source_line": 659,
+    "r_signature_raw": "specification,\n    chains = 4L,\n    iter = 2000L,\n    warmup = 1000L,\n    cores = min(2L, chains),\n    seed = 2026,\n    adapt_delta = 0.95,\n    max_treedepth = 12L,\n    refresh = 0L",
+    "r_help_file": "fit_advanced_pupil_model_cmdstanr.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_binary_model",
+    "python_name": "fit_binary_model",
+    "r_source_file": "binary-model-fitting.R",
+    "r_source_line": 475,
+    "r_signature_raw": "specification,\n  chains = 4L,\n  iter = 2000L,\n  warmup = 1000L,\n  cores = .gp3b_default_cores(chains),\n  seed = 1L,\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L",
+    "r_help_file": "fit_binary_model.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_binary_model_backend",
+    "python_name": "fit_binary_model_backend",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 667,
+    "r_signature_raw": "specification,\n  backend = c(\"rstan\", \"cmdstanr\"),\n  chains = 4L,\n  iter = 2000L,\n  warmup = 1000L,\n  cores = .gp3b_default_cores(chains),\n  seed = 1L,\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L",
+    "r_help_file": "fit_binary_model_backend.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_binary_model_cmdstanr",
+    "python_name": "fit_binary_model_cmdstanr",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 734,
+    "r_signature_raw": "specification,\n  chains = 4L,\n  iter = 2000L,\n  warmup = 1000L,\n  cores = .gp3b_default_cores(chains),\n  seed = 1L,\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L",
+    "r_help_file": "fit_binary_model_backend.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_binocular_pupil_model",
+    "python_name": "fit_binocular_pupil_model",
+    "r_source_file": "pupil-binocular.R",
+    "r_source_line": 579,
+    "r_signature_raw": "specification,\n    backend = c(\"rstan\", \"cmdstanr\"),\n    chains = 4L,\n    iter = 2000L,\n    warmup = 1000L,\n    cores = min(2L, chains),\n    seed = 2026,\n    adapt_delta = 0.95,\n    max_treedepth = 12L,\n    refresh = 0L",
+    "r_help_file": "fit_binocular_pupil_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_duration_model",
+    "python_name": "fit_duration_model",
+    "r_source_file": "duration-model-fitting.R",
+    "r_source_line": 378,
+    "r_signature_raw": "specification,\n  chains = 4L,\n  iter = 2000L,\n  warmup = 1000L,\n  cores = .gp3b_default_cores(\n    chains\n  ),\n  seed = 1L,\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L",
+    "r_help_file": "fit_duration_model.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_duration_model_backend",
+    "python_name": "fit_duration_model_backend",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 703,
+    "r_signature_raw": "specification,\n  backend = c(\"rstan\", \"cmdstanr\"),\n  chains = 4L,\n  iter = 2000L,\n  warmup = 1000L,\n  cores = .gp3b_default_cores(chains),\n  seed = 1L,\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L",
+    "r_help_file": "fit_duration_model_backend.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_duration_model_cmdstanr",
+    "python_name": "fit_duration_model_cmdstanr",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 761,
+    "r_signature_raw": "specification,\n  chains = 4L,\n  iter = 2000L,\n  warmup = 1000L,\n  cores = .gp3b_default_cores(chains),\n  seed = 1L,\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L",
+    "r_help_file": "fit_duration_model_backend.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_pupil_model",
+    "python_name": "fit_pupil_model",
+    "r_source_file": "pupil-fit.R",
+    "r_source_line": 151,
+    "r_signature_raw": "specification, chains = 4L, iter = 2000L, warmup = 1000L,\n    cores = min(2L, chains), seed = 2026, adapt_delta = 0.95,\n    max_treedepth = 12L, refresh = 0L",
+    "r_help_file": "fit_pupil_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_pupil_model_backend",
+    "python_name": "fit_pupil_model_backend",
+    "r_source_file": "pupil-fit.R",
+    "r_source_line": 74,
+    "r_signature_raw": "specification,\n    backend = c(\"rstan\", \"cmdstanr\"),\n    chains = 4L,\n    iter = 2000L,\n    warmup = 1000L,\n    cores = min(2L, chains),\n    seed = 2026,\n    adapt_delta = 0.95,\n    max_treedepth = 12L,\n    refresh = 0L",
+    "r_help_file": "fit_pupil_model_backend.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_pupil_model_cmdstanr",
+    "python_name": "fit_pupil_model_cmdstanr",
+    "r_source_file": "pupil-fit.R",
+    "r_source_line": 168,
+    "r_signature_raw": "specification, chains = 4L, iter = 2000L, warmup = 1000L,\n    cores = min(2L, chains), seed = 2026, adapt_delta = 0.95,\n    max_treedepth = 12L, refresh = 0L",
+    "r_help_file": "fit_pupil_model_cmdstanr.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "fit_pupil_response_shape_model",
+    "python_name": "fit_pupil_response_shape_model",
+    "r_source_file": "pupil-response-shape.R",
+    "r_source_line": 227,
+    "r_signature_raw": "specification,\n    backend = c(\"rstan\", \"cmdstanr\"),\n    chains = 4L,\n    iter = 2500L,\n    warmup = 1250L,\n    cores = min(2L, chains),\n    seed = 2026,\n    adapt_delta = 0.97,\n    max_treedepth = 13L,\n    refresh = 0L",
+    "r_help_file": "fit_pupil_response_shape_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "freeze_analysis_manifest",
+    "python_name": "freeze_analysis_manifest",
+    "r_source_file": "analysis-manifest.R",
+    "r_source_line": 370,
+    "r_signature_raw": "manifest, file = NULL, overwrite = FALSE",
+    "r_help_file": "freeze_analysis_manifest.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "freeze_gp3bayes_schema",
+    "python_name": "freeze_gp3bayes_schema",
+    "r_source_file": "backend-reliability.R",
+    "r_source_line": 735,
+    "r_signature_raw": "schema, file = NULL, overwrite = FALSE",
+    "r_help_file": "freeze_gp3bayes_schema.Rd",
+    "python_module": "gp3bayespy.backends",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "gazepoint_pupil_mapping_table",
+    "python_name": "gazepoint_pupil_mapping_table",
+    "r_source_file": "pupil-gazepoint.R",
+    "r_source_line": 145,
+    "r_signature_raw": "x",
+    "r_help_file": "gazepoint_pupil_mapping_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "gp3bayes_specification_traceability",
+    "python_name": "gp3bayes_specification_traceability",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2864,
+    "r_signature_raw": "",
+    "r_help_file": "gp3bayes_specification_traceability.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "group_deletion_sensitivity_table",
+    "python_name": "group_deletion_sensitivity_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 80,
+    "r_signature_raw": "x",
+    "r_help_file": "group_deletion_sensitivity_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "group_effect_draws_table",
+    "python_name": "group_effect_draws_table",
+    "r_source_file": "hierarchical-effects-advanced.R",
+    "r_source_line": 50,
+    "r_signature_raw": "fit,\n  groups = NULL,\n  coefficients = NULL,\n  ndraws = NULL,\n  seed = 1L,\n  max_rows = 1000000L",
+    "r_help_file": "group_effect_draws_table.Rd",
+    "python_module": "gp3bayespy.hierarchical_effects_advanced",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "group_effect_rank_probability_table",
+    "python_name": "group_effect_rank_probability_table",
+    "r_source_file": "hierarchical-effects-advanced.R",
+    "r_source_line": 131,
+    "r_signature_raw": "fit,\n  group,\n  coefficient = \"Intercept\",\n  ndraws = 1000L,\n  seed = 1L",
+    "r_help_file": "group_effect_rank_probability_table.Rd",
+    "python_module": "gp3bayespy.hierarchical_effects_advanced",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "group_effect_table",
+    "python_name": "group_effect_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 627,
+    "r_signature_raw": "fit,\n  groups = NULL,\n  probs = c(0.025, 0.975)",
+    "r_help_file": "group_effect_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "group_prediction_summary",
+    "python_name": "group_prediction_summary",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 557,
+    "r_signature_raw": "x,\n  by,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "group_prediction_summary.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "grouped_prediction_check",
+    "python_name": "grouped_prediction_check",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 821,
+    "r_signature_raw": "fit,\n  group,\n  ndraws = 1000L,\n  probs = c(0.025, 0.5, 0.975),\n  seed = 1L",
+    "r_help_file": "grouped_prediction_check.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "identify_identifier_like_predictors",
+    "python_name": "identify_identifier_like_predictors",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 383,
+    "r_signature_raw": "data,\n  contract,\n  unique_fraction = 0.90,\n  integer_fraction = 0.98,\n  monotone_correlation = 0.98",
+    "r_help_file": "identify_identifier_like_predictors.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "identify_loo_influential_observations",
+    "python_name": "identify_loo_influential_observations",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1154,
+    "r_signature_raw": "x,\n  threshold = NULL,\n  data = NULL",
+    "r_help_file": "identify_loo_influential_observations.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "identify_mcmc_issues",
+    "python_name": "identify_mcmc_issues",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 453,
+    "r_signature_raw": "x,\n  rhat_threshold = 1.01,\n  min_bulk_ess = 400,\n  min_tail_ess = 400,\n  max_mcse_fraction = 0.10",
+    "r_help_file": "identify_mcmc_issues.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "inspect_gazepoint_pupil_schema",
+    "python_name": "inspect_gazepoint_pupil_schema",
+    "r_source_file": "pupil-gazepoint.R",
+    "r_source_line": 69,
+    "r_signature_raw": "data",
+    "r_help_file": "inspect_gazepoint_pupil_schema.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "interaction_prior_summary",
+    "python_name": "interaction_prior_summary",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 424,
+    "r_signature_raw": "specification",
+    "r_help_file": "interaction_prior_summary.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "invert_transformation_recipe",
+    "python_name": "invert_transformation_recipe",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 1141,
+    "r_signature_raw": "data, recipe",
+    "r_help_file": "invert_transformation_recipe.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "loo_diagnostic_table",
+    "python_name": "loo_diagnostic_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 708,
+    "r_signature_raw": "x",
+    "r_help_file": "loo_diagnostic_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "loo_flagged_data",
+    "python_name": "loo_flagged_data",
+    "r_source_file": "loo-influence-atlas.R",
+    "r_source_line": 89,
+    "r_signature_raw": "x, threshold = 0.7",
+    "r_help_file": "loo_flagged_data.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "loo_group_influence_table",
+    "python_name": "loo_group_influence_table",
+    "r_source_file": "loo-group-influence.R",
+    "r_source_line": 20,
+    "r_signature_raw": "x, group, data = NULL",
+    "r_help_file": "loo_group_influence_table.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "loo_influence_atlas_table",
+    "python_name": "loo_influence_atlas_table",
+    "r_source_file": "loo-influence-atlas.R",
+    "r_source_line": 207,
+    "r_signature_raw": "x",
+    "r_help_file": "loo_influence_atlas_table.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "loo_influence_summary",
+    "python_name": "loo_influence_summary",
+    "r_source_file": "loo-influence-atlas.R",
+    "r_source_line": 57,
+    "r_signature_raw": "x",
+    "r_help_file": "loo_influence_summary.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "loo_pointwise_table",
+    "python_name": "loo_pointwise_table",
+    "r_source_file": "loo-influence-atlas.R",
+    "r_source_line": 19,
+    "r_signature_raw": "x, data = NULL",
+    "r_help_file": "loo_pointwise_table.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "loo_summary_table",
+    "python_name": "loo_summary_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 739,
+    "r_signature_raw": "x",
+    "r_help_file": "loo_summary_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "manifest_comparison_table",
+    "python_name": "manifest_comparison_table",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 51,
+    "r_signature_raw": "x",
+    "r_help_file": "manifest_comparison_table.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "materialize_pupil_advanced_sensitivity_scenario",
+    "python_name": "materialize_pupil_advanced_sensitivity_scenario",
+    "r_source_file": "pupil-advanced-governance.R",
+    "r_source_line": 170,
+    "r_signature_raw": "suite, scenario",
+    "r_help_file": "materialize_pupil_advanced_sensitivity_scenario.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "materialize_pupil_sensitivity_scenario",
+    "python_name": "materialize_pupil_sensitivity_scenario",
+    "r_source_file": "pupil-sensitivity.R",
+    "r_source_line": 211,
+    "r_signature_raw": "suite, scenario_id",
+    "r_help_file": "materialize_pupil_sensitivity_scenario.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "mcmc_diagnostic_table",
+    "python_name": "mcmc_diagnostic_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 410,
+    "r_signature_raw": "fit, variables = NULL, regex = NULL",
+    "r_help_file": "mcmc_diagnostic_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "missingness_audit_table",
+    "python_name": "missingness_audit_table",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 78,
+    "r_signature_raw": "x",
+    "r_help_file": "missingness_audit_table.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "model_card_table",
+    "python_name": "model_card_table",
+    "r_source_file": "model-card.R",
+    "r_source_line": 123,
+    "r_signature_raw": "x",
+    "r_help_file": "model_card_table.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "model_comparison_table",
+    "python_name": "model_comparison_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 761,
+    "r_signature_raw": "x",
+    "r_help_file": "model_comparison_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "model_evidence_table",
+    "python_name": "model_evidence_table",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 24,
+    "r_signature_raw": "x",
+    "r_help_file": "model_evidence_table.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "model_weights_table",
+    "python_name": "model_weights_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 783,
+    "r_signature_raw": "x",
+    "r_help_file": "model_weights_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "model_workflow_status",
+    "python_name": "model_workflow_status",
+    "r_source_file": "unified-workflow-api.R",
+    "r_source_line": 354,
+    "r_signature_raw": "x",
+    "r_help_file": "model_workflow_status.Rd",
+    "python_module": "gp3bayespy.unified_workflow_api",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_advanced_pupil_simulation",
+    "python_name": "plot_advanced_pupil_simulation",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 36,
+    "r_signature_raw": "x, observed = TRUE, ...",
+    "r_help_file": "plot_advanced_pupil_simulation.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_advanced_pupil_trajectory",
+    "python_name": "plot_advanced_pupil_trajectory",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 59,
+    "r_signature_raw": "x, probability = 0.95, ...",
+    "r_help_file": "plot_advanced_pupil_trajectory.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_autocorrelation",
+    "python_name": "plot_autocorrelation",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 166,
+    "r_signature_raw": "fit,\n  variables = NULL,\n  regex = \"^b_\",\n  lags = 20L",
+    "r_help_file": "plot_autocorrelation.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_backend_environment_gg",
+    "python_name": "plot_backend_environment_gg",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 176,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_backend_environment_gg.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_backend_parity_gg",
+    "python_name": "plot_backend_parity_gg",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 147,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_backend_parity_gg.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_binary_calibration",
+    "python_name": "plot_binary_calibration",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 367,
+    "r_signature_raw": "x, bins = 10L",
+    "r_help_file": "plot_binary_calibration.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_binary_calibration_uncertainty",
+    "python_name": "plot_binary_calibration_uncertainty",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 450,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_binary_calibration_uncertainty.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_binary_group_calibration",
+    "python_name": "plot_binary_group_calibration",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 141,
+    "r_signature_raw": "x, group = NULL",
+    "r_help_file": "plot_binary_group_calibration.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_binary_precision_recall",
+    "python_name": "plot_binary_precision_recall",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 116,
+    "r_signature_raw": "x, observed = NULL",
+    "r_help_file": "plot_binary_precision_recall.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_binary_roc",
+    "python_name": "plot_binary_roc",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 86,
+    "r_signature_raw": "x, observed = NULL",
+    "r_help_file": "plot_binary_roc.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_binary_threshold_metrics",
+    "python_name": "plot_binary_threshold_metrics",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 410,
+    "r_signature_raw": "x,\n  observed = NULL,\n  thresholds = seq(0.1, 0.9, by = 0.05)",
+    "r_help_file": "plot_binary_threshold_metrics.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_binocular_pupil_trajectory",
+    "python_name": "plot_binocular_pupil_trajectory",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 157,
+    "r_signature_raw": "x, probability = x$probability, ...",
+    "r_help_file": "plot_binocular_pupil_trajectory.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_design_support_gg",
+    "python_name": "plot_design_support_gg",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 262,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_design_support_gg.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_diagnostic_dashboard",
+    "python_name": "plot_diagnostic_dashboard",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 522,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_diagnostic_dashboard.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_duration_pit",
+    "python_name": "plot_duration_pit",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 481,
+    "r_signature_raw": "x, bins = 10L",
+    "r_help_file": "plot_duration_pit.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_duration_qq",
+    "python_name": "plot_duration_qq",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 175,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_duration_qq.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_duration_quantile_calibration",
+    "python_name": "plot_duration_quantile_calibration",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 453,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_duration_quantile_calibration.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_duration_tail",
+    "python_name": "plot_duration_tail",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 212,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_duration_tail.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_estimand_intervals",
+    "python_name": "plot_estimand_intervals",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 293,
+    "r_signature_raw": "x,\n  quantities = NULL,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "plot_estimand_intervals.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_estimand_sensitivity_gg",
+    "python_name": "plot_estimand_sensitivity_gg",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 384,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_estimand_sensitivity_gg.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_exceedance_probability",
+    "python_name": "plot_exceedance_probability",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 512,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_exceedance_probability.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_group_deletion_sensitivity",
+    "python_name": "plot_group_deletion_sensitivity",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 428,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_group_deletion_sensitivity.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_group_effect_distribution",
+    "python_name": "plot_group_effect_distribution",
+    "r_source_file": "hierarchical-effects-advanced.R",
+    "r_source_line": 299,
+    "r_signature_raw": "x, max_levels = 20L",
+    "r_help_file": "plot_group_effect_distribution.Rd",
+    "python_module": "gp3bayespy.hierarchical_effects_advanced",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_group_effect_rank_probability",
+    "python_name": "plot_group_effect_rank_probability",
+    "r_source_file": "hierarchical-effects-advanced.R",
+    "r_source_line": 330,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_group_effect_rank_probability.Rd",
+    "python_module": "gp3bayespy.hierarchical_effects_advanced",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_group_effects",
+    "python_name": "plot_group_effects",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 703,
+    "r_signature_raw": "x, groups = NULL",
+    "r_help_file": "plot_group_effects.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_group_predictions",
+    "python_name": "plot_group_predictions",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 249,
+    "r_signature_raw": "x, group_column",
+    "r_help_file": "plot_group_predictions.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_grouped_prediction_check",
+    "python_name": "plot_grouped_prediction_check",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 664,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_grouped_prediction_check.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_loo_group_elpd",
+    "python_name": "plot_loo_group_elpd",
+    "r_source_file": "loo-group-influence.R",
+    "r_source_line": 88,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_loo_group_elpd.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_loo_group_influence",
+    "python_name": "plot_loo_group_influence",
+    "r_source_file": "loo-group-influence.R",
+    "r_source_line": 58,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_loo_group_influence.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_loo_influence",
+    "python_name": "plot_loo_influence",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 765,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_loo_influence.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_loo_influence_rank",
+    "python_name": "plot_loo_influence_rank",
+    "r_source_file": "loo-influence-atlas.R",
+    "r_source_line": 148,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_loo_influence_rank.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_loo_pareto_vs_elpd",
+    "python_name": "plot_loo_pareto_vs_elpd",
+    "r_source_file": "loo-influence-atlas.R",
+    "r_source_line": 126,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_loo_pareto_vs_elpd.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_loo_pointwise_elpd",
+    "python_name": "plot_loo_pointwise_elpd",
+    "r_source_file": "loo-influence-atlas.R",
+    "r_source_line": 107,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_loo_pointwise_elpd.Rd",
+    "python_module": "gp3bayespy.loo",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_manifest_comparison_gg",
+    "python_name": "plot_manifest_comparison_gg",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 205,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_manifest_comparison_gg.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_mcmc_quality",
+    "python_name": "plot_mcmc_quality",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 190,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_mcmc_quality.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_missingness_gg",
+    "python_name": "plot_missingness_gg",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 291,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_missingness_gg.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_model_comparison",
+    "python_name": "plot_model_comparison",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 789,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_model_comparison.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_model_evidence_gg",
+    "python_name": "plot_model_evidence_gg",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 116,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_model_evidence_gg.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_model_weights",
+    "python_name": "plot_model_weights",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 823,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_model_weights.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_posterior_areas",
+    "python_name": "plot_posterior_areas",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 72,
+    "r_signature_raw": "x,\n  variables = NULL,\n  regex = NULL,\n  prob = 0.5,\n  prob_outer = 0.95",
+    "r_help_file": "plot_posterior_areas.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_posterior_correlations",
+    "python_name": "plot_posterior_correlations",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 238,
+    "r_signature_raw": "x,\n  variables = NULL,\n  regex = NULL,\n  method = c(\"pearson\", \"spearman\")",
+    "r_help_file": "plot_posterior_correlations.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_posterior_density",
+    "python_name": "plot_posterior_density",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 96,
+    "r_signature_raw": "x, variables = NULL, regex = NULL",
+    "r_help_file": "plot_posterior_density.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_posterior_intervals",
+    "python_name": "plot_posterior_intervals",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 49,
+    "r_signature_raw": "x,\n  variables = NULL,\n  regex = NULL,\n  prob = 0.8,\n  prob_outer = 0.95",
+    "r_help_file": "plot_posterior_intervals.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_posterior_pairs",
+    "python_name": "plot_posterior_pairs",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 112,
+    "r_signature_raw": "fit,\n  variables = NULL,\n  regex = \"^b_\",\n  max_variables = 8L",
+    "r_help_file": "plot_posterior_pairs.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_powerscale_sensitivity_gg",
+    "python_name": "plot_powerscale_sensitivity_gg",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 476,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_powerscale_sensitivity_gg.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_ppc_statistic",
+    "python_name": "plot_ppc_statistic",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 57,
+    "r_signature_raw": "x, bins = 30L",
+    "r_help_file": "plot_ppc_statistic.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_contrast_profile",
+    "python_name": "plot_prediction_contrast_profile",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 559,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prediction_contrast_profile.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_draws",
+    "python_name": "plot_prediction_draws",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 20,
+    "r_signature_raw": "x,\n  observations = NULL,\n  max_draws = 500L",
+    "r_help_file": "plot_prediction_draws.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_gradient",
+    "python_name": "plot_prediction_gradient",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 197,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prediction_gradient.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_interval_width",
+    "python_name": "plot_prediction_interval_width",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 291,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prediction_interval_width.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_intervals",
+    "python_name": "plot_prediction_intervals",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 325,
+    "r_signature_raw": "x, max_rows = 100L",
+    "r_help_file": "plot_prediction_intervals.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_profile",
+    "python_name": "plot_prediction_profile",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 171,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prediction_profile.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_rank_probabilities",
+    "python_name": "plot_prediction_rank_probabilities",
+    "r_source_file": "advanced-predictive-graphics.R",
+    "r_source_line": 316,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prediction_rank_probabilities.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_score_uncertainty",
+    "python_name": "plot_prediction_score_uncertainty",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 427,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prediction_score_uncertainty.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_support",
+    "python_name": "plot_prediction_support",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 594,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prediction_support.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_surface",
+    "python_name": "plot_prediction_surface",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 331,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prediction_surface.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prediction_surface_uncertainty",
+    "python_name": "plot_prediction_surface_uncertainty",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 359,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prediction_surface_uncertainty.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_predictive_atlas_statistics",
+    "python_name": "plot_predictive_atlas_statistics",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 358,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_predictive_atlas_statistics.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_predictive_coverage",
+    "python_name": "plot_predictive_coverage",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 541,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_predictive_coverage.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_predictive_quantile_envelope",
+    "python_name": "plot_predictive_quantile_envelope",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 396,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_predictive_quantile_envelope.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_predictive_residuals",
+    "python_name": "plot_predictive_residuals",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 572,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_predictive_residuals.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prior_posterior_contraction",
+    "python_name": "plot_prior_posterior_contraction",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 474,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prior_posterior_contraction.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prior_posterior_density",
+    "python_name": "plot_prior_posterior_density",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 392,
+    "r_signature_raw": "x, max_draws = 1000L",
+    "r_help_file": "plot_prior_posterior_density.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prior_posterior_intervals",
+    "python_name": "plot_prior_posterior_intervals",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 412,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prior_posterior_intervals.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prior_posterior_shift",
+    "python_name": "plot_prior_posterior_shift",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 450,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prior_posterior_shift.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prior_sensitivity",
+    "python_name": "plot_prior_sensitivity",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 316,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prior_sensitivity.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_prior_sensitivity_scenarios",
+    "python_name": "plot_prior_sensitivity_scenarios",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 353,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_prior_sensitivity_scenarios.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_autocorrelation_comparison",
+    "python_name": "plot_pupil_autocorrelation_comparison",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 114,
+    "r_signature_raw": "x, absolute = TRUE, ...",
+    "r_help_file": "plot_pupil_autocorrelation_comparison.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_dynamic_contrast",
+    "python_name": "plot_pupil_dynamic_contrast",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 272,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_dynamic_contrast.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_estimand",
+    "python_name": "plot_pupil_estimand",
+    "r_source_file": "pupil-graphics.R",
+    "r_source_line": 162,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_pupil_estimand.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_gp_hyperparameters",
+    "python_name": "plot_pupil_gp_hyperparameters",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 85,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_gp_hyperparameters.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_identifiability_audit",
+    "python_name": "plot_pupil_identifiability_audit",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 287,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_identifiability_audit.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_lfo",
+    "python_name": "plot_pupil_lfo",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 193,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_lfo.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_measurement_audit",
+    "python_name": "plot_pupil_measurement_audit",
+    "r_source_file": "pupil-graphics.R",
+    "r_source_line": 517,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_pupil_measurement_audit.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_measurement_uncertainty",
+    "python_name": "plot_pupil_measurement_uncertainty",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 144,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_measurement_uncertainty.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_missingness",
+    "python_name": "plot_pupil_missingness",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 133,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_missingness.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_model_comparison",
+    "python_name": "plot_pupil_model_comparison",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 178,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_model_comparison.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_model_complexity",
+    "python_name": "plot_pupil_model_complexity",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 241,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_model_complexity.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_observed_trajectory",
+    "python_name": "plot_pupil_observed_trajectory",
+    "r_source_file": "pupil-graphics.R",
+    "r_source_line": 50,
+    "r_signature_raw": "x, summary = TRUE",
+    "r_help_file": "plot_pupil_observed_trajectory.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_posterior_trajectory",
+    "python_name": "plot_pupil_posterior_trajectory",
+    "r_source_file": "pupil-graphics.R",
+    "r_source_line": 106,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_pupil_posterior_trajectory.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_ppc",
+    "python_name": "plot_pupil_ppc",
+    "r_source_file": "pupil-graphics.R",
+    "r_source_line": 204,
+    "r_signature_raw": "x,\n    component = c(\n      \"trajectory\", \"residuals\", \"features\", \"autocorrelation\",\n      \"heterogeneity\", \"measurement_context\"\n    )",
+    "r_help_file": "plot_pupil_ppc.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_predictive_calibration",
+    "python_name": "plot_pupil_predictive_calibration",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 299,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_predictive_calibration.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_readiness",
+    "python_name": "plot_pupil_readiness",
+    "r_source_file": "pupil-graphics.R",
+    "r_source_line": 25,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_pupil_readiness.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_residual_acf",
+    "python_name": "plot_pupil_residual_acf",
+    "r_source_file": "pupil-graphics.R",
+    "r_source_line": 379,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_pupil_residual_acf.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_residual_scale",
+    "python_name": "plot_pupil_residual_scale",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 72,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_residual_scale.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_residual_spectrum",
+    "python_name": "plot_pupil_residual_spectrum",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 228,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_residual_spectrum.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_response_parameters",
+    "python_name": "plot_pupil_response_parameters",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 212,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_response_parameters.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_sensitivity",
+    "python_name": "plot_pupil_sensitivity",
+    "r_source_file": "pupil-graphics.R",
+    "r_source_line": 475,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_pupil_sensitivity.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_temporal_dependence",
+    "python_name": "plot_pupil_temporal_dependence",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 101,
+    "r_signature_raw": "x, ...",
+    "r_help_file": "plot_pupil_temporal_dependence.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_trajectory_derivative",
+    "python_name": "plot_pupil_trajectory_derivative",
+    "r_source_file": "pupil-advanced-graphics.R",
+    "r_source_line": 255,
+    "r_signature_raw": "x, probability = x$probability, ...",
+    "r_help_file": "plot_pupil_trajectory_derivative.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_pupil_validation",
+    "python_name": "plot_pupil_validation",
+    "r_source_file": "pupil-graphics.R",
+    "r_source_line": 408,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_pupil_validation.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_random_intercept_variance_partition",
+    "python_name": "plot_random_intercept_variance_partition",
+    "r_source_file": "hierarchical-effects-advanced.R",
+    "r_source_line": 354,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_random_intercept_variance_partition.Rd",
+    "python_module": "gp3bayespy.hierarchical_effects_advanced",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_random_slope_sensitivity",
+    "python_name": "plot_random_slope_sensitivity",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 458,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_random_slope_sensitivity.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_rank_diagnostics",
+    "python_name": "plot_rank_diagnostics",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 142,
+    "r_signature_raw": "fit,\n  variables = NULL,\n  regex = \"^b_\"",
+    "r_help_file": "plot_rank_diagnostics.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_recovery_bias",
+    "python_name": "plot_recovery_bias",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 177,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_recovery_bias.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_recovery_coverage",
+    "python_name": "plot_recovery_coverage",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 202,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_recovery_coverage.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_recovery_estimates",
+    "python_name": "plot_recovery_estimates",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 246,
+    "r_signature_raw": "x, variables = NULL",
+    "r_help_file": "plot_recovery_estimates.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_recovery_fit_status",
+    "python_name": "plot_recovery_fit_status",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 281,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_recovery_fit_status.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_recovery_rmse",
+    "python_name": "plot_recovery_rmse",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 226,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_recovery_rmse.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_reporting_checklist",
+    "python_name": "plot_reporting_checklist",
+    "r_source_file": "model-card.R",
+    "r_source_line": 180,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_reporting_checklist.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_sampler_diagnostics",
+    "python_name": "plot_sampler_diagnostics",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 214,
+    "r_signature_raw": "fit",
+    "r_help_file": "plot_sampler_diagnostics.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_sampling_diagnostics",
+    "python_name": "plot_sampling_diagnostics",
+    "r_source_file": "posterior-validation-core.R",
+    "r_source_line": 829,
+    "r_signature_raw": "fit,\n  type = c(\n    \"trace\",\n    \"energy\",\n    \"treedepth\",\n    \"divergence\"\n  ),\n  variables = NULL",
+    "r_help_file": "plot_sampling_diagnostics.Rd",
+    "python_module": "gp3bayespy.posterior_validation_core",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_sbc_coverage_gg",
+    "python_name": "plot_sbc_coverage_gg",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 563,
+    "r_signature_raw": "x, variables = NULL, ...",
+    "r_help_file": "plot_sbc_coverage_gg.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_sbc_ecdf_gg",
+    "python_name": "plot_sbc_ecdf_gg",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 548,
+    "r_signature_raw": "x, variables = NULL, ...",
+    "r_help_file": "plot_sbc_ecdf_gg.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_sbc_rank_gg",
+    "python_name": "plot_sbc_rank_gg",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 533,
+    "r_signature_raw": "x, variables = NULL, ...",
+    "r_help_file": "plot_sbc_rank_gg.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_sbc_simulated_vs_estimated_gg",
+    "python_name": "plot_sbc_simulated_vs_estimated_gg",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 578,
+    "r_signature_raw": "x, variables = NULL, ...",
+    "r_help_file": "plot_sbc_simulated_vs_estimated_gg.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_schema_comparison_gg",
+    "python_name": "plot_schema_comparison_gg",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 234,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_schema_comparison_gg.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_sensitivity_suite_gg",
+    "python_name": "plot_sensitivity_suite_gg",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 87,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_sensitivity_suite_gg.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_uncertainty_decomposition",
+    "python_name": "plot_uncertainty_decomposition",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 620,
+    "r_signature_raw": "x, max_rows = 100L",
+    "r_help_file": "plot_uncertainty_decomposition.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "plot_variance_components",
+    "python_name": "plot_variance_components",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 737,
+    "r_signature_raw": "x",
+    "r_help_file": "plot_variance_components.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "posterior_correlation_table",
+    "python_name": "posterior_correlation_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 377,
+    "r_signature_raw": "x,\n  variables = NULL,\n  regex = NULL,\n  method = c(\"pearson\", \"spearman\")",
+    "r_help_file": "posterior_correlation_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "posterior_interval_table",
+    "python_name": "posterior_interval_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 312,
+    "r_signature_raw": "x,\n  variables = NULL,\n  regex = NULL,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "posterior_interval_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "posterior_predictive_statistic",
+    "python_name": "posterior_predictive_statistic",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 167,
+    "r_signature_raw": "x,\n  statistic = c(\"mean\", \"sd\", \"median\", \"q90\", \"q95\", \"max\", \"tail_rate\"),\n  threshold = NULL",
+    "r_help_file": "posterior_predictive_statistic.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "posterior_predictive_summary_table",
+    "python_name": "posterior_predictive_summary_table",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 1261,
+    "r_signature_raw": "x,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "posterior_predictive_summary_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "posterior_probability_table",
+    "python_name": "posterior_probability_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 336,
+    "r_signature_raw": "x,\n  variables = NULL,\n  regex = NULL,\n  rope = NULL",
+    "r_help_file": "posterior_probability_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "powerscale_sensitivity_table",
+    "python_name": "powerscale_sensitivity_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 102,
+    "r_signature_raw": "x",
+    "r_help_file": "powerscale_sensitivity_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "powerscale_sequence_for_fit",
+    "python_name": "powerscale_sequence_for_fit",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1436,
+    "r_signature_raw": "fit,\n  variable = NULL,\n  prior_selection = NULL,\n  likelihood_selection = NULL,\n  component = \"both\"",
+    "r_help_file": "powerscale_sequence_for_fit.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "ppc_statistic_table",
+    "python_name": "ppc_statistic_table",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 231,
+    "r_signature_raw": "x",
+    "r_help_file": "ppc_statistic_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "predict_advanced_pupil_trajectory",
+    "python_name": "predict_advanced_pupil_trajectory",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 105,
+    "r_signature_raw": "fit,\n    newdata = NULL,\n    type = c(\"expected\", \"posterior_predictive\", \"linear\"),\n    ndraws = 500L,\n    population_only = TRUE,\n    allow_new_levels = FALSE,\n    max_grid = 5000L",
+    "r_help_file": "predict_advanced_pupil_trajectory.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "predict_binary_probability",
+    "python_name": "predict_binary_probability",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 591,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "predict_binary_probability.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "predict_duration",
+    "python_name": "predict_duration",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 618,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  type = c(\"median\", \"expected\", \"predictive\"),\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  probs = c(0.025, 0.5, 0.975),\n  seed = 1L",
+    "r_help_file": "predict_duration.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "predict_model",
+    "python_name": "predict_model",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 412,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  type = c(\"expected\", \"predictive\", \"linear\", \"median\"),\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  probs = c(0.025, 0.5, 0.975),\n  seed = 1L",
+    "r_help_file": "predict_model.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "predict_pupil_trajectory",
+    "python_name": "predict_pupil_trajectory",
+    "r_source_file": "pupil-estimands.R",
+    "r_source_line": 114,
+    "r_signature_raw": "fit, newdata = NULL,\n    type = c(\"expected\", \"posterior_predictive\", \"linear\"),\n    ndraws = 500L,\n    population_only = TRUE,\n    allow_new_levels = FALSE,\n    max_grid = 5000L,\n    max_cells = 5000000L",
+    "r_help_file": "predict_pupil_trajectory.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_contrast",
+    "python_name": "prediction_contrast",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 651,
+    "r_signature_raw": "x,\n  row1,\n  row2,\n  measure = c(\"difference\", \"ratio\", \"odds_ratio\"),\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "prediction_contrast.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_contrast_profile_table",
+    "python_name": "prediction_contrast_profile_table",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 547,
+    "r_signature_raw": "x",
+    "r_help_file": "prediction_contrast_profile_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_draws_long",
+    "python_name": "prediction_draws_long",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 87,
+    "r_signature_raw": "x, max_draws = NULL, seed = 1L",
+    "r_help_file": "prediction_draws_long.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_exceedance_probability",
+    "python_name": "prediction_exceedance_probability",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 711,
+    "r_signature_raw": "x,\n  threshold,\n  direction = c(\"above\", \"below\")",
+    "r_help_file": "prediction_exceedance_probability.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_gradient_table",
+    "python_name": "prediction_gradient_table",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 126,
+    "r_signature_raw": "x,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "prediction_gradient_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_interval_width",
+    "python_name": "prediction_interval_width",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 665,
+    "r_signature_raw": "x",
+    "r_help_file": "prediction_interval_width.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_pairwise_contrasts",
+    "python_name": "prediction_pairwise_contrasts",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 613,
+    "r_signature_raw": "x,\n  rows = NULL,\n  measure = c(\"difference\", \"ratio\"),\n  max_rows = 20L,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "prediction_pairwise_contrasts.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_profile_table",
+    "python_name": "prediction_profile_table",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 113,
+    "r_signature_raw": "x",
+    "r_help_file": "prediction_profile_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_rank_probabilities",
+    "python_name": "prediction_rank_probabilities",
+    "r_source_file": "predictive-diagnostics-advanced.R",
+    "r_source_line": 690,
+    "r_signature_raw": "x,\n  rows = NULL,\n  direction = c(\"higher\", \"lower\"),\n  max_rows = 20L",
+    "r_help_file": "prediction_rank_probabilities.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_score_uncertainty",
+    "python_name": "prediction_score_uncertainty",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 156,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  ndraws = 1000L,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "prediction_score_uncertainty.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_score_uncertainty_table",
+    "python_name": "prediction_score_uncertainty_table",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 251,
+    "r_signature_raw": "x",
+    "r_help_file": "prediction_score_uncertainty_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_support_table",
+    "python_name": "prediction_support_table",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 386,
+    "r_signature_raw": "x",
+    "r_help_file": "prediction_support_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_surface_table",
+    "python_name": "prediction_surface_table",
+    "r_source_file": "prediction-surfaces.R",
+    "r_source_line": 319,
+    "r_signature_raw": "x",
+    "r_help_file": "prediction_surface_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_table",
+    "python_name": "prediction_table",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 507,
+    "r_signature_raw": "x",
+    "r_help_file": "prediction_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prediction_uncertainty_decomposition",
+    "python_name": "prediction_uncertainty_decomposition",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 749,
+    "r_signature_raw": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = 1000L,\n  seed = 1L",
+    "r_help_file": "prediction_uncertainty_decomposition.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "predictive_coverage_table",
+    "python_name": "predictive_coverage_table",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 1227,
+    "r_signature_raw": "x,\n  levels = c(0.5, 0.8, 0.9, 0.95)",
+    "r_help_file": "predictive_coverage_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "predictive_distribution_atlas_table",
+    "python_name": "predictive_distribution_atlas_table",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 74,
+    "r_signature_raw": "x",
+    "r_help_file": "predictive_distribution_atlas_table.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "predictive_quantile_envelope",
+    "python_name": "predictive_quantile_envelope",
+    "r_source_file": "predictive-distribution-atlas.R",
+    "r_source_line": 103,
+    "r_signature_raw": "x,\n  probabilities = seq(0.05, 0.95, by = 0.05),\n  probs = c(0.025, 0.5, 0.975),\n  ndraws = 500L,\n  include_group_effects = TRUE,\n  seed = 1L",
+    "r_help_file": "predictive_quantile_envelope.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "predictive_residuals",
+    "python_name": "predictive_residuals",
+    "r_source_file": "prediction-support.R",
+    "r_source_line": 912,
+    "r_signature_raw": "fit,\n  type = NULL,\n  ndraws = 1000L",
+    "r_help_file": "predictive_residuals.Rd",
+    "python_module": "gp3bayespy.predictive",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "preflight_model_specification",
+    "python_name": "preflight_model_specification",
+    "r_source_file": "design-support-diagnostics.R",
+    "r_source_line": 704,
+    "r_signature_raw": "specification, ...",
+    "r_help_file": "preflight_model_specification.Rd",
+    "python_module": "gp3bayespy.design_support_diagnostics",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prepare_binocular_pupil_timecourse",
+    "python_name": "prepare_binocular_pupil_timecourse",
+    "r_source_file": "pupil-binocular.R",
+    "r_source_line": 12,
+    "r_signature_raw": "data,\n    left_col = \"pupil_left\",\n    right_col = \"pupil_right\",\n    participant_col = \"participant_id\",\n    time_col = \"time_ms\",\n    condition_col = \"condition\",\n    trial_col = \"trial_id\",\n    item_col = NULL,\n    covariates = character()",
+    "r_help_file": "prepare_binocular_pupil_timecourse.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prepare_hierarchical_binary_data",
+    "python_name": "prepare_hierarchical_binary_data",
+    "r_source_file": "binary-workflow-foundation.R",
+    "r_source_line": 819,
+    "r_signature_raw": "data,\n  contract,\n  outcome_mapping = NULL,\n  condition_levels = NULL,\n  condition_coding = c(-0.5, 0.5),\n  scale_predictors = character(),\n  scale_time = FALSE,\n  missing = c(\"error\", \"drop\")",
+    "r_help_file": "prepare_hierarchical_binary_data.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prepare_hierarchical_duration_data",
+    "python_name": "prepare_hierarchical_duration_data",
+    "r_source_file": "duration-workflow-foundation.R",
+    "r_source_line": 838,
+    "r_signature_raw": "data,\n  contract,\n  condition_levels = NULL,\n  condition_coding = c(\n    -0.5,\n    0.5\n  ),\n  scale_predictors = character(),\n  scale_time = FALSE,\n  outcome_multiplier = 1,\n  converted_unit = NULL,\n  missing = c(\n    \"error\",\n    \"drop\"\n  )",
+    "r_help_file": "prepare_hierarchical_duration_data.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prepare_pupil_timecourse",
+    "python_name": "prepare_pupil_timecourse",
+    "r_source_file": "pupil-preparation.R",
+    "r_source_line": 71,
+    "r_signature_raw": "data,\n    contract,\n    baseline_operation = c(\"none\", \"subtract\", \"divide\",\n                           \"proportion_change\", \"percent_change\"),\n    baseline_window = NULL,\n    output_unit = NULL,\n    scale_covariates = character(),\n    max_rows = 2000000L,\n    irregularity_review_cv = 0.10",
+    "r_help_file": "prepare_pupil_timecourse.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prior_posterior_bridge",
+    "python_name": "prior_posterior_bridge",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 196,
+    "r_signature_raw": "fit,\n  variables = NULL,\n  regex = \"^(b_|sd_|cor_|sigma$)\",\n  ndraws = 4000L,\n  probs = c(0.025, 0.5, 0.975),\n  seed = 1L",
+    "r_help_file": "prior_posterior_bridge.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prior_posterior_distance_table",
+    "python_name": "prior_posterior_distance_table",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 341,
+    "r_signature_raw": "x",
+    "r_help_file": "prior_posterior_distance_table.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prior_posterior_draws_long",
+    "python_name": "prior_posterior_draws_long",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 355,
+    "r_signature_raw": "x, max_draws = 1000L, seed = 1L",
+    "r_help_file": "prior_posterior_draws_long.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prior_posterior_summary_table",
+    "python_name": "prior_posterior_summary_table",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 329,
+    "r_signature_raw": "x",
+    "r_help_file": "prior_posterior_summary_table.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prior_sensitivity_scenario_table",
+    "python_name": "prior_sensitivity_scenario_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 62,
+    "r_signature_raw": "x",
+    "r_help_file": "prior_sensitivity_scenario_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prior_sensitivity_table",
+    "python_name": "prior_sensitivity_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 53,
+    "r_signature_raw": "x",
+    "r_help_file": "prior_sensitivity_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "prior_specification_table",
+    "python_name": "prior_specification_table",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 69,
+    "r_signature_raw": "x",
+    "r_help_file": "prior_specification_table.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "publication_registry_table",
+    "python_name": "publication_registry_table",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 127,
+    "r_signature_raw": "x",
+    "r_help_file": "publication_registry_table.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_advanced_capabilities",
+    "python_name": "pupil_advanced_capabilities",
+    "r_source_file": "pupil-advanced-utils.R",
+    "r_source_line": 247,
+    "r_signature_raw": "",
+    "r_help_file": "pupil_advanced_capabilities.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_advanced_compatibility_table",
+    "python_name": "pupil_advanced_compatibility_table",
+    "r_source_file": "pupil-advanced-governance.R",
+    "r_source_line": 59,
+    "r_signature_raw": "",
+    "r_help_file": "pupil_advanced_compatibility_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_advanced_mapping_table",
+    "python_name": "pupil_advanced_mapping_table",
+    "r_source_file": "pupil-advanced-utils.R",
+    "r_source_line": 232,
+    "r_signature_raw": "prepared",
+    "r_help_file": "pupil_advanced_mapping_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_advanced_specification_table",
+    "python_name": "pupil_advanced_specification_table",
+    "r_source_file": "pupil-advanced-specification.R",
+    "r_source_line": 690,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_advanced_specification_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_autocorrelation_table",
+    "python_name": "pupil_autocorrelation_table",
+    "r_source_file": "pupil-advanced-diagnostics.R",
+    "r_source_line": 84,
+    "r_signature_raw": "x, level = c(\"summary\", \"series\")",
+    "r_help_file": "pupil_autocorrelation_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_binocular_agreement_table",
+    "python_name": "pupil_binocular_agreement_table",
+    "r_source_file": "pupil-binocular.R",
+    "r_source_line": 698,
+    "r_signature_raw": "trajectory, tolerance = 0.1",
+    "r_help_file": "pupil_binocular_agreement_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_binocular_correlation",
+    "python_name": "pupil_binocular_correlation",
+    "r_source_file": "pupil-binocular.R",
+    "r_source_line": 679,
+    "r_signature_raw": "fit, probability = 0.95",
+    "r_help_file": "pupil_binocular_correlation.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_binocular_difference",
+    "python_name": "pupil_binocular_difference",
+    "r_source_file": "pupil-binocular.R",
+    "r_source_line": 666,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_binocular_difference.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_condition_contrast",
+    "python_name": "pupil_condition_contrast",
+    "r_source_file": "pupil-estimands.R",
+    "r_source_line": 412,
+    "r_signature_raw": "prediction, contrast, threshold = 0, probability = 0.95",
+    "r_help_file": "pupil_condition_contrast.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_distribution_table",
+    "python_name": "pupil_distribution_table",
+    "r_source_file": "pupil-advanced-governance.R",
+    "r_source_line": 33,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_distribution_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_dynamic_contrast_table",
+    "python_name": "pupil_dynamic_contrast_table",
+    "r_source_file": "pupil-functional-estimands.R",
+    "r_source_line": 176,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_dynamic_contrast_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_gp_hyperparameters",
+    "python_name": "pupil_gp_hyperparameters",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 258,
+    "r_signature_raw": "fit, probability = 0.95",
+    "r_help_file": "pupil_gp_hyperparameters.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_gp_table",
+    "python_name": "pupil_gp_table",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 287,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_gp_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_identifiability_table",
+    "python_name": "pupil_identifiability_table",
+    "r_source_file": "pupil-advanced-audit.R",
+    "r_source_line": 124,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_identifiability_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_measurement_audit_table",
+    "python_name": "pupil_measurement_audit_table",
+    "r_source_file": "pupil-preparation.R",
+    "r_source_line": 687,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_measurement_audit_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_measurement_uncertainty_table",
+    "python_name": "pupil_measurement_uncertainty_table",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 297,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_measurement_uncertainty_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_missingness_table",
+    "python_name": "pupil_missingness_table",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 434,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_missingness_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_model_card",
+    "python_name": "pupil_model_card",
+    "r_source_file": "pupil-advanced-governance.R",
+    "r_source_line": 218,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_model_card.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_model_card_table",
+    "python_name": "pupil_model_card_table",
+    "r_source_file": "pupil-advanced-governance.R",
+    "r_source_line": 266,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_model_card_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_model_comparison_table",
+    "python_name": "pupil_model_comparison_table",
+    "r_source_file": "pupil-model-comparison.R",
+    "r_source_line": 105,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_model_comparison_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_model_weights",
+    "python_name": "pupil_model_weights",
+    "r_source_file": "pupil-model-comparison.R",
+    "r_source_line": 118,
+    "r_signature_raw": "x, method = c(\"stacking\", \"pseudobma\"), BB = TRUE",
+    "r_help_file": "pupil_model_weights.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_ppc_table",
+    "python_name": "pupil_ppc_table",
+    "r_source_file": "pupil-diagnostics.R",
+    "r_source_line": 556,
+    "r_signature_raw": "x,\n    component = c(\n      \"trajectory\", \"distribution\", \"features\", \"residuals\",\n      \"residual_trajectory\", \"autocorrelation\", \"heterogeneity\",\n      \"measurement_context\"\n    )",
+    "r_help_file": "pupil_ppc_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_readiness_table",
+    "python_name": "pupil_readiness_table",
+    "r_source_file": "pupil-preparation.R",
+    "r_source_line": 592,
+    "r_signature_raw": "x, component = c(\"summary\", \"participant\", \"condition\", \"trial\")",
+    "r_help_file": "pupil_readiness_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_residual_acf",
+    "python_name": "pupil_residual_acf",
+    "r_source_file": "pupil-diagnostics.R",
+    "r_source_line": 389,
+    "r_signature_raw": "x, max_lag = 10L, ndraws = 200L",
+    "r_help_file": "pupil_residual_acf.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_residual_scale_table",
+    "python_name": "pupil_residual_scale_table",
+    "r_source_file": "pupil-advanced-estimands.R",
+    "r_source_line": 246,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_residual_scale_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_residual_spectrum",
+    "python_name": "pupil_residual_spectrum",
+    "r_source_file": "pupil-advanced-diagnostics.R",
+    "r_source_line": 215,
+    "r_signature_raw": "fit, ndraws = 300L",
+    "r_help_file": "pupil_residual_spectrum.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_response_parameter_table",
+    "python_name": "pupil_response_parameter_table",
+    "r_source_file": "pupil-response-shape.R",
+    "r_source_line": 293,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_response_parameter_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_sensitivity_table",
+    "python_name": "pupil_sensitivity_table",
+    "r_source_file": "pupil-sensitivity.R",
+    "r_source_line": 375,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_sensitivity_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_specification_table",
+    "python_name": "pupil_specification_table",
+    "r_source_file": "pupil-specification.R",
+    "r_source_line": 320,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_specification_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_trajectory_derivative_table",
+    "python_name": "pupil_trajectory_derivative_table",
+    "r_source_file": "pupil-functional-estimands.R",
+    "r_source_line": 94,
+    "r_signature_raw": "x, probability = x$probability",
+    "r_help_file": "pupil_trajectory_derivative_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_trajectory_table",
+    "python_name": "pupil_trajectory_table",
+    "r_source_file": "pupil-estimands.R",
+    "r_source_line": 250,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_trajectory_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "pupil_validation_table",
+    "python_name": "pupil_validation_table",
+    "r_source_file": "pupil-validation.R",
+    "r_source_line": 374,
+    "r_signature_raw": "x",
+    "r_help_file": "pupil_validation_table.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "random_intercept_variance_partition",
+    "python_name": "random_intercept_variance_partition",
+    "r_source_file": "hierarchical-effects-advanced.R",
+    "r_source_line": 200,
+    "r_signature_raw": "fit,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "random_intercept_variance_partition.Rd",
+    "python_module": "gp3bayespy.hierarchical_effects_advanced",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "random_intercept_variance_partition_table",
+    "python_name": "random_intercept_variance_partition_table",
+    "r_source_file": "hierarchical-effects-advanced.R",
+    "r_source_line": 286,
+    "r_signature_raw": "x",
+    "r_help_file": "random_intercept_variance_partition_table.Rd",
+    "python_module": "gp3bayespy.hierarchical_effects_advanced",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "random_slope_sensitivity_table",
+    "python_name": "random_slope_sensitivity_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 89,
+    "r_signature_raw": "x",
+    "r_help_file": "random_slope_sensitivity_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "read_analysis_manifest",
+    "python_name": "read_analysis_manifest",
+    "r_source_file": "analysis-manifest.R",
+    "r_source_line": 402,
+    "r_signature_raw": "file",
+    "r_help_file": "read_analysis_manifest.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "read_gp3bayes_schema",
+    "python_name": "read_gp3bayes_schema",
+    "r_source_file": "backend-reliability.R",
+    "r_source_line": 764,
+    "r_signature_raw": "file",
+    "r_help_file": "read_gp3bayes_schema.Rd",
+    "python_module": "gp3bayespy.backends",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "recovery_estimate_table",
+    "python_name": "recovery_estimate_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 35,
+    "r_signature_raw": "x",
+    "r_help_file": "recovery_estimate_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "recovery_fit_status_table",
+    "python_name": "recovery_fit_status_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 44,
+    "r_signature_raw": "x",
+    "r_help_file": "recovery_fit_status_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "recovery_parameter_table",
+    "python_name": "recovery_parameter_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 26,
+    "r_signature_raw": "x",
+    "r_help_file": "recovery_parameter_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "register_publication_figure",
+    "python_name": "register_publication_figure",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 91,
+    "r_signature_raw": "registry,\n  name,\n  figure,\n  caption = NULL,\n  source = NULL",
+    "r_help_file": "register_publication_figure.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "register_publication_table",
+    "python_name": "register_publication_table",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 54,
+    "r_signature_raw": "registry,\n  name,\n  table,\n  caption = NULL,\n  source = NULL",
+    "r_help_file": "register_publication_table.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "review_duration_extremes",
+    "python_name": "review_duration_extremes",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 489,
+    "r_signature_raw": "data,\n  contract,\n  mad_cutoff = 4,\n  iqr_multiplier = 3",
+    "r_help_file": "review_duration_extremes.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "run_binary_recovery",
+    "python_name": "run_binary_recovery",
+    "r_source_file": "binary-posterior-validation.R",
+    "r_source_line": 1011,
+    "r_signature_raw": "repetitions = 20L,\n  n_participants = 30L,\n  trials_per_participant = 16L,\n  n_items = 12L,\n  include_items = TRUE,\n  random_slope = TRUE,\n  seed = 1001L,\n  chains = 4L,\n  iter = 1500L,\n  warmup = 750L,\n  cores = min(\n    chains,\n    .gp3b_default_cores(chains)\n  ),\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L,\n  interval_probability = 0.95,\n  minimum_repetitions = 20L,\n  maximum_standardized_bias = 0.25,\n  minimum_coverage = 0.80,\n  minimum_diagnostic_pass_fraction = 0.80,\n  continue_on_error = TRUE",
+    "r_help_file": "run_binary_recovery.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "run_duration_recovery",
+    "python_name": "run_duration_recovery",
+    "r_source_file": "duration-posterior-validation.R",
+    "r_source_line": 846,
+    "r_signature_raw": "repetitions = 20L,\n  n_participants = 30L,\n  trials_per_participant = 16L,\n  n_items = 12L,\n  include_items = TRUE,\n  random_slope = TRUE,\n  baseline_median = 500,\n  outcome_unit = \"milliseconds\",\n  seed = 2001L,\n  chains = 4L,\n  iter = 1500L,\n  warmup = 750L,\n  cores = min(\n    chains,\n    .gp3b_default_cores(chains)\n  ),\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L,\n  interval_probability = 0.95,\n  minimum_repetitions = 20L,\n  maximum_standardized_bias = 0.25,\n  minimum_coverage = 0.80,\n  minimum_diagnostic_pass_fraction = 0.80,\n  continue_on_error = TRUE",
+    "r_help_file": "run_duration_recovery.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "run_group_deletion_sensitivity",
+    "python_name": "run_group_deletion_sensitivity",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 1908,
+    "r_signature_raw": "plan,\n  backend = c(\"rstan\", \"cmdstanr\"),\n  chains = 4L,\n  iter = 2000L,\n  warmup = 1000L,\n  cores = 1L,\n  seed = 1L,\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L,\n  ndraws = NULL,\n  retain_fits = FALSE",
+    "r_help_file": "run_group_deletion_sensitivity.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "run_random_slope_sensitivity",
+    "python_name": "run_random_slope_sensitivity",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 2001,
+    "r_signature_raw": "plan,\n  backend = c(\"rstan\", \"cmdstanr\"),\n  chains = 4L,\n  iter = 2000L,\n  warmup = 1000L,\n  cores = 1L,\n  seed = 1L,\n  adapt_delta = 0.95,\n  max_treedepth = 12L,\n  refresh = 0L,\n  ndraws = NULL,\n  retain_fits = FALSE",
+    "r_help_file": "run_random_slope_sensitivity.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "run_sbc_plan",
+    "python_name": "run_sbc_plan",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 2035,
+    "r_signature_raw": "plan,\n  cores_per_fit = 1L,\n  keep_fits = FALSE,\n  thin_ranks = NULL,\n  cache_mode = \"none\",\n  cache_location = NULL",
+    "r_help_file": "run_sbc_plan.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "run_sensitivity_suite",
+    "python_name": "run_sensitivity_suite",
+    "r_source_file": "sensitivity-evidence-suite.R",
+    "r_source_line": 137,
+    "r_signature_raw": "fit,\n  plan = create_sensitivity_suite_plan(),\n  reference_estimand = NULL,\n  stop_on_error = FALSE",
+    "r_help_file": "run_sensitivity_suite.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "sampler_diagnostic_table",
+    "python_name": "sampler_diagnostic_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 499,
+    "r_signature_raw": "fit",
+    "r_help_file": "sampler_diagnostic_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "save_figure_set",
+    "python_name": "save_figure_set",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 903,
+    "r_signature_raw": "x,\n  directory,\n  width = 7,\n  height = 5,\n  dpi = 300,\n  device = \"png\",\n  overwrite = FALSE",
+    "r_help_file": "save_figure_set.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "save_publication_registry_figures",
+    "python_name": "save_publication_registry_figures",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 244,
+    "r_signature_raw": "x,\n  directory,\n  width = 7,\n  height = 5,\n  dpi = 300,\n  device = \"png\",\n  overwrite = FALSE",
+    "r_help_file": "save_publication_registry_figures.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "sbc_overview_table",
+    "python_name": "sbc_overview_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 144,
+    "r_signature_raw": "x",
+    "r_help_file": "sbc_overview_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "sbc_stats_table",
+    "python_name": "sbc_stats_table",
+    "r_source_file": "recovery-sensitivity-publication.R",
+    "r_source_line": 120,
+    "r_signature_raw": "x",
+    "r_help_file": "sbc_stats_table.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "schema_comparison_table",
+    "python_name": "schema_comparison_table",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 60,
+    "r_signature_raw": "x",
+    "r_help_file": "schema_comparison_table.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "score_pupil_predictions",
+    "python_name": "score_pupil_predictions",
+    "r_source_file": "pupil-advanced-audit.R",
+    "r_source_line": 139,
+    "r_signature_raw": "observed, draws, probability = 0.90",
+    "r_help_file": "score_pupil_predictions.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "sensitivity_suite_table",
+    "python_name": "sensitivity_suite_table",
+    "r_source_file": "evidence-graphics-gg.R",
+    "r_source_line": 15,
+    "r_signature_raw": "x",
+    "r_help_file": "sensitivity_suite_table.Rd",
+    "python_module": "gp3bayespy.evidence_graphics_gg",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "simulate_advanced_pupil_timecourse",
+    "python_name": "simulate_advanced_pupil_timecourse",
+    "r_source_file": "pupil-advanced-simulation.R",
+    "r_source_line": 53,
+    "r_signature_raw": "n_participants = 24L,\n    trials_per_participant = 6L,\n    time_points = 41L,\n    time_range = c(-500, 2500),\n    conditions = c(\"control\", \"treatment\"),\n    family = c(\"gaussian\", \"student\"),\n    residual_scale = 0.08,\n    heteroskedastic_strength = 0.35,\n    ar = 0.45,\n    ma = numeric(),\n    participant_sd = 0.12,\n    amplitude_condition = 0.22,\n    latency_condition = 120,\n    outlier_fraction = 0.01,\n    missing_fraction = 0.03,\n    measurement_error_sd = 0.015,\n    student_df = 5,\n    seed = 2026",
+    "r_help_file": "simulate_advanced_pupil_timecourse.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "simulate_binary_pathology",
+    "python_name": "simulate_binary_pathology",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1503,
+    "r_signature_raw": "scenario = c(\n    \"null_contrast\",\n    \"weak_information\",\n    \"severe_imbalance\",\n    \"near_separation\",\n    \"omitted_random_slope\",\n    \"sparse_item_structure\",\n    \"all_zero_participants\",\n    \"rank_deficiency\",\n    \"missing_outcomes\"\n  ),\n  seed = 1L",
+    "r_help_file": "simulate_binary_pathology.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "simulate_binocular_pupil_timecourse",
+    "python_name": "simulate_binocular_pupil_timecourse",
+    "r_source_file": "pupil-advanced-simulation.R",
+    "r_source_line": 197,
+    "r_signature_raw": "...,\n    residual_correlation = 0.65,\n    eye_bias = 0.015,\n    eye_specific_sd = 0.035",
+    "r_help_file": "simulate_binocular_pupil_timecourse.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "simulate_declared_prior_draws",
+    "python_name": "simulate_declared_prior_draws",
+    "r_source_file": "prior-posterior-bridge.R",
+    "r_source_line": 83,
+    "r_signature_raw": "x,\n  variables = NULL,\n  regex = NULL,\n  ndraws = 4000L,\n  seed = 1L",
+    "r_help_file": "simulate_declared_prior_draws.Rd",
+    "python_module": "gp3bayespy.prior_posterior_bridge",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "simulate_duration_pathology",
+    "python_name": "simulate_duration_pathology",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 1603,
+    "r_signature_raw": "scenario = c(\n    \"null_ratio\",\n    \"high_group_heterogeneity\",\n    \"weak_information\",\n    \"severe_imbalance\",\n    \"heavy_tailed_contamination\",\n    \"mixture\",\n    \"censoring\",\n    \"incorrect_unit\",\n    \"zero_duration\",\n    \"negative_duration\"\n  ),\n  seed = 1L",
+    "r_help_file": "simulate_duration_pathology.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "simulate_hierarchical_binary_data",
+    "python_name": "simulate_hierarchical_binary_data",
+    "r_source_file": "binary-workflow-foundation.R",
+    "r_source_line": 456,
+    "r_signature_raw": "n_participants = 40,\n  trials_per_participant = 20,\n  n_items = 20,\n  intercept = stats::qlogis(0.35),\n  condition_effect = 0.8,\n  participant_covariate_effect = 0.3,\n  trial_covariate_effect = 0.15,\n  interaction_effect = 0.25,\n  participant_sd = 0.7,\n  item_sd = 0.35,\n  random_slope_sd = 0.3,\n  random_slope_cor = 0,\n  condition_probability = 0.5,\n  balanced_condition = TRUE,\n  include_items = TRUE,\n  seed = 1",
+    "r_help_file": "simulate_hierarchical_binary_data.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "simulate_hierarchical_duration_data",
+    "python_name": "simulate_hierarchical_duration_data",
+    "r_source_file": "duration-workflow-foundation.R",
+    "r_source_line": 372,
+    "r_signature_raw": "n_participants = 40L,\n  trials_per_participant = 20L,\n  n_items = 20L,\n  baseline_median = 500,\n  condition_effect = log(1.15),\n  participant_covariate_effect =\n    log(1.08),\n  trial_covariate_effect =\n    log(1.04),\n  interaction_effect =\n    log(1.05),\n  participant_sd = 0.35,\n  item_sd = 0.20,\n  random_slope_sd = 0.15,\n  random_slope_cor = 0,\n  residual_sd = 0.40,\n  condition_probability = 0.5,\n  balanced_condition = TRUE,\n  include_items = TRUE,\n  outcome_unit = \"milliseconds\",\n  seed = 1L",
+    "r_help_file": "simulate_hierarchical_duration_data.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "simulate_pupil_response_shape",
+    "python_name": "simulate_pupil_response_shape",
+    "r_source_file": "pupil-advanced-simulation.R",
+    "r_source_line": 240,
+    "r_signature_raw": "n_participants = 20L,\n    trials_per_participant = 6L,\n    time_points = 41L,\n    conditions = c(\"control\", \"treatment\"),\n    baseline = 3.2,\n    amplitude = 0.7,\n    onset = 250,\n    rise = 180,\n    duration = 1200,\n    decay = 260,\n    condition_amplitude_ratio = 1.2,\n    condition_onset_shift = 80,\n    residual_sd = 0.08,\n    seed = 2026",
+    "r_help_file": "simulate_pupil_response_shape.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "simulate_pupil_timecourse",
+    "python_name": "simulate_pupil_timecourse",
+    "r_source_file": "pupil-simulation.R",
+    "r_source_line": 62,
+    "r_signature_raw": "n_participants = 20L,\n    trials_per_participant = 12L,\n    n_items = 12L,\n    sampling_frequency = 60,\n    time_window = c(-0.5, 2.5),\n    baseline_window = c(-0.5, 0),\n    conditions = c(\"control\", \"treatment\"),\n    baseline_pupil = 4.0,\n    response_amplitude = 0.45,\n    condition_difference = 0.18,\n    peak_latency = 0.9,\n    participant_sd = 0.25,\n    item_sd = 0.08,\n    residual_sd = 0.08,\n    ar1 = 0.55,\n    blink_trial_probability = 0.15,\n    blink_duration = 0.12,\n    include_gaze = TRUE,\n    include_luminance = TRUE,\n    gaze_drift_sd = 0.002,\n    luminance_amplitude = 0.12,\n    seed = 2026,\n    max_rows = 500000L",
+    "r_help_file": "simulate_pupil_timecourse.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "specify_advanced_pupil_timecourse_model",
+    "python_name": "specify_advanced_pupil_timecourse_model",
+    "r_source_file": "pupil-advanced-specification.R",
+    "r_source_line": 256,
+    "r_signature_raw": "prepared,\n    temporal_structure = c(\"smooth\", \"linear\", \"gaussian_process\"),\n    family = c(\"gaussian\", \"student\"),\n    residual_scale = c(\"constant\", \"condition\", \"time\", \"condition_time\"),\n    distribution = NULL,\n    smooth_basis_dimension = 10L,\n    gp_spec = create_pupil_gp_spec(),\n    condition_trajectory = NULL,\n    autocorrelation = c(\"none\", \"ar1\", \"ar2\", \"arma11\"),\n    participant_trajectory = c(\"none\", \"factor_smooth\"),\n    item_effects = NULL,\n    covariates = character(),\n    measurement_model = NULL,\n    missingness_model = NULL,\n    prior_scales = NULL,\n    predictive_target = c(\"new_trial_known_participant\", \"new_participant\", \"future_segment\", \"new_sample_known_trial\"),\n    allow_high_complexity = FALSE",
+    "r_help_file": "specify_advanced_pupil_timecourse_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "specify_binary_model",
+    "python_name": "specify_binary_model",
+    "r_source_file": "binary-workflow-foundation.R",
+    "r_source_line": 1139,
+    "r_signature_raw": "prepared,\n  baseline = 0.5,\n  intercept_scale = 1.5,\n  coefficient_scale = 0.75,\n  group_sd_scale = 1,\n  correlation_eta = 2,\n  student_df = 3",
+    "r_help_file": "specify_binary_model.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "specify_binary_model_with_interaction_prior",
+    "python_name": "specify_binary_model_with_interaction_prior",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 307,
+    "r_signature_raw": "prepared,\n  baseline,\n  intercept_scale = 1.5,\n  main_effect_scale = 0.75,\n  interaction_scale = 0.50,\n  group_sd_scale = 1,\n  correlation_eta = 2,\n  student_df = 3",
+    "r_help_file": "specify_binary_model_with_interaction_prior.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "specify_binocular_pupil_model",
+    "python_name": "specify_binocular_pupil_model",
+    "r_source_file": "pupil-binocular.R",
+    "r_source_line": 138,
+    "r_signature_raw": "prepared,\n    temporal_structure = c(\"smooth\", \"linear\", \"gaussian_process\"),\n    family = c(\"gaussian\", \"student\"),\n    smooth_basis_dimension = 10L,\n    gp_spec = create_pupil_gp_spec(),\n    residual_correlation = TRUE,\n    item_effects = NULL,\n    prior_scales = NULL,\n    allow_high_complexity = FALSE",
+    "r_help_file": "specify_binocular_pupil_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "specify_duration_model",
+    "python_name": "specify_duration_model",
+    "r_source_file": "duration-workflow-foundation.R",
+    "r_source_line": 1220,
+    "r_signature_raw": "prepared,\n  baseline,\n  intercept_scale = 1,\n  coefficient_scale = 0.5,\n  group_sd_scale = 1,\n  residual_scale = 1,\n  correlation_eta = 2,\n  student_df = 3",
+    "r_help_file": "specify_duration_model.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "specify_duration_model_with_interaction_prior",
+    "python_name": "specify_duration_model_with_interaction_prior",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 368,
+    "r_signature_raw": "prepared,\n  baseline,\n  intercept_scale = 1,\n  main_effect_scale = 0.35,\n  interaction_scale = 0.25,\n  group_sd_scale = 0.5,\n  residual_scale = 0.5,\n  correlation_eta = 2,\n  student_df = 3",
+    "r_help_file": "specify_duration_model_with_interaction_prior.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "specify_pupil_distribution",
+    "python_name": "specify_pupil_distribution",
+    "r_source_file": "pupil-advanced-governance.R",
+    "r_source_line": 9,
+    "r_signature_raw": "family = c(\"gaussian\", \"student\"),\n    residual_scale = c(\"constant\", \"condition\", \"time\", \"condition_time\")",
+    "r_help_file": "specify_pupil_distribution.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "specify_pupil_response_shape_model",
+    "python_name": "specify_pupil_response_shape_model",
+    "r_source_file": "pupil-response-shape.R",
+    "r_source_line": 23,
+    "r_signature_raw": "prepared,\n    family = c(\"gaussian\", \"student\"),\n    condition_effects = c(\"amplitude\", \"onset\", \"duration\"),\n    participant_effects = c(\"baseline\", \"amplitude\"),\n    covariates = character(),\n    prior_scales = NULL",
+    "r_help_file": "specify_pupil_response_shape_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "specify_pupil_timecourse_model",
+    "python_name": "specify_pupil_timecourse_model",
+    "r_source_file": "pupil-specification.R",
+    "r_source_line": 136,
+    "r_signature_raw": "prepared,\n    temporal_structure = c(\"smooth\", \"linear\"),\n    smooth_basis_dimension = 10L,\n    condition_trajectory = NULL,\n    autocorrelation = c(\"ar1\", \"none\"),\n    participant_trajectory = c(\"none\", \"factor_smooth\"),\n    item_effects = NULL,\n    covariates = character(),\n    prior_scales = NULL",
+    "r_help_file": "specify_pupil_timecourse_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_binary_group_variation",
+    "python_name": "summarise_binary_group_variation",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 287,
+    "r_signature_raw": "data,\n  contract,\n  group = c(\"participant\", \"item\")",
+    "r_help_file": "summarise_binary_group_variation.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_binary_posterior",
+    "python_name": "summarise_binary_posterior",
+    "r_source_file": "binary-posterior-validation.R",
+    "r_source_line": 278,
+    "r_signature_raw": "fit,\n  probability = 0.95,\n  variables = NULL",
+    "r_help_file": "summarise_binary_posterior.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_condition_balance",
+    "python_name": "summarise_condition_balance",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 213,
+    "r_signature_raw": "data,\n  contract,\n  warning_fraction = 0.10,\n  failure_fraction = 0.02",
+    "r_help_file": "summarise_condition_balance.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_duration_posterior",
+    "python_name": "summarise_duration_posterior",
+    "r_source_file": "duration-posterior-validation.R",
+    "r_source_line": 167,
+    "r_signature_raw": "fit,\n  probability = 0.95,\n  variables = NULL",
+    "r_help_file": "summarise_duration_posterior.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_estimand_draws",
+    "python_name": "summarise_estimand_draws",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 1523,
+    "r_signature_raw": "x,\n  quantities = NULL,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "summarise_estimand_draws.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_mcmc_quality",
+    "python_name": "summarise_mcmc_quality",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 582,
+    "r_signature_raw": "fit, ...",
+    "r_help_file": "summarise_mcmc_quality.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_model_posterior",
+    "python_name": "summarise_model_posterior",
+    "r_source_file": "unified-workflow-api.R",
+    "r_source_line": 297,
+    "r_signature_raw": "fit, ...",
+    "r_help_file": "summarise_model_posterior.Rd",
+    "python_module": "gp3bayespy.unified_workflow_api",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_pupil_posterior",
+    "python_name": "summarise_pupil_posterior",
+    "r_source_file": "pupil-diagnostics.R",
+    "r_source_line": 606,
+    "r_signature_raw": "fit, probability = 0.95",
+    "r_help_file": "summarise_pupil_posterior.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_sbc_result",
+    "python_name": "summarise_sbc_result",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 2111,
+    "r_signature_raw": "x",
+    "r_help_file": "summarise_sbc_result.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "summarise_sensitivity_suite",
+    "python_name": "summarise_sensitivity_suite",
+    "r_source_file": "sensitivity-evidence-suite.R",
+    "r_source_line": 273,
+    "r_signature_raw": "x",
+    "r_help_file": "summarise_sensitivity_suite.Rd",
+    "python_module": "gp3bayespy.sensitivity",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "theme_gp3bayes",
+    "python_name": "theme_gp3bayes",
+    "r_source_file": "publication-graphics.R",
+    "r_source_line": 28,
+    "r_signature_raw": "base_size = 11, base_family = \"\"",
+    "r_help_file": "theme_gp3bayes.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "translate_advanced_pupil_model_to_brms",
+    "python_name": "translate_advanced_pupil_model_to_brms",
+    "r_source_file": "pupil-advanced-fit.R",
+    "r_source_line": 466,
+    "r_signature_raw": "specification",
+    "r_help_file": "translate_advanced_pupil_model_to_brms.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "translate_binary_model_to_brms",
+    "python_name": "translate_binary_model_to_brms",
+    "r_source_file": "binary-model-fitting.R",
+    "r_source_line": 296,
+    "r_signature_raw": "specification",
+    "r_help_file": "translate_binary_model_to_brms.Rd",
+    "python_module": "gp3bayespy.binary",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "translate_binary_model_with_interaction_prior",
+    "python_name": "translate_binary_model_with_interaction_prior",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 448,
+    "r_signature_raw": "specification",
+    "r_help_file": "translate_binary_model_with_interaction_prior.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "translate_binocular_pupil_model_to_brms",
+    "python_name": "translate_binocular_pupil_model_to_brms",
+    "r_source_file": "pupil-binocular.R",
+    "r_source_line": 393,
+    "r_signature_raw": "specification",
+    "r_help_file": "translate_binocular_pupil_model_to_brms.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "translate_duration_model_to_brms",
+    "python_name": "translate_duration_model_to_brms",
+    "r_source_file": "duration-model-fitting.R",
+    "r_source_line": 229,
+    "r_signature_raw": "specification",
+    "r_help_file": "translate_duration_model_to_brms.Rd",
+    "python_module": "gp3bayespy.duration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "translate_duration_model_with_interaction_prior",
+    "python_name": "translate_duration_model_with_interaction_prior",
+    "r_source_file": "advanced-optional-workflows.R",
+    "r_source_line": 478,
+    "r_signature_raw": "specification",
+    "r_help_file": "translate_duration_model_with_interaction_prior.Rd",
+    "python_module": "gp3bayespy.advanced_optional_workflows",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "translate_pupil_model_to_brms",
+    "python_name": "translate_pupil_model_to_brms",
+    "r_source_file": "pupil-specification.R",
+    "r_source_line": 350,
+    "r_signature_raw": "specification",
+    "r_help_file": "translate_pupil_model_to_brms.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "translate_pupil_response_shape_to_brms",
+    "python_name": "translate_pupil_response_shape_to_brms",
+    "r_source_file": "pupil-response-shape.R",
+    "r_source_line": 206,
+    "r_signature_raw": "specification",
+    "r_help_file": "translate_pupil_response_shape_to_brms.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "validate_analysis_manifest",
+    "python_name": "validate_analysis_manifest",
+    "r_source_file": "analysis-manifest.R",
+    "r_source_line": 299,
+    "r_signature_raw": "manifest, strict = FALSE",
+    "r_help_file": "validate_analysis_manifest.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "validate_backend_environment",
+    "python_name": "validate_backend_environment",
+    "r_source_file": "backend-reliability.R",
+    "r_source_line": 136,
+    "r_signature_raw": "backend = c(\"rstan\", \"cmdstanr\"),\n  compile_test = FALSE,\n  strict = FALSE",
+    "r_help_file": "validate_backend_environment.Rd",
+    "python_module": "gp3bayespy.backends",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "validate_gp3bayes_object",
+    "python_name": "validate_gp3bayes_object",
+    "r_source_file": "unified-workflow-api.R",
+    "r_source_line": 60,
+    "r_signature_raw": "x, recursive = TRUE, strict = FALSE",
+    "r_help_file": "validate_gp3bayes_object.Rd",
+    "python_module": "gp3bayespy.unified_workflow_api",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "validate_gp3bayes_schema",
+    "python_name": "validate_gp3bayes_schema",
+    "r_source_file": "backend-reliability.R",
+    "r_source_line": 695,
+    "r_signature_raw": "x, schema, strict = FALSE, compare_lengths = FALSE",
+    "r_help_file": "validate_gp3bayes_schema.Rd",
+    "python_module": "gp3bayespy.backends",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "validate_prior_specification",
+    "python_name": "validate_prior_specification",
+    "r_source_file": "model-specification.R",
+    "r_source_line": 404,
+    "r_signature_raw": "priors,\n  contract = NULL",
+    "r_help_file": "validate_prior_specification.Rd",
+    "python_module": "gp3bayespy.specification",
+    "status": "implemented"
+  },
+  {
+    "r_export": "validate_publication_registry",
+    "python_name": "validate_publication_registry",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 137,
+    "r_signature_raw": "x",
+    "r_help_file": "validate_publication_registry.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "validate_pupil_leave_future_out",
+    "python_name": "validate_pupil_leave_future_out",
+    "r_source_file": "pupil-model-comparison.R",
+    "r_source_line": 211,
+    "r_signature_raw": "fit, plan, execute = FALSE, cores = 1L, seed = 2026",
+    "r_help_file": "validate_pupil_leave_future_out.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "validate_pupil_model",
+    "python_name": "validate_pupil_model",
+    "r_source_file": "pupil-validation.R",
+    "r_source_line": 233,
+    "r_signature_raw": "fit, plan, execute = FALSE, ndraws = 200L, max_cells = 3000000L",
+    "r_help_file": "validate_pupil_model.Rd",
+    "python_module": "gp3bayespy.pupil",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "validate_transformation_replay",
+    "python_name": "validate_transformation_replay",
+    "r_source_file": "specification-closure.R",
+    "r_source_line": 1208,
+    "r_signature_raw": "prepared, tolerance = 1e-10",
+    "r_help_file": "validate_transformation_replay.Rd",
+    "python_module": "gp3bayespy.specification_closure",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "variance_component_table",
+    "python_name": "variance_component_table",
+    "r_source_file": "postfit-exploration.R",
+    "r_source_line": 691,
+    "r_signature_raw": "fit,\n  probs = c(0.025, 0.5, 0.975)",
+    "r_help_file": "variance_component_table.Rd",
+    "python_module": "gp3bayespy.postfit_exploration",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "write_analysis_bundle_report",
+    "python_name": "write_analysis_bundle_report",
+    "r_source_file": "analysis-bundle.R",
+    "r_source_line": 272,
+    "r_signature_raw": "x, file",
+    "r_help_file": "write_analysis_bundle_report.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "write_diagnostic_dashboard_report",
+    "python_name": "write_diagnostic_dashboard_report",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 553,
+    "r_signature_raw": "x, file, overwrite = FALSE",
+    "r_help_file": "write_diagnostic_dashboard_report.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "write_model_card",
+    "python_name": "write_model_card",
+    "r_source_file": "model-card.R",
+    "r_source_line": 210,
+    "r_signature_raw": "x, file, overwrite = FALSE",
+    "r_help_file": "write_model_card.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "write_publication_registry",
+    "python_name": "write_publication_registry",
+    "r_source_file": "publication-registry-dashboard.R",
+    "r_source_line": 190,
+    "r_signature_raw": "x, file, overwrite = FALSE",
+    "r_help_file": "write_publication_registry.Rd",
+    "python_module": "gp3bayespy.reporting",
+    "status": "mapped_not_implemented"
+  },
+  {
+    "r_export": "write_reproducibility_report",
+    "python_name": "write_reproducibility_report",
+    "r_source_file": "analysis-manifest.R",
+    "r_source_line": 512,
+    "r_signature_raw": "manifest, file, overwrite = FALSE",
+    "r_help_file": "write_reproducibility_report.Rd",
+    "python_module": "gp3bayespy.reproducibility",
+    "status": "mapped_not_implemented"
+  }
+]

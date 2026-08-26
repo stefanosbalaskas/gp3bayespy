@@ -1,0 +1,16 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "source_archive": "gp3bayes_0.5.0.tar.gz",
+  "source_sha256": "537eb05f949de1bcc1d6f8234066f064597951ecfa9cbbdf938d0a895ce5dd8a",
+  "exports": 458,
+  "s3_registrations": 230,
+  "r_source_files": 60,
+  "rd_files": 465,
+  "vignette_rmd_files": 59,
+  "testthat_case_files": 54,
+  "test_r_files_including_runner": 55,
+  "python_port": "gp3bayespy",
+  "python_port_version": "0.1.0.dev0",
+  "policy": "The uploaded CRAN 0.5.0 archive is the frozen parity reference."
+}

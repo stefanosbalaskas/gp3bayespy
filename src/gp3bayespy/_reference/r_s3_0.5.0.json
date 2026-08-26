@@ -1,0 +1,1152 @@
+[
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_analysis_bundle",
+    "registration": "S3method(as.data.frame,gp3bayes_analysis_bundle)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_analysis_manifest",
+    "registration": "S3method(as.data.frame,gp3bayes_analysis_manifest)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_backend_environment",
+    "registration": "S3method(as.data.frame,gp3bayes_backend_environment)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_backend_parity_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_backend_parity_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_binocular_pupil_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_binocular_pupil_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_design_support_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_design_support_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_fixed_effect_design_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_fixed_effect_design_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_gazepoint_pupil_schema",
+    "registration": "S3method(as.data.frame,gp3bayes_gazepoint_pupil_schema)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_group_prediction_check",
+    "registration": "S3method(as.data.frame,gp3bayes_group_prediction_check)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_loo_influence_atlas",
+    "registration": "S3method(as.data.frame,gp3bayes_loo_influence_atlas)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_manifest_comparison",
+    "registration": "S3method(as.data.frame,gp3bayes_manifest_comparison)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_mcmc_quality",
+    "registration": "S3method(as.data.frame,gp3bayes_mcmc_quality)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_missingness_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_missingness_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_model_card",
+    "registration": "S3method(as.data.frame,gp3bayes_model_card)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_model_evidence",
+    "registration": "S3method(as.data.frame,gp3bayes_model_evidence)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_object_validation",
+    "registration": "S3method(as.data.frame,gp3bayes_object_validation)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_prediction",
+    "registration": "S3method(as.data.frame,gp3bayes_prediction)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_prediction_support",
+    "registration": "S3method(as.data.frame,gp3bayes_prediction_support)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_prediction_uncertainty",
+    "registration": "S3method(as.data.frame,gp3bayes_prediction_uncertainty)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_prior_posterior_bridge",
+    "registration": "S3method(as.data.frame,gp3bayes_prior_posterior_bridge)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_advanced_diagnostics",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_advanced_diagnostics)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_advanced_sensitivity_suite",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_advanced_sensitivity_suite)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_advanced_specification",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_advanced_specification)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_advanced_trajectory",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_advanced_trajectory)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_autocorrelation_comparison",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_autocorrelation_comparison)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_complexity_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_complexity_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_contract",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_contract)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_diagnostics",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_diagnostics)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_dynamic_contrast",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_dynamic_contrast)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_estimand",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_estimand)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_gp_hyperparameters",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_gp_hyperparameters)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_identifiability_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_identifiability_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_lfo_comparison",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_lfo_comparison)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_lfo_plan",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_lfo_plan)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_measurement_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_measurement_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_measurement_audit_05",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_measurement_audit_05)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_missingness_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_missingness_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_model_card",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_model_card)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_model_comparison",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_model_comparison)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_model_specification",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_model_specification)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_posterior_summary",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_posterior_summary)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_ppc",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_ppc)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_predictive_score",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_predictive_score)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_prior_predictive",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_prior_predictive)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_readiness",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_readiness)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_residual_scale",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_residual_scale)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_residual_spectrum",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_residual_spectrum)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_response_parameters",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_response_parameters)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_sensitivity",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_sensitivity)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_temporal_dependence_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_temporal_dependence_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_threshold_duration",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_threshold_duration)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_trajectory",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_trajectory)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_trajectory_derivative",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_trajectory_derivative)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_pupil_validation",
+    "registration": "S3method(as.data.frame,gp3bayes_pupil_validation)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_random_effects_support_audit",
+    "registration": "S3method(as.data.frame,gp3bayes_random_effects_support_audit)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_schema_comparison",
+    "registration": "S3method(as.data.frame,gp3bayes_schema_comparison)"
+  },
+  {
+    "generic": "as.data.frame",
+    "class": "gp3bayes_sensitivity_suite",
+    "registration": "S3method(as.data.frame,gp3bayes_sensitivity_suite)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_analysis_manifest",
+    "registration": "S3method(plot,gp3bayes_analysis_manifest)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_backend_environment",
+    "registration": "S3method(plot,gp3bayes_backend_environment)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_backend_parity_audit",
+    "registration": "S3method(plot,gp3bayes_backend_parity_audit)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_binary_group_variation",
+    "registration": "S3method(plot,gp3bayes_binary_group_variation)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_binary_ppc_detail",
+    "registration": "S3method(plot,gp3bayes_binary_ppc_detail)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_condition_balance",
+    "registration": "S3method(plot,gp3bayes_condition_balance)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_design_support_audit",
+    "registration": "S3method(plot,gp3bayes_design_support_audit)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_diagnostic_dashboard",
+    "registration": "S3method(plot,gp3bayes_diagnostic_dashboard)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_duration_boundary_audit",
+    "registration": "S3method(plot,gp3bayes_duration_boundary_audit)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_duration_extreme_review",
+    "registration": "S3method(plot,gp3bayes_duration_extreme_review)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_duration_ppc_detail",
+    "registration": "S3method(plot,gp3bayes_duration_ppc_detail)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_estimand",
+    "registration": "S3method(plot,gp3bayes_estimand)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_estimand_sensitivity",
+    "registration": "S3method(plot,gp3bayes_estimand_sensitivity)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_fixed_effect_design_audit",
+    "registration": "S3method(plot,gp3bayes_fixed_effect_design_audit)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_group_prediction_check",
+    "registration": "S3method(plot,gp3bayes_group_prediction_check)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_identifier_predictor_audit",
+    "registration": "S3method(plot,gp3bayes_identifier_predictor_audit)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_kfold_cv",
+    "registration": "S3method(plot,gp3bayes_kfold_cv)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_loo_influence_atlas",
+    "registration": "S3method(plot,gp3bayes_loo_influence_atlas)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_manifest_comparison",
+    "registration": "S3method(plot,gp3bayes_manifest_comparison)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_missingness_audit",
+    "registration": "S3method(plot,gp3bayes_missingness_audit)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_model_evidence",
+    "registration": "S3method(plot,gp3bayes_model_evidence)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_pathological_simulation",
+    "registration": "S3method(plot,gp3bayes_pathological_simulation)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_powerscale_sensitivity",
+    "registration": "S3method(plot,gp3bayes_powerscale_sensitivity)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_prediction",
+    "registration": "S3method(plot,gp3bayes_prediction)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_prediction_uncertainty",
+    "registration": "S3method(plot,gp3bayes_prediction_uncertainty)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_prior_posterior_bridge",
+    "registration": "S3method(plot,gp3bayes_prior_posterior_bridge)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_psis_loo",
+    "registration": "S3method(plot,gp3bayes_psis_loo)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_random_effects_support_audit",
+    "registration": "S3method(plot,gp3bayes_random_effects_support_audit)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_sbc_result",
+    "registration": "S3method(plot,gp3bayes_sbc_result)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_schema_comparison",
+    "registration": "S3method(plot,gp3bayes_schema_comparison)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_sensitivity_suite",
+    "registration": "S3method(plot,gp3bayes_sensitivity_suite)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_separation_screen",
+    "registration": "S3method(plot,gp3bayes_separation_screen)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_strict_readiness_audit",
+    "registration": "S3method(plot,gp3bayes_strict_readiness_audit)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_transformation_replay_audit",
+    "registration": "S3method(plot,gp3bayes_transformation_replay_audit)"
+  },
+  {
+    "generic": "plot",
+    "class": "gp3bayes_workflow_status",
+    "registration": "S3method(plot,gp3bayes_workflow_status)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_analysis_bundle",
+    "registration": "S3method(print,gp3bayes_analysis_bundle)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_analysis_manifest",
+    "registration": "S3method(print,gp3bayes_analysis_manifest)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_backend_capabilities",
+    "registration": "S3method(print,gp3bayes_backend_capabilities)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_backend_capabilities_v2",
+    "registration": "S3method(print,gp3bayes_backend_capabilities_v2)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_backend_environment",
+    "registration": "S3method(print,gp3bayes_backend_environment)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_backend_parity_audit",
+    "registration": "S3method(print,gp3bayes_backend_parity_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_backend_portable_fit",
+    "registration": "S3method(print,gp3bayes_backend_portable_fit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binary_backend_specification",
+    "registration": "S3method(print,gp3bayes_binary_backend_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binary_calibration_uncertainty",
+    "registration": "S3method(print,gp3bayes_binary_calibration_uncertainty)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binary_fit",
+    "registration": "S3method(print,gp3bayes_binary_fit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binary_group_variation",
+    "registration": "S3method(print,gp3bayes_binary_group_variation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binary_model_specification",
+    "registration": "S3method(print,gp3bayes_binary_model_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binary_posterior_summary",
+    "registration": "S3method(print,gp3bayes_binary_posterior_summary)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binary_prepared",
+    "registration": "S3method(print,gp3bayes_binary_prepared)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binary_prior_predictive_check",
+    "registration": "S3method(print,gp3bayes_binary_prior_predictive_check)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binary_simulation",
+    "registration": "S3method(print,gp3bayes_binary_simulation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binocular_pupil_audit",
+    "registration": "S3method(print,gp3bayes_binocular_pupil_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binocular_pupil_fit",
+    "registration": "S3method(print,gp3bayes_binocular_pupil_fit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binocular_pupil_prepared",
+    "registration": "S3method(print,gp3bayes_binocular_pupil_prepared)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binocular_pupil_simulation",
+    "registration": "S3method(print,gp3bayes_binocular_pupil_simulation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binocular_pupil_specification",
+    "registration": "S3method(print,gp3bayes_binocular_pupil_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_binocular_pupil_trajectory",
+    "registration": "S3method(print,gp3bayes_binocular_pupil_trajectory)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_cmdstan_backend_audit",
+    "registration": "S3method(print,gp3bayes_cmdstan_backend_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_condition_balance",
+    "registration": "S3method(print,gp3bayes_condition_balance)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_design_support_audit",
+    "registration": "S3method(print,gp3bayes_design_support_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_diagnostic_dashboard",
+    "registration": "S3method(print,gp3bayes_diagnostic_dashboard)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_duration_backend_specification",
+    "registration": "S3method(print,gp3bayes_duration_backend_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_duration_boundary_audit",
+    "registration": "S3method(print,gp3bayes_duration_boundary_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_duration_extreme_review",
+    "registration": "S3method(print,gp3bayes_duration_extreme_review)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_duration_fit",
+    "registration": "S3method(print,gp3bayes_duration_fit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_duration_model_specification",
+    "registration": "S3method(print,gp3bayes_duration_model_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_duration_posterior_summary",
+    "registration": "S3method(print,gp3bayes_duration_posterior_summary)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_duration_prepared",
+    "registration": "S3method(print,gp3bayes_duration_prepared)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_duration_prior_predictive_check",
+    "registration": "S3method(print,gp3bayes_duration_prior_predictive_check)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_duration_simulation",
+    "registration": "S3method(print,gp3bayes_duration_simulation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_estimand",
+    "registration": "S3method(print,gp3bayes_estimand)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_estimand_sensitivity",
+    "registration": "S3method(print,gp3bayes_estimand_sensitivity)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_evidence_inventory",
+    "registration": "S3method(print,gp3bayes_evidence_inventory)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_figure_set",
+    "registration": "S3method(print,gp3bayes_figure_set)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_fixed_effect_design_audit",
+    "registration": "S3method(print,gp3bayes_fixed_effect_design_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_gazepoint_pupil_schema",
+    "registration": "S3method(print,gp3bayes_gazepoint_pupil_schema)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_group_deletion_sensitivity_plan",
+    "registration": "S3method(print,gp3bayes_group_deletion_sensitivity_plan)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_group_prediction_check",
+    "registration": "S3method(print,gp3bayes_group_prediction_check)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_identifier_predictor_audit",
+    "registration": "S3method(print,gp3bayes_identifier_predictor_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_kfold_cv",
+    "registration": "S3method(print,gp3bayes_kfold_cv)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_loo_comparison",
+    "registration": "S3method(print,gp3bayes_loo_comparison)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_loo_influence_atlas",
+    "registration": "S3method(print,gp3bayes_loo_influence_atlas)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_loo_weights",
+    "registration": "S3method(print,gp3bayes_loo_weights)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_manifest_comparison",
+    "registration": "S3method(print,gp3bayes_manifest_comparison)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_manifest_validation",
+    "registration": "S3method(print,gp3bayes_manifest_validation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_mcmc_quality",
+    "registration": "S3method(print,gp3bayes_mcmc_quality)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_missingness_audit",
+    "registration": "S3method(print,gp3bayes_missingness_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_model_card",
+    "registration": "S3method(print,gp3bayes_model_card)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_model_contract",
+    "registration": "S3method(print,gp3bayes_model_contract)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_model_evidence",
+    "registration": "S3method(print,gp3bayes_model_evidence)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_model_report",
+    "registration": "S3method(print,gp3bayes_model_report)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_model_specification",
+    "registration": "S3method(print,gp3bayes_model_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_object_schema",
+    "registration": "S3method(print,gp3bayes_object_schema)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_object_validation",
+    "registration": "S3method(print,gp3bayes_object_validation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pathological_simulation",
+    "registration": "S3method(print,gp3bayes_pathological_simulation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pathology_evaluation",
+    "registration": "S3method(print,gp3bayes_pathology_evaluation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_posterior_predictive_check",
+    "registration": "S3method(print,gp3bayes_posterior_predictive_check)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_powerscale_sensitivity",
+    "registration": "S3method(print,gp3bayes_powerscale_sensitivity)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_ppc_statistic",
+    "registration": "S3method(print,gp3bayes_ppc_statistic)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_prediction",
+    "registration": "S3method(print,gp3bayes_prediction)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_prediction_score_uncertainty",
+    "registration": "S3method(print,gp3bayes_prediction_score_uncertainty)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_prediction_support",
+    "registration": "S3method(print,gp3bayes_prediction_support)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_prediction_uncertainty",
+    "registration": "S3method(print,gp3bayes_prediction_uncertainty)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_predictive_distribution_atlas",
+    "registration": "S3method(print,gp3bayes_predictive_distribution_atlas)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_prior_posterior_bridge",
+    "registration": "S3method(print,gp3bayes_prior_posterior_bridge)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_prior_sensitivity",
+    "registration": "S3method(print,gp3bayes_prior_sensitivity)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_prior_specification",
+    "registration": "S3method(print,gp3bayes_prior_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_psis_loo",
+    "registration": "S3method(print,gp3bayes_psis_loo)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_publication_registry",
+    "registration": "S3method(print,gp3bayes_publication_registry)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_publication_registry_validation",
+    "registration": "S3method(print,gp3bayes_publication_registry_validation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_advanced_brms_specification",
+    "registration": "S3method(print,gp3bayes_pupil_advanced_brms_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_advanced_diagnostics",
+    "registration": "S3method(print,gp3bayes_pupil_advanced_diagnostics)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_advanced_fit",
+    "registration": "S3method(print,gp3bayes_pupil_advanced_fit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_advanced_prior_predictive",
+    "registration": "S3method(print,gp3bayes_pupil_advanced_prior_predictive)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_advanced_sensitivity_suite",
+    "registration": "S3method(print,gp3bayes_pupil_advanced_sensitivity_suite)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_advanced_simulation",
+    "registration": "S3method(print,gp3bayes_pupil_advanced_simulation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_advanced_specification",
+    "registration": "S3method(print,gp3bayes_pupil_advanced_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_advanced_trajectory",
+    "registration": "S3method(print,gp3bayes_pupil_advanced_trajectory)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_autocorrelation_comparison",
+    "registration": "S3method(print,gp3bayes_pupil_autocorrelation_comparison)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_complexity_audit",
+    "registration": "S3method(print,gp3bayes_pupil_complexity_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_contract",
+    "registration": "S3method(print,gp3bayes_pupil_contract)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_diagnostics",
+    "registration": "S3method(print,gp3bayes_pupil_diagnostics)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_distribution_spec",
+    "registration": "S3method(print,gp3bayes_pupil_distribution_spec)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_dynamic_contrast",
+    "registration": "S3method(print,gp3bayes_pupil_dynamic_contrast)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_estimand",
+    "registration": "S3method(print,gp3bayes_pupil_estimand)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_fit",
+    "registration": "S3method(print,gp3bayes_pupil_fit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_gp_hyperparameters",
+    "registration": "S3method(print,gp3bayes_pupil_gp_hyperparameters)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_identifiability_audit",
+    "registration": "S3method(print,gp3bayes_pupil_identifiability_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_lfo_comparison",
+    "registration": "S3method(print,gp3bayes_pupil_lfo_comparison)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_lfo_plan",
+    "registration": "S3method(print,gp3bayes_pupil_lfo_plan)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_lfo_validation",
+    "registration": "S3method(print,gp3bayes_pupil_lfo_validation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_measurement_audit_05",
+    "registration": "S3method(print,gp3bayes_pupil_measurement_audit_05)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_missingness_audit",
+    "registration": "S3method(print,gp3bayes_pupil_missingness_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_model_card",
+    "registration": "S3method(print,gp3bayes_pupil_model_card)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_model_comparison",
+    "registration": "S3method(print,gp3bayes_pupil_model_comparison)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_model_set",
+    "registration": "S3method(print,gp3bayes_pupil_model_set)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_model_specification",
+    "registration": "S3method(print,gp3bayes_pupil_model_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_posterior_summary",
+    "registration": "S3method(print,gp3bayes_pupil_posterior_summary)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_ppc",
+    "registration": "S3method(print,gp3bayes_pupil_ppc)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_predictive_calibration",
+    "registration": "S3method(print,gp3bayes_pupil_predictive_calibration)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_predictive_score",
+    "registration": "S3method(print,gp3bayes_pupil_predictive_score)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_prepared",
+    "registration": "S3method(print,gp3bayes_pupil_prepared)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_prior_predictive",
+    "registration": "S3method(print,gp3bayes_pupil_prior_predictive)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_readiness",
+    "registration": "S3method(print,gp3bayes_pupil_readiness)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_residual_scale",
+    "registration": "S3method(print,gp3bayes_pupil_residual_scale)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_residual_spectrum",
+    "registration": "S3method(print,gp3bayes_pupil_residual_spectrum)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_response_parameters",
+    "registration": "S3method(print,gp3bayes_pupil_response_parameters)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_response_shape_fit",
+    "registration": "S3method(print,gp3bayes_pupil_response_shape_fit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_response_shape_specification",
+    "registration": "S3method(print,gp3bayes_pupil_response_shape_specification)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_sensitivity",
+    "registration": "S3method(print,gp3bayes_pupil_sensitivity)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_simulation",
+    "registration": "S3method(print,gp3bayes_pupil_simulation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_temporal_dependence_audit",
+    "registration": "S3method(print,gp3bayes_pupil_temporal_dependence_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_threshold_duration",
+    "registration": "S3method(print,gp3bayes_pupil_threshold_duration)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_trajectory_derivative",
+    "registration": "S3method(print,gp3bayes_pupil_trajectory_derivative)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_validation",
+    "registration": "S3method(print,gp3bayes_pupil_validation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_pupil_validation_plan",
+    "registration": "S3method(print,gp3bayes_pupil_validation_plan)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_random_effects_support_audit",
+    "registration": "S3method(print,gp3bayes_random_effects_support_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_random_intercept_variance_partition",
+    "registration": "S3method(print,gp3bayes_random_intercept_variance_partition)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_random_slope_sensitivity_plan",
+    "registration": "S3method(print,gp3bayes_random_slope_sensitivity_plan)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_readiness_audit",
+    "registration": "S3method(print,gp3bayes_readiness_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_recovery",
+    "registration": "S3method(print,gp3bayes_recovery)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_sampling_diagnostics",
+    "registration": "S3method(print,gp3bayes_sampling_diagnostics)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_sbc_plan",
+    "registration": "S3method(print,gp3bayes_sbc_plan)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_sbc_result",
+    "registration": "S3method(print,gp3bayes_sbc_result)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_schema_comparison",
+    "registration": "S3method(print,gp3bayes_schema_comparison)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_schema_validation",
+    "registration": "S3method(print,gp3bayes_schema_validation)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_sensitivity_plan",
+    "registration": "S3method(print,gp3bayes_sensitivity_plan)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_sensitivity_suite",
+    "registration": "S3method(print,gp3bayes_sensitivity_suite)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_separation_screen",
+    "registration": "S3method(print,gp3bayes_separation_screen)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_strict_readiness_audit",
+    "registration": "S3method(print,gp3bayes_strict_readiness_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_transformation_recipe",
+    "registration": "S3method(print,gp3bayes_transformation_recipe)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_transformation_replay_audit",
+    "registration": "S3method(print,gp3bayes_transformation_replay_audit)"
+  },
+  {
+    "generic": "print",
+    "class": "gp3bayes_workflow_status",
+    "registration": "S3method(print,gp3bayes_workflow_status)"
+  }
+]
