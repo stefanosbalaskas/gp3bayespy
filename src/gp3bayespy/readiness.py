@@ -460,10 +460,10 @@ def _audit_item_structure(
         weak_items = 0
         weak_participants = 0
     else:
-        participants_per_item = frame.groupby(item_col, dropna=True)[
+        participants_per_item = frame.groupby(item_col, dropna=True, observed=True)[
             participant_col
         ].nunique()
-        items_per_participant = frame.groupby(participant_col, dropna=True)[
+        items_per_participant = frame.groupby(participant_col, dropna=True, observed=True)[
             item_col
         ].nunique()
         weak_items = int((participants_per_item < 2).sum())
@@ -617,7 +617,7 @@ def _audit_condition_structure(
         return
 
     frame = cast(pd.DataFrame, data.loc[:, [participant_col, condition_col]]).dropna()
-    levels_by_participant = frame.groupby(participant_col, dropna=True)[
+    levels_by_participant = frame.groupby(participant_col, dropna=True, observed=True)[
         condition_col
     ].nunique()
     insufficient = int((levels_by_participant < 2).sum())
@@ -639,7 +639,7 @@ def _audit_condition_structure(
         )
 
     cell_counts = frame.groupby(
-        [participant_col, condition_col], dropna=True
+        [participant_col, condition_col], dropna=True, observed=True
     ).size()
     weak_cells = int((cell_counts < 2).sum())
     if weak_cells == 0:
@@ -765,7 +765,7 @@ def _audit_time_structure(
         & frame[time_col].notna()
         & np.isfinite(frame[time_col])
     ]
-    time_levels = frame.groupby(participant_col, dropna=True)[time_col].nunique()
+    time_levels = frame.groupby(participant_col, dropna=True, observed=True)[time_col].nunique()
     no_variation = int((time_levels < 2).sum())
     if time_levels.empty or no_variation == len(time_levels):
         add(

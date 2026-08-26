@@ -228,29 +228,57 @@ _DURATION_TEMPLATE: dict[str, Any] = {
 }
 
 
-def _nonempty_name(value: str | None, argument: str, *, optional: bool = False) -> str | None:
+def _match_contract_family(family: object) -> str:
+    if not isinstance(family, str):
+        raise GP3BayesError("`family` must be one non-missing character value.")
+    if family not in _MODEL_FAMILIES:
+        allowed = ", ".join(_MODEL_FAMILIES)
+        raise GP3BayesError(
+            f"Unsupported `family`: {family}. Supported values are: {allowed}."
+        )
+    return family
+
+
+def _nonempty_name(
+    value: object,
+    argument: str,
+    *,
+    optional: bool = False,
+) -> str | None:
     if optional and value is None:
         return None
     if not isinstance(value, str) or not value:
-        raise GP3BayesError(f"`{argument}` must be one non-empty character value.")
+        raise GP3BayesError(
+            f"`{argument}` must be one non-empty character value."
+        )
     return value
 
 
-def _unique_strings(values: Sequence[str] | None, argument: str) -> tuple[str, ...]:
-    if values is None:
-        return ()
-    if isinstance(values, str):
-        values = (values,)
-    vals = tuple(values)
-    if any(not isinstance(v, str) or not v for v in vals) or len(set(vals)) != len(vals):
+def _unique_strings(value: Sequence[str], argument: str) -> tuple[str, ...]:
+    values: tuple[str, ...]
+    if isinstance(value, str):
+        values = (value,)
+    elif isinstance(value, Sequence) and not isinstance(value, (bytes, bytearray)):
+        values = tuple(value)
+    else:
         raise GP3BayesError(
             f"`{argument}` must be a character vector of unique, non-empty values."
         )
-    return vals
+
+    if (
+        any(not isinstance(item, str) or not item for item in values)
+        or len(set(values)) != len(values)
+    ):
+        raise GP3BayesError(
+            f"`{argument}` must be a character vector of unique, non-empty values."
+        )
+    return values
 
 
 @dataclass(frozen=True, slots=True)
 class ModelContract:
+    """Approved backend-independent model contract."""
+
     contract_version: str
     family: str
     model_family: str
@@ -287,7 +315,9 @@ class ModelContract:
             "model_family": self.model_family,
             "mappings": dict(self.mappings),
             "predictors": list(self.predictors),
-            "interaction": None if self.interaction is None else list(self.interaction),
+            "interaction": (
+                None if self.interaction is None else list(self.interaction)
+            ),
             "random_slope": self.random_slope,
             "outcome_unit": self.outcome_unit,
             "notes": list(self.notes),
@@ -309,10 +339,12 @@ class ModelContract:
             lines.append(f"  Condition: {self.mappings['condition']}")
         if self.outcome_unit is not None:
             lines.append(f"  Outcome unit: {self.outcome_unit}")
-        lines += [
-            f"  Random slope requested: {str(self.random_slope).upper()}",
-            "  Fitting performed: FALSE",
-        ]
+        lines.extend(
+            [
+                f"  Random slope requested: {str(self.random_slope).upper()}",
+                "  Fitting performed: FALSE",
+            ]
+        )
         return "\n".join(lines)
 
 
@@ -331,57 +363,82 @@ def create_model_contract(
     notes: Sequence[str] = (),
 ) -> ModelContract:
     """Create an approved backend-independent Bayesian model contract."""
-    if not isinstance(family, str):
-        raise GP3BayesError("`family` must be one non-missing character value.")
-    if family not in _MODEL_FAMILIES:
-        allowed = ", ".join(_MODEL_FAMILIES)
-        raise GP3BayesError(f"Unsupported `family`: {family}. Supported values are: {allowed}.")
-    mappings = {
+    family_value = _match_contract_family(family)
+    mappings: dict[str, str | None] = {
         "outcome": _nonempty_name(outcome_col, "outcome_col"),
         "participant": _nonempty_name(participant_col, "participant_col"),
         "item": _nonempty_name(item_col, "item_col", optional=True),
         "trial": _nonempty_name(trial_col, "trial_col", optional=True),
-        "condition": _nonempty_name(condition_col, "condition_col", optional=True),
+        "condition": _nonempty_name(
+            condition_col, "condition_col", optional=True
+        ),
         "time": _nonempty_name(time_col, "time_col", optional=True),
     }
+
     predictor_values = _unique_strings(predictors, "predictors")
     note_values = _unique_strings(notes, "notes")
-    interaction_values = None
+
+    interaction_values: tuple[str, str] | None = None
     if interaction is not None:
-        ivals = _unique_strings(interaction, "interaction")
-        if len(ivals) != 2:
-            raise GP3BayesError("`interaction` must contain exactly two declared variables.")
-        available = {x for x in (mappings["condition"], mappings["time"], *predictor_values) if x}
-        if not set(ivals).issubset(available):
+        values = _unique_strings(interaction, "interaction")
+        if len(values) != 2:
             raise GP3BayesError(
-                "Every interaction variable must be declared through `condition_col`, "
-                "`time_col`, or `predictors`."
+                "`interaction` must contain exactly two declared variables."
             )
-        interaction_values = (ivals[0], ivals[1])
+        available = {
+            value
+            for value in (
+                mappings["condition"],
+                mappings["time"],
+                *predictor_values,
+            )
+            if value is not None
+        }
+        if not set(values).issubset(available):
+            raise GP3BayesError(
+                "Every interaction variable must be declared through "
+                "`condition_col`, `time_col`, or `predictors`."
+            )
+        interaction_values = (values[0], values[1])
+
     if not isinstance(random_slope, bool):
-        raise GP3BayesError("`random_slope` must be one non-missing logical value.")
+        raise GP3BayesError("`random_slope` must be TRUE or FALSE.")
     if random_slope and mappings["condition"] is None:
-        raise GP3BayesError("`condition_col` must be supplied when `random_slope = TRUE`.")
-    declared = [x for x in mappings.values() if x is not None] + list(predictor_values)
-    duplicates = sorted({x for x in declared if declared.count(x) > 1})
+        raise GP3BayesError(
+            "`condition_col` must be supplied when `random_slope = TRUE`."
+        )
+
+    declared = [
+        value for value in mappings.values() if value is not None
+    ] + list(predictor_values)
+    seen: set[str] = set()
+    duplicates: list[str] = []
+    for value in declared:
+        if value in seen and value not in duplicates:
+            duplicates.append(value)
+        seen.add(value)
     if duplicates:
         raise GP3BayesError(
             "Column mappings and predictors must be unique. Duplicated: "
             + ", ".join(duplicates)
             + "."
         )
-    if family == "binary":
+
+    if family_value == "binary":
         if outcome_unit is not None:
-            raise GP3BayesError("`outcome_unit` must be NULL for the binary family.")
-        template = _BINARY_TEMPLATE
+            raise GP3BayesError(
+                "`outcome_unit` must be NULL for the binary family."
+            )
         outcome_unit_value = None
+        template = _BINARY_TEMPLATE
     else:
         outcome_unit_value = _nonempty_name(outcome_unit, "outcome_unit")
         template = _DURATION_TEMPLATE
+
     return ModelContract(
         contract_version="0.1",
-        family=family,
-        model_family=_MODEL_FAMILIES[family],
+        family=family_value,
+        model_family=_MODEL_FAMILIES[family_value],
         mappings=mappings,
         predictors=predictor_values,
         interaction=interaction_values,
