@@ -1352,3 +1352,94 @@ def summarise_duration_posterior(
     if not isinstance(fit, DurationFit):
         raise GP3BayesError("`fit` must inherit from `gp3bayes_fit`.")
     return _summarise_duration(fit, probability=probability, variables=variables)
+
+
+def check_duration_posterior_predictive(
+    fit: DurationFit,
+    draws: int = 500,
+    seed: int = 1,
+    pass_probability: float = 0.80,
+    review_probability: float = 0.95,
+):
+    """Check selected duration posterior-predictive summaries conservatively."""
+    if not isinstance(fit, DurationFit):
+        raise GP3BayesError("`fit` must inherit from `gp3bayes_fit`.")
+
+    from .ppc import (
+        _check_table,
+        _duration_result,
+        _duration_summary,
+        _replicated_table,
+        _validate_controls,
+    )
+    from .predictive import extract_expected_predictions, extract_posterior_predictions
+
+    draw_count, seed_value, pass_value, review_value = _validate_controls(
+        draws, seed, pass_probability, review_probability
+    )
+    prepared = cast(DurationPrepared, fit.specification.prepared)
+    data = prepared.data
+    contract = fit.specification.contract
+    outcome_col = cast(str, contract.mappings["outcome"])
+    participant_col = cast(str, contract.mappings["participant"])
+    condition_col = contract.mappings["condition"]
+    item_col = contract.mappings["item"]
+
+    y = pd.to_numeric(data[outcome_col], errors="raise").to_numpy(dtype=float)
+    participant = data[participant_col].to_numpy(copy=True)
+    condition = (
+        None if condition_col is None else data[condition_col].to_numpy(copy=True)
+    )
+    item = None if item_col is None else data[item_col].to_numpy(copy=True)
+
+    yrep = extract_posterior_predictions(
+        fit,
+        newdata=data,
+        include_group_effects=True,
+        allow_new_levels=False,
+        ndraws=draw_count,
+        seed=seed_value,
+    )
+    if not np.isfinite(yrep).all() or np.any(yrep <= 0):
+        raise GP3BayesError(
+            "Posterior predictive draws must be finite and strictly positive."
+        )
+    replicated = _replicated_table(
+        yrep,
+        summary_function=_duration_summary,
+        condition=condition,
+        participant=participant,
+        item=item,
+    )
+    observed = _duration_summary(
+        y,
+        condition=condition,
+        participant=participant,
+        item=item,
+    )
+    checks = _check_table(
+        observed,
+        replicated,
+        pass_probability=pass_value,
+        review_probability=review_value,
+    )
+    expected = extract_expected_predictions(
+        fit,
+        newdata=data,
+        include_group_effects=True,
+        allow_new_levels=False,
+        ndraws=draw_count,
+    )
+    predicted_mean = np.mean(expected, axis=0)
+    log_scale_rmse = float(
+        np.sqrt(np.mean((np.log(y) - np.log(predicted_mean)) ** 2))
+    )
+    return _duration_result(
+        outcome_unit=fit.outcome_unit,
+        draws=int(yrep.shape[0]),
+        seed=seed_value,
+        observed=observed,
+        replicated=replicated,
+        checks=checks,
+        log_scale_rmse=log_scale_rmse,
+    )

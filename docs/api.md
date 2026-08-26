@@ -138,3 +138,19 @@ quantities only and do not establish causal effects or out-of-sample adequacy.
 
 ::: gp3bayespy.Prediction
 
+
+## Posterior predictive checks
+
+The posterior-predictive layer compares observed binary or duration summaries
+with replicated outcomes generated from the retained posterior. It preserves
+the frozen R 0.5.0 pass/review/fail thresholds and uses the R `quantile(type =
+8)` convention for central predictive intervals.
+
+These checks are deliberately descriptive. A `pass` status means that the
+selected observed summaries fall inside their prespecified posterior predictive
+intervals; it does **not** establish global likelihood, random-effects,
+substantive, causal, or out-of-sample adequacy.
+
+::: gp3bayespy.check_binary_posterior_predictive
+
+::: gp3bayespy.check_duration_posterior_predictive

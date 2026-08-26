@@ -1,0 +1,53 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "reference_commit": "0ad32d8921c3b267d2021324c3b3568edf3ae01f",
+  "tranche": "GPB-PY-07 posterior predictive checks",
+  "exports": [
+    {
+      "name": "check_binary_posterior_predictive",
+      "source_file": "R/binary-posterior-validation.R",
+      "source_line": 363,
+      "r_signature": "fit, draws = 500, seed = 1, pass_probability = 0.80, review_probability = 0.95",
+      "python_module": "gp3bayespy.binary",
+      "parity_class": "semantic/structural with stochastic predictive equivalence"
+    },
+    {
+      "name": "check_duration_posterior_predictive",
+      "source_file": "R/duration-posterior-validation.R",
+      "source_line": 263,
+      "r_signature": "fit, draws = 500L, seed = 1L, pass_probability = 0.80, review_probability = 0.95",
+      "python_module": "gp3bayespy.duration",
+      "parity_class": "semantic/structural with stochastic predictive equivalence"
+    }
+  ],
+  "binary_statistics": [
+    "overall_rate",
+    "condition_low_rate",
+    "condition_high_rate",
+    "condition_rate_contrast",
+    "participant_rate_sd",
+    "item_rate_sd"
+  ],
+  "duration_statistics": [
+    "median",
+    "mean",
+    "q90",
+    "q99",
+    "coefficient_of_variation",
+    "condition_median_ratio",
+    "participant_log_median_sd",
+    "item_log_median_sd",
+    "nonfinite_fraction"
+  ],
+  "governance_invariants": [
+    "Posterior predictive status evaluates only prespecified descriptive summaries.",
+    "A pass status is not a global declaration of model adequacy.",
+    "Binary checks report the Brier score from posterior expected probabilities.",
+    "Duration checks report log-scale RMSE from posterior expected durations.",
+    "Duration posterior predictive draws must be finite and strictly positive.",
+    "Central predictive intervals use the R quantile(type = 8) convention.",
+    "No unrestricted backend arguments are exposed."
+  ],
+  "ledger_promoted": false
+}
