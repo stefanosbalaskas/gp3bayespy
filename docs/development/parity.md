@@ -9,3 +9,14 @@ Parity is classified by exact structural parity, numerical tolerance parity, sto
 The contract/readiness/specification core is frozen against R gp3bayes 0.5.0 structural expectations. Six exports are now `implemented`: `create_model_contract`, `audit_model_readiness`, `build_model_formula`, `create_prior_specification`, `validate_prior_specification`, and `create_model_specification`. `backend_capabilities` remains `implemented_initial` until backend/environment-specific parity is tested.
 
 Current ledger counts: 6 `implemented`, 1 `implemented_initial`, 451 `mapped_not_implemented` = 458 total exports. The fixture `dev/parity/core_reference_cases_0.5.0.json` records its R-derived, non-runtime-captured provenance explicitly.
+
+
+## GPB-PY-02 binary foundation checkpoint
+
+The backend-independent binary workflow foundation is frozen against R gp3bayes 0.5.0 source and test expectations. Four additional exports are now `implemented`: `simulate_hierarchical_binary_data`, `prepare_hierarchical_binary_data`, `specify_binary_model`, and `check_binary_prior_predictive`.
+
+Simulation and prior-predictive parity are stochastic/semantic rather than bit-identical because R and NumPy use different random-number generators. Preparation and model-specification parity are structural/deterministic where the R contract permits.
+
+Current ledger counts: 10 `implemented`, 1 `implemented_initial`, 447 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial`.
+
+The fixture `dev/parity/binary_foundation_reference_0.5.0.json` records the frozen signatures, reference provenance, and parity classification for this tranche.

@@ -168,7 +168,7 @@ check_binary_prior_predictive,check_binary_prior_predictive,binary-workflow-foun
   extreme_contrast = 0.8,
   maximum_degenerate_participant_fraction = 0.5,
   maximum_boundary_mass = 0.5,
-  maximum_extreme_probability = 0.25",check_binary_prior_predictive.Rd,gp3bayespy.binary,mapped_not_implemented
+  maximum_extreme_probability = 0.25",check_binary_prior_predictive.Rd,gp3bayespy.binary,implemented
 check_cmdstan_backend,check_cmdstan_backend,advanced-optional-workflows.R,236,strict = FALSE,check_cmdstan_backend.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
 check_duration_posterior_predictive,check_duration_posterior_predictive,duration-posterior-validation.R,263,"fit,
   draws = 500L,
@@ -1035,7 +1035,7 @@ prepare_hierarchical_binary_data,prepare_hierarchical_binary_data,binary-workflo
   condition_coding = c(-0.5, 0.5),
   scale_predictors = character(),
   scale_time = FALSE,
-  missing = c(""error"", ""drop"")",prepare_hierarchical_binary_data.Rd,gp3bayespy.binary,mapped_not_implemented
+  missing = c(""error"", ""drop"")",prepare_hierarchical_binary_data.Rd,gp3bayespy.binary,implemented
 prepare_hierarchical_duration_data,prepare_hierarchical_duration_data,duration-workflow-foundation.R,838,"data,
   contract,
   condition_levels = NULL,
@@ -1302,7 +1302,7 @@ simulate_hierarchical_binary_data,simulate_hierarchical_binary_data,binary-workf
   condition_probability = 0.5,
   balanced_condition = TRUE,
   include_items = TRUE,
-  seed = 1",simulate_hierarchical_binary_data.Rd,gp3bayespy.binary,mapped_not_implemented
+  seed = 1",simulate_hierarchical_binary_data.Rd,gp3bayespy.binary,implemented
 simulate_hierarchical_duration_data,simulate_hierarchical_duration_data,duration-workflow-foundation.R,372,"n_participants = 40L,
   trials_per_participant = 20L,
   n_items = 20L,
@@ -1384,7 +1384,7 @@ specify_binary_model,specify_binary_model,binary-workflow-foundation.R,1139,"pre
   coefficient_scale = 0.75,
   group_sd_scale = 1,
   correlation_eta = 2,
-  student_df = 3",specify_binary_model.Rd,gp3bayespy.binary,mapped_not_implemented
+  student_df = 3",specify_binary_model.Rd,gp3bayespy.binary,implemented
 specify_binary_model_with_interaction_prior,specify_binary_model_with_interaction_prior,advanced-optional-workflows.R,307,"prepared,
   baseline,
   intercept_scale = 1.5,
