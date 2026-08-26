@@ -24,7 +24,7 @@ def test_predictive_scoring_reference_fixture_accounts_for_exact_export_set():
     assert {entry["name"] for entry in payload["exports"]} == EXPORTS
     assert payload["reference_version"] == "0.5.0"
     assert payload["reference_commit"] == "0ad32d8921c3b267d2021324c3b3568edf3ae01f"
-    assert payload["ledger_promoted"] is False
+    assert payload["ledger_promoted"] is True
 
 
 def test_predictive_scoring_exports_are_public_and_callable():

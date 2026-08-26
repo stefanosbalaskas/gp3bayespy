@@ -120,7 +120,7 @@ binary_calibration_error,binary_calibration_error,predictive-diagnostics-advance
   bins = 10L",binary_calibration_error.Rd,gp3bayespy.predictive,mapped_not_implemented
 binary_calibration_table,binary_calibration_table,prediction-support.R,1080,"x,
   bins = 10L,
-  probs = c(0.025, 0.5, 0.975)",binary_calibration_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",binary_calibration_table.Rd,gp3bayespy.predictive,implemented
 binary_calibration_uncertainty,binary_calibration_uncertainty,predictive-distribution-atlas.R,271,"fit,
   newdata = NULL,
   bins = 10L,
@@ -136,11 +136,11 @@ binary_precision_recall_curve,binary_precision_recall_curve,predictive-diagnosti
 binary_prediction_scores,binary_prediction_scores,prediction-support.R,984,"x,
   observed = NULL,
   threshold = 0.5,
-  epsilon = 1e-12",binary_prediction_scores.Rd,gp3bayespy.predictive,mapped_not_implemented
+  epsilon = 1e-12",binary_prediction_scores.Rd,gp3bayespy.predictive,implemented
 binary_roc_curve,binary_roc_curve,predictive-diagnostics-advanced.R,296,"x, observed = NULL, thresholds = NULL",binary_roc_curve.Rd,gp3bayespy.predictive,mapped_not_implemented
 binary_threshold_metrics,binary_threshold_metrics,prediction-support.R,1055,"x,
   observed = NULL,
-  thresholds = seq(0.1, 0.9, by = 0.05)",binary_threshold_metrics.Rd,gp3bayespy.predictive,mapped_not_implemented
+  thresholds = seq(0.1, 0.9, by = 0.05)",binary_threshold_metrics.Rd,gp3bayespy.predictive,implemented
 build_model_formula,build_model_formula,model-specification.R,39,contract,build_model_formula.Rd,gp3bayespy.specification,implemented
 capture_gp3bayes_schema,capture_gp3bayes_schema,backend-reliability.R,602,"x, max_depth = 3L",capture_gp3bayes_schema.Rd,gp3bayespy.backends,mapped_not_implemented
 check_advanced_pupil_prior_predictive,check_advanced_pupil_prior_predictive,pupil-advanced-fit.R,517,"specification,
@@ -514,12 +514,12 @@ diagnose_duration_fit,diagnose_duration_fit,duration-posterior-validation.R,123,
 diagnose_model_fit,diagnose_model_fit,unified-workflow-api.R,281,"fit, ...",diagnose_model_fit.Rd,gp3bayespy.unified_workflow_api,mapped_not_implemented
 diagnose_pupil_fit,diagnose_pupil_fit,pupil-diagnostics.R,297,"fit, ndraws = 200L, max_lag = 10L, max_cells = 3000000L",diagnose_pupil_fit.Rd,gp3bayespy.pupil,mapped_not_implemented
 diagnostic_dashboard_table,diagnostic_dashboard_table,publication-registry-dashboard.R,436,x,diagnostic_dashboard_table.Rd,gp3bayespy.reporting,mapped_not_implemented
-duration_pit_table,duration_pit_table,prediction-support.R,1201,x,duration_pit_table.Rd,gp3bayespy.predictive,mapped_not_implemented
-duration_prediction_scores,duration_prediction_scores,prediction-support.R,1137,"x, observed = NULL",duration_prediction_scores.Rd,gp3bayespy.predictive,mapped_not_implemented
+duration_pit_table,duration_pit_table,prediction-support.R,1201,x,duration_pit_table.Rd,gp3bayespy.predictive,implemented
+duration_prediction_scores,duration_prediction_scores,prediction-support.R,1137,"x, observed = NULL",duration_prediction_scores.Rd,gp3bayespy.predictive,implemented
 duration_qq_table,duration_qq_table,predictive-diagnostics-advanced.R,472,"x,
   probs = seq(0.05, 0.95, by = 0.05)",duration_qq_table.Rd,gp3bayespy.predictive,mapped_not_implemented
 duration_quantile_calibration,duration_quantile_calibration,prediction-support.R,1168,"x,
-  quantiles = c(0.1, 0.25, 0.5, 0.75, 0.9)",duration_quantile_calibration.Rd,gp3bayespy.predictive,mapped_not_implemented
+  quantiles = c(0.1, 0.25, 0.5, 0.75, 0.9)",duration_quantile_calibration.Rd,gp3bayespy.predictive,implemented
 duration_tail_check,duration_tail_check,predictive-diagnostics-advanced.R,516,"x, threshold",duration_tail_check.Rd,gp3bayespy.predictive,mapped_not_implemented
 estimand_sensitivity_table,estimand_sensitivity_table,recovery-sensitivity-publication.R,71,x,estimand_sensitivity_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
 estimate_binocular_pupil_trajectory,estimate_binocular_pupil_trajectory,pupil-binocular.R,647,"fit, newdata = NULL, ndraws = 500L, probability = 0.95",estimate_binocular_pupil_trajectory.Rd,gp3bayespy.pupil,mapped_not_implemented
@@ -920,7 +920,7 @@ posterior_predictive_statistic,posterior_predictive_statistic,predictive-diagnos
   statistic = c(""mean"", ""sd"", ""median"", ""q90"", ""q95"", ""max"", ""tail_rate""),
   threshold = NULL",posterior_predictive_statistic.Rd,gp3bayespy.predictive,mapped_not_implemented
 posterior_predictive_summary_table,posterior_predictive_summary_table,prediction-support.R,1261,"x,
-  probs = c(0.025, 0.5, 0.975)",posterior_predictive_summary_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",posterior_predictive_summary_table.Rd,gp3bayespy.predictive,implemented
 posterior_probability_table,posterior_probability_table,postfit-exploration.R,336,"x,
   variables = NULL,
   regex = NULL,
@@ -1007,7 +1007,7 @@ prediction_uncertainty_decomposition,prediction_uncertainty_decomposition,predic
   ndraws = 1000L,
   seed = 1L",prediction_uncertainty_decomposition.Rd,gp3bayespy.predictive,mapped_not_implemented
 predictive_coverage_table,predictive_coverage_table,prediction-support.R,1227,"x,
-  levels = c(0.5, 0.8, 0.9, 0.95)",predictive_coverage_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+  levels = c(0.5, 0.8, 0.9, 0.95)",predictive_coverage_table.Rd,gp3bayespy.predictive,implemented
 predictive_distribution_atlas_table,predictive_distribution_atlas_table,predictive-distribution-atlas.R,74,x,predictive_distribution_atlas_table.Rd,gp3bayespy.predictive,mapped_not_implemented
 predictive_quantile_envelope,predictive_quantile_envelope,predictive-distribution-atlas.R,103,"x,
   probabilities = seq(0.05, 0.95, by = 0.05),

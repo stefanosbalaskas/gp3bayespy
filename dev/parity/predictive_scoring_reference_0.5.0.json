@@ -70,5 +70,5 @@
     "Posterior-predictive interval summaries use the frozen R default quantile convention (type 7).",
     "No unrestricted backend, likelihood, formula, or prior arguments are exposed."
   ],
-  "ledger_promoted": false
+  "ledger_promoted": true
 }

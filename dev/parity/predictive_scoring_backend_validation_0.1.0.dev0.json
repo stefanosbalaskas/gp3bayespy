@@ -1,0 +1,62 @@
+{
+  "validation_version": "0.1",
+  "tranche": "GPB-PY-08 predictive scoring and calibration",
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "validated_commit": "cde4776",
+  "validated_commit_sha": "cde4776c5e593ac087135190793e70382dfff0c6",
+  "platform": {
+    "os": "Windows",
+    "python": "3.13.15",
+    "project": "gp3bayespy 0.1.0.dev0"
+  },
+  "quality_gates": {
+    "ruff": {
+      "status": "pass"
+    },
+    "mypy": {
+      "status": "pass",
+      "source_files": 15
+    },
+    "pytest": {
+      "status": "pass",
+      "tests": 246
+    },
+    "build": {
+      "status": "pass",
+      "sdist": true,
+      "wheel": true
+    }
+  },
+  "backend_smoke": {
+    "status": "pass",
+    "script": "validation/smoke_predictive_scoring.py",
+    "sampling_backend": "PyMC/NUTS",
+    "binary_scoring_path": "pass",
+    "duration_scoring_path": "pass",
+    "binary_brier": 0.16904163877577907,
+    "binary_auc": 0.86,
+    "duration_log_rmse": 0.43882913179095007,
+    "calibration_bins": 4,
+    "automatic_decisions": false,
+    "global_adequacy_established": false,
+    "short_sampling_smoke": true,
+    "chains_per_fit": 1,
+    "tune_per_chain": 50,
+    "draws_per_chain": 50,
+    "prediction_draws": 25,
+    "nonfatal_messages": [
+      "g++ not available",
+      "Only 50 samples per chain",
+      "PyMC log_likelihood idata_kwargs FutureWarning"
+    ]
+  },
+  "governance": {
+    "scores_are_descriptive": true,
+    "threshold_metrics_make_automatic_decision": false,
+    "calibration_establishes_global_adequacy": false,
+    "coverage_establishes_global_adequacy": false,
+    "scores_establish_causality": false,
+    "scores_establish_out_of_sample_adequacy": false
+  }
+}

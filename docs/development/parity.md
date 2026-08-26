@@ -69,3 +69,13 @@ Binary checks compare six declared observed summaries with replicated outcomes a
 A real Windows/Python 3.13.15 PyMC/NUTS smoke completed both PPC paths at implementation commit `fd046c2`. The binary smoke status was `review` and the duration smoke status was `pass`; neither result is a global model-adequacy declaration. Runtime evidence is frozen in `dev/parity/posterior_predictive_backend_validation_0.1.0.dev0.json`.
 
 Current ledger counts: 35 `implemented`, 1 `implemented_initial`, 422 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` until its broader capability contract is separately closed.
+
+## GPB-PY-08 predictive scoring and calibration checkpoint
+
+The compact predictive-diagnostics layer is frozen against the R gp3bayes 0.5.0 `prediction-support.R` contracts. Eight additional exports are now `implemented`: `binary_prediction_scores`, `binary_threshold_metrics`, `binary_calibration_table`, `duration_prediction_scores`, `duration_quantile_calibration`, `duration_pit_table`, `predictive_coverage_table`, and `posterior_predictive_summary_table`.
+
+Binary scoring preserves Brier score, finite-clipped log loss, average-rank AUC, threshold accuracy, sensitivity, specificity, balanced accuracy, equal-frequency calibration summaries, and threshold curves. Duration scoring preserves response-scale and log-scale errors, predictive quantile calibration, and empirical posterior-predictive PIT values. Generic predictive coverage and posterior-predictive summary tables retain the frozen R default quantile convention (`type = 7`).
+
+A real Windows/Python 3.13.15 PyMC/NUTS smoke completed both binary and duration scoring/calibration paths at implementation commit `cde4776`. The smoke produced binary Brier 0.16904163877577907, binary AUC 0.86, duration log-RMSE 0.43882913179095007, and four calibration bins. No threshold, score, calibration result, or coverage summary made an automatic decision or established global model adequacy. Runtime evidence is frozen in `dev/parity/predictive_scoring_backend_validation_0.1.0.dev0.json`.
+
+Current ledger counts: 43 `implemented`, 1 `implemented_initial`, 414 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` until its broader capability contract is separately closed.
