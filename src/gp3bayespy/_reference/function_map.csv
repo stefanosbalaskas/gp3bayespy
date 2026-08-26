@@ -616,7 +616,7 @@ fit_binary_model,fit_binary_model,binary-model-fitting.R,475,"specification,
   seed = 1L,
   adapt_delta = 0.95,
   max_treedepth = 12L,
-  refresh = 0L",fit_binary_model.Rd,gp3bayespy.binary,mapped_not_implemented
+  refresh = 0L",fit_binary_model.Rd,gp3bayespy.binary,implemented
 fit_binary_model_backend,fit_binary_model_backend,advanced-optional-workflows.R,667,"specification,
   backend = c(""rstan"", ""cmdstanr""),
   chains = 4L,
@@ -656,7 +656,7 @@ fit_duration_model,fit_duration_model,duration-model-fitting.R,378,"specificatio
   seed = 1L,
   adapt_delta = 0.95,
   max_treedepth = 12L,
-  refresh = 0L",fit_duration_model.Rd,gp3bayespy.duration,mapped_not_implemented
+  refresh = 0L",fit_duration_model.Rd,gp3bayespy.duration,implemented
 fit_duration_model_backend,fit_duration_model_backend,advanced-optional-workflows.R,703,"specification,
   backend = c(""rstan"", ""cmdstanr""),
   chains = 4L,
@@ -1459,10 +1459,10 @@ summarise_sbc_result,summarise_sbc_result,advanced-optional-workflows.R,2111,x,s
 summarise_sensitivity_suite,summarise_sensitivity_suite,sensitivity-evidence-suite.R,273,x,summarise_sensitivity_suite.Rd,gp3bayespy.sensitivity,mapped_not_implemented
 theme_gp3bayes,theme_gp3bayes,publication-graphics.R,28,"base_size = 11, base_family = """"",theme_gp3bayes.Rd,gp3bayespy.reporting,mapped_not_implemented
 translate_advanced_pupil_model_to_brms,translate_advanced_pupil_model_to_brms,pupil-advanced-fit.R,466,specification,translate_advanced_pupil_model_to_brms.Rd,gp3bayespy.pupil,mapped_not_implemented
-translate_binary_model_to_brms,translate_binary_model_to_brms,binary-model-fitting.R,296,specification,translate_binary_model_to_brms.Rd,gp3bayespy.binary,mapped_not_implemented
+translate_binary_model_to_brms,translate_binary_model_to_brms,binary-model-fitting.R,296,specification,translate_binary_model_to_brms.Rd,gp3bayespy.binary,implemented
 translate_binary_model_with_interaction_prior,translate_binary_model_with_interaction_prior,advanced-optional-workflows.R,448,specification,translate_binary_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
 translate_binocular_pupil_model_to_brms,translate_binocular_pupil_model_to_brms,pupil-binocular.R,393,specification,translate_binocular_pupil_model_to_brms.Rd,gp3bayespy.pupil,mapped_not_implemented
-translate_duration_model_to_brms,translate_duration_model_to_brms,duration-model-fitting.R,229,specification,translate_duration_model_to_brms.Rd,gp3bayespy.duration,mapped_not_implemented
+translate_duration_model_to_brms,translate_duration_model_to_brms,duration-model-fitting.R,229,specification,translate_duration_model_to_brms.Rd,gp3bayespy.duration,implemented
 translate_duration_model_with_interaction_prior,translate_duration_model_with_interaction_prior,advanced-optional-workflows.R,478,specification,translate_duration_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
 translate_pupil_model_to_brms,translate_pupil_model_to_brms,pupil-specification.R,350,specification,translate_pupil_model_to_brms.Rd,gp3bayespy.pupil,mapped_not_implemented
 translate_pupil_response_shape_to_brms,translate_pupil_response_shape_to_brms,pupil-response-shape.R,206,specification,translate_pupil_response_shape_to_brms.Rd,gp3bayespy.pupil,mapped_not_implemented

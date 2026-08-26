@@ -10,7 +10,6 @@ The contract/readiness/specification core is frozen against R gp3bayes 0.5.0 str
 
 Current ledger counts: 6 `implemented`, 1 `implemented_initial`, 451 `mapped_not_implemented` = 458 total exports. The fixture `dev/parity/core_reference_cases_0.5.0.json` records its R-derived, non-runtime-captured provenance explicitly.
 
-
 ## GPB-PY-02 binary foundation checkpoint
 
 The backend-independent binary workflow foundation is frozen against R gp3bayes 0.5.0 source and test expectations. Four additional exports are now `implemented`: `simulate_hierarchical_binary_data`, `prepare_hierarchical_binary_data`, `specify_binary_model`, and `check_binary_prior_predictive`.
@@ -31,3 +30,12 @@ Current ledger counts: 14 `implemented`, 1 `implemented_initial`, 443 `mapped_no
 
 The fixture `dev/parity/duration_foundation_reference_0.5.0.json` records the frozen signatures, reference provenance, and parity classification for this tranche.
 
+## GPB-PY-04 restricted fitting checkpoint
+
+The restricted binary and duration fitting layer is frozen against the R gp3bayes 0.5.0 fitting contracts. Four additional exports are now `implemented`: `translate_binary_model_to_brms`, `fit_binary_model`, `translate_duration_model_to_brms`, and `fit_duration_model`.
+
+The public compatibility names are retained from R, while Python execution is an intentional backend adaptation to PyMC/NUTS. Fit objects report the actual Python backend truthfully and retain the R `brms`/`rstan` pathway only as source-provenance metadata. The API exposes only governed sampling controls and does not provide unrestricted formula, family, prior, algorithm, backend, or arbitrary keyword escape hatches.
+
+A real Windows/Python 3.13.15 backend smoke completed both binary and duration NUTS fits. This demonstrates executable backend integration only; short smoke chains do **not** establish convergence, posterior adequacy, predictive validity, robustness, or substantive validity. Runtime evidence is frozen in `dev/parity/fitting_backend_validation_0.1.0.dev0.json`.
+
+Current ledger counts: 18 `implemented`, 1 `implemented_initial`, 439 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` because the broader backend-capability contract has not yet been closed.
