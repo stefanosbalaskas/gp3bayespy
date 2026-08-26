@@ -218,8 +218,10 @@ def _posterior_components(fit: Any) -> dict[str, np.ndarray]:
                 size_int = int(size)
                 reverse_index.append(remainder % size_int)
                 remainder //= size_int
-            index = tuple(reversed(reverse_index))
-            components[_component_name(str(raw), index)] = flattened_extra[:, :, flat_index]
+            component_index = tuple(reversed(reverse_index))
+            components[_component_name(str(raw), component_index)] = (
+                flattened_extra[:, :, flat_index]
+            )
 
     if not components:
         raise GP3BayesError("No posterior variables were found.")
