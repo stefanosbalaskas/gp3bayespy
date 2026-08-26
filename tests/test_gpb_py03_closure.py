@@ -45,7 +45,7 @@ def test_gpb_py03_promoted_exports_remain_implemented():
         for name, status in status_by_export.items()
         if status == "implemented"
     }
-    assert IMPLEMENTED <= implemented
+    assert implemented >= IMPLEMENTED
 
 
 def test_gpb_py03_ledger_still_covers_all_exports():

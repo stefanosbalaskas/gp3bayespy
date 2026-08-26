@@ -1,7 +1,7 @@
 import csv
 import json
-from pathlib import Path
 import tomllib
+from pathlib import Path
 
 from gp3bayespy import parity_counts, read_parity_manifest
 
