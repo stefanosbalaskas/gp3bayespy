@@ -28,8 +28,9 @@ from .fitting import (
     _translation_parameter_table,
     _validate_sampling_controls,
 )
+from .posterior import diagnose_fit as _diagnose_fit
+from .posterior import summarise_binary as _summarise_binary
 from .readiness import ReadinessAudit, audit_model_readiness
-from .posterior import diagnose_fit as _diagnose_fit, summarise_binary as _summarise_binary
 from .specification import (
     ModelSpecification,
     PriorSpecification,

@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-import gp3bayespy as gp
 from smoke_fitting_backend import _binary_specification, _duration_specification
+
+import gp3bayespy as gp
 
 
 def _fit_pair():

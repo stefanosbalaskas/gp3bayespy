@@ -9,9 +9,10 @@ from __future__ import annotations
 
 import math
 import numbers
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
 from importlib import import_module
-from typing import Any, Mapping, Sequence, cast
+from typing import Any, cast
 
 import numpy as np
 import pandas as pd
@@ -124,10 +125,11 @@ def _validate_fit_like(fit: object, family: str | None = None) -> Any:
         raise GP3BayesError("The fit does not use an approved gp3bayes family.")
     if family is not None and observed_family != family:
         raise GP3BayesError(f"`fit` must use the approved `{family}` family.")
-    backend_fit = fit.backend_fit
+    validated = cast(Any, fit)
+    backend_fit = validated.backend_fit
     if getattr(backend_fit, "posterior", None) is None:
         raise GP3BayesError("`fit.backend_fit` must contain posterior draws.")
-    return fit
+    return validated
 
 
 def _array_values(value: Any) -> np.ndarray:
@@ -208,8 +210,16 @@ def _posterior_components(fit: Any) -> dict[str, np.ndarray]:
         if not extra_shape:
             components[str(raw)] = array
             continue
-        for index in np.ndindex(extra_shape):
-            components[_component_name(str(raw), index)] = array[(slice(None), slice(None), *index)]
+        flattened_extra = array.reshape(array.shape[0], array.shape[1], -1)
+        for flat_index in range(flattened_extra.shape[2]):
+            remainder = flat_index
+            reverse_index: list[int] = []
+            for size in reversed(extra_shape):
+                size_int = int(size)
+                reverse_index.append(remainder % size_int)
+                remainder //= size_int
+            index = tuple(reversed(reverse_index))
+            components[_component_name(str(raw), index)] = flattened_extra[:, :, flat_index]
 
     if not components:
         raise GP3BayesError("No posterior variables were found.")
@@ -235,10 +245,7 @@ def _select_components(
 
     selected_names = list(components)
     if variables is not None:
-        if isinstance(variables, str):
-            requested = [variables]
-        else:
-            requested = list(variables)
+        requested = [variables] if isinstance(variables, str) else list(variables)
         if not requested or any(not isinstance(value, str) or not value for value in requested):
             raise GP3BayesError("`variables` must be a non-empty character vector.")
         missing = [value for value in requested if value not in components]
@@ -611,9 +618,9 @@ def _summary_table(
                     np.quantile(flattened, 1 - alpha / 2, method="median_unbiased")
                 ),
                 "probability_positive": float(np.mean(flattened > 0)),
-                "rhat": float(metrics.loc[name, "rhat"]),
-                "ess_bulk": float(metrics.loc[name, "ess_bulk"]),
-                "ess_tail": float(metrics.loc[name, "ess_tail"]),
+                "rhat": float(cast(Any, metrics.loc[name, "rhat"])),
+                "ess_bulk": float(cast(Any, metrics.loc[name, "ess_bulk"])),
+                "ess_tail": float(cast(Any, metrics.loc[name, "ess_tail"])),
             }
         )
     return pd.DataFrame(rows)

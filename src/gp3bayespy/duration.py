@@ -38,8 +38,9 @@ from .fitting import (
     _translation_parameter_table,
     _validate_sampling_controls,
 )
+from .posterior import diagnose_fit as _diagnose_fit
+from .posterior import summarise_duration as _summarise_duration
 from .readiness import ReadinessAudit, audit_model_readiness
-from .posterior import diagnose_fit as _diagnose_fit, summarise_duration as _summarise_duration
 from .specification import (
     ModelSpecification,
     create_model_specification,

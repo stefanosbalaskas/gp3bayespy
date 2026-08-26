@@ -15,8 +15,8 @@ from .binary import (
     fit_binary_model,
     prepare_hierarchical_binary_data,
     simulate_hierarchical_binary_data,
-    summarise_binary_posterior,
     specify_binary_model,
+    summarise_binary_posterior,
     translate_binary_model_to_brms,
 )
 from .contracts import ModelContract, create_model_contract
@@ -32,13 +32,13 @@ from .duration import (
     fit_duration_model,
     prepare_hierarchical_duration_data,
     simulate_hierarchical_duration_data,
-    summarise_duration_posterior,
     specify_duration_model,
+    summarise_duration_posterior,
     translate_duration_model_to_brms,
 )
 from .exceptions import BackendUnavailableError, GP3BayesError
-from .postfit_exploration import extract_posterior_draws
 from .parity import parity_counts, read_parity_manifest, reference_metadata
+from .postfit_exploration import extract_posterior_draws
 from .readiness import AuditCheck, ReadinessAudit, audit_model_readiness
 from .specification import (
     ModelSpecification,
