@@ -1,0 +1,136 @@
+{
+  "fixture_version": "gpb-py-01.1",
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "reference_source_sha256": "537eb05f949de1bcc1d6f8234066f064597951ecfa9cbbdf938d0a895ce5dd8a",
+  "provenance": {
+    "kind": "R-derived structural expectations",
+    "runtime_captured_from_R": false,
+    "sources": [
+      "R/model-contract.R",
+      "R/model-readiness-audit.R",
+      "R/model-specification.R",
+      "tests/testthat/test-model-contract.R",
+      "tests/testthat/test-model-readiness-audit.R",
+      "tests/testthat/test-model-specification.R"
+    ]
+  },
+  "promoted_exports": [
+    "create_model_contract",
+    "audit_model_readiness",
+    "build_model_formula",
+    "create_prior_specification",
+    "validate_prior_specification",
+    "create_model_specification"
+  ],
+  "deferred_exports": {
+    "backend_capabilities": "implemented_initial; backend/environment parity is outside GPB-PY-01 core model-specification closure"
+  },
+  "binary_contract": {
+    "family": "binary",
+    "model_family": "hierarchical_binary",
+    "likelihood": "Bernoulli",
+    "link": "logit",
+    "outcome": "selected",
+    "participant": "participant_id",
+    "item": "stimulus_id",
+    "trial": "trial_id",
+    "condition": "condition",
+    "time": "trial_order",
+    "predictors": [
+      "age_z"
+    ],
+    "interaction": [
+      "condition",
+      "age_z"
+    ],
+    "random_slope": true,
+    "outcome_unit": null
+  },
+  "binary_formula": "selected ~ condition + trial_order + age_z + condition:age_z + (1 + condition | participant_id) + (1 | stimulus_id)",
+  "non_syntactic_formula": "`selected outcome` ~ `age score` + `if` + (1 | `participant id`)",
+  "binary_prior": {
+    "baseline": 0.25,
+    "transformed_baseline": -1.0986122886681098,
+    "parameter_classes": [
+      "Intercept",
+      "b",
+      "sd",
+      "cor"
+    ],
+    "distributions": [
+      "normal",
+      "normal",
+      "student_t",
+      "lkj"
+    ],
+    "backend": "none",
+    "executable": false
+  },
+  "duration_prior": {
+    "baseline": 500.0,
+    "transformed_baseline": 6.214608098422191,
+    "outcome_unit": "milliseconds",
+    "parameter_classes": [
+      "Intercept",
+      "b",
+      "sd",
+      "sigma"
+    ],
+    "sigma_distribution": "student_t",
+    "sigma_scale": 0.7,
+    "sigma_lower": 0.0
+  },
+  "balanced_readiness": {
+    "status": "ready",
+    "ready": true,
+    "status_counts": {
+      "pass": 26,
+      "warn": 0,
+      "fail": 0
+    },
+    "check_ids": [
+      "data_rows",
+      "required_columns",
+      "identifier_types",
+      "analysis_missingness",
+      "outcome_type",
+      "outcome_values",
+      "outcome_support",
+      "participant_levels",
+      "repeated_measurement",
+      "item_levels",
+      "item_crossing",
+      "trial_key",
+      "condition_type",
+      "condition_levels",
+      "random_slope_support",
+      "random_slope_replication",
+      "time_type",
+      "time_finite",
+      "time_variation",
+      "time_within_participant",
+      "predictor_types",
+      "predictor_finite",
+      "predictor_variation",
+      "predictor_blanks",
+      "predictor_factor_levels",
+      "interaction_support"
+    ]
+  },
+  "expected_error_substrings": [
+    "Unsupported `family`",
+    "Column mappings and predictors must be unique",
+    "`interaction` must contain exactly two declared variables",
+    "`baseline` must be supplied",
+    "strictly between zero and one",
+    "strictly positive",
+    "missing: sd",
+    "must be unique",
+    "incomplete or unsupported",
+    "Incorrect prior distributions",
+    "Half-Student-t priors",
+    "LKJ priors require",
+    "not ready for model specification"
+  ]
+}

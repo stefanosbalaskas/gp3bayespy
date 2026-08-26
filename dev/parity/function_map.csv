@@ -84,7 +84,7 @@ audit_missingness_structure,audit_missingness_structure,design-support-diagnosti
   contract = NULL,
   review_fraction = 0.05,
   fail_fraction = 0.20",audit_missingness_structure.Rd,gp3bayespy.design_support_diagnostics,mapped_not_implemented
-audit_model_readiness,audit_model_readiness,model-readiness-audit.R,61,"data, contract",audit_model_readiness.Rd,gp3bayespy.readiness,implemented_initial
+audit_model_readiness,audit_model_readiness,model-readiness-audit.R,61,"data, contract",audit_model_readiness.Rd,gp3bayespy.readiness,implemented
 audit_model_readiness_strict,audit_model_readiness_strict,specification-closure.R,711,"data,
   contract,
   condition_warning_fraction = 0.10,
