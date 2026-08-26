@@ -1,4 +1,6 @@
 import inspect
+import tomllib
+from pathlib import Path
 
 import pytest
 
@@ -238,3 +240,14 @@ def test_translation_backend_available_is_a_boolean():
     duration = gp.translate_duration_model_to_brms(_duration_spec(random_slope=False))
     assert isinstance(binary.backend_available, bool)
     assert isinstance(duration.backend_available, bool)
+
+
+def test_bayes_extra_caps_pytensor_numba_numpy_compatibility():
+    root = Path(__file__).resolve().parents[1]
+    with (root / "pyproject.toml").open("rb") as handle:
+        project = tomllib.load(handle)
+
+    bayes = project["project"]["optional-dependencies"]["bayes"]
+    assert "numpy>=2.0,<2.5; python_version >= '3.12'" in bayes
+    assert "numba>=0.64,<=0.66.0; python_version >= '3.12'" in bayes
+    assert "python_version" not in project["tool"]["mypy"]

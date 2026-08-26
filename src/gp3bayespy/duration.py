@@ -32,6 +32,7 @@ from .contracts import ModelContract
 from .exceptions import GP3BayesError
 from .fitting import (
     _backend_versions,
+    _load_pymc,
     _pymc_available,
     _require_pymc,
     _translation_parameter_table,
@@ -1148,7 +1149,7 @@ def _run_duration_pymc(
     specification: DurationModelSpecification,
     controls: Mapping[str, int | float],
 ) -> tuple[Any, Any]:
-    import pymc as pm  # type: ignore[import-untyped]
+    pm = _load_pymc()
 
     prepared = cast(DurationPrepared, specification.prepared)
     data = prepared.data

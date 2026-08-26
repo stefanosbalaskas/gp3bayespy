@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from importlib.metadata import version
+
 import gp3bayespy as gp
 
 
@@ -57,6 +59,14 @@ def _duration_specification() -> gp.DurationModelSpecification:
 
 
 def main() -> None:
+    print(
+        "Backend matrix:",
+        {
+            name: version(name)
+            for name in ("numpy", "numba", "pytensor", "pymc", "arviz")
+        },
+    )
+
     binary = gp.fit_binary_model(
         _binary_specification(),
         chains=1,

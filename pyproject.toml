@@ -32,6 +32,8 @@ bayes = [
   "pymc>=5.10,<6; python_version < '3.12'",
   "arviz>=1.0; python_version >= '3.12'",
   "pymc>=6.3.1; python_version >= '3.12'",
+  "numpy>=2.0,<2.5; python_version >= '3.12'",
+  "numba>=0.64,<=0.66.0; python_version >= '3.12'",
   "cmdstanpy>=1.2",
   "xarray>=2024.1",
 ]
@@ -68,6 +70,5 @@ target-version = "py311"
 select = ["E", "F", "I", "UP", "B", "SIM"]
 
 [tool.mypy]
-python_version = "3.11"
 warn_unused_configs = true
 check_untyped_defs = true

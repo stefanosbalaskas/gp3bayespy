@@ -13,7 +13,7 @@ import numbers
 import os
 import warnings
 from dataclasses import dataclass
-from functools import lru_cache
+from functools import cache
 from importlib import import_module
 from importlib.metadata import PackageNotFoundError, version
 from importlib.util import find_spec
@@ -221,7 +221,7 @@ def _package_version(package: str) -> str:
         return "not_installed"
 
 
-@lru_cache(maxsize=None)
+@cache
 def _importable(package: str) -> bool:
     if find_spec(package) is None:
         return False
@@ -244,6 +244,11 @@ def _require_pymc(purpose: str) -> None:
             f"Optional package `pymc` is required to {purpose} and must import "
             "successfully. Install or repair the `gp3bayespy[bayes]` extra."
         )
+
+
+def _load_pymc() -> Any:
+    """Import PyMC only after the optional-backend gate has passed."""
+    return import_module("pymc")
 
 
 def _backend_versions() -> dict[str, str]:

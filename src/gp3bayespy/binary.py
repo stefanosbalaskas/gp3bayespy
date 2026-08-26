@@ -16,12 +16,13 @@ from typing import Any, cast
 
 import numpy as np
 import pandas as pd
-from scipy.special import expit
+from scipy.special import expit  # type: ignore[import-untyped]
 
 from .contracts import ModelContract
 from .exceptions import GP3BayesError
 from .fitting import (
     _backend_versions,
+    _load_pymc,
     _pymc_available,
     _require_pymc,
     _translation_parameter_table,
@@ -1236,7 +1237,7 @@ def _run_binary_pymc(
     specification: BinaryModelSpecification,
     controls: Mapping[str, int | float],
 ) -> tuple[Any, Any]:
-    import pymc as pm  # type: ignore[import-untyped]
+    pm = _load_pymc()
 
     prepared = cast(BinaryPrepared, specification.prepared)
     data = prepared.data
