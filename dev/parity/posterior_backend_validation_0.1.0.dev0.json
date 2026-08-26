@@ -1,0 +1,41 @@
+{
+  "kind": "runtime-captured Python validation evidence",
+  "milestone": "GPB-PY-05 posterior foundation",
+  "validated_commit": "6bf5ecc",
+  "python_version": "3.13.15",
+  "quality_gates": {
+    "ruff": {
+      "status": "pass"
+    },
+    "mypy": {
+      "status": "pass",
+      "source_files": 13
+    },
+    "pytest": {
+      "status": "pass",
+      "tests": 158
+    },
+    "build": {
+      "status": "pass",
+      "artifacts": [
+        "sdist",
+        "wheel"
+      ]
+    }
+  },
+  "backend_smoke": {
+    "status": "pass",
+    "binary_posterior_path": "pass",
+    "duration_posterior_path": "pass",
+    "chains": 2,
+    "tune_per_chain": 50,
+    "draws_per_chain": 50,
+    "binary_diagnostic_threshold_status": "fail",
+    "duration_diagnostic_threshold_status": "fail",
+    "diagnostic_fail_is_expected_for_short_smoke": true,
+    "diagnostic_claims_permitted": false,
+    "convergence_claim": false,
+    "posterior_adequacy_established": false
+  },
+  "interpretation": "The real PyMC/ArviZ smoke validates executable posterior extraction, summary, and diagnostic integration. The deliberately short chains failed prespecified diagnostic thresholds, which is expected and confirms conservative reporting. This smoke does not establish convergence or posterior adequacy."
+}

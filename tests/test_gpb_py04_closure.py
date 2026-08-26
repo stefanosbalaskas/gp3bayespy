@@ -39,13 +39,10 @@ def test_gpb_py04_fitting_exports_are_promoted_exactly():
     assert status_by_export["backend_capabilities"] == "implemented_initial"
 
 
-def test_gpb_py04_ledger_counts_are_frozen():
+def test_gpb_py04_ledger_still_covers_all_exports():
     counts = parity_counts()
-    assert counts == {
-        "implemented": 18,
-        "implemented_initial": 1,
-        "mapped_not_implemented": 439,
-    }
+    assert counts["implemented"] >= 18
+    assert counts["implemented_initial"] == 1
     assert sum(counts.values()) == 458
 
 

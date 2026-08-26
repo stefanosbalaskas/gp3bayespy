@@ -502,7 +502,7 @@ diagnose_binary_fit,diagnose_binary_fit,binary-posterior-validation.R,233,"fit,
   ess_per_chain_fail = 50,
   maximum_treedepth_fraction = 0.01,
   ebfmi_pass = 0.30,
-  ebfmi_fail = 0.20",diagnose_binary_fit.Rd,gp3bayespy.binary,mapped_not_implemented
+  ebfmi_fail = 0.20",diagnose_binary_fit.Rd,gp3bayespy.binary,implemented
 diagnose_duration_fit,diagnose_duration_fit,duration-posterior-validation.R,123,"fit,
   rhat_pass = 1.01,
   rhat_fail = 1.05,
@@ -510,7 +510,7 @@ diagnose_duration_fit,diagnose_duration_fit,duration-posterior-validation.R,123,
   ess_per_chain_fail = 50,
   maximum_treedepth_fraction = 0.01,
   ebfmi_pass = 0.30,
-  ebfmi_fail = 0.20",diagnose_duration_fit.Rd,gp3bayespy.duration,mapped_not_implemented
+  ebfmi_fail = 0.20",diagnose_duration_fit.Rd,gp3bayespy.duration,implemented
 diagnose_model_fit,diagnose_model_fit,unified-workflow-api.R,281,"fit, ...",diagnose_model_fit.Rd,gp3bayespy.unified_workflow_api,mapped_not_implemented
 diagnose_pupil_fit,diagnose_pupil_fit,pupil-diagnostics.R,297,"fit, ndraws = 200L, max_lag = 10L, max_cells = 3000000L",diagnose_pupil_fit.Rd,gp3bayespy.pupil,mapped_not_implemented
 diagnostic_dashboard_table,diagnostic_dashboard_table,publication-registry-dashboard.R,436,x,diagnostic_dashboard_table.Rd,gp3bayespy.reporting,mapped_not_implemented
@@ -572,7 +572,7 @@ extract_log_likelihood,extract_log_likelihood,postfit-exploration.R,261,"fit,
 extract_posterior_draws,extract_posterior_draws,postfit-exploration.R,185,"fit,
   variables = NULL,
   regex = NULL,
-  format = c(""array"", ""matrix"", ""df"", ""rvars"")",extract_posterior_draws.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
+  format = c(""array"", ""matrix"", ""df"", ""rvars"")",extract_posterior_draws.Rd,gp3bayespy.postfit_exploration,implemented
 extract_posterior_predictions,extract_posterior_predictions,prediction-support.R,543,"fit,
   newdata = NULL,
   include_group_effects = FALSE,
@@ -1441,14 +1441,14 @@ summarise_binary_group_variation,summarise_binary_group_variation,specification-
   group = c(""participant"", ""item"")",summarise_binary_group_variation.Rd,gp3bayespy.specification_closure,mapped_not_implemented
 summarise_binary_posterior,summarise_binary_posterior,binary-posterior-validation.R,278,"fit,
   probability = 0.95,
-  variables = NULL",summarise_binary_posterior.Rd,gp3bayespy.binary,mapped_not_implemented
+  variables = NULL",summarise_binary_posterior.Rd,gp3bayespy.binary,implemented
 summarise_condition_balance,summarise_condition_balance,specification-closure.R,213,"data,
   contract,
   warning_fraction = 0.10,
   failure_fraction = 0.02",summarise_condition_balance.Rd,gp3bayespy.specification_closure,mapped_not_implemented
 summarise_duration_posterior,summarise_duration_posterior,duration-posterior-validation.R,167,"fit,
   probability = 0.95,
-  variables = NULL",summarise_duration_posterior.Rd,gp3bayespy.duration,mapped_not_implemented
+  variables = NULL",summarise_duration_posterior.Rd,gp3bayespy.duration,implemented
 summarise_estimand_draws,summarise_estimand_draws,specification-closure.R,1523,"x,
   quantities = NULL,
   probs = c(0.025, 0.5, 0.975)",summarise_estimand_draws.Rd,gp3bayespy.specification_closure,mapped_not_implemented
