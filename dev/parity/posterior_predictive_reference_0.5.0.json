@@ -49,5 +49,5 @@
     "Central predictive intervals use the R quantile(type = 8) convention.",
     "No unrestricted backend arguments are exposed."
   ],
-  "ledger_promoted": false
+  "ledger_promoted": true
 }

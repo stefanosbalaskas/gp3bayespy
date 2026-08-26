@@ -154,7 +154,7 @@ check_binary_posterior_predictive,check_binary_posterior_predictive,binary-poste
   draws = 500,
   seed = 1,
   pass_probability = 0.80,
-  review_probability = 0.95",check_binary_posterior_predictive.Rd,gp3bayespy.binary,mapped_not_implemented
+  review_probability = 0.95",check_binary_posterior_predictive.Rd,gp3bayespy.binary,implemented
 check_binary_ppc_details,check_binary_ppc_details,specification-closure.R,2456,"fit,
   draws = 300L,
   seed = 1L,
@@ -174,7 +174,7 @@ check_duration_posterior_predictive,check_duration_posterior_predictive,duration
   draws = 500L,
   seed = 1L,
   pass_probability = 0.80,
-  review_probability = 0.95",check_duration_posterior_predictive.Rd,gp3bayespy.duration,mapped_not_implemented
+  review_probability = 0.95",check_duration_posterior_predictive.Rd,gp3bayespy.duration,implemented
 check_duration_ppc_details,check_duration_ppc_details,specification-closure.R,2567,"fit,
   draws = 300L,
   seed = 1L,

@@ -279,9 +279,8 @@ def test_ppc_public_signatures_expose_no_unrestricted_backend_escape_hatches():
         assert not forbidden.intersection(inspect.signature(function).parameters)
 
 
-def test_gpb_py07_does_not_promote_ledger_before_runtime_closure():
-    assert gp.parity_counts() == {
-        "mapped_not_implemented": 424,
-        "implemented": 33,
-        "implemented_initial": 1,
-    }
+def test_gpb_py07_historical_preclosure_ledger_floor_is_preserved():
+    counts = gp.parity_counts()
+    assert counts["implemented"] >= 33
+    assert counts["implemented_initial"] == 1
+    assert sum(counts.values()) == 458

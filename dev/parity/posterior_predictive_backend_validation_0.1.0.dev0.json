@@ -1,0 +1,59 @@
+{
+  "validation_version": "0.1",
+  "tranche": "GPB-PY-07 posterior predictive checks",
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "validated_commit": "fd046c2",
+  "validated_commit_sha": "fd046c267c5b3cc8bc4f778b58dcf6713ebae5e6",
+  "platform": {
+    "os": "Windows",
+    "python": "3.13.15",
+    "project": "gp3bayespy 0.1.0.dev0"
+  },
+  "quality_gates": {
+    "ruff": {
+      "status": "pass"
+    },
+    "mypy": {
+      "status": "pass",
+      "source_files": 15
+    },
+    "pytest": {
+      "status": "pass",
+      "tests": 217
+    },
+    "build": {
+      "status": "pass",
+      "sdist": true,
+      "wheel": true
+    }
+  },
+  "backend_smoke": {
+    "status": "pass",
+    "script": "validation/smoke_ppc_backend.py",
+    "sampling_backend": "PyMC/NUTS",
+    "binary_ppc_path": "pass",
+    "duration_ppc_path": "pass",
+    "binary_ppc_status": "review",
+    "duration_ppc_status": "pass",
+    "binary_brier_score": 0.1641711837616418,
+    "duration_log_rmse": 0.46049839895876976,
+    "global_adequacy_established": false,
+    "short_sampling_smoke": true,
+    "chains_per_fit": 1,
+    "tune_per_chain": 50,
+    "draws_per_chain": 50,
+    "nonfatal_messages": [
+      "g++ not available",
+      "Only 50 samples per chain",
+      "PyMC log_likelihood idata_kwargs FutureWarning"
+    ]
+  },
+  "governance": {
+    "ppc_status_is_global_adequacy_claim": false,
+    "binary_adequacy_established": false,
+    "duration_adequacy_established": false,
+    "ppc_establishes_causality": false,
+    "ppc_establishes_out_of_sample_adequacy": false
+  }
+}

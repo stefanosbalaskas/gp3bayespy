@@ -27,7 +27,7 @@ def test_gpb_py07_reference_fixture_tracks_exact_two_exports():
         "check_binary_posterior_predictive",
         "check_duration_posterior_predictive",
     ]
-    assert fixture["ledger_promoted"] is False
+    assert fixture["ledger_promoted"] is True
 
 
 def test_gpb_py07_python_signatures_keep_restricted_r_control_surface():

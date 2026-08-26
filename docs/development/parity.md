@@ -60,3 +60,12 @@ A real Windows/Python 3.13.15 PyMC/NUTS smoke completed binary and duration pred
 
 Current ledger counts: 33 `implemented`, 1 `implemented_initial`, 424 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` until its broader capability contract is separately closed.
 
+## GPB-PY-07 posterior predictive checkpoint
+
+The governed posterior-predictive validation layer is frozen against the R gp3bayes 0.5.0 binary and duration posterior-validation contracts. Two additional exports are now `implemented`: `check_binary_posterior_predictive` and `check_duration_posterior_predictive`.
+
+Binary checks compare six declared observed summaries with replicated outcomes and report a Brier score from posterior expected probabilities. Duration checks compare nine positive-scale summaries and report log-scale RMSE from posterior expected durations. Central predictive intervals retain the R `quantile(type = 8)` convention and statuses remain limited to the declared summaries.
+
+A real Windows/Python 3.13.15 PyMC/NUTS smoke completed both PPC paths at implementation commit `fd046c2`. The binary smoke status was `review` and the duration smoke status was `pass`; neither result is a global model-adequacy declaration. Runtime evidence is frozen in `dev/parity/posterior_predictive_backend_validation_0.1.0.dev0.json`.
+
+Current ledger counts: 35 `implemented`, 1 `implemented_initial`, 422 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` until its broader capability contract is separately closed.
