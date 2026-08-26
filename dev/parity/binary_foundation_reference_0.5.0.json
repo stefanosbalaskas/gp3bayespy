@@ -1,0 +1,42 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "source_file": "R/binary-workflow-foundation.R",
+  "test_file": "tests/testthat/test-binary-workflow-foundation.R",
+  "provenance": "R-derived from frozen source and tests; stochastic draws are not expected to be bit-identical across R and Python RNG implementations.",
+  "exports": {
+    "simulate_hierarchical_binary_data": {
+      "parity_mode": "structural_and_stochastic_semantic",
+      "class": "gp3bayes_binary_simulation",
+      "schema": ["simulation_version", "data", "truth", "random_effects", "design"],
+      "default_rows": 800,
+      "condition_levels": ["control", "treatment"],
+      "condition_coding": {"control": -0.5, "treatment": 0.5}
+    },
+    "prepare_hierarchical_binary_data": {
+      "parity_mode": "deterministic_structural",
+      "class": "gp3bayes_binary_prepared",
+      "schema": ["preparation_version", "data", "contract", "audit", "transformations", "decision_log", "fixed_formula", "fixed_formula_text", "model_matrix_columns", "n_input_rows", "n_analysis_rows", "rows_removed", "contains_data", "backend", "fit_performed"],
+      "backend": "none",
+      "fit_performed": false
+    },
+    "specify_binary_model": {
+      "parity_mode": "deterministic_structural",
+      "classes": ["gp3bayes_binary_model_specification", "gp3bayes_model_specification"],
+      "fitting_engine": "none",
+      "backend_dependency": "none",
+      "unrestricted_formula": false,
+      "fit_performed": false,
+      "prior_predictive_performed": false
+    },
+    "check_binary_prior_predictive": {
+      "parity_mode": "deterministic_within_python_and_stochastic_semantic_across_languages",
+      "classes": ["gp3bayes_binary_prior_predictive_check", "gp3bayes_prior_predictive_check"],
+      "summary_columns": ["overall_rate", "condition_low_rate", "condition_high_rate", "condition_rate_contrast", "participant_rate_sd", "item_rate_sd", "participant_all_zero", "participant_all_one", "probability_below_boundary", "probability_above_boundary"],
+      "check_names": ["overall_rate", "condition_rates", "condition_contrast", "participant_degeneracy", "boundary_probability_mass"],
+      "statuses": ["pass", "fail", "not_applicable"],
+      "backend": "none",
+      "fitting_performed": false
+    }
+  }
+}
