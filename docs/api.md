@@ -97,3 +97,44 @@ posterior adequacy, causal identification, or substantive validity.
 ::: gp3bayespy.diagnose_duration_fit
 
 ::: gp3bayespy.summarise_duration_posterior
+
+## Governed predictive foundation
+
+The predictive layer ports the first frozen R 0.5.0 `prediction-support.R`
+contracts onto retained PyMC posterior draws. Expected responses, new-outcome
+posterior predictive draws, linear-predictor draws, and the lognormal
+duration median remain distinct quantities. Support auditing reports numeric
+extrapolation, novel categorical/group levels, and missing required variables,
+but never drops or rejects prediction rows automatically.
+
+Population-level predictions exclude fitted participant/item effects by
+default. Group effects can be requested explicitly; unseen grouping levels
+require `allow_new_levels=True`. Predictions are descriptive posterior
+quantities only and do not establish causal effects or out-of-sample adequacy.
+
+::: gp3bayespy.create_prediction_grid
+
+::: gp3bayespy.audit_prediction_support
+
+::: gp3bayespy.prediction_support_table
+
+::: gp3bayespy.predict_model
+
+::: gp3bayespy.prediction_table
+
+::: gp3bayespy.extract_expected_predictions
+
+::: gp3bayespy.extract_posterior_predictions
+
+::: gp3bayespy.extract_linear_predictions
+
+::: gp3bayespy.predict_binary_probability
+
+::: gp3bayespy.predict_duration
+
+### Prediction result objects
+
+::: gp3bayespy.PredictionSupport
+
+::: gp3bayespy.Prediction
+

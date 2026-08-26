@@ -39,6 +39,20 @@ from .duration import (
 from .exceptions import BackendUnavailableError, GP3BayesError
 from .parity import parity_counts, read_parity_manifest, reference_metadata
 from .postfit_exploration import extract_posterior_draws
+from .predictive import (
+    Prediction,
+    PredictionSupport,
+    audit_prediction_support,
+    create_prediction_grid,
+    extract_expected_predictions,
+    extract_linear_predictions,
+    extract_posterior_predictions,
+    predict_binary_probability,
+    predict_duration,
+    predict_model,
+    prediction_support_table,
+    prediction_table,
+)
 from .readiness import AuditCheck, ReadinessAudit, audit_model_readiness
 from .specification import (
     ModelSpecification,
@@ -72,6 +86,8 @@ __all__ = [
     "ModelContract",
     "ModelSpecification",
     "PriorSpecification",
+    "Prediction",
+    "PredictionSupport",
     "ReadinessAudit",
     "audit_model_readiness",
     "backend_capabilities",
@@ -89,6 +105,16 @@ __all__ = [
     "parity_counts",
     "prepare_hierarchical_binary_data",
     "prepare_hierarchical_duration_data",
+    "audit_prediction_support",
+    "create_prediction_grid",
+    "extract_expected_predictions",
+    "extract_linear_predictions",
+    "extract_posterior_predictions",
+    "predict_binary_probability",
+    "predict_duration",
+    "predict_model",
+    "prediction_support_table",
+    "prediction_table",
     "read_parity_manifest",
     "reference_metadata",
     "simulate_hierarchical_binary_data",

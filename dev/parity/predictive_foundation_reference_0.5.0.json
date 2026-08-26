@@ -1,0 +1,95 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "reference_commit": "0ad32d8921c3b267d2021324c3b3568edf3ae01f",
+  "source_file": "R/prediction-support.R",
+  "tranche": "GPB-PY-06 predictive foundation",
+  "exports": [
+    {
+      "name": "create_prediction_grid",
+      "source_line": 156,
+      "r_signature": "x,\n  variables = NULL,\n  at = list(),\n  numeric_at = c(\"median\", \"mean\"),\n  max_rows = 5000L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    },
+    {
+      "name": "audit_prediction_support",
+      "source_line": 281,
+      "r_signature": "fit, newdata",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    },
+    {
+      "name": "prediction_support_table",
+      "source_line": 386,
+      "r_signature": "x",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    },
+    {
+      "name": "predict_model",
+      "source_line": 412,
+      "r_signature": "fit,\n  newdata = NULL,\n  type = c(\"expected\", \"predictive\", \"linear\", \"median\"),\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  probs = c(0.025, 0.5, 0.975),\n  seed = 1L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    },
+    {
+      "name": "prediction_table",
+      "source_line": 507,
+      "r_signature": "x",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    },
+    {
+      "name": "extract_expected_predictions",
+      "source_line": 520,
+      "r_signature": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    },
+    {
+      "name": "extract_posterior_predictions",
+      "source_line": 543,
+      "r_signature": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  seed = 1L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    },
+    {
+      "name": "extract_linear_predictions",
+      "source_line": 568,
+      "r_signature": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    },
+    {
+      "name": "predict_binary_probability",
+      "source_line": 591,
+      "r_signature": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  probs = c(0.025, 0.5, 0.975)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    },
+    {
+      "name": "predict_duration",
+      "source_line": 618,
+      "r_signature": "fit,\n  newdata = NULL,\n  type = c(\"median\", \"expected\", \"predictive\"),\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = NULL,\n  probs = c(0.025, 0.5, 0.975),\n  seed = 1L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "semantic/structural with documented PyMC backend adaptation"
+    }
+  ],
+  "governance_invariants": [
+    "Prediction support flags do not remove or reject rows automatically.",
+    "Expected, predictive, linear, and duration-median quantities remain distinct.",
+    "Predictions are descriptive posterior quantities and do not establish causal effects.",
+    "Prediction does not establish out-of-sample adequacy.",
+    "No fitting or posterior mutation occurs during prediction.",
+    "Binary predictive draws are Bernoulli; duration predictive draws are lognormal.",
+    "Duration expected values include the lognormal residual-scale correction."
+  ],
+  "intentional_python_adaptations": [
+    "PyMC InferenceData replaces brms posterior containers.",
+    "The Python implementation reconstructs approved linear predictors from retained posterior draws instead of calling brms posterior_epred/posterior_predict/posterior_linpred.",
+    "Python mappings replace R named lists in create_prediction_grid(at=...).",
+    "New grouping levels with allow_new_levels=True use posterior-draw uncertainty from fitted group effects; they are never accepted silently when allow_new_levels=False."
+  ],
+  "ledger_promoted": false
+}
