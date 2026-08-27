@@ -79,3 +79,13 @@ Binary scoring preserves Brier score, finite-clipped log loss, average-rank AUC,
 A real Windows/Python 3.13.15 PyMC/NUTS smoke completed both binary and duration scoring/calibration paths at implementation commit `cde4776`. The smoke produced binary Brier 0.16904163877577907, binary AUC 0.86, duration log-RMSE 0.43882913179095007, and four calibration bins. No threshold, score, calibration result, or coverage summary made an automatic decision or established global model adequacy. Runtime evidence is frozen in `dev/parity/predictive_scoring_backend_validation_0.1.0.dev0.json`.
 
 Current ledger counts: 43 `implemented`, 1 `implemented_initial`, 414 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` until its broader capability contract is separately closed.
+
+## GPB-PY-09 predictive contrasts and diagnostics checkpoint
+
+The descriptive predictive-diagnostics layer is frozen against the R gp3bayes 0.5.0 `prediction-support.R` contracts. Five additional exports are now `implemented`: `prediction_contrast`, `prediction_exceedance_probability`, `prediction_uncertainty_decomposition`, `grouped_prediction_check`, and `predictive_residuals`.
+
+Contrast rows retain R one-based identifiers and ratio or odds-ratio summaries remain restricted to valid response scales. Exceedance probabilities use strict above/below comparisons. Prediction uncertainty separates expected-response Monte Carlo variance from total posterior-predictive variance only descriptively and is explicitly not a causal variance decomposition. Grouped checks never exclude groups automatically, and residuals remain descriptive model diagnostics rather than adequacy declarations.
+
+A real Windows/Python 3.13.15 PyMC/NUTS smoke completed binary and duration diagnostic paths at implementation commit `c4c5221`. The smoke produced a difference mean of -0.010147057651756204, odds-ratio mean of 1.071040109372952, duration-ratio mean of 0.8580219252316759, and six grouped rows. No contrast or exceedance result made an automatic decision; no group was automatically excluded; uncertainty was not interpreted causally; and global adequacy remained unestablished. Runtime evidence is frozen in `dev/parity/predictive_diagnostics_backend_validation_0.1.0.dev0.json`.
+
+Current ledger counts: 48 `implemented`, 1 `implemented_initial`, 409 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` until its broader capability contract is separately closed.

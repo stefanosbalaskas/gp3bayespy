@@ -26,10 +26,10 @@ def test_gpb_py09_reference_is_frozen_to_gp3bayes_050():
     assert fixture["source_file"] == "R/prediction-support.R"
 
 
-def test_gpb_py09_reference_tracks_exact_five_exports_preclosure():
+def test_gpb_py09_reference_tracks_exact_five_exports():
     fixture = _fixture()
     assert [row["name"] for row in fixture["exports"]] == EXPORTS
-    assert fixture["ledger_promoted"] is False
+    assert fixture["ledger_promoted"] is True
 
 
 def test_gpb_py09_python_signatures_match_restricted_control_surfaces():

@@ -1,0 +1,64 @@
+{
+  "validation_version": "0.1",
+  "tranche": "GPB-PY-09 predictive contrasts and diagnostics",
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "validated_commit": "c4c5221",
+  "validated_commit_sha": "c4c5221516fc0456691b8152eeaf250985baf46d",
+  "platform": {
+    "os": "Windows",
+    "python": "3.13.15",
+    "project": "gp3bayespy 0.1.0.dev0"
+  },
+  "quality_gates": {
+    "ruff": {
+      "status": "pass"
+    },
+    "mypy": {
+      "status": "pass",
+      "source_files": 15
+    },
+    "pytest": {
+      "status": "pass",
+      "tests": 270
+    },
+    "build": {
+      "status": "pass",
+      "sdist": true,
+      "wheel": true
+    }
+  },
+  "backend_smoke": {
+    "status": "pass",
+    "script": "validation/smoke_predictive_diagnostics.py",
+    "sampling_backend": "PyMC/NUTS",
+    "binary_diagnostics_path": "pass",
+    "duration_diagnostics_path": "pass",
+    "difference_mean": -0.010147057651756204,
+    "odds_ratio_mean": 1.071040109372952,
+    "duration_ratio_mean": 0.8580219252316759,
+    "grouped_rows": 6,
+    "automatic_decisions": false,
+    "automatic_group_exclusion": false,
+    "causal_variance_decomposition": false,
+    "global_adequacy_established": false,
+    "short_sampling_smoke": true,
+    "chains_per_fit": 1,
+    "tune_per_chain": 50,
+    "draws_per_chain": 50,
+    "nonfatal_messages": [
+      "g++ not available",
+      "Only 50 samples per chain",
+      "PyMC log_likelihood idata_kwargs FutureWarning"
+    ]
+  },
+  "governance": {
+    "contrasts_make_automatic_decision": false,
+    "exceedance_probabilities_make_automatic_decision": false,
+    "grouped_checks_exclude_automatically": false,
+    "uncertainty_is_causal_variance_decomposition": false,
+    "residuals_establish_global_adequacy": false,
+    "diagnostics_establish_causality": false,
+    "diagnostics_establish_out_of_sample_adequacy": false
+  }
+}

@@ -50,5 +50,5 @@
     "Posterior interval summaries retain the frozen R default quantile convention (type 7).",
     "No unrestricted backend, likelihood, formula, prior, or decision arguments are exposed."
   ],
-  "ledger_promoted": false
+  "ledger_promoted": true
 }

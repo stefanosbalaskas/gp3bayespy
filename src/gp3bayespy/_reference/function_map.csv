@@ -728,7 +728,7 @@ grouped_prediction_check,grouped_prediction_check,prediction-support.R,821,"fit,
   group,
   ndraws = 1000L,
   probs = c(0.025, 0.5, 0.975),
-  seed = 1L",grouped_prediction_check.Rd,gp3bayespy.predictive,mapped_not_implemented
+  seed = 1L",grouped_prediction_check.Rd,gp3bayespy.predictive,implemented
 identify_identifier_like_predictors,identify_identifier_like_predictors,specification-closure.R,383,"data,
   contract,
   unique_fraction = 0.90,
@@ -972,12 +972,12 @@ prediction_contrast,prediction_contrast,prediction-support.R,651,"x,
   row1,
   row2,
   measure = c(""difference"", ""ratio"", ""odds_ratio""),
-  probs = c(0.025, 0.5, 0.975)",prediction_contrast.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",prediction_contrast.Rd,gp3bayespy.predictive,implemented
 prediction_contrast_profile_table,prediction_contrast_profile_table,prediction-surfaces.R,547,x,prediction_contrast_profile_table.Rd,gp3bayespy.predictive,mapped_not_implemented
 prediction_draws_long,prediction_draws_long,predictive-diagnostics-advanced.R,87,"x, max_draws = NULL, seed = 1L",prediction_draws_long.Rd,gp3bayespy.predictive,mapped_not_implemented
 prediction_exceedance_probability,prediction_exceedance_probability,prediction-support.R,711,"x,
   threshold,
-  direction = c(""above"", ""below"")",prediction_exceedance_probability.Rd,gp3bayespy.predictive,mapped_not_implemented
+  direction = c(""above"", ""below"")",prediction_exceedance_probability.Rd,gp3bayespy.predictive,implemented
 prediction_gradient_table,prediction_gradient_table,prediction-surfaces.R,126,"x,
   probs = c(0.025, 0.5, 0.975)",prediction_gradient_table.Rd,gp3bayespy.predictive,mapped_not_implemented
 prediction_interval_width,prediction_interval_width,predictive-diagnostics-advanced.R,665,x,prediction_interval_width.Rd,gp3bayespy.predictive,mapped_not_implemented
@@ -1005,7 +1005,7 @@ prediction_uncertainty_decomposition,prediction_uncertainty_decomposition,predic
   include_group_effects = FALSE,
   allow_new_levels = FALSE,
   ndraws = 1000L,
-  seed = 1L",prediction_uncertainty_decomposition.Rd,gp3bayespy.predictive,mapped_not_implemented
+  seed = 1L",prediction_uncertainty_decomposition.Rd,gp3bayespy.predictive,implemented
 predictive_coverage_table,predictive_coverage_table,prediction-support.R,1227,"x,
   levels = c(0.5, 0.8, 0.9, 0.95)",predictive_coverage_table.Rd,gp3bayespy.predictive,implemented
 predictive_distribution_atlas_table,predictive_distribution_atlas_table,predictive-distribution-atlas.R,74,x,predictive_distribution_atlas_table.Rd,gp3bayespy.predictive,mapped_not_implemented
@@ -1017,7 +1017,7 @@ predictive_quantile_envelope,predictive_quantile_envelope,predictive-distributio
   seed = 1L",predictive_quantile_envelope.Rd,gp3bayespy.predictive,mapped_not_implemented
 predictive_residuals,predictive_residuals,prediction-support.R,912,"fit,
   type = NULL,
-  ndraws = 1000L",predictive_residuals.Rd,gp3bayespy.predictive,mapped_not_implemented
+  ndraws = 1000L",predictive_residuals.Rd,gp3bayespy.predictive,implemented
 preflight_model_specification,preflight_model_specification,design-support-diagnostics.R,704,"specification, ...",preflight_model_specification.Rd,gp3bayespy.design_support_diagnostics,mapped_not_implemented
 prepare_binocular_pupil_timecourse,prepare_binocular_pupil_timecourse,pupil-binocular.R,12,"data,
     left_col = ""pupil_left"",
