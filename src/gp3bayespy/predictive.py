@@ -1261,3 +1261,303 @@ def posterior_predictive_summary_table(
             "`x` must be a posterior predictive gp3bayes prediction."
         )
     return _prediction_summary(x.draws, _probabilities(probs), x.observed)
+
+@dataclass(frozen=True, slots=True)
+class _PredictionUncertainty:
+    """Descriptive posterior Monte Carlo prediction-uncertainty decomposition."""
+
+    table: pd.DataFrame
+    expected: Prediction
+    predictive: Prediction
+    interpretation: str = (
+        "Components are descriptive posterior Monte Carlo variances. "
+        "They are not a causal variance decomposition."
+    )
+    causal_variance_decomposition: bool = False
+
+
+@dataclass(frozen=True, slots=True)
+class _GroupedPredictionCheck:
+    """Grouped posterior-predictive summaries without automatic exclusion."""
+
+    family: str
+    group_column: str
+    table: pd.DataFrame
+    draws: np.ndarray
+    automatic_exclusion: bool = False
+    interpretation: str = (
+        "Observed group summaries are compared with posterior predictive summaries. "
+        "Large discrepancies request review; groups are not excluded automatically."
+    )
+
+
+def _prediction_row(value: object, name: str, n_rows: int) -> int:
+    if (
+        isinstance(value, bool)
+        or not isinstance(value, numbers.Real)
+        or not math.isfinite(float(value))
+        or float(value) != math.floor(float(value))
+        or float(value) < 1
+        or float(value) > n_rows
+    ):
+        raise GP3BayesError("`row1` and `row2` must identify prediction rows.")
+    return int(float(value))
+
+
+def prediction_contrast(
+    x: Prediction,
+    row1: int,
+    row2: int,
+    measure: Literal["difference", "ratio", "odds_ratio"] = "difference",
+    probs: Sequence[float] = (0.025, 0.5, 0.975),
+) -> pd.DataFrame:
+    """Summarize a posterior contrast between two 1-based prediction rows."""
+    if not isinstance(x, Prediction):
+        raise GP3BayesError("`x` must be a gp3bayes prediction.")
+    if measure not in {"difference", "ratio", "odds_ratio"}:
+        raise GP3BayesError(
+            '`measure` must be one of "difference", "ratio", or "odds_ratio".'
+        )
+    row1_value = _prediction_row(row1, "row1", x.draws.shape[1])
+    row2_value = _prediction_row(row2, "row2", x.draws.shape[1])
+    a = np.asarray(x.draws[:, row1_value - 1], dtype=float)
+    b = np.asarray(x.draws[:, row2_value - 1], dtype=float)
+
+    if measure == "difference":
+        values = b - a
+        reference = 0.0
+    elif measure == "ratio":
+        if np.any(a <= 0):
+            raise GP3BayesError("Ratio contrasts require positive denominator draws.")
+        values = b / a
+        reference = 1.0
+    else:
+        if x.family != "binary" or x.type != "expected":
+            raise GP3BayesError(
+                "Odds-ratio contrasts require binary expected probabilities."
+            )
+        epsilon = math.sqrt(np.finfo(float).eps)
+        a_clipped = np.clip(a, epsilon, 1 - epsilon)
+        b_clipped = np.clip(b, epsilon, 1 - epsilon)
+        values = (b_clipped / (1 - b_clipped)) / (
+            a_clipped / (1 - a_clipped)
+        )
+        reference = 1.0
+
+    quantiles = np.quantile(values, _probabilities(probs), method="linear")
+    return pd.DataFrame(
+        [
+            {
+                "row1": row1_value,
+                "row2": row2_value,
+                "measure": measure,
+                "mean": float(np.mean(values)),
+                "lower": float(quantiles[0]),
+                "median": float(quantiles[1]),
+                "upper": float(quantiles[2]),
+                "probability_gt_reference": float(np.mean(values > reference)),
+                "automatic_decision": False,
+            }
+        ]
+    )
+
+
+def prediction_exceedance_probability(
+    x: Prediction,
+    threshold: float,
+    direction: Literal["above", "below"] = "above",
+) -> pd.DataFrame:
+    """Return observation-level posterior exceedance probabilities."""
+    if not isinstance(x, Prediction):
+        raise GP3BayesError("`x` must be a gp3bayes prediction.")
+    threshold_value = _finite_scalar(threshold, "threshold")
+    if direction not in {"above", "below"}:
+        raise GP3BayesError('`direction` must be either "above" or "below".')
+    probability = (
+        np.mean(x.draws > threshold_value, axis=0)
+        if direction == "above"
+        else np.mean(x.draws < threshold_value, axis=0)
+    )
+    return pd.DataFrame(
+        {
+            "observation": np.arange(1, len(probability) + 1, dtype=int),
+            "threshold": threshold_value,
+            "direction": direction,
+            "probability": probability,
+            "automatic_decision": False,
+        }
+    )
+
+
+def prediction_uncertainty_decomposition(
+    fit: _Fit,
+    newdata: pd.DataFrame | None = None,
+    include_group_effects: bool = False,
+    allow_new_levels: bool = False,
+    ndraws: int = 1000,
+    seed: int = 1,
+) -> _PredictionUncertainty:
+    """Decompose predictive variability descriptively, not causally."""
+    draw_n = _positive_integer(ndraws, "ndraws")
+    seed_value = _nonnegative_integer(seed, "seed")
+    expected = predict_model(
+        fit,
+        newdata=newdata,
+        type="expected",
+        include_group_effects=include_group_effects,
+        allow_new_levels=allow_new_levels,
+        ndraws=draw_n,
+    )
+    predictive = predict_model(
+        fit,
+        newdata=expected.newdata,
+        type="predictive",
+        include_group_effects=include_group_effects,
+        allow_new_levels=allow_new_levels,
+        ndraws=draw_n,
+        seed=seed_value,
+    )
+    if draw_n > 1:
+        expected_variance = np.var(expected.draws, axis=0, ddof=1)
+        total_variance = np.var(predictive.draws, axis=0, ddof=1)
+    else:
+        expected_variance = np.full(expected.draws.shape[1], np.nan, dtype=float)
+        total_variance = np.full(predictive.draws.shape[1], np.nan, dtype=float)
+    residual = np.maximum(total_variance - expected_variance, 0.0)
+    expected_fraction = np.divide(
+        expected_variance,
+        total_variance,
+        out=np.full(total_variance.shape, np.nan, dtype=float),
+        where=total_variance > 0,
+    )
+    table = pd.DataFrame(
+        {
+            "observation": np.arange(1, len(total_variance) + 1, dtype=int),
+            "expected_response_variance": expected_variance,
+            "total_predictive_variance": total_variance,
+            "residual_component": residual,
+            "expected_fraction": expected_fraction,
+        }
+    )
+    return _PredictionUncertainty(
+        table=table,
+        expected=expected,
+        predictive=predictive,
+    )
+
+
+def grouped_prediction_check(
+    fit: _Fit,
+    group: str,
+    ndraws: int = 1000,
+    probs: Sequence[float] = (0.025, 0.5, 0.975),
+    seed: int = 1,
+) -> _GroupedPredictionCheck:
+    """Compare observed and posterior-predictive group means conservatively."""
+    validated = _validate_fit(fit)
+    if not isinstance(group, str) or not group:
+        raise GP3BayesError("`group` must name one column in the prepared model data.")
+    prepared = cast(Any, validated.specification.prepared)
+    data = prepared.data
+    if group not in data.columns:
+        raise GP3BayesError("`group` must name one column in the prepared model data.")
+    draw_n = _positive_integer(ndraws, "ndraws")
+    probs_value = _probabilities(probs)
+    seed_value = _nonnegative_integer(seed, "seed")
+    prediction = predict_model(
+        validated,
+        type="predictive",
+        include_group_effects=True,
+        ndraws=draw_n,
+        probs=probs_value,
+        seed=seed_value,
+    )
+    outcome_col = cast(str, validated.specification.contract.mappings["outcome"])
+    group_strings = data[group].astype(str)
+    group_names = sorted(pd.unique(group_strings).tolist())
+    group_draws = np.column_stack(
+        [
+            np.mean(
+                prediction.draws[:, np.flatnonzero((group_strings == name).to_numpy())],
+                axis=1,
+            )
+            for name in group_names
+        ]
+    )
+    quantiles = np.quantile(group_draws, probs_value, axis=0, method="linear")
+    observed_values = pd.to_numeric(data[outcome_col], errors="raise").to_numpy(dtype=float)
+    rows = []
+    for index, name in enumerate(group_names):
+        members = np.flatnonzero((group_strings == name).to_numpy())
+        rows.append(
+            {
+                "group": name,
+                "n": int(len(members)),
+                "observed": float(np.mean(observed_values[members])),
+                "predicted_mean": float(np.mean(group_draws[:, index])),
+                "lower": float(quantiles[0, index]),
+                "predicted_median": float(quantiles[1, index]),
+                "upper": float(quantiles[2, index]),
+            }
+        )
+    return _GroupedPredictionCheck(
+        family=validated.family,
+        group_column=group,
+        table=pd.DataFrame(rows),
+        draws=group_draws,
+    )
+
+
+def predictive_residuals(
+    fit: _Fit,
+    type: Literal["raw", "pearson", "log", "relative"] | None = None,
+    ndraws: int = 1000,
+) -> pd.DataFrame:
+    """Return descriptive residuals from posterior expected responses."""
+    validated = _validate_fit(fit)
+    if validated.family == "binary":
+        residual_type = "raw" if type is None else type
+        if residual_type not in {"raw", "pearson"}:
+            raise GP3BayesError(
+                'Binary residual `type` must be either "raw" or "pearson".'
+            )
+    else:
+        residual_type = "log" if type is None else type
+        if residual_type not in {"raw", "log", "relative"}:
+            raise GP3BayesError(
+                'Duration residual `type` must be one of "raw", "log", or "relative".'
+            )
+    draw_n = _positive_integer(ndraws, "ndraws")
+    prediction = predict_model(
+        validated,
+        type="expected",
+        include_group_effects=True,
+        ndraws=draw_n,
+    )
+    if prediction.observed is None:
+        raise GP3BayesError("Observed outcomes are unavailable.")
+    observed = pd.to_numeric(prediction.observed, errors="raise").to_numpy(dtype=float)
+    expected = prediction.summary["predicted_mean"].to_numpy(dtype=float)
+
+    if residual_type == "raw":
+        residual = observed - expected
+    elif residual_type == "pearson":
+        denominator = np.sqrt(
+            np.maximum(expected * (1 - expected), np.finfo(float).eps)
+        )
+        residual = (observed - expected) / denominator
+    elif residual_type == "log":
+        residual = np.log(observed) - np.log(expected)
+    else:
+        residual = (observed - expected) / expected
+
+    return pd.DataFrame(
+        {
+            "observation": np.arange(1, len(observed) + 1, dtype=int),
+            "observed": observed,
+            "expected": expected,
+            "residual": residual,
+            "type": residual_type,
+        }
+    )
+

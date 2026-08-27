@@ -184,3 +184,27 @@ adequacy.
 ::: gp3bayespy.predictive_coverage_table
 
 ::: gp3bayespy.posterior_predictive_summary_table
+
+## Predictive contrasts and descriptive diagnostics
+
+This layer ports the frozen R 0.5.0 contrast, exceedance, uncertainty,
+grouped-check, and residual contracts. Contrast rows retain the R one-based
+identifiers. Ratio and odds-ratio contrasts remain restricted to scales on
+which they are defined, and exceedance probabilities use strict above/below
+comparisons.
+
+The uncertainty decomposition separates conditional expected-response Monte
+Carlo variance from total posterior-predictive variance only descriptively; it
+is explicitly **not** a causal variance decomposition. Grouped checks never
+exclude groups automatically, and predictive residuals remain descriptive
+model diagnostics rather than adequacy declarations.
+
+::: gp3bayespy.prediction_contrast
+
+::: gp3bayespy.prediction_exceedance_probability
+
+::: gp3bayespy.prediction_uncertainty_decomposition
+
+::: gp3bayespy.grouped_prediction_check
+
+::: gp3bayespy.predictive_residuals

@@ -1,0 +1,54 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "reference_commit": "0ad32d8921c3b267d2021324c3b3568edf3ae01f",
+  "source_file": "R/prediction-support.R",
+  "tranche": "GPB-PY-09 predictive contrasts and diagnostics",
+  "exports": [
+    {
+      "name": "prediction_contrast",
+      "source_line": 651,
+      "r_signature": "x,\n  row1,\n  row2,\n  measure = c(\"difference\", \"ratio\", \"odds_ratio\"),\n  probs = c(0.025, 0.5, 0.975)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "prediction_exceedance_probability",
+      "source_line": 711,
+      "r_signature": "x,\n  threshold,\n  direction = c(\"above\", \"below\")",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "prediction_uncertainty_decomposition",
+      "source_line": 749,
+      "r_signature": "fit,\n  newdata = NULL,\n  include_group_effects = FALSE,\n  allow_new_levels = FALSE,\n  ndraws = 1000L,\n  seed = 1L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/semantic"
+    },
+    {
+      "name": "grouped_prediction_check",
+      "source_line": 821,
+      "r_signature": "fit,\n  group,\n  ndraws = 1000L,\n  probs = c(0.025, 0.5, 0.975),\n  seed = 1L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "predictive_residuals",
+      "source_line": 912,
+      "r_signature": "fit,\n  type = NULL,\n  ndraws = 1000L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    }
+  ],
+  "governance_invariants": [
+    "Prediction contrasts retain R one-based row identifiers.",
+    "Contrasts and exceedance probabilities never make automatic decisions.",
+    "Prediction uncertainty is a descriptive posterior Monte Carlo decomposition, not a causal variance decomposition.",
+    "Grouped posterior-predictive checks never exclude groups automatically.",
+    "Predictive residuals are descriptive model checks and do not establish model adequacy.",
+    "Posterior interval summaries retain the frozen R default quantile convention (type 7).",
+    "No unrestricted backend, likelihood, formula, prior, or decision arguments are exposed."
+  ],
+  "ledger_promoted": false
+}
