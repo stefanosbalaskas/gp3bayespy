@@ -1,0 +1,117 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "reference_commit": "0ad32d8921c3b267d2021324c3b3568edf3ae01f",
+  "source_file": "R/predictive-diagnostics-advanced.R",
+  "source_blob_sha": "1cd4557fa521ee673147d7cc96b4214ef0a8c092",
+  "tranche": "GPB-PY-10 advanced predictive diagnostics",
+  "exports": [
+    {
+      "name": "binary_calibration_error",
+      "source_line": 390,
+      "r_signature": "x,\n  observed = NULL,\n  bins = 10L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "binary_confusion_table",
+      "source_line": 259,
+      "r_signature": "x, observed = NULL, threshold = 0.5",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "binary_group_calibration",
+      "source_line": 438,
+      "r_signature": "x, group",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "binary_precision_recall_curve",
+      "source_line": 342,
+      "r_signature": "x,\n  observed = NULL,\n  thresholds = NULL",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "binary_roc_curve",
+      "source_line": 296,
+      "r_signature": "x, observed = NULL, thresholds = NULL",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "duration_qq_table",
+      "source_line": 472,
+      "r_signature": "x,\n  probs = seq(0.05, 0.95, by = 0.05)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "duration_tail_check",
+      "source_line": 516,
+      "r_signature": "x, threshold",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "group_prediction_summary",
+      "source_line": 557,
+      "r_signature": "x,\n  by,\n  probs = c(0.025, 0.5, 0.975)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "posterior_predictive_statistic",
+      "source_line": 167,
+      "r_signature": "x,\n  statistic = c(\"mean\", \"sd\", \"median\", \"q90\", \"q95\", \"max\", \"tail_rate\"),\n  threshold = NULL",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/semantic"
+    },
+    {
+      "name": "ppc_statistic_table",
+      "source_line": 231,
+      "r_signature": "x",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "prediction_draws_long",
+      "source_line": 87,
+      "r_signature": "x, max_draws = NULL, seed = 1L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "prediction_interval_width",
+      "source_line": 665,
+      "r_signature": "x",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "prediction_pairwise_contrasts",
+      "source_line": 613,
+      "r_signature": "x,\n  rows = NULL,\n  measure = c(\"difference\", \"ratio\"),\n  max_rows = 20L,\n  probs = c(0.025, 0.5, 0.975)",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    },
+    {
+      "name": "prediction_rank_probabilities",
+      "source_line": 690,
+      "r_signature": "x,\n  rows = NULL,\n  direction = c(\"higher\", \"lower\"),\n  max_rows = 20L",
+      "python_module": "gp3bayespy.predictive",
+      "parity_class": "numerical/structural"
+    }
+  ],
+  "governance_invariants": [
+    "Posterior-predictive discrepancy probabilities are descriptive and never automatic adequacy verdicts.",
+    "Binary ROC, precision-recall, confusion, and calibration diagnostics never select a threshold automatically.",
+    "Grouped calibration and prediction summaries are descriptive only.",
+    "Pairwise contrasts and posterior ranking probabilities never make automatic selections.",
+    "Calibration bin breaks retain the R quantile(type = 8) convention; other frozen default quantiles retain type 7.",
+    "No unrestricted backend, likelihood, formula, prior, or decision arguments are exposed."
+  ],
+  "ledger_promoted": false
+}

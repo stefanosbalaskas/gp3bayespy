@@ -208,3 +208,39 @@ model diagnostics rather than adequacy declarations.
 ::: gp3bayespy.grouped_prediction_check
 
 ::: gp3bayespy.predictive_residuals
+
+## Advanced predictive diagnostics
+
+This tranche ports the complete frozen R 0.5.0 `predictive-diagnostics-advanced.R`
+family. These diagnostics remain descriptive: scalar posterior-predictive tail
+probabilities and calibration errors do not establish adequacy; pairwise and
+ranking summaries do not make automatic selections.
+
+::: gp3bayespy.binary_calibration_error
+
+::: gp3bayespy.binary_confusion_table
+
+::: gp3bayespy.binary_group_calibration
+
+::: gp3bayespy.binary_precision_recall_curve
+
+::: gp3bayespy.binary_roc_curve
+
+::: gp3bayespy.duration_qq_table
+
+::: gp3bayespy.duration_tail_check
+
+::: gp3bayespy.group_prediction_summary
+
+::: gp3bayespy.posterior_predictive_statistic
+
+::: gp3bayespy.ppc_statistic_table
+
+::: gp3bayespy.prediction_draws_long
+
+::: gp3bayespy.prediction_interval_width
+
+::: gp3bayespy.prediction_pairwise_contrasts
+
+::: gp3bayespy.prediction_rank_probabilities
+
