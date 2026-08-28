@@ -109,6 +109,6 @@ module = ["scipy", "scipy.*"]
 ignore_missing_imports = true
 
 [[tool.mypy.overrides]]
-module = ["cmdstanpy", "cmdstanpy.*"]
+module = ["cmdstanpy"]
 ignore_missing_imports = true
 

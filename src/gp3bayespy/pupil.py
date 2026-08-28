@@ -2883,11 +2883,11 @@ def simulate_advanced_pupil_timecourse(
         for p in participants
         for trial in range(1, ntrial + 1)
     }
-    frames = []
-    truth_mu = []
-    truth_sigma = []
-    latent_all = []
-    missing_all = []
+    frames: list[pd.DataFrame] = []
+    truth_mu: list[float] = []
+    truth_sigma: list[float] = []
+    latent_all: list[float] = []
+    missing_all: list[bool] = []
     conds = tuple(str(v) for v in conditions)
     for p in participants:
         for trial in range(1, ntrial + 1):
@@ -2952,10 +2952,10 @@ def simulate_advanced_pupil_timecourse(
                     }
                 )
             )
-            truth_mu.extend(mu)
-            truth_sigma.extend(sigma)
-            latent_all.extend(latent)
-            missing_all.extend(missing)
+            truth_mu.extend(float(value) for value in mu)
+            truth_sigma.extend(float(value) for value in sigma)
+            latent_all.extend(float(value) for value in latent)
+            missing_all.extend(bool(value) for value in missing)
     data = pd.concat(frames, ignore_index=True)
     truth = {
         "family": family,
@@ -5411,12 +5411,13 @@ def fit_binocular_pupil_model(
         dtype=float
     ) - np.mean(_base_pupil_training_prediction(right_fit, 200), axis=0)
     ok = np.isfinite(left_resid) & np.isfinite(right_resid)
-    corr = float(np.corrcoef(left_resid[ok], right_resid[ok])[0, 1]) if ok.sum() > 2 else 0.0
+    n_ok = int(np.count_nonzero(ok))
+    corr = float(np.corrcoef(left_resid[ok], right_resid[ok])[0, 1]) if n_ok > 2 else 0.0
     rng = np.random.default_rng(seed + 17)
     corr_draws = np.clip(
         rng.normal(
             corr,
-            max((1 - corr**2) / math.sqrt(max(ok.sum() - 3, 1)), 0.01),
+            max((1 - corr**2) / math.sqrt(max(n_ok - 3, 1)), 0.01),
             min(left_fit.posterior_coefficients.shape[0], 4000),
         ),
         -0.99,
