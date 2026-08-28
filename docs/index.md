@@ -1,46 +1,101 @@
-# gp3bayespy
+---
+hide:
+  - navigation
+  - toc
+---
 
-**Contract-first Bayesian workflows for hierarchical behavioural data in Python**
+<div class="gp-hero">
+  <div class="gp-hero__copy">
+    <div class="gp-kicker">gp3bayes 0.5.0 → Python · released</div>
+    <h1>Bayesian workflows that keep every decision visible.</h1>
+    <p class="gp-lead">
+      Contract-first modelling for repeated-measures and hierarchical behavioural data,
+      with predictive diagnostics, sensitivity analysis, reproducibility, and dynamic pupillometry.
+    </p>
+    <div class="gp-actions">
+      <a class="gp-btn gp-btn--primary" href="getting-started.md">Get started</a>
+      <a class="gp-btn gp-btn--secondary" href="reference/index.md">Browse the API</a>
+      <a class="gp-btn gp-btn--ghost" href="articles/index.md">Explore 59 articles</a>
+    </div>
+    <div class="gp-chip-row">
+      <span>Python ≥ 3.11</span>
+      <span>PyMC</span>
+      <span>CmdStanPy</span>
+      <span>ArviZ</span>
+      <span>Matplotlib</span>
+    </div>
+  </div>
 
-[Get started](#quick-start){ .md-button .md-button--primary }
-[API reference](api.md){ .md-button }
-[Browse 59 articles](articles/index.md){ .md-button }
+  <div class="gp-code-panel">
+    <div class="gp-code-panel__bar">
+      <span></span><span></span><span></span>
+      <strong>first_model.py</strong>
+    </div>
+    <pre><code>from gp3bayespy import (
+    create_model_contract,
+    audit_model_readiness,
+)
 
-!!! success "gp3bayespy 0.5.0 is released"
+contract = create_model_contract(
+    family="binary",
+    outcome_col="selected",
+    participant_col="participant_id",
+    condition_col="condition",
+)
 
-    The first public Python release is frozen against **gp3bayes 0.5.0** with **458/458 canonical exports implemented**, **59/59 articles ported**, and the full cross-platform release gate passing.
-
-`gp3bayespy` brings the governed modelling contracts of the R package `gp3bayes` into Python. It is designed for repeated-measures and hierarchical behavioural data where the analysis needs to remain explicit about priors, model specification, diagnostics, predictive evidence, sensitivity, and interpretation.
-
-<div class="grid cards" markdown>
-
-- **Contract-first modelling**
-
-  Declare outcome, grouping, condition, priors, and model family before fitting. Readiness and specification checks remain explicit.
-
-- **Posterior & predictive validation**
-
-  Work with sampler diagnostics, PPC, calibration, scoring, PSIS-LOO, influence diagnostics, model comparison, and uncertainty summaries.
-
-- **Sensitivity & recovery**
-
-  Run prior-scale sensitivity, power-scaling, group deletion, alternative estimands, SBC, and parameter-recovery workflows.
-
-- **Dynamic pupillometry**
-
-  Analyse baseline/gaze/luminance sensitivity, time courses, temporal dependence, binocular responses, Gaussian-process trajectories, robust models, and missing data.
-
-- **Reproducible evidence**
-
-  Create analysis manifests, model cards, evidence inventories, publication bundles, registries, and transformation-replay records.
-
-- **Governed conclusions**
-
-  The package does not automatically select a preferred model, exclude participants, certify adequacy, establish causality, or infer cognitive/emotional states.
-
+audit = audit_model_readiness(data, contract)
+print(audit.status)</code></pre>
+  </div>
 </div>
 
-## Install
+<div class="gp-stats">
+  <div class="gp-stat"><strong>458 / 458</strong><span>frozen R exports implemented</span></div>
+  <div class="gp-stat"><strong>59 / 59</strong><span>canonical articles ported</span></div>
+  <div class="gp-stat"><strong>321 / 321</strong><span>release tests passing</span></div>
+  <div class="gp-stat"><strong>8 / 8</strong><span>executable examples</span></div>
+  <div class="gp-stat"><strong>3 OS</strong><span>Linux · macOS · Windows CI</span></div>
+</div>
+
+## Choose your path
+
+<div class="gp-paths">
+  <a class="gp-path" href="articles/binary-end-to-end.md">
+    <span class="gp-path__eyebrow">Behavioural models</span>
+    <h3>Binary & duration workflows</h3>
+    <p>Simulate, prepare, specify, fit, diagnose, predict, recover, and report hierarchical outcomes.</p>
+    <strong>Start a model →</strong>
+  </a>
+
+  <a class="gp-path" href="articles/advanced-predictive-diagnostics.md">
+    <span class="gp-path__eyebrow">Predictive evidence</span>
+    <h3>Diagnostics, calibration & PSIS-LOO</h3>
+    <p>Inspect out-of-sample performance, calibration, uncertainty, influence, and comparison without automatic selection.</p>
+    <strong>Inspect evidence →</strong>
+  </a>
+
+  <a class="gp-path" href="articles/bayesian-dynamic-pupillometry.md">
+    <span class="gp-path__eyebrow">Time-course modelling</span>
+    <h3>Dynamic pupillometry</h3>
+    <p>Model pupil trajectories with explicit measurement context, temporal diagnostics, binocular extensions, GP models, and sensitivity workflows.</p>
+    <strong>Explore pupil workflows →</strong>
+  </a>
+</div>
+
+## One workflow, explicit gates
+
+<div class="gp-flow">
+  <div><strong>1</strong><span>Contract</span></div>
+  <div><strong>2</strong><span>Prepare</span></div>
+  <div><strong>3</strong><span>Specify</span></div>
+  <div><strong>4</strong><span>Fit</span></div>
+  <div><strong>5</strong><span>Diagnose</span></div>
+  <div><strong>6</strong><span>Estimate</span></div>
+  <div><strong>7</strong><span>Sensitivity</span></div>
+</div>
+
+`gp3bayespy` deliberately keeps these stages separate. A fitted model is not treated as proof of convergence, adequacy, robustness, causal identification, or substantive interpretation.
+
+## Install in seconds
 
 === "Core"
 
@@ -48,126 +103,114 @@
     python -m pip install gp3bayespy
     ```
 
+    NumPy, pandas, and SciPy workflows with no Bayesian backend required.
+
 === "Bayesian + plots"
 
     ```bash
     python -m pip install "gp3bayespy[bayes,plots]"
     ```
 
-=== "Complete environment"
+    Adds PyMC, CmdStanPy, ArviZ/xarray, and Matplotlib integrations.
+
+=== "Everything"
 
     ```bash
     python -m pip install "gp3bayespy[all]"
     ```
 
-Core workflows use NumPy, pandas, and SciPy. PyMC, CmdStanPy, ArviZ/xarray, and Matplotlib are optional extras.
+    Reproduces the complete development, documentation, plotting, and validation environment.
 
-## Quick start
+[Open the installation guide →](getting-started.md#installation)
 
-```python
-import pandas as pd
-from gp3bayespy import (
-    audit_model_readiness,
-    create_model_contract,
-    create_model_specification,
-    create_prior_specification,
-)
-
-data = pd.DataFrame(
-    {
-        "participant_id": ["p1"] * 4 + ["p2"] * 4,
-        "trial_id": [1, 2, 3, 4] * 2,
-        "condition": ["control", "treatment"] * 4,
-        "selected": [0, 1, 0, 1, 1, 0, 1, 0],
-    }
-)
-
-contract = create_model_contract(
-    family="binary",
-    outcome_col="selected",
-    participant_col="participant_id",
-    trial_col="trial_id",
-    condition_col="condition",
-)
-
-audit = audit_model_readiness(data, contract)
-priors = create_prior_specification(contract, baseline=0.5)
-specification = create_model_specification(contract, audit, priors)
-
-print(specification.formula_text)
-```
-
-The workflow deliberately separates **readiness → prior declaration → specification → fitting → diagnostics → estimands → sensitivity**.
-
-## Choose a workflow
-
-| Goal | Documentation |
-| --- | --- |
-| Hierarchical binary models | [Binary end-to-end](articles/binary-end-to-end.md) |
-| Positive duration models | [Duration end-to-end](articles/duration-end-to-end.md) |
-| Posterior diagnostics | [Posterior diagnostics](articles/posterior-diagnostics.md) |
-| Predictive diagnostics | [Advanced predictive diagnostics](articles/advanced-predictive-diagnostics.md) |
-| PSIS-LOO and model comparison | [LOO influence and model comparison](articles/loo-influence-and-model-comparison.md) |
-| Sensitivity analysis | [Unified sensitivity suites](articles/sensitivity-evidence-workflow.md) |
-| Dynamic pupillometry | [Bayesian dynamic pupillometry](articles/bayesian-dynamic-pupillometry.md) |
-| Reproducible analysis | [Analysis manifests](articles/reproducible-analysis-manifests.md) |
-
-## Explore
+## What is inside?
 
 <div class="grid cards" markdown>
 
-- **[API reference](api.md)**
+-   **Contracts & readiness**
 
-  Public Python API and signatures.
+    Define the model family, mappings, assumptions, priors, and readiness gates before fitting.
 
-- **[59 articles](articles/index.md)**
+    [Getting started →](getting-started.md)
 
-  Python-facing ports of the canonical gp3bayes 0.5.0 vignettes.
+-   **Posterior & predictive validation**
 
-- **[Executable examples](examples/index.md)**
+    Sampler diagnostics, posterior predictive checks, ROC/PR, calibration, scoring, uncertainty, and prediction surfaces.
 
-  Eight end-to-end scripts covering the main workflow families.
+    [Predictive workflows →](articles/advanced-predictive-diagnostics.md)
 
-- **[Plot gallery](plot-gallery.md)**
+-   **PSIS-LOO & influence**
 
-  Publication-oriented evidence graphics.
+    Pointwise and grouped influence, Pareto-*k* diagnostics, ELPD comparison, and governed model weights.
 
-- **[Migration guide](migration.md)**
+    [LOO workflows →](articles/loo-influence-and-model-comparison.md)
 
-  R-to-Python guidance for gp3bayes users.
+-   **Sensitivity & recovery**
 
-- **[Parity record](development/parity.md)**
+    Prior-scale sensitivity, power-scaling, structural alternatives, group deletion, SBC, and parameter recovery.
 
-  Frozen R reference, function ledger, and closure rules.
+    [Sensitivity workflows →](articles/sensitivity-evidence-workflow.md)
+
+-   **Dynamic pupillometry**
+
+    Preparation, baseline/gaze/luminance sensitivity, time-course fitting, temporal validation, binocular models, GP trajectories, and robust extensions.
+
+    [Pupillometry →](articles/bayesian-dynamic-pupillometry.md)
+
+-   **Reproducible evidence**
+
+    Analysis manifests, model cards, evidence inventories, publication bundles, registries, dashboards, and transformation replay.
+
+    [Reproducibility →](articles/reproducible-analysis-manifests.md)
 
 </div>
 
-## Release validation
+## See the package, not just the API
 
-| Gate | gp3bayespy 0.5.0 |
-| --- | ---: |
-| Frozen exports | **458 / 458** |
-| Canonical articles | **59 / 59** |
-| Tests | **321 / 321** |
-| Branch-aware coverage | **47.9482%** |
-| Public unrestricted `**kwargs` | **0** |
-| Source examples | **8 / 8** |
-| Installed-wheel examples | **8 / 8** |
-| Ruff / mypy | **PASS / PASS** |
-| Cross-platform CI | **PASS** |
-| Strict docs | **PASS** |
+<div class="gp-showcase">
+  <a href="plot-gallery.md">
+    <strong>Plot gallery</strong>
+    <span>Real graphics generated from gp3bayespy workflows →</span>
+  </a>
+  <a href="examples/index.md">
+    <strong>8 executable examples</strong>
+    <span>Small scripts that run end to end →</span>
+  </a>
+  <a href="articles/index.md">
+    <strong>59 guided articles</strong>
+    <span>Browse by workflow instead of filename →</span>
+  </a>
+  <a href="reference/index.md">
+    <strong>API reference hub</strong>
+    <span>458 functions organized by module →</span>
+  </a>
+</div>
 
-See the [R → Python parity record](development/parity.md) for the machine-readable closure evidence.
+## Release confidence
 
-## Governance
+<div class="gp-release-strip">
+  <div><span>Release</span><strong>0.5.0</strong></div>
+  <div><span>Parity</span><strong>458 / 458</strong></div>
+  <div><span>Coverage</span><strong>47.9482%</strong></div>
+  <div><span>Public `**kwargs`</span><strong>0</strong></div>
+  <div><span>Static gates</span><strong>Ruff + mypy PASS</strong></div>
+</div>
+
+The release is frozen against **gp3bayes 0.5.0**. The full validation record is available in [Release v0.5.0](release.md) and the machine-readable closure evidence is documented under [R → Python parity](development/parity.md).
 
 !!! warning "Evidence is not an automatic conclusion"
 
-    Creating or fitting a model does **not** automatically establish convergence, model adequacy, causal identification, robustness, exclusion decisions, preferred-model status, or psychological/cognitive/emotional interpretation. Those remain analyst decisions supported by the relevant diagnostics and evidence.
+    `gp3bayespy` does not automatically select a preferred model, exclude participants,
+    certify adequacy, establish causality, or infer cognitive or emotional states.
+    Those remain analyst decisions supported by the relevant evidence.
 
-## Project links
-
-- [GitHub repository](https://github.com/stefanosbalaskas/gp3bayespy)
-- [PyPI package](https://pypi.org/project/gp3bayespy/)
-- [v0.5.0 release](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.5.0)
-- [R reference package](https://cran.r-project.org/package=gp3bayes)
+<div class="gp-bottom-cta">
+  <div>
+    <span class="gp-kicker">Ready to explore?</span>
+    <h2>Start with a complete workflow.</h2>
+  </div>
+  <div class="gp-actions">
+    <a class="gp-btn gp-btn--primary" href="getting-started.md">Getting started</a>
+    <a class="gp-btn gp-btn--secondary" href="examples/index.md">Run an example</a>
+  </div>
+</div>

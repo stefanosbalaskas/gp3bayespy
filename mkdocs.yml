@@ -11,43 +11,77 @@ copyright: Copyright &copy; 2026 Stefanos Balaskas
 
 theme:
   name: material
+  custom_dir: docs/overrides
   language: en
   icon:
+    logo: material/chart-line
     repo: fontawesome/brands/github
+  font:
+    text: Inter
+    code: JetBrains Mono
   features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.instant.progress
+    - navigation.tracking
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
+    - navigation.path
     - navigation.top
+    - navigation.footer
     - search.suggest
     - search.highlight
     - toc.follow
     - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+    - content.action.view
     - content.tabs.link
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: indigo
+      accent: deep purple
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: indigo
+      accent: deep purple
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
 
 nav:
   - Home: index.md
-  - User guide:
-      - Examples: examples/index.md
-      - Plot gallery: plot-gallery.md
+  - Get started:
+      - Getting started: getting-started.md
+      - Executable examples: examples/index.md
       - Migration from R: migration.md
-  - Articles: articles/index.md
-  - API reference: api.md
-  - Parity & development:
+  - Workflows:
+      - Binary models: articles/binary-end-to-end.md
+      - Duration models: articles/duration-end-to-end.md
+      - Predictive diagnostics: articles/advanced-predictive-diagnostics.md
+      - PSIS-LOO & comparison: articles/loo-influence-and-model-comparison.md
+      - Sensitivity & recovery: articles/sensitivity-evidence-workflow.md
+      - Dynamic pupillometry: articles/bayesian-dynamic-pupillometry.md
+      - Reproducibility: articles/reproducible-analysis-manifests.md
+  - Learn:
+      - Article library: articles/index.md
+      - Plot gallery: plot-gallery.md
+  - Reference:
+      - API reference: reference/index.md
+  - Project:
+      - Release v0.5.0: release.md
+      - Governance: governance.md
       - R → Python parity: development/parity.md
 
 not_in_nav: |
   /articles/*.md
+  /reference/*.md
+  /api.md
 
 markdown_extensions:
   - admonition
@@ -64,9 +98,17 @@ plugins:
   - search
   - mkdocstrings
 
+extra_css:
+  - stylesheets/extra.css
+
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/stefanosbalaskas/gp3bayespy
+      name: gp3bayespy on GitHub
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/gp3bayespy/
+      name: gp3bayespy on PyPI
+    - icon: fontawesome/brands/r-project
+      link: https://cran.r-project.org/package=gp3bayes
+      name: gp3bayes R reference
