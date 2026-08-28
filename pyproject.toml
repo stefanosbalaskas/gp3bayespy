@@ -107,3 +107,8 @@ check_untyped_defs = true
 [[tool.mypy.overrides]]
 module = ["scipy", "scipy.*"]
 ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+module = ["cmdstanpy", "cmdstanpy.*"]
+ignore_missing_imports = true
+
