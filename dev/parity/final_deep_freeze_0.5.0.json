@@ -1,0 +1,96 @@
+﻿{
+    "schema":  "gp3bayespy-final-deep-freeze-v1",
+    "generated_at":  "2026-08-28T10:31:56Z",
+    "branch":  "feature/complete-458-parity",
+    "validated_source_commit":  "d9fa3cdaa0ac261cd5b3cb39175d3896d9c8a1c7",
+    "validated_source_tree":  "bdf3455e429d1b8b69b7ca22843287947b7084a0",
+    "remote_source_commit":  "d9fa3cdaa0ac261cd5b3cb39175d3896d9c8a1c7",
+    "reference":  {
+                      "package":  "gp3bayes",
+                      "version":  "0.5.0",
+                      "commit":  "0ad32d8921c3b267d2021324c3b3568edf3ae01f",
+                      "exports_total":  458,
+                      "exports_implemented":  458,
+                      "provisional":  0,
+                      "remaining":  0,
+                      "articles_total":  59,
+                      "articles_ported":  59
+                  },
+    "python_api":  {
+                       "frozen_parity_exports":  458,
+                       "root_all_count":  482,
+                       "support_extra_count":  24,
+                       "support_extras":  [
+                                              "AuditCheck",
+                                              "BackendUnavailableError",
+                                              "BinaryBackendSpecification",
+                                              "BinaryFit",
+                                              "BinaryModelSpecification",
+                                              "BinaryPrepared",
+                                              "BinaryPriorPredictiveCheck",
+                                              "BinarySimulation",
+                                              "DurationBackendSpecification",
+                                              "DurationFit",
+                                              "DurationModelSpecification",
+                                              "DurationPrepared",
+                                              "DurationPriorPredictiveCheck",
+                                              "DurationSimulation",
+                                              "GP3BayesError",
+                                              "ModelContract",
+                                              "ModelSpecification",
+                                              "Prediction",
+                                              "PredictionSupport",
+                                              "PriorSpecification",
+                                              "ReadinessAudit",
+                                              "parity_counts",
+                                              "read_parity_manifest",
+                                              "reference_metadata"
+                                          ],
+                       "public_kwargs_count":  0
+                   },
+    "validation":  {
+                       "tests":  321,
+                       "failures":  0,
+                       "errors":  0,
+                       "skipped":  0,
+                       "branch_coverage_percent":  47.9482,
+                       "coverage_floor_percent":  45,
+                       "ruff":  "pass",
+                       "mypy":  "pass",
+                       "build":  "pass",
+                       "twine":  "pass",
+                       "strict_docs":  "pass",
+                       "source_examples":  "8/8",
+                       "fresh_wheel_examples":  "8/8",
+                       "fresh_wheel_parity":  "pass",
+                       "github_ci_source_commit":  "run-41-all-jobs-success"
+                   },
+    "artifacts":  {
+                      "source_archive":  {
+                                             "filename":  "gp3bayespy-d9fa3cdaa0ac-source.zip",
+                                             "sha256":  "9fa94d271512d34a3d07b4d53daf39131f0b99830e8320f34f3615892d688163",
+                                             "bytes":  650606
+                                         },
+                      "wheel":  {
+                                    "filename":  "gp3bayespy-0.1.0.dev0-py3-none-any.whl",
+                                    "sha256":  "0921546c92859919960ce52af9f56ab4c5b50968461273bbd3ee4de89c1374c6",
+                                    "bytes":  249811
+                                },
+                      "sdist":  {
+                                    "filename":  "gp3bayespy-0.1.0.dev0.tar.gz",
+                                    "sha256":  "1c36a791e32c3686e02aad83ecce57ba6b20a4910cd232d7d4d5f488896a3977",
+                                    "bytes":  272198
+                                }
+                  },
+    "provenance":  {
+                       "reused_r16_log_directory":  "C:\\Users\\Stefanos-PC\\Downloads\\gp3bayespy-deep-freeze-20260828-131526",
+                       "continuation_log_directory":  "C:\\Users\\Stefanos-PC\\Downloads\\gp3bayespy-deep-freeze-r17-20260828-133018"
+                   },
+    "governance":  [
+                       "Frozen R gp3bayes 0.5.0 manifest is the parity source of truth.",
+                       "No automatic adequacy, convergence, causal, cognitive-state, or emotional-state conclusions.",
+                       "No automatic model selection or participant/group exclusion.",
+                       "Optional backend/runtime failures remain explicit.",
+                       "This manifest does not merge main, create a tag, or publish a release."
+                   ]
+}
