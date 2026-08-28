@@ -341,10 +341,24 @@ def _dataset_scalar(dataset: Any, name: str) -> float:
 
 def _diagnostic_metrics(selected: Mapping[str, np.ndarray]) -> pd.DataFrame:
     az = _arviz()
-    posterior = {name: np.asarray(values, dtype=float) for name, values in selected.items()}
-    rhat = az.rhat(posterior, method="rank", chain_axis=0, draw_axis=1)
-    ess_bulk = az.ess(posterior, method="bulk", relative=False, chain_axis=0, draw_axis=1)
-    ess_tail = az.ess(posterior, method="tail", relative=False, chain_axis=0, draw_axis=1)
+    try:
+        xr = import_module("xarray")
+    except Exception as error:
+        raise BackendUnavailableError(
+            "Optional package `xarray` is required for posterior diagnostics and summaries."
+        ) from error
+
+    # Use named sample dimensions instead of version-specific axis keywords.
+    # This remains compatible with ArviZ <1.0 and the modular ArviZ >=1.0 API.
+    posterior = xr.Dataset(
+        {
+            name: (("chain", "draw"), np.asarray(values, dtype=float))
+            for name, values in selected.items()
+        }
+    )
+    rhat = az.rhat(posterior, method="rank")
+    ess_bulk = az.ess(posterior, method="bulk", relative=False)
+    ess_tail = az.ess(posterior, method="tail", relative=False)
     return pd.DataFrame(
         {
             "variable": list(selected),

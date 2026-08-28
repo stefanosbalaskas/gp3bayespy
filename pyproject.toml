@@ -47,6 +47,9 @@ dev = [
   "pandas-stubs>=2.2",
   "build>=1.2",
   "twine>=5",
+  "arviz>=0.18,<1; python_version < '3.12'",
+  "arviz>=1.0; python_version >= '3.12'",
+  "xarray>=2024.1",
 ]
 docs = ["mkdocs>=1.6", "mkdocs-material>=9.5", "mkdocstrings[python]>=0.25"]
 all = [
