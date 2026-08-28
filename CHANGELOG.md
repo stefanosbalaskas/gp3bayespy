@@ -1,7 +1,9 @@
 # Changelog
 
-## 0.1.0.dev0
+## 0.5.0 — 2026-08-28
 
+- First public Python release aligned with the frozen `gp3bayes` 0.5.0 reference.
+- Final deep-freeze validation: 458/458 exports implemented, 59/59 articles ported, 321/321 tests passing, and no public unrestricted `**kwargs`.
 - Completion-candidate parity closure: 458/458 frozen exports materialized and promoted.
 - Materialize 59/59 Python-facing articles and eight executable workflow examples.
 - Add advanced predictive, LOO, sensitivity, reproducibility/reporting and full pupillometry families.

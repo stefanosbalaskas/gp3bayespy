@@ -2,7 +2,7 @@
 
 **gp3bayespy** is the Python port of the R package **gp3bayes**, a contract-first Bayesian workflow package for repeated-measures, hierarchical behavioural data, posterior validation, predictive diagnostics, sensitivity analysis, and dynamic pupillometry.
 
-> **Status:** completion candidate for parity with the frozen **gp3bayes 0.5.0** reference. The 458-export ledger is fully materialized and the 59 canonical vignette sources have Python-facing article counterparts. Static and cross-platform release gates are enforced in GitHub Actions before a release is declared.
+> **Status:** **gp3bayespy 0.5.0** is the first public Python release with frozen parity against **gp3bayes 0.5.0**: 458/458 canonical exports implemented, 59/59 canonical articles ported, eight executable workflow examples, cross-platform CI, and a committed deep-freeze validation manifest.
 
 ## Frozen reference
 
@@ -18,7 +18,7 @@ The port is governed by the frozen CRAN source archive `gp3bayes_0.5.0.tar.gz`:
 
 `dev/parity/function_map.csv` is the machine-readable 458-function ledger. `dev/parity/articles.json` tracks the 59-article documentation map.
 
-## Completion-candidate coverage
+## Release coverage
 
 The current candidate includes the complete public namespace across:
 
@@ -37,19 +37,19 @@ The final closure tests require all 458 exports to be root-importable, all ledge
 Core numerical functionality:
 
 ```bash
-python -m pip install -e .
+python -m pip install gp3bayespy
 ```
 
 Bayesian backends and plotting:
 
 ```bash
-python -m pip install -e ".[bayes,plots]"
+python -m pip install "gp3bayespy[bayes,plots]"
 ```
 
 Everything used by the completion/release gate:
 
 ```bash
-python -m pip install -e ".[all]"
+python -m pip install "gp3bayespy[all]"
 ```
 
 ## Minimal example

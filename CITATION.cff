@@ -1,12 +1,13 @@
 cff-version: 1.2.0
 title: "gp3bayespy: Contract-First Bayesian Workflows for Hierarchical Behavioural Data in Python"
-message: "If you use gp3bayespy, please cite the version you used. During pre-alpha development, also cite the gp3bayes R reference where appropriate."
+message: "If you use gp3bayespy, please cite the version you used and the gp3bayes R reference where appropriate."
 type: software
 authors:
   - family-names: Balaskas
     given-names: Stefanos
     orcid: "https://orcid.org/0000-0003-2444-9796"
-version: 0.1.0.dev0
+version: 0.5.0
 license: MIT
 repository-code: "https://github.com/stefanosbalaskas/gp3bayespy"
 url: "https://stefanosbalaskas.github.io/gp3bayespy/"
+date-released: "2026-08-28"

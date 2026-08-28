@@ -1,4 +1,4 @@
-# Completion-candidate validation
+# Release validation — gp3bayespy 0.5.0
 
 Reference: frozen `gp3bayes` 0.5.0 CRAN source archive.
 
@@ -12,7 +12,7 @@ Reference: frozen `gp3bayes` 0.5.0 CRAN source archive.
 - 54 `tests/testthat/test-*.R` case files
 - source SHA-256: `537eb05f949de1bcc1d6f8234066f064597951ecfa9cbbdf938d0a895ce5dd8a`
 
-## Candidate closure state
+## Final closure state
 
 - parity ledger: 458 `implemented`, 0 `implemented_initial`, 0 `mapped_not_implemented`
 - root namespace: all 458 frozen exports importable
@@ -25,9 +25,9 @@ Reference: frozen `gp3bayes` 0.5.0 CRAN source archive.
 - source distribution build: PASS
 - isolated wheel-target import/example smoke: PASS
 
-## CI-only static/cross-platform gates
+## Static and cross-platform gates
 
-The local container cannot resolve Ruff/mypy from PyPI because registry access is disabled. GitHub Actions therefore performs the authoritative static and cross-platform gates on the completion branch:
+The frozen source and metadata commits passed the authoritative GitHub Actions matrix before the release was finalized:
 
 - Ruff
 - mypy
@@ -37,7 +37,7 @@ The local container cannot resolve Ruff/mypy from PyPI because registry access i
 - an Ubuntu/Python 3.13 `.[all]` installation
 - strict MkDocs build
 
-The candidate must not be represented as a release until those checks are green.
+The final deep-freeze record is `dev/parity/final_deep_freeze_0.5.0.json`. The frozen source commit is `d9fa3cdaa0ac261cd5b3cb39175d3896d9c8a1c7`, and the freeze metadata commit is `791704a0897d3677b8c6d7eb34f8f0aa284a85db`.
 
 ## Governance
 
