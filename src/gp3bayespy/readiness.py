@@ -135,10 +135,7 @@ def _observed_levels(data: pd.DataFrame, column: str | None) -> int | None:
 def _validate_data(data: pd.DataFrame) -> None:
     if not isinstance(data, pd.DataFrame):
         raise GP3BayesError("`data` must be a data frame.")
-    if any(
-        column is None or not isinstance(column, str) or not column
-        for column in data.columns
-    ):
+    if any(column is None or not isinstance(column, str) or not column for column in data.columns):
         raise GP3BayesError("`data` must have non-empty column names.")
     if data.columns.duplicated().any():
         raise GP3BayesError("`data` must not contain duplicated column names.")
@@ -146,9 +143,7 @@ def _validate_data(data: pd.DataFrame) -> None:
 
 def _validate_contract(contract: ModelContract) -> None:
     if not isinstance(contract, ModelContract):
-        raise GP3BayesError(
-            "`contract` must inherit from `gp3bayes_model_contract`."
-        )
+        raise GP3BayesError("`contract` must inherit from `gp3bayes_model_contract`.")
     required_mappings = {
         "outcome",
         "participant",
@@ -182,9 +177,7 @@ def _audit_identifier_types(
             0,
         )
         return
-    unsupported = [
-        column for column in columns if not _supported_identifier(data[column])
-    ]
+    unsupported = [column for column in columns if not _supported_identifier(data[column])]
     if unsupported:
         add(
             "identifier_types",
@@ -205,8 +198,7 @@ def _audit_identifier_types(
 
 def _audit_binary_outcome(series: pd.Series, add: AddCheck) -> None:
     supported = ptypes.is_bool_dtype(series.dtype) or (
-        ptypes.is_numeric_dtype(series.dtype)
-        and not ptypes.is_complex_dtype(series.dtype)
+        ptypes.is_numeric_dtype(series.dtype) and not ptypes.is_complex_dtype(series.dtype)
     )
     if not supported:
         add(
@@ -246,9 +238,7 @@ def _audit_binary_outcome(series: pd.Series, add: AddCheck) -> None:
             None,
         )
 
-    supported_values = sorted(
-        set(float(value) for value in numeric[observed & ~invalid].tolist())
-    )
+    supported_values = sorted(set(float(value) for value in numeric[observed & ~invalid].tolist()))
     if supported_values == [0.0, 1.0]:
         add(
             "outcome_support",
@@ -350,9 +340,7 @@ def _audit_duration_outcome(series: pd.Series, add: AddCheck) -> None:
         )
 
 
-def _audit_participant_structure(
-    data: pd.DataFrame, participant_col: str, add: AddCheck
-) -> None:
+def _audit_participant_structure(data: pd.DataFrame, participant_col: str, add: AddCheck) -> None:
     if participant_col not in data.columns:
         return
     participant = data[participant_col]
@@ -444,9 +432,7 @@ def _audit_item_structure(
             n_items,
         )
 
-    if participant_col not in data.columns or not _supported_identifier(
-        data[participant_col]
-    ):
+    if participant_col not in data.columns or not _supported_identifier(data[participant_col]):
         add(
             "item_crossing",
             "items",
@@ -461,10 +447,8 @@ def _audit_item_structure(
         weak_items = 0
         weak_participants = 0
     else:
-        participants_per_item = frame.groupby(item_col, dropna=True, observed=True)[
-            participant_col
-        ].nunique()
-        items_per_participant = frame.groupby(participant_col, dropna=True, observed=True)[
+        participants_per_item = frame.groupby(item_col, dropna=True)[participant_col].nunique()
+        items_per_participant = frame.groupby(participant_col, dropna=True, observed=False)[
             item_col
         ].nunique()
         weak_items = int((participants_per_item < 2).sum())
@@ -476,10 +460,7 @@ def _audit_item_structure(
             "item_crossing",
             "items",
             "pass",
-            (
-                "Items are observed across participants and participants "
-                "are observed across items."
-            ),
+            ("Items are observed across participants and participants are observed across items."),
             None,
         )
     else:
@@ -602,23 +583,18 @@ def _audit_condition_structure(
         )
         return
 
-    if participant_col not in data.columns or not _supported_identifier(
-        data[participant_col]
-    ):
+    if participant_col not in data.columns or not _supported_identifier(data[participant_col]):
         add(
             "random_slope_support",
             "random_effects",
             "fail",
-            (
-                "Random-slope support cannot be evaluated without a "
-                "valid participant identifier."
-            ),
+            ("Random-slope support cannot be evaluated without a valid participant identifier."),
             None,
         )
         return
 
     frame = cast(pd.DataFrame, data.loc[:, [participant_col, condition_col]]).dropna()
-    levels_by_participant = frame.groupby(participant_col, dropna=True, observed=True)[
+    levels_by_participant = frame.groupby(participant_col, dropna=True, observed=False)[
         condition_col
     ].nunique()
     insufficient = int((levels_by_participant < 2).sum())
@@ -640,7 +616,7 @@ def _audit_condition_structure(
         )
 
     cell_counts = frame.groupby(
-        [participant_col, condition_col], dropna=True, observed=True
+        [participant_col, condition_col], dropna=True, observed=False
     ).size()
     weak_cells = int((cell_counts < 2).sum())
     if weak_cells == 0:
@@ -740,9 +716,7 @@ def _audit_time_structure(
             None,
         )
 
-    if participant_col not in data.columns or not _supported_identifier(
-        data[participant_col]
-    ):
+    if participant_col not in data.columns or not _supported_identifier(data[participant_col]):
         add(
             "time_within_participant",
             "time",
@@ -762,11 +736,9 @@ def _audit_time_structure(
         }
     )
     frame = frame[
-        frame[participant_col].notna()
-        & frame[time_col].notna()
-        & np.isfinite(frame[time_col])
+        frame[participant_col].notna() & frame[time_col].notna() & np.isfinite(frame[time_col])
     ]
-    time_levels = frame.groupby(participant_col, dropna=True, observed=True)[time_col].nunique()
+    time_levels = frame.groupby(participant_col, dropna=True, observed=False)[time_col].nunique()
     no_variation = int((time_levels < 2).sum())
     if time_levels.empty or no_variation == len(time_levels):
         add(
@@ -811,9 +783,7 @@ def _audit_predictor_structure(
     if not existing:
         return
 
-    supported = {
-        column: _supported_predictor(data[column]) for column in existing
-    }
+    supported = {column: _supported_predictor(data[column]) for column in existing}
     unsupported = [column for column in existing if not supported[column]]
     if unsupported:
         add(
@@ -839,10 +809,7 @@ def _audit_predictor_structure(
     non_finite_counts: dict[str, int] = {}
     for column in usable:
         series = data[column]
-        if (
-            ptypes.is_numeric_dtype(series.dtype)
-            and not ptypes.is_complex_dtype(series.dtype)
-        ):
+        if ptypes.is_numeric_dtype(series.dtype) and not ptypes.is_complex_dtype(series.dtype):
             numeric = pd.to_numeric(series, errors="coerce")
             count = int((series.notna() & ~np.isfinite(numeric)).sum())
             if count:
@@ -887,9 +854,11 @@ def _audit_predictor_structure(
     blank_counts: dict[str, int] = {}
     for column in usable:
         series = data[column]
-        if ptypes.is_string_dtype(series.dtype) or ptypes.is_object_dtype(
-            series.dtype
-        ) or isinstance(series.dtype, pd.CategoricalDtype):
+        if (
+            ptypes.is_string_dtype(series.dtype)
+            or ptypes.is_object_dtype(series.dtype)
+            or isinstance(series.dtype, pd.CategoricalDtype)
+        ):
             text = series.astype("string")
             count = int((text.notna() & text.str.strip().eq("")).sum())
             if count:
@@ -966,9 +935,7 @@ def _audit_interaction_structure(
         )
         return
 
-    unsupported = [
-        column for column in terms if not _supported_predictor(data[column])
-    ]
+    unsupported = [column for column in terms if not _supported_predictor(data[column])]
     if unsupported:
         add(
             "interaction_support",
@@ -985,11 +952,7 @@ def _audit_interaction_structure(
             "interaction_support",
             "interaction",
             "fail",
-            (
-                "Interaction columns without usable variation: "
-                + ", ".join(invariant)
-                + "."
-            ),
+            ("Interaction columns without usable variation: " + ", ".join(invariant) + "."),
             len(invariant),
         )
         return
@@ -1043,9 +1006,7 @@ def _audit_interaction_structure(
         )
 
 
-def audit_model_readiness(
-    data: pd.DataFrame, contract: ModelContract
-) -> ReadinessAudit:
+def audit_model_readiness(data: pd.DataFrame, contract: ModelContract) -> ReadinessAudit:
     """Audit observable data requirements before model construction or fitting."""
     _validate_data(data)
     _validate_contract(contract)
@@ -1060,9 +1021,7 @@ def audit_model_readiness(
         n_affected: int | None = None,
     ) -> None:
         if status not in {"pass", "warn", "fail"}:
-            raise GP3BayesError(
-                "Internal error: unsupported readiness-check status."
-            )
+            raise GP3BayesError("Internal error: unsupported readiness-check status.")
         checks.append(
             AuditCheck(
                 check_id=check_id,
@@ -1120,10 +1079,7 @@ def audit_model_readiness(
                 "analysis_missingness",
                 "missingness",
                 "fail",
-                (
-                    f"{n_missing_rows} rows contain missing values in declared "
-                    "analysis columns."
-                ),
+                (f"{n_missing_rows} rows contain missing values in declared analysis columns."),
                 n_missing_rows,
             )
         else:
@@ -1167,8 +1123,7 @@ def audit_model_readiness(
         columns=["check_id", "category", "status", "message", "n_affected"],
     )
     status_counts = {
-        status: int((checks_frame["status"] == status).sum())
-        for status in ("pass", "warn", "fail")
+        status: int((checks_frame["status"] == status).sum()) for status in ("pass", "warn", "fail")
     }
     ready = status_counts["fail"] == 0
     if not ready:

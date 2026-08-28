@@ -46,9 +46,7 @@ def _numeric_scalar(
     if not lower_ok or not upper_ok:
         left = "(" if lower_open else "["
         right = ")" if upper_open else "]"
-        raise GP3BayesError(
-            f"`{name}` must lie in {left}{lower:g}, {upper:g}{right}."
-        )
+        raise GP3BayesError(f"`{name}` must lie in {left}{lower:g}, {upper:g}{right}.")
     return number
 
 
@@ -110,9 +108,7 @@ def _validate_sampling_controls(
         raise GP3BayesError("`warmup` must be smaller than `iter`.")
 
     cores_value = (
-        _default_cores(chains_value)
-        if cores is None
-        else _integer(cores, "cores", minimum=1)
+        _default_cores(chains_value) if cores is None else _integer(cores, "cores", minimum=1)
     )
     if cores_value > chains_value:
         raise GP3BayesError("`cores` cannot exceed `chains`.")

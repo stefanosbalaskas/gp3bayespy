@@ -18,11 +18,7 @@ GPB_PY05_EXPORTS = {
 def _normalize(rows):
     return [
         {
-            key: (
-                value.replace("\r\n", "\n").replace("\r", "\n")
-                if value
-                else value
-            )
+            key: (value.replace("\r\n", "\n").replace("\r", "\n") if value else value)
             for key, value in row.items()
         }
         for row in rows
@@ -33,21 +29,19 @@ def test_gpb_py05_posterior_exports_are_promoted_exactly():
     manifest = read_parity_manifest()
     status_by_export = {row["r_export"]: row["status"] for row in manifest}
     assert all(status_by_export[name] == "implemented" for name in GPB_PY05_EXPORTS)
-    assert status_by_export["backend_capabilities"] == "implemented_initial"
+    assert status_by_export["backend_capabilities"] in {"implemented_initial", "implemented"}
 
 
 def test_gpb_py05_ledger_counts_are_historical_minimum():
     counts = parity_counts()
     assert counts["implemented"] >= 23
-    assert counts["implemented_initial"] == 1
+    assert counts["implemented_initial"] in {0, 1}
     assert counts["mapped_not_implemented"] <= 434
     assert sum(counts.values()) == 458
 
 
 def test_gpb_py05_dev_and_packaged_ledgers_match_semantically():
-    with (ROOT / "dev/parity/function_map.csv").open(
-        newline="", encoding="utf-8"
-    ) as handle:
+    with (ROOT / "dev/parity/function_map.csv").open(newline="", encoding="utf-8") as handle:
         dev_rows = list(csv.DictReader(handle))
     assert _normalize(dev_rows) == _normalize(read_parity_manifest())
 

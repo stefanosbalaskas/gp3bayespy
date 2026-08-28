@@ -142,9 +142,7 @@ def test_duration_prior_schema_and_defaults_match_reference():
 
 def test_numeric_prior_validation_uses_r_error_partition():
     binary = create_model_contract("binary", "y", "id")
-    duration = create_model_contract(
-        "duration", "y", "id", outcome_unit="milliseconds"
-    )
+    duration = create_model_contract("duration", "y", "id", outcome_unit="milliseconds")
     with pytest.raises(GP3BayesError, match="one finite numeric value"):
         create_prior_specification(binary, baseline="0.5")  # type: ignore[arg-type]
     with pytest.raises(GP3BayesError, match="strictly between zero and one"):
@@ -214,9 +212,7 @@ def test_prior_validation_rejects_metadata_baseline_and_lkj_errors():
         validate_prior_specification(replace(priors, table=table), contract)
 
     with pytest.raises(GP3BayesError, match="inconsistent"):
-        validate_prior_specification(
-            replace(priors, transformed_baseline=2.0), contract
-        )
+        validate_prior_specification(replace(priors, transformed_baseline=2.0), contract)
     with pytest.raises(GP3BayesError, match='must be "none"'):
         validate_prior_specification(replace(priors, backend="brms"), contract)
     with pytest.raises(GP3BayesError, match="must be FALSE"):
@@ -267,18 +263,14 @@ def test_ready_audit_produces_complete_model_specification_and_repr():
 
 def test_ready_with_warnings_can_proceed_but_not_ready_cannot():
     contract = create_model_contract("binary", "selected", "participant_id")
-    warning_data = pd.DataFrame(
-        {"participant_id": ["p1", "p1", "p2"], "selected": [0, 1, 0]}
-    )
+    warning_data = pd.DataFrame({"participant_id": ["p1", "p1", "p2"], "selected": [0, 1, 0]})
     warning_audit = audit_model_readiness(warning_data, contract)
     priors = create_prior_specification(contract)
     specification = create_model_specification(contract, warning_audit, priors)
     assert warning_audit.status == "ready_with_warnings"
     assert specification.warning_count > 0
 
-    failed_data = pd.DataFrame(
-        {"participant_id": ["p1", "p2"], "selected": [0, 1]}
-    )
+    failed_data = pd.DataFrame({"participant_id": ["p1", "p2"], "selected": [0, 1]})
     failed_audit = audit_model_readiness(failed_data, contract)
     with pytest.raises(GP3BayesError, match="not ready for model specification"):
         create_model_specification(contract, failed_audit, priors)

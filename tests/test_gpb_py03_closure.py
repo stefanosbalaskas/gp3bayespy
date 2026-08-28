@@ -26,11 +26,7 @@ IMPLEMENTED = {
 def _normalize(rows):
     return [
         {
-            key: (
-                value.replace("\r\n", "\n").replace("\r", "\n")
-                if value
-                else value
-            )
+            key: (value.replace("\r\n", "\n").replace("\r", "\n") if value else value)
             for key, value in row.items()
         }
         for row in rows
@@ -40,11 +36,7 @@ def _normalize(rows):
 def test_gpb_py03_promoted_exports_remain_implemented():
     manifest = read_parity_manifest()
     status_by_export = {row["r_export"]: row["status"] for row in manifest}
-    implemented = {
-        name
-        for name, status in status_by_export.items()
-        if status == "implemented"
-    }
+    implemented = {name for name, status in status_by_export.items() if status == "implemented"}
     assert implemented >= IMPLEMENTED
 
 
@@ -55,9 +47,7 @@ def test_gpb_py03_ledger_still_covers_all_exports():
 
 
 def test_gpb_py03_dev_and_packaged_ledgers_match_semantically():
-    with (ROOT / "dev/parity/function_map.csv").open(
-        newline="", encoding="utf-8"
-    ) as handle:
+    with (ROOT / "dev/parity/function_map.csv").open(newline="", encoding="utf-8") as handle:
         dev_rows = list(csv.DictReader(handle))
     assert _normalize(dev_rows) == _normalize(read_parity_manifest())
 

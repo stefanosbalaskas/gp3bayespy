@@ -1,16 +1,21 @@
-# gp3bayespy final mypy cast patch
+# GPB-PY-01 readiness typing/compatibility fix
 
-Replace this file in your project:
+This is a replacement for the previous GPB-PY-01 readiness parity patch.
 
-- `src/gp3bayespy/readiness.py`
+It preserves the readiness semantics and parity tests while fixing:
+- Ruff UP035 (`Callable` moved to `collections.abc`)
+- pandas-stubs DataFrame/Series ambiguity via explicit DataFrame/Series casts
+- `Mapping` vs `dict` annotation mismatch with `ModelContract.mappings`
+- optional mapping narrowing for required outcome/participant mappings
+- deprecated `is_categorical_dtype` calls, replaced with `CategoricalDtype` checks
 
-Then run:
+Apply the two files over the repository and run:
 
 ```powershell
-uv run mypy src/gp3bayespy
 uv run ruff check .
+uv run mypy src/gp3bayespy
 uv run pytest
 uv run python -m build
 ```
 
-This patch only makes the DataFrame type explicit for pandas-stubs. Runtime behavior is unchanged.
+Do not promote the parity ledger until all four gates pass locally.

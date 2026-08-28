@@ -10,9 +10,7 @@ def test_binary_formula_matches_r_contract_shape():
         condition_col="condition",
         predictors=["age_z"],
     )
-    expected = (
-        "selected ~ condition + age_z + (1 | participant_id) + (1 | stimulus_id)"
-    )
+    expected = "selected ~ condition + age_z + (1 | participant_id) + (1 | stimulus_id)"
     assert build_model_formula(contract) == expected
 
 

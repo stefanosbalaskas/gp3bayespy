@@ -1,0 +1,52 @@
+# Pre-fit Design-Support Diagnostics
+
+> Python-facing port of `pre-fit-design-diagnostics.Rmd` from the frozen R gp3bayes 0.5.0 reference. The statistical and governance framing below follows the canonical vignette; executable Python workflows use the mapped APIs listed later.
+
+## Diagnose the design before invoking Stan
+
+Many modeling failures can be identified from the declared design itself.
+Version 0.2.0 adds four reporting audits that run before MCMC:
+
+- `audit_missingness_structure()`;
+- `audit_fixed_effect_design()`;
+- `audit_random_effects_support()`; and
+- `audit_design_support()`.
+
+They do not impute, exclude, drop predictors, or simplify random effects.
+
+## Missingness is described, not repaired
+
+## Fixed-effect geometry
+
+The fixed-effects audit reports design-matrix rank, singular values, a
+condition-number screen, invariant columns, and leverage. These quantities are
+warning signals about the declared numerical design; they do not determine a
+scientifically preferred model.
+
+## Repetition, crossing and random slopes
+
+## One combined preflight
+
+For binary models, a fixed-effects separation screen can also be requested when
+`detectseparation` is installed:
+
+A `review` or `fail` flag is a prompt for methodological inspection. It is not
+an automatic instruction to remove data or alter the prespecified model.
+
+## Python API mapping
+
+- `gp3bayespy.audit_design_support`
+- `gp3bayespy.audit_fixed_effect_design`
+- `gp3bayespy.audit_missingness_structure`
+- `gp3bayespy.audit_random_effects_support`
+- `gp3bayespy.create_model_contract`
+- `gp3bayespy.simulate_hierarchical_binary_data`
+
+## Python usage
+
+```python
+import gp3bayespy as gp
+
+# All functions listed above are available from the package root.
+# Use help(gp.<function>) or the API reference for the exact Python signature.
+```

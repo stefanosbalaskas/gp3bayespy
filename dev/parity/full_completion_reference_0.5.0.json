@@ -1,0 +1,18 @@
+{
+  "reference_package": "gp3bayes",
+  "reference_version": "0.5.0",
+  "reference_commit": "0ad32d8921c3b267d2021324c3b3568edf3ae01f",
+  "tranche": "full Python completion candidate",
+  "exports_total": 458,
+  "exports_implemented": 458,
+  "implemented_initial": 0,
+  "mapped_not_implemented": 0,
+  "articles_total": 59,
+  "articles_ported": 59,
+  "governance": [
+    "No automatic model adequacy, convergence, causal, cognitive-state, or emotional-state conclusions.",
+    "No automatic model selection or participant/group exclusion.",
+    "Optional backend/runtime failures are explicit rather than silently substituted.",
+    "The frozen R 0.5.0 manifest remains the public API source of truth."
+  ]
+}

@@ -1,12 +1,12 @@
 # gp3bayespy
 
-**gp3bayespy** is the Python port of the R package **gp3bayes**, a contract-first Bayesian workflow package for repeated-measures and hierarchical behavioural data.
+**gp3bayespy** is the Python port of the R package **gp3bayes**, a contract-first Bayesian workflow package for repeated-measures, hierarchical behavioural data, posterior validation, predictive diagnostics, sensitivity analysis, and dynamic pupillometry.
 
-> **Status:** pre-alpha parity port. The frozen reference is **gp3bayes 0.5.0**. The package is not yet a substitute for the complete R release.
+> **Status:** completion candidate for parity with the frozen **gp3bayes 0.5.0** reference. The 458-export ledger is fully materialized and the 59 canonical vignette sources have Python-facing article counterparts. Static and cross-platform release gates are enforced in GitHub Actions before a release is declared.
 
 ## Frozen reference
 
-The initial port is governed by the uploaded CRAN source archive `gp3bayes_0.5.0.tar.gz`:
+The port is governed by the frozen CRAN source archive `gp3bayes_0.5.0.tar.gz`:
 
 - 458 public exports
 - 230 S3 registrations
@@ -16,21 +16,43 @@ The initial port is governed by the uploaded CRAN source archive `gp3bayes_0.5.0
 - 54 `tests/testthat/test-*.R` test files plus the package-level test runner
 - SHA-256: `537eb05f949de1bcc1d6f8234066f064597951ecfa9cbbdf938d0a895ce5dd8a`
 
-`dev/parity/function_map.csv` is the machine-readable 458-function ledger.
+`dev/parity/function_map.csv` is the machine-readable 458-function ledger. `dev/parity/articles.json` tracks the 59-article documentation map.
 
-## Current first tranche
+## Completion-candidate coverage
 
-The repository already contains a functional backend-independent foundation for:
+The current candidate includes the complete public namespace across:
 
-- `create_model_contract()`
-- `audit_model_readiness()` (initial parity implementation; edge-case warning parity remains open)
-- `build_model_formula()`
-- `create_prior_specification()`
-- `validate_prior_specification()`
-- `create_model_specification()`
-- `backend_capabilities()`
+- model contracts, readiness, formula/prior/specification closure;
+- hierarchical binary and lognormal-duration simulation, preparation, fitting, diagnostics, PPC, prediction, sensitivity, recovery, and reporting;
+- posterior extraction, sampler diagnostics, hierarchical effects, prior/posterior comparison, PSIS-LOO, influence diagnostics, model comparison, predictive scoring/calibration, surfaces, uncertainty and atlases;
+- simulation-based calibration, power-scaling and governed optional Bayesian workflows;
+- reproducibility manifests, analysis bundles, evidence inventories, model cards, publication registries and Matplotlib graphics;
+- ordinary, advanced, binocular, Gaussian-process, temporal/ARMA, robust/distributional, missing-data/measurement-error, response-shape and model-comparison pupillometry workflows;
+- all 59 mapped Python-facing articles and eight executable workflow examples.
 
-No fitting backend is imported by the core package.
+The final closure tests require all 458 exports to be root-importable, all ledger rows to be `implemented`, all 59 articles to be present, and no frozen public function to expose an unrestricted `**kwargs` catchall.
+
+## Installation
+
+Core numerical functionality:
+
+```bash
+python -m pip install -e .
+```
+
+Bayesian backends and plotting:
+
+```bash
+python -m pip install -e ".[bayes,plots]"
+```
+
+Everything used by the completion/release gate:
+
+```bash
+python -m pip install -e ".[all]"
+```
+
+## Minimal example
 
 ```python
 import pandas as pd
@@ -55,17 +77,18 @@ contract = create_model_contract(
     trial_col="trial_id",
     condition_col="condition",
 )
-
 audit = audit_model_readiness(data, contract)
 priors = create_prior_specification(contract, baseline=0.5)
-spec = create_model_specification(contract, audit, priors)
-print(spec.formula_text)
+specification = create_model_specification(contract, audit, priors)
+print(specification.formula_text)
 ```
+
+See `examples/`, `docs/articles/`, `docs/migration.md`, and `docs/plot-gallery.md` for end-to-end workflows.
 
 ## Governance
 
-Creating or fitting a model does not automatically establish convergence, model adequacy, causal identification, robustness, exclusion decisions, or psychological interpretation. The Python port preserves these boundaries from gp3bayes.
+Creating or fitting a model does **not** automatically establish convergence, model adequacy, causal identification, robustness, exclusion decisions, preferred-model status, or psychological/cognitive/emotional interpretation. The Python port preserves these boundaries from gp3bayes and makes automatic-selection/adequacy flags explicit where relevant.
 
-## Planned Python integrations
+## Python integrations
 
-Core: NumPy, pandas, SciPy. Optional posterior/fitting layers: PyMC, CmdStanPy, ArviZ/xarray, and later NumPyro/JAX only where the gp3bayes model contract can be preserved.
+Core: NumPy, pandas, SciPy. Optional: PyMC, CmdStanPy, ArviZ/xarray and Matplotlib where the gp3bayes model contract can be preserved.

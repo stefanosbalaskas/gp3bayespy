@@ -34,9 +34,7 @@ def test_duration_fixture_records_parity_modes():
     )
     assert modes["prepare_hierarchical_duration_data"] == "structural_semantic"
     assert modes["specify_duration_model"] == "structural_semantic"
-    assert modes["check_duration_prior_predictive"] == (
-        "stochastic_distributional_and_structural"
-    )
+    assert modes["check_duration_prior_predictive"] == ("stochastic_distributional_and_structural")
 
 
 def test_duration_foundation_exports_are_public():

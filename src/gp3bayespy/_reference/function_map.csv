@@ -1,15 +1,15 @@
 r_export,python_name,r_source_file,r_source_line,r_signature_raw,r_help_file,python_module,status
-advanced_pupil_trajectory_table,advanced_pupil_trajectory_table,pupil-advanced-estimands.R,183,"prediction, probability = 0.95",advanced_pupil_trajectory_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-analysis_bundle_table,analysis_bundle_table,analysis-bundle.R,154,x,analysis_bundle_table.Rd,gp3bayespy.reproducibility,mapped_not_implemented
-analysis_manifest_table,analysis_manifest_table,analysis-manifest.R,479,manifest,analysis_manifest_table.Rd,gp3bayespy.reproducibility,mapped_not_implemented
+advanced_pupil_trajectory_table,advanced_pupil_trajectory_table,pupil-advanced-estimands.R,183,"prediction, probability = 0.95",advanced_pupil_trajectory_table.Rd,gp3bayespy.pupil,implemented
+analysis_bundle_table,analysis_bundle_table,analysis-bundle.R,154,x,analysis_bundle_table.Rd,gp3bayespy.reproducibility,implemented
+analysis_manifest_table,analysis_manifest_table,analysis-manifest.R,479,manifest,analysis_manifest_table.Rd,gp3bayespy.reproducibility,implemented
 apply_transformation_recipe,apply_transformation_recipe,specification-closure.R,1014,"new_data,
   recipe,
   input_scale = c(""raw"", ""prepared""),
   require_outcome = FALSE,
-  input_unit = NULL",apply_transformation_recipe.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  input_unit = NULL",apply_transformation_recipe.Rd,gp3bayespy.specification_closure,implemented
 as_pupil_prediction_draws,as_pupil_prediction_draws,pupil-estimands.R,39,"draws, grid, unit,
     type = c(""expected"", ""posterior_predictive"", ""linear""),
-    max_cells = 5000000L",as_pupil_prediction_draws.Rd,gp3bayespy.pupil,mapped_not_implemented
+    max_cells = 5000000L",as_pupil_prediction_draws.Rd,gp3bayespy.pupil,implemented
 assess_binary_prior_sensitivity,assess_binary_prior_sensitivity,binary-posterior-validation.R,685,"fit,
   scale_multipliers = c(
     tighter = 0.5,
@@ -27,7 +27,7 @@ assess_binary_prior_sensitivity,assess_binary_prior_sensitivity,binary-posterior
   refresh = 0L,
   maximum_standardized_shift = 0.25,
   review_standardized_shift = 0.50,
-  retain_fits = FALSE",assess_binary_prior_sensitivity.Rd,gp3bayespy.binary,mapped_not_implemented
+  retain_fits = FALSE",assess_binary_prior_sensitivity.Rd,gp3bayespy.binary,implemented
 assess_duration_prior_sensitivity,assess_duration_prior_sensitivity,duration-posterior-validation.R,544,"fit,
   scale_multipliers = c(
     tighter = 0.5,
@@ -45,45 +45,45 @@ assess_duration_prior_sensitivity,assess_duration_prior_sensitivity,duration-pos
   refresh = 0L,
   maximum_standardized_shift = 0.25,
   review_standardized_shift = 0.50,
-  retain_fits = FALSE",assess_duration_prior_sensitivity.Rd,gp3bayespy.duration,mapped_not_implemented
+  retain_fits = FALSE",assess_duration_prior_sensitivity.Rd,gp3bayespy.duration,implemented
 assess_powerscaled_sensitivity,assess_powerscaled_sensitivity,advanced-optional-workflows.R,1372,"fit,
   variable = NULL,
   prior_selection = NULL,
-  likelihood_selection = NULL",assess_powerscaled_sensitivity.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-audit_advanced_pupil_identifiability,audit_advanced_pupil_identifiability,pupil-advanced-audit.R,23,specification,audit_advanced_pupil_identifiability.Rd,gp3bayespy.pupil,mapped_not_implemented
+  likelihood_selection = NULL",assess_powerscaled_sensitivity.Rd,gp3bayespy.advanced_optional_workflows,implemented
+audit_advanced_pupil_identifiability,audit_advanced_pupil_identifiability,pupil-advanced-audit.R,23,specification,audit_advanced_pupil_identifiability.Rd,gp3bayespy.pupil,implemented
 audit_backend_parity,audit_backend_parity,backend-reliability.R,376,"rstan_fit,
   cmdstanr_fit,
   variables = NULL,
   mcse_multiplier = 3,
   absolute_tolerance = 0,
-  relative_sd_tolerance = 0.10",audit_backend_parity.Rd,gp3bayespy.backends,mapped_not_implemented
-audit_binocular_pupil_readiness,audit_binocular_pupil_readiness,pupil-binocular.R,66,prepared,audit_binocular_pupil_readiness.Rd,gp3bayespy.pupil,mapped_not_implemented
+  relative_sd_tolerance = 0.10",audit_backend_parity.Rd,gp3bayespy.backends,implemented
+audit_binocular_pupil_readiness,audit_binocular_pupil_readiness,pupil-binocular.R,66,prepared,audit_binocular_pupil_readiness.Rd,gp3bayespy.pupil,implemented
 audit_design_support,audit_design_support,design-support-diagnostics.R,590,"x,
   contract = NULL,
   separation = FALSE,
-  strict_readiness = TRUE",audit_design_support.Rd,gp3bayespy.design_support_diagnostics,mapped_not_implemented
+  strict_readiness = TRUE",audit_design_support.Rd,gp3bayespy.design_support_diagnostics,implemented
 audit_duration_boundaries,audit_duration_boundaries,specification-closure.R,588,"data,
   contract,
   allowed_range = NULL,
   censor_col = NULL,
-  detect_candidate_columns = TRUE",audit_duration_boundaries.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  detect_candidate_columns = TRUE",audit_duration_boundaries.Rd,gp3bayespy.specification_closure,implemented
 audit_duration_unit_invariance,audit_duration_unit_invariance,specification-closure.R,2332,"reference,
   converted,
   multiplier,
-  tolerance = 0.02",audit_duration_unit_invariance.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  tolerance = 0.02",audit_duration_unit_invariance.Rd,gp3bayespy.specification_closure,implemented
 audit_estimand_invariance,audit_estimand_invariance,specification-closure.R,2125,"reference,
   alternative,
   quantity = reference$primary_quantity,
-  tolerance",audit_estimand_invariance.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  tolerance",audit_estimand_invariance.Rd,gp3bayespy.specification_closure,implemented
 audit_fixed_effect_design,audit_fixed_effect_design,design-support-diagnostics.R,230,"x,
   contract = NULL,
   condition_number_review = 30,
   condition_number_fail = 100,
-  leverage_multiplier = 3",audit_fixed_effect_design.Rd,gp3bayespy.design_support_diagnostics,mapped_not_implemented
+  leverage_multiplier = 3",audit_fixed_effect_design.Rd,gp3bayespy.design_support_diagnostics,implemented
 audit_missingness_structure,audit_missingness_structure,design-support-diagnostics.R,108,"x,
   contract = NULL,
   review_fraction = 0.05,
-  fail_fraction = 0.20",audit_missingness_structure.Rd,gp3bayespy.design_support_diagnostics,mapped_not_implemented
+  fail_fraction = 0.20",audit_missingness_structure.Rd,gp3bayespy.design_support_diagnostics,implemented
 audit_model_readiness,audit_model_readiness,model-readiness-audit.R,61,"data, contract",audit_model_readiness.Rd,gp3bayespy.readiness,implemented
 audit_model_readiness_strict,audit_model_readiness_strict,specification-closure.R,711,"data,
   contract,
@@ -92,32 +92,32 @@ audit_model_readiness_strict,audit_model_readiness_strict,specification-closure.
   identifier_unique_fraction = 0.90,
   duration_allowed_range = NULL,
   censor_col = NULL,
-  run_separation = TRUE",audit_model_readiness_strict.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  run_separation = TRUE",audit_model_readiness_strict.Rd,gp3bayespy.specification_closure,implemented
 audit_prediction_support,audit_prediction_support,prediction-support.R,281,"fit, newdata",audit_prediction_support.Rd,gp3bayespy.predictive,implemented
-audit_pupil_computational_budget,audit_pupil_computational_budget,pupil-advanced-specification.R,611,x,audit_pupil_computational_budget.Rd,gp3bayespy.pupil,mapped_not_implemented
-audit_pupil_measurement_context,audit_pupil_measurement_context,pupil-preparation.R,613,x,audit_pupil_measurement_context.Rd,gp3bayespy.pupil,mapped_not_implemented
-audit_pupil_measurement_model,audit_pupil_measurement_model,pupil-advanced-estimands.R,350,specification,audit_pupil_measurement_model.Rd,gp3bayespy.pupil,mapped_not_implemented
-audit_pupil_missingness,audit_pupil_missingness,pupil-advanced-estimands.R,385,specification,audit_pupil_missingness.Rd,gp3bayespy.pupil,mapped_not_implemented
+audit_pupil_computational_budget,audit_pupil_computational_budget,pupil-advanced-specification.R,611,x,audit_pupil_computational_budget.Rd,gp3bayespy.pupil,implemented
+audit_pupil_measurement_context,audit_pupil_measurement_context,pupil-preparation.R,613,x,audit_pupil_measurement_context.Rd,gp3bayespy.pupil,implemented
+audit_pupil_measurement_model,audit_pupil_measurement_model,pupil-advanced-estimands.R,350,specification,audit_pupil_measurement_model.Rd,gp3bayespy.pupil,implemented
+audit_pupil_missingness,audit_pupil_missingness,pupil-advanced-estimands.R,385,specification,audit_pupil_missingness.Rd,gp3bayespy.pupil,implemented
 audit_pupil_predictive_calibration,audit_pupil_predictive_calibration,pupil-advanced-audit.R,213,"fit,
     newdata,
     ndraws = 500L,
     probability = 0.90,
     population_only = FALSE,
-    allow_new_levels = FALSE",audit_pupil_predictive_calibration.Rd,gp3bayespy.pupil,mapped_not_implemented
-audit_pupil_readiness,audit_pupil_readiness,pupil-preparation.R,377,"x, contract = NULL",audit_pupil_readiness.Rd,gp3bayespy.pupil,mapped_not_implemented
-audit_pupil_temporal_dependence,audit_pupil_temporal_dependence,pupil-advanced-diagnostics.R,12,"x, max_lag = 10L",audit_pupil_temporal_dependence.Rd,gp3bayespy.pupil,mapped_not_implemented
+    allow_new_levels = FALSE",audit_pupil_predictive_calibration.Rd,gp3bayespy.pupil,implemented
+audit_pupil_readiness,audit_pupil_readiness,pupil-preparation.R,377,"x, contract = NULL",audit_pupil_readiness.Rd,gp3bayespy.pupil,implemented
+audit_pupil_temporal_dependence,audit_pupil_temporal_dependence,pupil-advanced-diagnostics.R,12,"x, max_lag = 10L",audit_pupil_temporal_dependence.Rd,gp3bayespy.pupil,implemented
 audit_random_effects_support,audit_random_effects_support,design-support-diagnostics.R,441,"x,
   contract = NULL,
   minimum_repeated_rows = 2L,
   minimum_group_levels = 2L,
-  minimum_condition_cell_rows = 2L",audit_random_effects_support.Rd,gp3bayespy.design_support_diagnostics,mapped_not_implemented
-backend_capabilities,backend_capabilities,backend-reliability.R,55,,backend_capabilities.Rd,gp3bayespy.backends,implemented_initial
-backend_environment_table,backend_environment_table,evidence-graphics-gg.R,42,x,backend_environment_table.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-backend_parity_table,backend_parity_table,evidence-graphics-gg.R,33,x,backend_parity_table.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-bayesian_backend_capabilities,bayesian_backend_capabilities,advanced-optional-workflows.R,163,,bayesian_backend_capabilities.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  minimum_condition_cell_rows = 2L",audit_random_effects_support.Rd,gp3bayespy.design_support_diagnostics,implemented
+backend_capabilities,backend_capabilities,backend-reliability.R,55,,backend_capabilities.Rd,gp3bayespy.backends,implemented
+backend_environment_table,backend_environment_table,evidence-graphics-gg.R,42,x,backend_environment_table.Rd,gp3bayespy.evidence_graphics_gg,implemented
+backend_parity_table,backend_parity_table,evidence-graphics-gg.R,33,x,backend_parity_table.Rd,gp3bayespy.evidence_graphics_gg,implemented
+bayesian_backend_capabilities,bayesian_backend_capabilities,advanced-optional-workflows.R,163,,bayesian_backend_capabilities.Rd,gp3bayespy.advanced_optional_workflows,implemented
 binary_calibration_error,binary_calibration_error,predictive-diagnostics-advanced.R,390,"x,
   observed = NULL,
-  bins = 10L",binary_calibration_error.Rd,gp3bayespy.predictive,mapped_not_implemented
+  bins = 10L",binary_calibration_error.Rd,gp3bayespy.predictive,implemented
 binary_calibration_table,binary_calibration_table,prediction-support.R,1080,"x,
   bins = 10L,
   probs = c(0.025, 0.5, 0.975)",binary_calibration_table.Rd,gp3bayespy.predictive,implemented
@@ -126,30 +126,30 @@ binary_calibration_uncertainty,binary_calibration_uncertainty,predictive-distrib
   bins = 10L,
   include_group_effects = FALSE,
   ndraws = 1000L,
-  probs = c(0.025, 0.5, 0.975)",binary_calibration_uncertainty.Rd,gp3bayespy.predictive,mapped_not_implemented
-binary_calibration_uncertainty_table,binary_calibration_uncertainty_table,predictive-distribution-atlas.R,346,x,binary_calibration_uncertainty_table.Rd,gp3bayespy.predictive,mapped_not_implemented
-binary_confusion_table,binary_confusion_table,predictive-diagnostics-advanced.R,259,"x, observed = NULL, threshold = 0.5",binary_confusion_table.Rd,gp3bayespy.predictive,mapped_not_implemented
-binary_group_calibration,binary_group_calibration,predictive-diagnostics-advanced.R,438,"x, group",binary_group_calibration.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",binary_calibration_uncertainty.Rd,gp3bayespy.predictive,implemented
+binary_calibration_uncertainty_table,binary_calibration_uncertainty_table,predictive-distribution-atlas.R,346,x,binary_calibration_uncertainty_table.Rd,gp3bayespy.predictive,implemented
+binary_confusion_table,binary_confusion_table,predictive-diagnostics-advanced.R,259,"x, observed = NULL, threshold = 0.5",binary_confusion_table.Rd,gp3bayespy.predictive,implemented
+binary_group_calibration,binary_group_calibration,predictive-diagnostics-advanced.R,438,"x, group",binary_group_calibration.Rd,gp3bayespy.predictive,implemented
 binary_precision_recall_curve,binary_precision_recall_curve,predictive-diagnostics-advanced.R,342,"x,
   observed = NULL,
-  thresholds = NULL",binary_precision_recall_curve.Rd,gp3bayespy.predictive,mapped_not_implemented
+  thresholds = NULL",binary_precision_recall_curve.Rd,gp3bayespy.predictive,implemented
 binary_prediction_scores,binary_prediction_scores,prediction-support.R,984,"x,
   observed = NULL,
   threshold = 0.5,
   epsilon = 1e-12",binary_prediction_scores.Rd,gp3bayespy.predictive,implemented
-binary_roc_curve,binary_roc_curve,predictive-diagnostics-advanced.R,296,"x, observed = NULL, thresholds = NULL",binary_roc_curve.Rd,gp3bayespy.predictive,mapped_not_implemented
+binary_roc_curve,binary_roc_curve,predictive-diagnostics-advanced.R,296,"x, observed = NULL, thresholds = NULL",binary_roc_curve.Rd,gp3bayespy.predictive,implemented
 binary_threshold_metrics,binary_threshold_metrics,prediction-support.R,1055,"x,
   observed = NULL,
   thresholds = seq(0.1, 0.9, by = 0.05)",binary_threshold_metrics.Rd,gp3bayespy.predictive,implemented
 build_model_formula,build_model_formula,model-specification.R,39,contract,build_model_formula.Rd,gp3bayespy.specification,implemented
-capture_gp3bayes_schema,capture_gp3bayes_schema,backend-reliability.R,602,"x, max_depth = 3L",capture_gp3bayes_schema.Rd,gp3bayespy.backends,mapped_not_implemented
+capture_gp3bayes_schema,capture_gp3bayes_schema,backend-reliability.R,602,"x, max_depth = 3L",capture_gp3bayes_schema.Rd,gp3bayespy.backends,implemented
 check_advanced_pupil_prior_predictive,check_advanced_pupil_prior_predictive,pupil-advanced-fit.R,517,"specification,
     backend = c(""rstan"", ""cmdstanr""),
     chains = 2L,
     iter = 800L,
     warmup = 400L,
     cores = min(2L, chains),
-    seed = 2026",check_advanced_pupil_prior_predictive.Rd,gp3bayespy.pupil,mapped_not_implemented
+    seed = 2026",check_advanced_pupil_prior_predictive.Rd,gp3bayespy.pupil,implemented
 check_binary_posterior_predictive,check_binary_posterior_predictive,binary-posterior-validation.R,363,"fit,
   draws = 500,
   seed = 1,
@@ -159,7 +159,7 @@ check_binary_ppc_details,check_binary_ppc_details,specification-closure.R,2456,"
   draws = 300L,
   seed = 1L,
   calibration_bins = 10L,
-  sparse_cell_min = 3L",check_binary_ppc_details.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  sparse_cell_min = 3L",check_binary_ppc_details.Rd,gp3bayespy.specification_closure,implemented
 check_binary_prior_predictive,check_binary_prior_predictive,binary-workflow-foundation.R,1258,"specification,
   draws = 500,
   seed = 1,
@@ -169,7 +169,7 @@ check_binary_prior_predictive,check_binary_prior_predictive,binary-workflow-foun
   maximum_degenerate_participant_fraction = 0.5,
   maximum_boundary_mass = 0.5,
   maximum_extreme_probability = 0.25",check_binary_prior_predictive.Rd,gp3bayespy.binary,implemented
-check_cmdstan_backend,check_cmdstan_backend,advanced-optional-workflows.R,236,strict = FALSE,check_cmdstan_backend.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+check_cmdstan_backend,check_cmdstan_backend,advanced-optional-workflows.R,236,strict = FALSE,check_cmdstan_backend.Rd,gp3bayespy.advanced_optional_workflows,implemented
 check_duration_posterior_predictive,check_duration_posterior_predictive,duration-posterior-validation.R,263,"fit,
   draws = 500L,
   seed = 1L,
@@ -179,7 +179,7 @@ check_duration_ppc_details,check_duration_ppc_details,specification-closure.R,25
   draws = 300L,
   seed = 1L,
   quantiles = c(0.5, 0.9, 0.95),
-  tail_threshold = NULL",check_duration_ppc_details.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  tail_threshold = NULL",check_duration_ppc_details.Rd,gp3bayespy.specification_closure,implemented
 check_duration_prior_predictive,check_duration_prior_predictive,duration-workflow-foundation.R,1323,"specification,
   draws = 500L,
   seed = 1L,
@@ -188,9 +188,9 @@ check_duration_prior_predictive,check_duration_prior_predictive,duration-workflo
   maximum_cv = 5,
   maximum_condition_ratio = 10,
   maximum_extreme_probability = 0.25",check_duration_prior_predictive.Rd,gp3bayespy.duration,implemented
-check_model_ppc,check_model_ppc,unified-workflow-api.R,313,"fit, ...",check_model_ppc.Rd,gp3bayespy.unified_workflow_api,mapped_not_implemented
+check_model_ppc,check_model_ppc,unified-workflow-api.R,313,"fit, ...",check_model_ppc.Rd,gp3bayespy.unified_workflow_api,implemented
 check_pupil_posterior_predictive,check_pupil_posterior_predictive,pupil-diagnostics.R,416,"fit, ndraws = 200L, probability = 0.90, window = NULL,
-    max_cells = 3000000L",check_pupil_posterior_predictive.Rd,gp3bayespy.pupil,mapped_not_implemented
+    max_cells = 3000000L",check_pupil_posterior_predictive.Rd,gp3bayespy.pupil,implemented
 check_pupil_prior_predictive,check_pupil_prior_predictive,pupil-specification.R,406,"specification,
     execute = FALSE,
     backend = c(""rstan"", ""cmdstanr""),
@@ -201,7 +201,7 @@ check_pupil_prior_predictive,check_pupil_prior_predictive,pupil-specification.R,
     cores = min(2L, chains),
     seed = 2026,
     probability = 0.95,
-    max_cells = 3000000L",check_pupil_prior_predictive.Rd,gp3bayespy.pupil,mapped_not_implemented
+    max_cells = 3000000L",check_pupil_prior_predictive.Rd,gp3bayespy.pupil,implemented
 collect_model_evidence,collect_model_evidence,sensitivity-evidence-suite.R,317,"fit = NULL,
   design = NULL,
   diagnostics = NULL,
@@ -212,51 +212,51 @@ collect_model_evidence,collect_model_evidence,sensitivity-evidence-suite.R,317,"
   kfold = NULL,
   sensitivity = NULL,
   manifest = NULL,
-  compute = character()",collect_model_evidence.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-compare_analysis_manifests,compare_analysis_manifests,analysis-manifest.R,429,"x, y",compare_analysis_manifests.Rd,gp3bayespy.reproducibility,mapped_not_implemented
+  compute = character()",collect_model_evidence.Rd,gp3bayespy.sensitivity,implemented
+compare_analysis_manifests,compare_analysis_manifests,analysis-manifest.R,429,"x, y",compare_analysis_manifests.Rd,gp3bayespy.reproducibility,implemented
 compare_estimand_sensitivity,compare_estimand_sensitivity,specification-closure.R,2065,"reference,
   alternatives,
-  quantity = reference$primary_quantity",compare_estimand_sensitivity.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-compare_gp3bayes_schemas,compare_gp3bayes_schemas,backend-reliability.R,635,"x, y, compare_lengths = FALSE",compare_gp3bayes_schemas.Rd,gp3bayespy.backends,mapped_not_implemented
+  quantity = reference$primary_quantity",compare_estimand_sensitivity.Rd,gp3bayespy.specification_closure,implemented
+compare_gp3bayes_schemas,compare_gp3bayes_schemas,backend-reliability.R,635,"x, y, compare_lengths = FALSE",compare_gp3bayes_schemas.Rd,gp3bayespy.backends,implemented
 compare_psis_loo,compare_psis_loo,advanced-optional-workflows.R,1198,"models,
   moment_match = FALSE,
   reloo = FALSE,
-  cores = 1L",compare_psis_loo.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-compare_pupil_autocorrelation,compare_pupil_autocorrelation,pupil-advanced-diagnostics.R,100,"..., max_lag = 10L, ndraws = 300L",compare_pupil_autocorrelation.Rd,gp3bayespy.pupil,mapped_not_implemented
-compare_pupil_lfo,compare_pupil_lfo,pupil-model-comparison.R,274,...,compare_pupil_lfo.Rd,gp3bayespy.pupil,mapped_not_implemented
+  cores = 1L",compare_psis_loo.Rd,gp3bayespy.advanced_optional_workflows,implemented
+compare_pupil_autocorrelation,compare_pupil_autocorrelation,pupil-advanced-diagnostics.R,100,"..., max_lag = 10L, ndraws = 300L",compare_pupil_autocorrelation.Rd,gp3bayespy.pupil,implemented
+compare_pupil_lfo,compare_pupil_lfo,pupil-model-comparison.R,274,...,compare_pupil_lfo.Rd,gp3bayespy.pupil,implemented
 compare_pupil_models,compare_pupil_models,pupil-model-comparison.R,47,"model_set,
     criterion = c(""loo"", ""kfold""),
     K = 10L,
     group = NULL,
     moment_match = FALSE,
-    save_psis = TRUE",compare_pupil_models.Rd,gp3bayespy.pupil,mapped_not_implemented
-compare_pupil_sensitivity_estimands,compare_pupil_sensitivity_estimands,pupil-sensitivity.R,343,results,compare_pupil_sensitivity_estimands.Rd,gp3bayespy.pupil,mapped_not_implemented
+    save_psis = TRUE",compare_pupil_models.Rd,gp3bayespy.pupil,implemented
+compare_pupil_sensitivity_estimands,compare_pupil_sensitivity_estimands,pupil-sensitivity.R,343,results,compare_pupil_sensitivity_estimands.Rd,gp3bayespy.pupil,implemented
 compute_kfold_cv,compute_kfold_cv,specification-closure.R,2774,"fit,
   K = 10L,
   folds = c(""random"", ""stratified"", ""grouped""),
   group = NULL,
   joint = c(""obs"", ""fold"", ""group""),
   save_fits = FALSE,
-  seed = 1L",compute_kfold_cv.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  seed = 1L",compute_kfold_cv.Rd,gp3bayespy.specification_closure,implemented
 compute_loo_model_weights,compute_loo_model_weights,advanced-optional-workflows.R,1271,"x,
   method = c(""stacking"", ""pseudobma""),
-  cores = 1L",compute_loo_model_weights.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  cores = 1L",compute_loo_model_weights.Rd,gp3bayespy.advanced_optional_workflows,implemented
 compute_psis_loo,compute_psis_loo,advanced-optional-workflows.R,1084,"fit,
   moment_match = FALSE,
   reloo = FALSE,
   cores = 1L,
-  save_psis = TRUE",compute_psis_loo.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  save_psis = TRUE",compute_psis_loo.Rd,gp3bayespy.advanced_optional_workflows,implemented
 compute_psis_loo_from_log_lik,compute_psis_loo_from_log_lik,advanced-optional-workflows.R,1117,"log_lik,
   chain_id = NULL,
   cores = 1L,
-  save_psis = TRUE",compute_psis_loo_from_log_lik.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-create_advanced_pupil_prior_specification,create_advanced_pupil_prior_specification,pupil-advanced-fit.R,271,specification,create_advanced_pupil_prior_specification.Rd,gp3bayespy.pupil,mapped_not_implemented
+  save_psis = TRUE",compute_psis_loo_from_log_lik.Rd,gp3bayespy.advanced_optional_workflows,implemented
+create_advanced_pupil_prior_specification,create_advanced_pupil_prior_specification,pupil-advanced-fit.R,271,specification,create_advanced_pupil_prior_specification.Rd,gp3bayespy.pupil,implemented
 create_analysis_bundle,create_analysis_bundle,analysis-bundle.R,27,"fit,
   newdata = NULL,
   ndraws = 1000L,
   include_group_effects = FALSE,
-  include_loo = FALSE",create_analysis_bundle.Rd,gp3bayespy.reproducibility,mapped_not_implemented
-create_analysis_figure_set,create_analysis_figure_set,analysis-bundle.R,202,x,create_analysis_figure_set.Rd,gp3bayespy.reproducibility,mapped_not_implemented
+  include_loo = FALSE",create_analysis_bundle.Rd,gp3bayespy.reproducibility,implemented
+create_analysis_figure_set,create_analysis_figure_set,analysis-bundle.R,202,x,create_analysis_figure_set.Rd,gp3bayespy.reproducibility,implemented
 create_analysis_manifest,create_analysis_manifest,analysis-manifest.R,215,"specification = NULL,
   fit = NULL,
   data = NULL,
@@ -264,7 +264,7 @@ create_analysis_manifest,create_analysis_manifest,analysis-manifest.R,215,"speci
   sensitivity_plan = NULL,
   seed = NULL,
   label = NULL,
-  notes = character()",create_analysis_manifest.Rd,gp3bayespy.reproducibility,mapped_not_implemented
+  notes = character()",create_analysis_manifest.Rd,gp3bayespy.reproducibility,implemented
 create_binary_model_report,create_binary_model_report,binary-posterior-validation.R,1473,"fit,
   diagnostics = NULL,
   posterior_summary = NULL,
@@ -272,7 +272,7 @@ create_binary_model_report,create_binary_model_report,binary-posterior-validatio
   prior_sensitivity = NULL,
   recovery = NULL,
   file,
-  overwrite = FALSE",create_binary_model_report.Rd,gp3bayespy.binary,mapped_not_implemented
+  overwrite = FALSE",create_binary_model_report.Rd,gp3bayespy.binary,implemented
 create_brms_sbc_plan,create_brms_sbc_plan,advanced-optional-workflows.R,1869,"specification,
   n_sims = 20L,
   backend = c(""rstan"", ""cmdstanr""),
@@ -282,16 +282,16 @@ create_brms_sbc_plan,create_brms_sbc_plan,advanced-optional-workflows.R,1869,"sp
   thin = 1L,
   seed = 1L,
   generator_iter = 3000L,
-  generator_warmup = 2000L",create_brms_sbc_plan.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-create_complete_evidence_inventory,create_complete_evidence_inventory,publication-registry-dashboard.R,289,"..., label = NULL",create_complete_evidence_inventory.Rd,gp3bayespy.reporting,mapped_not_implemented
+  generator_warmup = 2000L",create_brms_sbc_plan.Rd,gp3bayespy.advanced_optional_workflows,implemented
+create_complete_evidence_inventory,create_complete_evidence_inventory,publication-registry-dashboard.R,289,"..., label = NULL",create_complete_evidence_inventory.Rd,gp3bayespy.reporting,implemented
 create_contrast_coding_sensitivity_specification,create_contrast_coding_sensitivity_specification,specification-closure.R,2164,"specification,
   condition_coding,
-  baseline",create_contrast_coding_sensitivity_specification.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  baseline",create_contrast_coding_sensitivity_specification.Rd,gp3bayespy.specification_closure,implemented
 create_custom_sbc_plan,create_custom_sbc_plan,advanced-optional-workflows.R,1979,"generator_function,
   backend,
   n_sims = 20L,
   generator_args = list(),
-  seed = 1L",create_custom_sbc_plan.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  seed = 1L",create_custom_sbc_plan.Rd,gp3bayespy.advanced_optional_workflows,implemented
 create_diagnostic_dashboard,create_diagnostic_dashboard,publication-registry-dashboard.R,358,"fit = NULL,
   analysis_bundle = NULL,
   model_card = NULL,
@@ -300,8 +300,8 @@ create_diagnostic_dashboard,create_diagnostic_dashboard,publication-registry-das
   sensitivity = NULL,
   recovery = NULL,
   sbc = NULL,
-  label = NULL",create_diagnostic_dashboard.Rd,gp3bayespy.reporting,mapped_not_implemented
-create_diagnostic_dashboard_figures,create_diagnostic_dashboard_figures,publication-registry-dashboard.R,456,x,create_diagnostic_dashboard_figures.Rd,gp3bayespy.reporting,mapped_not_implemented
+  label = NULL",create_diagnostic_dashboard.Rd,gp3bayespy.reporting,implemented
+create_diagnostic_dashboard_figures,create_diagnostic_dashboard_figures,publication-registry-dashboard.R,456,x,create_diagnostic_dashboard_figures.Rd,gp3bayespy.reporting,implemented
 create_duration_model_report,create_duration_model_report,duration-posterior-validation.R,1329,"fit,
   diagnostics = NULL,
   posterior_summary = NULL,
@@ -309,20 +309,20 @@ create_duration_model_report,create_duration_model_report,duration-posterior-val
   prior_sensitivity = NULL,
   recovery = NULL,
   file,
-  overwrite = FALSE",create_duration_model_report.Rd,gp3bayespy.duration,mapped_not_implemented
+  overwrite = FALSE",create_duration_model_report.Rd,gp3bayespy.duration,implemented
 create_duration_unit_sensitivity_specification,create_duration_unit_sensitivity_specification,specification-closure.R,2293,"specification,
   multiplier,
-  new_unit",create_duration_unit_sensitivity_specification.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-create_figure_set,create_figure_set,publication-graphics.R,857,"..., title = ""gp3bayes figure set""",create_figure_set.Rd,gp3bayespy.reporting,mapped_not_implemented
+  new_unit",create_duration_unit_sensitivity_specification.Rd,gp3bayespy.specification_closure,implemented
+create_figure_set,create_figure_set,publication-graphics.R,857,"..., title = ""gp3bayes figure set""",create_figure_set.Rd,gp3bayespy.reporting,implemented
 create_group_deletion_sensitivity_plan,create_group_deletion_sensitivity_plan,specification-closure.R,1767,"specification,
   group = c(""participant"", ""item""),
   units = NULL,
-  max_units = 20L",create_group_deletion_sensitivity_plan.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-create_loo_influence_atlas,create_loo_influence_atlas,loo-influence-atlas.R,171,"x, data = NULL, threshold = 0.7",create_loo_influence_atlas.Rd,gp3bayespy.loo,mapped_not_implemented
+  max_units = 20L",create_group_deletion_sensitivity_plan.Rd,gp3bayespy.specification_closure,implemented
+create_loo_influence_atlas,create_loo_influence_atlas,loo-influence-atlas.R,171,"x, data = NULL, threshold = 0.7",create_loo_influence_atlas.Rd,gp3bayespy.loo,implemented
 create_model_card,create_model_card,model-card.R,22,"fit,
   analysis_bundle = NULL,
   manifest = NULL,
-  label = NULL",create_model_card.Rd,gp3bayespy.reporting,mapped_not_implemented
+  label = NULL",create_model_card.Rd,gp3bayespy.reporting,implemented
 create_model_contract,create_model_contract,model-contract.R,81,"family,
   outcome_col,
   participant_col,
@@ -335,7 +335,7 @@ create_model_contract,create_model_contract,model-contract.R,81,"family,
   random_slope = FALSE,
   outcome_unit = NULL,
   notes = character()",create_model_contract.Rd,gp3bayespy.contracts,implemented
-create_model_evidence_report,create_model_evidence_report,sensitivity-evidence-suite.R,398,"evidence, file, overwrite = FALSE",create_model_evidence_report.Rd,gp3bayespy.sensitivity,mapped_not_implemented
+create_model_evidence_report,create_model_evidence_report,sensitivity-evidence-suite.R,398,"evidence, file, overwrite = FALSE",create_model_evidence_report.Rd,gp3bayespy.sensitivity,implemented
 create_model_specification,create_model_specification,model-specification.R,795,"contract,
   audit,
   priors",create_model_specification.Rd,gp3bayespy.specification,implemented
@@ -349,7 +349,7 @@ create_prediction_contrast_profile,create_prediction_contrast_profile,prediction
   measure = c(""difference"", ""ratio"", ""odds_ratio""),
   include_group_effects = FALSE,
   ndraws = NULL,
-  probs = c(0.025, 0.5, 0.975)",create_prediction_contrast_profile.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",create_prediction_contrast_profile.Rd,gp3bayespy.predictive,implemented
 create_prediction_grid,create_prediction_grid,prediction-support.R,156,"x,
   variables = NULL,
   at = list(),
@@ -365,7 +365,7 @@ create_prediction_profile,create_prediction_profile,prediction-surfaces.R,50,"fi
   allow_new_levels = FALSE,
   ndraws = NULL,
   probs = c(0.025, 0.5, 0.975),
-  seed = 1L",create_prediction_profile.Rd,gp3bayespy.predictive,mapped_not_implemented
+  seed = 1L",create_prediction_profile.Rd,gp3bayespy.predictive,implemented
 create_prediction_surface,create_prediction_surface,prediction-surfaces.R,246,"fit,
   x,
   y,
@@ -379,16 +379,16 @@ create_prediction_surface,create_prediction_surface,prediction-surfaces.R,246,"f
   ndraws = NULL,
   probs = c(0.025, 0.5, 0.975),
   seed = 1L,
-  max_rows = 2500L",create_prediction_surface.Rd,gp3bayespy.predictive,mapped_not_implemented
+  max_rows = 2500L",create_prediction_surface.Rd,gp3bayespy.predictive,implemented
 create_predictive_distribution_atlas,create_predictive_distribution_atlas,predictive-distribution-atlas.R,31,"fit,
   ndraws = 500L,
   include_group_effects = TRUE,
-  seed = 1L",create_predictive_distribution_atlas.Rd,gp3bayespy.predictive,mapped_not_implemented
+  seed = 1L",create_predictive_distribution_atlas.Rd,gp3bayespy.predictive,implemented
 create_predictor_scaling_sensitivity_specification,create_predictor_scaling_sensitivity_specification,specification-closure.R,2235,"specification,
   predictor,
   scale_factor,
   coefficient_scale,
-  interaction_scale = NULL",create_predictor_scaling_sensitivity_specification.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  interaction_scale = NULL",create_predictor_scaling_sensitivity_specification.Rd,gp3bayespy.specification_closure,implemented
 create_prior_specification,create_prior_specification,model-specification.R,183,"contract,
   baseline = NULL,
   intercept_scale = NULL,
@@ -397,11 +397,11 @@ create_prior_specification,create_prior_specification,model-specification.R,183,
   residual_scale = NULL,
   correlation_eta = 2,
   student_df = 3",create_prior_specification.Rd,gp3bayespy.specification,implemented
-create_publication_registry,create_publication_registry,publication-registry-dashboard.R,24,label = NULL,create_publication_registry.Rd,gp3bayespy.reporting,mapped_not_implemented
-create_publication_table_set,create_publication_table_set,analysis-bundle.R,167,x,create_publication_table_set.Rd,gp3bayespy.reproducibility,mapped_not_implemented
+create_publication_registry,create_publication_registry,publication-registry-dashboard.R,24,label = NULL,create_publication_registry.Rd,gp3bayespy.reporting,implemented
+create_publication_table_set,create_publication_table_set,analysis-bundle.R,167,x,create_publication_table_set.Rd,gp3bayespy.reproducibility,implemented
 create_pupil_advanced_sensitivity_suite,create_pupil_advanced_sensitivity_suite,pupil-advanced-governance.R,100,"specification,
-    include = c(""likelihood"", ""residual_scale"", ""autocorrelation"", ""temporal"", ""gp_kernel"")",create_pupil_advanced_sensitivity_suite.Rd,gp3bayespy.pupil,mapped_not_implemented
-create_pupil_arma_spec,create_pupil_arma_spec,pupil-advanced-specification.R,166,"p = 1L, q = 0L, covariance = FALSE",create_pupil_arma_spec.Rd,gp3bayespy.pupil,mapped_not_implemented
+    include = c(""likelihood"", ""residual_scale"", ""autocorrelation"", ""temporal"", ""gp_kernel"")",create_pupil_advanced_sensitivity_suite.Rd,gp3bayespy.pupil,implemented
+create_pupil_arma_spec,create_pupil_arma_spec,pupil-advanced-specification.R,166,"p = 1L, q = 0L, covariance = FALSE",create_pupil_arma_spec.Rd,gp3bayespy.pupil,implemented
 create_pupil_contract,create_pupil_contract,pupil-contract.R,193,"outcome_col,
     participant_col,
     trial_col,
@@ -436,27 +436,27 @@ create_pupil_contract,create_pupil_contract,pupil-contract.R,193,"outcome_col,
     preprocessing_provenance = NA_character_,
     upstream_package = NA_character_,
     upstream_version = NA_character_,
-    notes = character()",create_pupil_contract.Rd,gp3bayespy.pupil,mapped_not_implemented
+    notes = character()",create_pupil_contract.Rd,gp3bayespy.pupil,implemented
 create_pupil_gp_spec,create_pupil_gp_spec,pupil-advanced-specification.R,133,"kernel = c(""matern32"", ""matern52"", ""exp_quad""),
     basis = c(""approximate"", ""exact""),
     k = 30L,
-    scale = TRUE",create_pupil_gp_spec.Rd,gp3bayespy.pupil,mapped_not_implemented
+    scale = TRUE",create_pupil_gp_spec.Rd,gp3bayespy.pupil,implemented
 create_pupil_lfo_plan,create_pupil_lfo_plan,pupil-model-comparison.R,153,"fit,
     initial_fraction = 0.6,
     horizon = 5L,
     step = 5L,
-    max_refits = 8L",create_pupil_lfo_plan.Rd,gp3bayespy.pupil,mapped_not_implemented
+    max_refits = 8L",create_pupil_lfo_plan.Rd,gp3bayespy.pupil,implemented
 create_pupil_measurement_model,create_pupil_measurement_model,pupil-advanced-specification.R,16,"baseline_error = NULL,
     luminance_error = NULL,
     gaze_error = NULL,
     response_error = NULL,
-    covariate_errors = NULL",create_pupil_measurement_model.Rd,gp3bayespy.pupil,mapped_not_implemented
+    covariate_errors = NULL",create_pupil_measurement_model.Rd,gp3bayespy.pupil,implemented
 create_pupil_missingness_spec,create_pupil_missingness_spec,pupil-advanced-specification.R,91,"response = c(""exclude"", ""model""),
     predictors = character(),
     assumptions = ""MAR"",
-    auxiliary_predictors = character()",create_pupil_missingness_spec.Rd,gp3bayespy.pupil,mapped_not_implemented
+    auxiliary_predictors = character()",create_pupil_missingness_spec.Rd,gp3bayespy.pupil,implemented
 create_pupil_model_set,create_pupil_model_set,pupil-model-comparison.R,10,"...,
-    predictive_target = c(""new_trial_known_participant"", ""new_participant"", ""future_segment"", ""new_sample_known_trial"")",create_pupil_model_set.Rd,gp3bayespy.pupil,mapped_not_implemented
+    predictive_target = c(""new_trial_known_participant"", ""new_participant"", ""future_segment"", ""new_sample_known_trial"")",create_pupil_model_set.Rd,gp3bayespy.pupil,implemented
 create_pupil_sensitivity_suite,create_pupil_sensitivity_suite,pupil-sensitivity.R,65,"specification,
     baseline_windows = list(),
     baseline_window_operation = NULL,
@@ -468,7 +468,7 @@ create_pupil_sensitivity_suite,create_pupil_sensitivity_suite,pupil-sensitivity.
     pfe_prepared = list(),
     smooth_basis_dimensions = integer(),
     autocorrelation = character(),
-    analysis_windows = list()",create_pupil_sensitivity_suite.Rd,gp3bayespy.pupil,mapped_not_implemented
+    analysis_windows = list()",create_pupil_sensitivity_suite.Rd,gp3bayespy.pupil,implemented
 create_pupil_validation_plan,create_pupil_validation_plan,pupil-validation.R,62,"x,
     target = c(
       ""new_trial_known_participant"", ""new_participant"",
@@ -476,9 +476,9 @@ create_pupil_validation_plan,create_pupil_validation_plan,pupil-validation.R,62,
     ),
     K = 5L,
     future_fraction = 0.20,
-    seed = 2026",create_pupil_validation_plan.Rd,gp3bayespy.pupil,mapped_not_implemented
-create_random_slope_sensitivity_plan,create_random_slope_sensitivity_plan,specification-closure.R,1727,specification,create_random_slope_sensitivity_plan.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-create_reporting_checklist,create_reporting_checklist,model-card.R,136,x,create_reporting_checklist.Rd,gp3bayespy.reporting,mapped_not_implemented
+    seed = 2026",create_pupil_validation_plan.Rd,gp3bayespy.pupil,implemented
+create_random_slope_sensitivity_plan,create_random_slope_sensitivity_plan,specification-closure.R,1727,specification,create_random_slope_sensitivity_plan.Rd,gp3bayespy.specification_closure,implemented
+create_reporting_checklist,create_reporting_checklist,model-card.R,136,x,create_reporting_checklist.Rd,gp3bayespy.reporting,implemented
 create_sensitivity_suite_plan,create_sensitivity_suite_plan,sensitivity-evidence-suite.R,69,"prior_scale = FALSE,
   powerscale = FALSE,
   psis_loo = FALSE,
@@ -490,11 +490,11 @@ create_sensitivity_suite_plan,create_sensitivity_suite_plan,sensitivity-evidence
   powerscale_args = list(),
   psis_args = list(),
   random_slope_args = list(),
-  group_deletion_args = list()",create_sensitivity_suite_plan.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-create_transformation_recipe,create_transformation_recipe,specification-closure.R,974,prepared,create_transformation_recipe.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-design_support_table,design_support_table,evidence-graphics-gg.R,69,x,design_support_table.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-detect_binary_separation,detect_binary_separation,advanced-optional-workflows.R,814,"x, formula = NULL, data = NULL",detect_binary_separation.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-diagnose_advanced_pupil_fit,diagnose_advanced_pupil_fit,pupil-advanced-diagnostics.R,147,"fit, rhat_threshold = 1.01, ess_threshold = 400",diagnose_advanced_pupil_fit.Rd,gp3bayespy.pupil,mapped_not_implemented
+  group_deletion_args = list()",create_sensitivity_suite_plan.Rd,gp3bayespy.sensitivity,implemented
+create_transformation_recipe,create_transformation_recipe,specification-closure.R,974,prepared,create_transformation_recipe.Rd,gp3bayespy.specification_closure,implemented
+design_support_table,design_support_table,evidence-graphics-gg.R,69,x,design_support_table.Rd,gp3bayespy.evidence_graphics_gg,implemented
+detect_binary_separation,detect_binary_separation,advanced-optional-workflows.R,814,"x, formula = NULL, data = NULL",detect_binary_separation.Rd,gp3bayespy.advanced_optional_workflows,implemented
+diagnose_advanced_pupil_fit,diagnose_advanced_pupil_fit,pupil-advanced-diagnostics.R,147,"fit, rhat_threshold = 1.01, ess_threshold = 400",diagnose_advanced_pupil_fit.Rd,gp3bayespy.pupil,implemented
 diagnose_binary_fit,diagnose_binary_fit,binary-posterior-validation.R,233,"fit,
   rhat_pass = 1.01,
   rhat_fail = 1.05,
@@ -511,50 +511,50 @@ diagnose_duration_fit,diagnose_duration_fit,duration-posterior-validation.R,123,
   maximum_treedepth_fraction = 0.01,
   ebfmi_pass = 0.30,
   ebfmi_fail = 0.20",diagnose_duration_fit.Rd,gp3bayespy.duration,implemented
-diagnose_model_fit,diagnose_model_fit,unified-workflow-api.R,281,"fit, ...",diagnose_model_fit.Rd,gp3bayespy.unified_workflow_api,mapped_not_implemented
-diagnose_pupil_fit,diagnose_pupil_fit,pupil-diagnostics.R,297,"fit, ndraws = 200L, max_lag = 10L, max_cells = 3000000L",diagnose_pupil_fit.Rd,gp3bayespy.pupil,mapped_not_implemented
-diagnostic_dashboard_table,diagnostic_dashboard_table,publication-registry-dashboard.R,436,x,diagnostic_dashboard_table.Rd,gp3bayespy.reporting,mapped_not_implemented
+diagnose_model_fit,diagnose_model_fit,unified-workflow-api.R,281,"fit, ...",diagnose_model_fit.Rd,gp3bayespy.unified_workflow_api,implemented
+diagnose_pupil_fit,diagnose_pupil_fit,pupil-diagnostics.R,297,"fit, ndraws = 200L, max_lag = 10L, max_cells = 3000000L",diagnose_pupil_fit.Rd,gp3bayespy.pupil,implemented
+diagnostic_dashboard_table,diagnostic_dashboard_table,publication-registry-dashboard.R,436,x,diagnostic_dashboard_table.Rd,gp3bayespy.reporting,implemented
 duration_pit_table,duration_pit_table,prediction-support.R,1201,x,duration_pit_table.Rd,gp3bayespy.predictive,implemented
 duration_prediction_scores,duration_prediction_scores,prediction-support.R,1137,"x, observed = NULL",duration_prediction_scores.Rd,gp3bayespy.predictive,implemented
 duration_qq_table,duration_qq_table,predictive-diagnostics-advanced.R,472,"x,
-  probs = seq(0.05, 0.95, by = 0.05)",duration_qq_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = seq(0.05, 0.95, by = 0.05)",duration_qq_table.Rd,gp3bayespy.predictive,implemented
 duration_quantile_calibration,duration_quantile_calibration,prediction-support.R,1168,"x,
   quantiles = c(0.1, 0.25, 0.5, 0.75, 0.9)",duration_quantile_calibration.Rd,gp3bayespy.predictive,implemented
-duration_tail_check,duration_tail_check,predictive-diagnostics-advanced.R,516,"x, threshold",duration_tail_check.Rd,gp3bayespy.predictive,mapped_not_implemented
-estimand_sensitivity_table,estimand_sensitivity_table,recovery-sensitivity-publication.R,71,x,estimand_sensitivity_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-estimate_binocular_pupil_trajectory,estimate_binocular_pupil_trajectory,pupil-binocular.R,647,"fit, newdata = NULL, ndraws = 500L, probability = 0.95",estimate_binocular_pupil_trajectory.Rd,gp3bayespy.pupil,mapped_not_implemented
-estimate_model_estimands,estimate_model_estimands,unified-workflow-api.R,333,"fit, ...",estimate_model_estimands.Rd,gp3bayespy.unified_workflow_api,mapped_not_implemented
-estimate_pupil_auc,estimate_pupil_auc,pupil-estimands.R,351,"prediction, window, probability = 0.95",estimate_pupil_auc.Rd,gp3bayespy.pupil,mapped_not_implemented
-estimate_pupil_dynamic_contrast,estimate_pupil_dynamic_contrast,pupil-functional-estimands.R,114,"prediction, contrast, threshold = 0, probability = 0.95",estimate_pupil_dynamic_contrast.Rd,gp3bayespy.pupil,mapped_not_implemented
-estimate_pupil_peak,estimate_pupil_peak,pupil-estimands.R,368,"prediction, window, probability = 0.95",estimate_pupil_peak.Rd,gp3bayespy.pupil,mapped_not_implemented
-estimate_pupil_peak_latency,estimate_pupil_peak_latency,pupil-estimands.R,385,"prediction, window, probability = 0.95",estimate_pupil_peak_latency.Rd,gp3bayespy.pupil,mapped_not_implemented
+duration_tail_check,duration_tail_check,predictive-diagnostics-advanced.R,516,"x, threshold",duration_tail_check.Rd,gp3bayespy.predictive,implemented
+estimand_sensitivity_table,estimand_sensitivity_table,recovery-sensitivity-publication.R,71,x,estimand_sensitivity_table.Rd,gp3bayespy.sensitivity,implemented
+estimate_binocular_pupil_trajectory,estimate_binocular_pupil_trajectory,pupil-binocular.R,647,"fit, newdata = NULL, ndraws = 500L, probability = 0.95",estimate_binocular_pupil_trajectory.Rd,gp3bayespy.pupil,implemented
+estimate_model_estimands,estimate_model_estimands,unified-workflow-api.R,333,"fit, ...",estimate_model_estimands.Rd,gp3bayespy.unified_workflow_api,implemented
+estimate_pupil_auc,estimate_pupil_auc,pupil-estimands.R,351,"prediction, window, probability = 0.95",estimate_pupil_auc.Rd,gp3bayespy.pupil,implemented
+estimate_pupil_dynamic_contrast,estimate_pupil_dynamic_contrast,pupil-functional-estimands.R,114,"prediction, contrast, threshold = 0, probability = 0.95",estimate_pupil_dynamic_contrast.Rd,gp3bayespy.pupil,implemented
+estimate_pupil_peak,estimate_pupil_peak,pupil-estimands.R,368,"prediction, window, probability = 0.95",estimate_pupil_peak.Rd,gp3bayespy.pupil,implemented
+estimate_pupil_peak_latency,estimate_pupil_peak_latency,pupil-estimands.R,385,"prediction, window, probability = 0.95",estimate_pupil_peak_latency.Rd,gp3bayespy.pupil,implemented
 estimate_pupil_residual_scale,estimate_pupil_residual_scale,pupil-advanced-estimands.R,199,"fit,
     newdata = NULL,
     ndraws = 500L,
-    probability = 0.95",estimate_pupil_residual_scale.Rd,gp3bayespy.pupil,mapped_not_implemented
-estimate_pupil_response_parameters,estimate_pupil_response_parameters,pupil-response-shape.R,265,"fit, probability = 0.95",estimate_pupil_response_parameters.Rd,gp3bayespy.pupil,mapped_not_implemented
+    probability = 0.95",estimate_pupil_residual_scale.Rd,gp3bayespy.pupil,implemented
+estimate_pupil_response_parameters,estimate_pupil_response_parameters,pupil-response-shape.R,265,"fit, probability = 0.95",estimate_pupil_response_parameters.Rd,gp3bayespy.pupil,implemented
 estimate_pupil_threshold_duration,estimate_pupil_threshold_duration,pupil-functional-estimands.R,193,"contrast,
     direction = c(""above"", ""below"", ""absolute""),
     threshold = contrast$threshold,
-    probability = 0.95",estimate_pupil_threshold_duration.Rd,gp3bayespy.pupil,mapped_not_implemented
+    probability = 0.95",estimate_pupil_threshold_duration.Rd,gp3bayespy.pupil,implemented
 estimate_pupil_trajectory,estimate_pupil_trajectory,pupil-estimands.R,208,"prediction, probability = 0.95,
-    interval = c(""pointwise"", ""simultaneous"")",estimate_pupil_trajectory.Rd,gp3bayespy.pupil,mapped_not_implemented
-estimate_pupil_trajectory_derivative,estimate_pupil_trajectory_derivative,pupil-functional-estimands.R,59,"prediction, order = 1L, probability = 0.95",estimate_pupil_trajectory_derivative.Rd,gp3bayespy.pupil,mapped_not_implemented
-estimate_pupil_window,estimate_pupil_window,pupil-estimands.R,334,"prediction, window, probability = 0.95",estimate_pupil_window.Rd,gp3bayespy.pupil,mapped_not_implemented
+    interval = c(""pointwise"", ""simultaneous"")",estimate_pupil_trajectory.Rd,gp3bayespy.pupil,implemented
+estimate_pupil_trajectory_derivative,estimate_pupil_trajectory_derivative,pupil-functional-estimands.R,59,"prediction, order = 1L, probability = 0.95",estimate_pupil_trajectory_derivative.Rd,gp3bayespy.pupil,implemented
+estimate_pupil_window,estimate_pupil_window,pupil-estimands.R,334,"prediction, window, probability = 0.95",estimate_pupil_window.Rd,gp3bayespy.pupil,implemented
 estimate_standardized_duration_estimands,estimate_standardized_duration_estimands,specification-closure.R,1421,"fit,
   target_data = NULL,
   target_scale = c(""prepared"", ""raw""),
   predictive_quantile = 0.90,
   ndraws = NULL,
   include_group_effects = FALSE,
-  seed = 1L",estimate_standardized_duration_estimands.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  seed = 1L",estimate_standardized_duration_estimands.Rd,gp3bayespy.specification_closure,implemented
 estimate_standardized_probability_contrast,estimate_standardized_probability_contrast,specification-closure.R,1344,"fit,
   target_data = NULL,
   target_scale = c(""prepared"", ""raw""),
   ndraws = NULL,
-  include_group_effects = FALSE",estimate_standardized_probability_contrast.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-evaluate_pathological_simulation,evaluate_pathological_simulation,advanced-optional-workflows.R,1713,x,evaluate_pathological_simulation.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-evidence_inventory_table,evidence_inventory_table,publication-registry-dashboard.R,327,x,evidence_inventory_table.Rd,gp3bayespy.reporting,mapped_not_implemented
+  include_group_effects = FALSE",estimate_standardized_probability_contrast.Rd,gp3bayespy.specification_closure,implemented
+evaluate_pathological_simulation,evaluate_pathological_simulation,advanced-optional-workflows.R,1713,x,evaluate_pathological_simulation.Rd,gp3bayespy.advanced_optional_workflows,implemented
+evidence_inventory_table,evidence_inventory_table,publication-registry-dashboard.R,327,x,evidence_inventory_table.Rd,gp3bayespy.reporting,implemented
 extract_expected_predictions,extract_expected_predictions,prediction-support.R,520,"fit,
   newdata = NULL,
   include_group_effects = FALSE,
@@ -568,7 +568,7 @@ extract_linear_predictions,extract_linear_predictions,prediction-support.R,568,"
 extract_log_likelihood,extract_log_likelihood,postfit-exploration.R,261,"fit,
   newdata = NULL,
   include_group_effects = TRUE,
-  ndraws = NULL",extract_log_likelihood.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
+  ndraws = NULL",extract_log_likelihood.Rd,gp3bayespy.postfit_exploration,implemented
 extract_posterior_draws,extract_posterior_draws,postfit-exploration.R,185,"fit,
   variables = NULL,
   regex = NULL,
@@ -579,7 +579,7 @@ extract_posterior_predictions,extract_posterior_predictions,prediction-support.R
   allow_new_levels = FALSE,
   ndraws = NULL,
   seed = 1L",extract_posterior_predictions.Rd,gp3bayespy.predictive,implemented
-extract_sampler_diagnostics,extract_sampler_diagnostics,postfit-exploration.R,236,fit,extract_sampler_diagnostics.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
+extract_sampler_diagnostics,extract_sampler_diagnostics,postfit-exploration.R,236,fit,extract_sampler_diagnostics.Rd,gp3bayespy.postfit_exploration,implemented
 fit_advanced_pupil_model,fit_advanced_pupil_model,pupil-advanced-fit.R,639,"specification,
     chains = 4L,
     iter = 2000L,
@@ -588,7 +588,7 @@ fit_advanced_pupil_model,fit_advanced_pupil_model,pupil-advanced-fit.R,639,"spec
     seed = 2026,
     adapt_delta = 0.95,
     max_treedepth = 12L,
-    refresh = 0L",fit_advanced_pupil_model.Rd,gp3bayespy.pupil,mapped_not_implemented
+    refresh = 0L",fit_advanced_pupil_model.Rd,gp3bayespy.pupil,implemented
 fit_advanced_pupil_model_backend,fit_advanced_pupil_model_backend,pupil-advanced-fit.R,578,"specification,
     backend = c(""rstan"", ""cmdstanr""),
     chains = 4L,
@@ -598,7 +598,7 @@ fit_advanced_pupil_model_backend,fit_advanced_pupil_model_backend,pupil-advanced
     seed = 2026,
     adapt_delta = 0.95,
     max_treedepth = 12L,
-    refresh = 0L",fit_advanced_pupil_model_backend.Rd,gp3bayespy.pupil,mapped_not_implemented
+    refresh = 0L",fit_advanced_pupil_model_backend.Rd,gp3bayespy.pupil,implemented
 fit_advanced_pupil_model_cmdstanr,fit_advanced_pupil_model_cmdstanr,pupil-advanced-fit.R,659,"specification,
     chains = 4L,
     iter = 2000L,
@@ -607,7 +607,7 @@ fit_advanced_pupil_model_cmdstanr,fit_advanced_pupil_model_cmdstanr,pupil-advanc
     seed = 2026,
     adapt_delta = 0.95,
     max_treedepth = 12L,
-    refresh = 0L",fit_advanced_pupil_model_cmdstanr.Rd,gp3bayespy.pupil,mapped_not_implemented
+    refresh = 0L",fit_advanced_pupil_model_cmdstanr.Rd,gp3bayespy.pupil,implemented
 fit_binary_model,fit_binary_model,binary-model-fitting.R,475,"specification,
   chains = 4L,
   iter = 2000L,
@@ -626,7 +626,7 @@ fit_binary_model_backend,fit_binary_model_backend,advanced-optional-workflows.R,
   seed = 1L,
   adapt_delta = 0.95,
   max_treedepth = 12L,
-  refresh = 0L",fit_binary_model_backend.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  refresh = 0L",fit_binary_model_backend.Rd,gp3bayespy.advanced_optional_workflows,implemented
 fit_binary_model_cmdstanr,fit_binary_model_cmdstanr,advanced-optional-workflows.R,734,"specification,
   chains = 4L,
   iter = 2000L,
@@ -635,7 +635,7 @@ fit_binary_model_cmdstanr,fit_binary_model_cmdstanr,advanced-optional-workflows.
   seed = 1L,
   adapt_delta = 0.95,
   max_treedepth = 12L,
-  refresh = 0L",fit_binary_model_backend.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  refresh = 0L",fit_binary_model_backend.Rd,gp3bayespy.advanced_optional_workflows,implemented
 fit_binocular_pupil_model,fit_binocular_pupil_model,pupil-binocular.R,579,"specification,
     backend = c(""rstan"", ""cmdstanr""),
     chains = 4L,
@@ -645,7 +645,7 @@ fit_binocular_pupil_model,fit_binocular_pupil_model,pupil-binocular.R,579,"speci
     seed = 2026,
     adapt_delta = 0.95,
     max_treedepth = 12L,
-    refresh = 0L",fit_binocular_pupil_model.Rd,gp3bayespy.pupil,mapped_not_implemented
+    refresh = 0L",fit_binocular_pupil_model.Rd,gp3bayespy.pupil,implemented
 fit_duration_model,fit_duration_model,duration-model-fitting.R,378,"specification,
   chains = 4L,
   iter = 2000L,
@@ -666,7 +666,7 @@ fit_duration_model_backend,fit_duration_model_backend,advanced-optional-workflow
   seed = 1L,
   adapt_delta = 0.95,
   max_treedepth = 12L,
-  refresh = 0L",fit_duration_model_backend.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  refresh = 0L",fit_duration_model_backend.Rd,gp3bayespy.advanced_optional_workflows,implemented
 fit_duration_model_cmdstanr,fit_duration_model_cmdstanr,advanced-optional-workflows.R,761,"specification,
   chains = 4L,
   iter = 2000L,
@@ -675,10 +675,10 @@ fit_duration_model_cmdstanr,fit_duration_model_cmdstanr,advanced-optional-workfl
   seed = 1L,
   adapt_delta = 0.95,
   max_treedepth = 12L,
-  refresh = 0L",fit_duration_model_backend.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  refresh = 0L",fit_duration_model_backend.Rd,gp3bayespy.advanced_optional_workflows,implemented
 fit_pupil_model,fit_pupil_model,pupil-fit.R,151,"specification, chains = 4L, iter = 2000L, warmup = 1000L,
     cores = min(2L, chains), seed = 2026, adapt_delta = 0.95,
-    max_treedepth = 12L, refresh = 0L",fit_pupil_model.Rd,gp3bayespy.pupil,mapped_not_implemented
+    max_treedepth = 12L, refresh = 0L",fit_pupil_model.Rd,gp3bayespy.pupil,implemented
 fit_pupil_model_backend,fit_pupil_model_backend,pupil-fit.R,74,"specification,
     backend = c(""rstan"", ""cmdstanr""),
     chains = 4L,
@@ -688,10 +688,10 @@ fit_pupil_model_backend,fit_pupil_model_backend,pupil-fit.R,74,"specification,
     seed = 2026,
     adapt_delta = 0.95,
     max_treedepth = 12L,
-    refresh = 0L",fit_pupil_model_backend.Rd,gp3bayespy.pupil,mapped_not_implemented
+    refresh = 0L",fit_pupil_model_backend.Rd,gp3bayespy.pupil,implemented
 fit_pupil_model_cmdstanr,fit_pupil_model_cmdstanr,pupil-fit.R,168,"specification, chains = 4L, iter = 2000L, warmup = 1000L,
     cores = min(2L, chains), seed = 2026, adapt_delta = 0.95,
-    max_treedepth = 12L, refresh = 0L",fit_pupil_model_cmdstanr.Rd,gp3bayespy.pupil,mapped_not_implemented
+    max_treedepth = 12L, refresh = 0L",fit_pupil_model_cmdstanr.Rd,gp3bayespy.pupil,implemented
 fit_pupil_response_shape_model,fit_pupil_response_shape_model,pupil-response-shape.R,227,"specification,
     backend = c(""rstan"", ""cmdstanr""),
     chains = 4L,
@@ -701,29 +701,29 @@ fit_pupil_response_shape_model,fit_pupil_response_shape_model,pupil-response-sha
     seed = 2026,
     adapt_delta = 0.97,
     max_treedepth = 13L,
-    refresh = 0L",fit_pupil_response_shape_model.Rd,gp3bayespy.pupil,mapped_not_implemented
-freeze_analysis_manifest,freeze_analysis_manifest,analysis-manifest.R,370,"manifest, file = NULL, overwrite = FALSE",freeze_analysis_manifest.Rd,gp3bayespy.reproducibility,mapped_not_implemented
-freeze_gp3bayes_schema,freeze_gp3bayes_schema,backend-reliability.R,735,"schema, file = NULL, overwrite = FALSE",freeze_gp3bayes_schema.Rd,gp3bayespy.backends,mapped_not_implemented
-gazepoint_pupil_mapping_table,gazepoint_pupil_mapping_table,pupil-gazepoint.R,145,x,gazepoint_pupil_mapping_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-gp3bayes_specification_traceability,gp3bayes_specification_traceability,specification-closure.R,2864,,gp3bayes_specification_traceability.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-group_deletion_sensitivity_table,group_deletion_sensitivity_table,recovery-sensitivity-publication.R,80,x,group_deletion_sensitivity_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
+    refresh = 0L",fit_pupil_response_shape_model.Rd,gp3bayespy.pupil,implemented
+freeze_analysis_manifest,freeze_analysis_manifest,analysis-manifest.R,370,"manifest, file = NULL, overwrite = FALSE",freeze_analysis_manifest.Rd,gp3bayespy.reproducibility,implemented
+freeze_gp3bayes_schema,freeze_gp3bayes_schema,backend-reliability.R,735,"schema, file = NULL, overwrite = FALSE",freeze_gp3bayes_schema.Rd,gp3bayespy.backends,implemented
+gazepoint_pupil_mapping_table,gazepoint_pupil_mapping_table,pupil-gazepoint.R,145,x,gazepoint_pupil_mapping_table.Rd,gp3bayespy.pupil,implemented
+gp3bayes_specification_traceability,gp3bayes_specification_traceability,specification-closure.R,2864,,gp3bayes_specification_traceability.Rd,gp3bayespy.specification_closure,implemented
+group_deletion_sensitivity_table,group_deletion_sensitivity_table,recovery-sensitivity-publication.R,80,x,group_deletion_sensitivity_table.Rd,gp3bayespy.sensitivity,implemented
 group_effect_draws_table,group_effect_draws_table,hierarchical-effects-advanced.R,50,"fit,
   groups = NULL,
   coefficients = NULL,
   ndraws = NULL,
   seed = 1L,
-  max_rows = 1000000L",group_effect_draws_table.Rd,gp3bayespy.hierarchical_effects_advanced,mapped_not_implemented
+  max_rows = 1000000L",group_effect_draws_table.Rd,gp3bayespy.hierarchical_effects_advanced,implemented
 group_effect_rank_probability_table,group_effect_rank_probability_table,hierarchical-effects-advanced.R,131,"fit,
   group,
   coefficient = ""Intercept"",
   ndraws = 1000L,
-  seed = 1L",group_effect_rank_probability_table.Rd,gp3bayespy.hierarchical_effects_advanced,mapped_not_implemented
+  seed = 1L",group_effect_rank_probability_table.Rd,gp3bayespy.hierarchical_effects_advanced,implemented
 group_effect_table,group_effect_table,postfit-exploration.R,627,"fit,
   groups = NULL,
-  probs = c(0.025, 0.975)",group_effect_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
+  probs = c(0.025, 0.975)",group_effect_table.Rd,gp3bayespy.postfit_exploration,implemented
 group_prediction_summary,group_prediction_summary,predictive-diagnostics-advanced.R,557,"x,
   by,
-  probs = c(0.025, 0.5, 0.975)",group_prediction_summary.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",group_prediction_summary.Rd,gp3bayespy.predictive,implemented
 grouped_prediction_check,grouped_prediction_check,prediction-support.R,821,"fit,
   group,
   ndraws = 1000L,
@@ -733,165 +733,165 @@ identify_identifier_like_predictors,identify_identifier_like_predictors,specific
   contract,
   unique_fraction = 0.90,
   integer_fraction = 0.98,
-  monotone_correlation = 0.98",identify_identifier_like_predictors.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  monotone_correlation = 0.98",identify_identifier_like_predictors.Rd,gp3bayespy.specification_closure,implemented
 identify_loo_influential_observations,identify_loo_influential_observations,advanced-optional-workflows.R,1154,"x,
   threshold = NULL,
-  data = NULL",identify_loo_influential_observations.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  data = NULL",identify_loo_influential_observations.Rd,gp3bayespy.advanced_optional_workflows,implemented
 identify_mcmc_issues,identify_mcmc_issues,postfit-exploration.R,453,"x,
   rhat_threshold = 1.01,
   min_bulk_ess = 400,
   min_tail_ess = 400,
-  max_mcse_fraction = 0.10",identify_mcmc_issues.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
-inspect_gazepoint_pupil_schema,inspect_gazepoint_pupil_schema,pupil-gazepoint.R,69,data,inspect_gazepoint_pupil_schema.Rd,gp3bayespy.pupil,mapped_not_implemented
-interaction_prior_summary,interaction_prior_summary,advanced-optional-workflows.R,424,specification,interaction_prior_summary.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-invert_transformation_recipe,invert_transformation_recipe,specification-closure.R,1141,"data, recipe",invert_transformation_recipe.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-loo_diagnostic_table,loo_diagnostic_table,postfit-exploration.R,708,x,loo_diagnostic_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
-loo_flagged_data,loo_flagged_data,loo-influence-atlas.R,89,"x, threshold = 0.7",loo_flagged_data.Rd,gp3bayespy.loo,mapped_not_implemented
-loo_group_influence_table,loo_group_influence_table,loo-group-influence.R,20,"x, group, data = NULL",loo_group_influence_table.Rd,gp3bayespy.loo,mapped_not_implemented
-loo_influence_atlas_table,loo_influence_atlas_table,loo-influence-atlas.R,207,x,loo_influence_atlas_table.Rd,gp3bayespy.loo,mapped_not_implemented
-loo_influence_summary,loo_influence_summary,loo-influence-atlas.R,57,x,loo_influence_summary.Rd,gp3bayespy.loo,mapped_not_implemented
-loo_pointwise_table,loo_pointwise_table,loo-influence-atlas.R,19,"x, data = NULL",loo_pointwise_table.Rd,gp3bayespy.loo,mapped_not_implemented
-loo_summary_table,loo_summary_table,postfit-exploration.R,739,x,loo_summary_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
-manifest_comparison_table,manifest_comparison_table,evidence-graphics-gg.R,51,x,manifest_comparison_table.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-materialize_pupil_advanced_sensitivity_scenario,materialize_pupil_advanced_sensitivity_scenario,pupil-advanced-governance.R,170,"suite, scenario",materialize_pupil_advanced_sensitivity_scenario.Rd,gp3bayespy.pupil,mapped_not_implemented
-materialize_pupil_sensitivity_scenario,materialize_pupil_sensitivity_scenario,pupil-sensitivity.R,211,"suite, scenario_id",materialize_pupil_sensitivity_scenario.Rd,gp3bayespy.pupil,mapped_not_implemented
-mcmc_diagnostic_table,mcmc_diagnostic_table,postfit-exploration.R,410,"fit, variables = NULL, regex = NULL",mcmc_diagnostic_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
-missingness_audit_table,missingness_audit_table,evidence-graphics-gg.R,78,x,missingness_audit_table.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-model_card_table,model_card_table,model-card.R,123,x,model_card_table.Rd,gp3bayespy.reporting,mapped_not_implemented
-model_comparison_table,model_comparison_table,postfit-exploration.R,761,x,model_comparison_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
-model_evidence_table,model_evidence_table,evidence-graphics-gg.R,24,x,model_evidence_table.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-model_weights_table,model_weights_table,postfit-exploration.R,783,x,model_weights_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
-model_workflow_status,model_workflow_status,unified-workflow-api.R,354,x,model_workflow_status.Rd,gp3bayespy.unified_workflow_api,mapped_not_implemented
-plot_advanced_pupil_simulation,plot_advanced_pupil_simulation,pupil-advanced-graphics.R,36,"x, observed = TRUE, ...",plot_advanced_pupil_simulation.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_advanced_pupil_trajectory,plot_advanced_pupil_trajectory,pupil-advanced-graphics.R,59,"x, probability = 0.95, ...",plot_advanced_pupil_trajectory.Rd,gp3bayespy.pupil,mapped_not_implemented
+  max_mcse_fraction = 0.10",identify_mcmc_issues.Rd,gp3bayespy.postfit_exploration,implemented
+inspect_gazepoint_pupil_schema,inspect_gazepoint_pupil_schema,pupil-gazepoint.R,69,data,inspect_gazepoint_pupil_schema.Rd,gp3bayespy.pupil,implemented
+interaction_prior_summary,interaction_prior_summary,advanced-optional-workflows.R,424,specification,interaction_prior_summary.Rd,gp3bayespy.advanced_optional_workflows,implemented
+invert_transformation_recipe,invert_transformation_recipe,specification-closure.R,1141,"data, recipe",invert_transformation_recipe.Rd,gp3bayespy.specification_closure,implemented
+loo_diagnostic_table,loo_diagnostic_table,postfit-exploration.R,708,x,loo_diagnostic_table.Rd,gp3bayespy.postfit_exploration,implemented
+loo_flagged_data,loo_flagged_data,loo-influence-atlas.R,89,"x, threshold = 0.7",loo_flagged_data.Rd,gp3bayespy.loo,implemented
+loo_group_influence_table,loo_group_influence_table,loo-group-influence.R,20,"x, group, data = NULL",loo_group_influence_table.Rd,gp3bayespy.loo,implemented
+loo_influence_atlas_table,loo_influence_atlas_table,loo-influence-atlas.R,207,x,loo_influence_atlas_table.Rd,gp3bayespy.loo,implemented
+loo_influence_summary,loo_influence_summary,loo-influence-atlas.R,57,x,loo_influence_summary.Rd,gp3bayespy.loo,implemented
+loo_pointwise_table,loo_pointwise_table,loo-influence-atlas.R,19,"x, data = NULL",loo_pointwise_table.Rd,gp3bayespy.loo,implemented
+loo_summary_table,loo_summary_table,postfit-exploration.R,739,x,loo_summary_table.Rd,gp3bayespy.postfit_exploration,implemented
+manifest_comparison_table,manifest_comparison_table,evidence-graphics-gg.R,51,x,manifest_comparison_table.Rd,gp3bayespy.evidence_graphics_gg,implemented
+materialize_pupil_advanced_sensitivity_scenario,materialize_pupil_advanced_sensitivity_scenario,pupil-advanced-governance.R,170,"suite, scenario",materialize_pupil_advanced_sensitivity_scenario.Rd,gp3bayespy.pupil,implemented
+materialize_pupil_sensitivity_scenario,materialize_pupil_sensitivity_scenario,pupil-sensitivity.R,211,"suite, scenario_id",materialize_pupil_sensitivity_scenario.Rd,gp3bayespy.pupil,implemented
+mcmc_diagnostic_table,mcmc_diagnostic_table,postfit-exploration.R,410,"fit, variables = NULL, regex = NULL",mcmc_diagnostic_table.Rd,gp3bayespy.postfit_exploration,implemented
+missingness_audit_table,missingness_audit_table,evidence-graphics-gg.R,78,x,missingness_audit_table.Rd,gp3bayespy.evidence_graphics_gg,implemented
+model_card_table,model_card_table,model-card.R,123,x,model_card_table.Rd,gp3bayespy.reporting,implemented
+model_comparison_table,model_comparison_table,postfit-exploration.R,761,x,model_comparison_table.Rd,gp3bayespy.postfit_exploration,implemented
+model_evidence_table,model_evidence_table,evidence-graphics-gg.R,24,x,model_evidence_table.Rd,gp3bayespy.evidence_graphics_gg,implemented
+model_weights_table,model_weights_table,postfit-exploration.R,783,x,model_weights_table.Rd,gp3bayespy.postfit_exploration,implemented
+model_workflow_status,model_workflow_status,unified-workflow-api.R,354,x,model_workflow_status.Rd,gp3bayespy.unified_workflow_api,implemented
+plot_advanced_pupil_simulation,plot_advanced_pupil_simulation,pupil-advanced-graphics.R,36,"x, observed = TRUE, ...",plot_advanced_pupil_simulation.Rd,gp3bayespy.pupil,implemented
+plot_advanced_pupil_trajectory,plot_advanced_pupil_trajectory,pupil-advanced-graphics.R,59,"x, probability = 0.95, ...",plot_advanced_pupil_trajectory.Rd,gp3bayespy.pupil,implemented
 plot_autocorrelation,plot_autocorrelation,publication-graphics.R,166,"fit,
   variables = NULL,
   regex = ""^b_"",
-  lags = 20L",plot_autocorrelation.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_backend_environment_gg,plot_backend_environment_gg,evidence-graphics-gg.R,176,x,plot_backend_environment_gg.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-plot_backend_parity_gg,plot_backend_parity_gg,evidence-graphics-gg.R,147,x,plot_backend_parity_gg.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-plot_binary_calibration,plot_binary_calibration,publication-graphics.R,367,"x, bins = 10L",plot_binary_calibration.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_binary_calibration_uncertainty,plot_binary_calibration_uncertainty,predictive-distribution-atlas.R,450,x,plot_binary_calibration_uncertainty.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_binary_group_calibration,plot_binary_group_calibration,advanced-predictive-graphics.R,141,"x, group = NULL",plot_binary_group_calibration.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_binary_precision_recall,plot_binary_precision_recall,advanced-predictive-graphics.R,116,"x, observed = NULL",plot_binary_precision_recall.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_binary_roc,plot_binary_roc,advanced-predictive-graphics.R,86,"x, observed = NULL",plot_binary_roc.Rd,gp3bayespy.predictive,mapped_not_implemented
+  lags = 20L",plot_autocorrelation.Rd,gp3bayespy.reporting,implemented
+plot_backend_environment_gg,plot_backend_environment_gg,evidence-graphics-gg.R,176,x,plot_backend_environment_gg.Rd,gp3bayespy.evidence_graphics_gg,implemented
+plot_backend_parity_gg,plot_backend_parity_gg,evidence-graphics-gg.R,147,x,plot_backend_parity_gg.Rd,gp3bayespy.evidence_graphics_gg,implemented
+plot_binary_calibration,plot_binary_calibration,publication-graphics.R,367,"x, bins = 10L",plot_binary_calibration.Rd,gp3bayespy.reporting,implemented
+plot_binary_calibration_uncertainty,plot_binary_calibration_uncertainty,predictive-distribution-atlas.R,450,x,plot_binary_calibration_uncertainty.Rd,gp3bayespy.predictive,implemented
+plot_binary_group_calibration,plot_binary_group_calibration,advanced-predictive-graphics.R,141,"x, group = NULL",plot_binary_group_calibration.Rd,gp3bayespy.predictive,implemented
+plot_binary_precision_recall,plot_binary_precision_recall,advanced-predictive-graphics.R,116,"x, observed = NULL",plot_binary_precision_recall.Rd,gp3bayespy.predictive,implemented
+plot_binary_roc,plot_binary_roc,advanced-predictive-graphics.R,86,"x, observed = NULL",plot_binary_roc.Rd,gp3bayespy.predictive,implemented
 plot_binary_threshold_metrics,plot_binary_threshold_metrics,publication-graphics.R,410,"x,
   observed = NULL,
-  thresholds = seq(0.1, 0.9, by = 0.05)",plot_binary_threshold_metrics.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_binocular_pupil_trajectory,plot_binocular_pupil_trajectory,pupil-advanced-graphics.R,157,"x, probability = x$probability, ...",plot_binocular_pupil_trajectory.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_design_support_gg,plot_design_support_gg,evidence-graphics-gg.R,262,x,plot_design_support_gg.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-plot_diagnostic_dashboard,plot_diagnostic_dashboard,publication-registry-dashboard.R,522,x,plot_diagnostic_dashboard.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_duration_pit,plot_duration_pit,publication-graphics.R,481,"x, bins = 10L",plot_duration_pit.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_duration_qq,plot_duration_qq,advanced-predictive-graphics.R,175,x,plot_duration_qq.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_duration_quantile_calibration,plot_duration_quantile_calibration,publication-graphics.R,453,x,plot_duration_quantile_calibration.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_duration_tail,plot_duration_tail,advanced-predictive-graphics.R,212,x,plot_duration_tail.Rd,gp3bayespy.predictive,mapped_not_implemented
+  thresholds = seq(0.1, 0.9, by = 0.05)",plot_binary_threshold_metrics.Rd,gp3bayespy.reporting,implemented
+plot_binocular_pupil_trajectory,plot_binocular_pupil_trajectory,pupil-advanced-graphics.R,157,"x, probability = x$probability, ...",plot_binocular_pupil_trajectory.Rd,gp3bayespy.pupil,implemented
+plot_design_support_gg,plot_design_support_gg,evidence-graphics-gg.R,262,x,plot_design_support_gg.Rd,gp3bayespy.evidence_graphics_gg,implemented
+plot_diagnostic_dashboard,plot_diagnostic_dashboard,publication-registry-dashboard.R,522,x,plot_diagnostic_dashboard.Rd,gp3bayespy.reporting,implemented
+plot_duration_pit,plot_duration_pit,publication-graphics.R,481,"x, bins = 10L",plot_duration_pit.Rd,gp3bayespy.reporting,implemented
+plot_duration_qq,plot_duration_qq,advanced-predictive-graphics.R,175,x,plot_duration_qq.Rd,gp3bayespy.predictive,implemented
+plot_duration_quantile_calibration,plot_duration_quantile_calibration,publication-graphics.R,453,x,plot_duration_quantile_calibration.Rd,gp3bayespy.reporting,implemented
+plot_duration_tail,plot_duration_tail,advanced-predictive-graphics.R,212,x,plot_duration_tail.Rd,gp3bayespy.predictive,implemented
 plot_estimand_intervals,plot_estimand_intervals,publication-graphics.R,293,"x,
   quantities = NULL,
-  probs = c(0.025, 0.5, 0.975)",plot_estimand_intervals.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_estimand_sensitivity_gg,plot_estimand_sensitivity_gg,recovery-sensitivity-publication.R,384,x,plot_estimand_sensitivity_gg.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_exceedance_probability,plot_exceedance_probability,publication-graphics.R,512,x,plot_exceedance_probability.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_group_deletion_sensitivity,plot_group_deletion_sensitivity,recovery-sensitivity-publication.R,428,x,plot_group_deletion_sensitivity.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_group_effect_distribution,plot_group_effect_distribution,hierarchical-effects-advanced.R,299,"x, max_levels = 20L",plot_group_effect_distribution.Rd,gp3bayespy.hierarchical_effects_advanced,mapped_not_implemented
-plot_group_effect_rank_probability,plot_group_effect_rank_probability,hierarchical-effects-advanced.R,330,x,plot_group_effect_rank_probability.Rd,gp3bayespy.hierarchical_effects_advanced,mapped_not_implemented
-plot_group_effects,plot_group_effects,publication-graphics.R,703,"x, groups = NULL",plot_group_effects.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_group_predictions,plot_group_predictions,advanced-predictive-graphics.R,249,"x, group_column",plot_group_predictions.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_grouped_prediction_check,plot_grouped_prediction_check,publication-graphics.R,664,x,plot_grouped_prediction_check.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_loo_group_elpd,plot_loo_group_elpd,loo-group-influence.R,88,x,plot_loo_group_elpd.Rd,gp3bayespy.loo,mapped_not_implemented
-plot_loo_group_influence,plot_loo_group_influence,loo-group-influence.R,58,x,plot_loo_group_influence.Rd,gp3bayespy.loo,mapped_not_implemented
-plot_loo_influence,plot_loo_influence,publication-graphics.R,765,x,plot_loo_influence.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_loo_influence_rank,plot_loo_influence_rank,loo-influence-atlas.R,148,x,plot_loo_influence_rank.Rd,gp3bayespy.loo,mapped_not_implemented
-plot_loo_pareto_vs_elpd,plot_loo_pareto_vs_elpd,loo-influence-atlas.R,126,x,plot_loo_pareto_vs_elpd.Rd,gp3bayespy.loo,mapped_not_implemented
-plot_loo_pointwise_elpd,plot_loo_pointwise_elpd,loo-influence-atlas.R,107,x,plot_loo_pointwise_elpd.Rd,gp3bayespy.loo,mapped_not_implemented
-plot_manifest_comparison_gg,plot_manifest_comparison_gg,evidence-graphics-gg.R,205,x,plot_manifest_comparison_gg.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-plot_mcmc_quality,plot_mcmc_quality,publication-graphics.R,190,x,plot_mcmc_quality.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_missingness_gg,plot_missingness_gg,evidence-graphics-gg.R,291,x,plot_missingness_gg.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-plot_model_comparison,plot_model_comparison,publication-graphics.R,789,x,plot_model_comparison.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_model_evidence_gg,plot_model_evidence_gg,evidence-graphics-gg.R,116,x,plot_model_evidence_gg.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-plot_model_weights,plot_model_weights,publication-graphics.R,823,x,plot_model_weights.Rd,gp3bayespy.reporting,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",plot_estimand_intervals.Rd,gp3bayespy.reporting,implemented
+plot_estimand_sensitivity_gg,plot_estimand_sensitivity_gg,recovery-sensitivity-publication.R,384,x,plot_estimand_sensitivity_gg.Rd,gp3bayespy.sensitivity,implemented
+plot_exceedance_probability,plot_exceedance_probability,publication-graphics.R,512,x,plot_exceedance_probability.Rd,gp3bayespy.reporting,implemented
+plot_group_deletion_sensitivity,plot_group_deletion_sensitivity,recovery-sensitivity-publication.R,428,x,plot_group_deletion_sensitivity.Rd,gp3bayespy.sensitivity,implemented
+plot_group_effect_distribution,plot_group_effect_distribution,hierarchical-effects-advanced.R,299,"x, max_levels = 20L",plot_group_effect_distribution.Rd,gp3bayespy.hierarchical_effects_advanced,implemented
+plot_group_effect_rank_probability,plot_group_effect_rank_probability,hierarchical-effects-advanced.R,330,x,plot_group_effect_rank_probability.Rd,gp3bayespy.hierarchical_effects_advanced,implemented
+plot_group_effects,plot_group_effects,publication-graphics.R,703,"x, groups = NULL",plot_group_effects.Rd,gp3bayespy.reporting,implemented
+plot_group_predictions,plot_group_predictions,advanced-predictive-graphics.R,249,"x, group_column",plot_group_predictions.Rd,gp3bayespy.predictive,implemented
+plot_grouped_prediction_check,plot_grouped_prediction_check,publication-graphics.R,664,x,plot_grouped_prediction_check.Rd,gp3bayespy.reporting,implemented
+plot_loo_group_elpd,plot_loo_group_elpd,loo-group-influence.R,88,x,plot_loo_group_elpd.Rd,gp3bayespy.loo,implemented
+plot_loo_group_influence,plot_loo_group_influence,loo-group-influence.R,58,x,plot_loo_group_influence.Rd,gp3bayespy.loo,implemented
+plot_loo_influence,plot_loo_influence,publication-graphics.R,765,x,plot_loo_influence.Rd,gp3bayespy.reporting,implemented
+plot_loo_influence_rank,plot_loo_influence_rank,loo-influence-atlas.R,148,x,plot_loo_influence_rank.Rd,gp3bayespy.loo,implemented
+plot_loo_pareto_vs_elpd,plot_loo_pareto_vs_elpd,loo-influence-atlas.R,126,x,plot_loo_pareto_vs_elpd.Rd,gp3bayespy.loo,implemented
+plot_loo_pointwise_elpd,plot_loo_pointwise_elpd,loo-influence-atlas.R,107,x,plot_loo_pointwise_elpd.Rd,gp3bayespy.loo,implemented
+plot_manifest_comparison_gg,plot_manifest_comparison_gg,evidence-graphics-gg.R,205,x,plot_manifest_comparison_gg.Rd,gp3bayespy.evidence_graphics_gg,implemented
+plot_mcmc_quality,plot_mcmc_quality,publication-graphics.R,190,x,plot_mcmc_quality.Rd,gp3bayespy.reporting,implemented
+plot_missingness_gg,plot_missingness_gg,evidence-graphics-gg.R,291,x,plot_missingness_gg.Rd,gp3bayespy.evidence_graphics_gg,implemented
+plot_model_comparison,plot_model_comparison,publication-graphics.R,789,x,plot_model_comparison.Rd,gp3bayespy.reporting,implemented
+plot_model_evidence_gg,plot_model_evidence_gg,evidence-graphics-gg.R,116,x,plot_model_evidence_gg.Rd,gp3bayespy.evidence_graphics_gg,implemented
+plot_model_weights,plot_model_weights,publication-graphics.R,823,x,plot_model_weights.Rd,gp3bayespy.reporting,implemented
 plot_posterior_areas,plot_posterior_areas,publication-graphics.R,72,"x,
   variables = NULL,
   regex = NULL,
   prob = 0.5,
-  prob_outer = 0.95",plot_posterior_areas.Rd,gp3bayespy.reporting,mapped_not_implemented
+  prob_outer = 0.95",plot_posterior_areas.Rd,gp3bayespy.reporting,implemented
 plot_posterior_correlations,plot_posterior_correlations,publication-graphics.R,238,"x,
   variables = NULL,
   regex = NULL,
-  method = c(""pearson"", ""spearman"")",plot_posterior_correlations.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_posterior_density,plot_posterior_density,publication-graphics.R,96,"x, variables = NULL, regex = NULL",plot_posterior_density.Rd,gp3bayespy.reporting,mapped_not_implemented
+  method = c(""pearson"", ""spearman"")",plot_posterior_correlations.Rd,gp3bayespy.reporting,implemented
+plot_posterior_density,plot_posterior_density,publication-graphics.R,96,"x, variables = NULL, regex = NULL",plot_posterior_density.Rd,gp3bayespy.reporting,implemented
 plot_posterior_intervals,plot_posterior_intervals,publication-graphics.R,49,"x,
   variables = NULL,
   regex = NULL,
   prob = 0.8,
-  prob_outer = 0.95",plot_posterior_intervals.Rd,gp3bayespy.reporting,mapped_not_implemented
+  prob_outer = 0.95",plot_posterior_intervals.Rd,gp3bayespy.reporting,implemented
 plot_posterior_pairs,plot_posterior_pairs,publication-graphics.R,112,"fit,
   variables = NULL,
   regex = ""^b_"",
-  max_variables = 8L",plot_posterior_pairs.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_powerscale_sensitivity_gg,plot_powerscale_sensitivity_gg,recovery-sensitivity-publication.R,476,x,plot_powerscale_sensitivity_gg.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_ppc_statistic,plot_ppc_statistic,advanced-predictive-graphics.R,57,"x, bins = 30L",plot_ppc_statistic.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_prediction_contrast_profile,plot_prediction_contrast_profile,prediction-surfaces.R,559,x,plot_prediction_contrast_profile.Rd,gp3bayespy.predictive,mapped_not_implemented
+  max_variables = 8L",plot_posterior_pairs.Rd,gp3bayespy.reporting,implemented
+plot_powerscale_sensitivity_gg,plot_powerscale_sensitivity_gg,recovery-sensitivity-publication.R,476,x,plot_powerscale_sensitivity_gg.Rd,gp3bayespy.sensitivity,implemented
+plot_ppc_statistic,plot_ppc_statistic,advanced-predictive-graphics.R,57,"x, bins = 30L",plot_ppc_statistic.Rd,gp3bayespy.predictive,implemented
+plot_prediction_contrast_profile,plot_prediction_contrast_profile,prediction-surfaces.R,559,x,plot_prediction_contrast_profile.Rd,gp3bayespy.predictive,implemented
 plot_prediction_draws,plot_prediction_draws,advanced-predictive-graphics.R,20,"x,
   observations = NULL,
-  max_draws = 500L",plot_prediction_draws.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_prediction_gradient,plot_prediction_gradient,prediction-surfaces.R,197,x,plot_prediction_gradient.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_prediction_interval_width,plot_prediction_interval_width,advanced-predictive-graphics.R,291,x,plot_prediction_interval_width.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_prediction_intervals,plot_prediction_intervals,publication-graphics.R,325,"x, max_rows = 100L",plot_prediction_intervals.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_prediction_profile,plot_prediction_profile,prediction-surfaces.R,171,x,plot_prediction_profile.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_prediction_rank_probabilities,plot_prediction_rank_probabilities,advanced-predictive-graphics.R,316,x,plot_prediction_rank_probabilities.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_prediction_score_uncertainty,plot_prediction_score_uncertainty,predictive-distribution-atlas.R,427,x,plot_prediction_score_uncertainty.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_prediction_support,plot_prediction_support,publication-graphics.R,594,x,plot_prediction_support.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_prediction_surface,plot_prediction_surface,prediction-surfaces.R,331,x,plot_prediction_surface.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_prediction_surface_uncertainty,plot_prediction_surface_uncertainty,prediction-surfaces.R,359,x,plot_prediction_surface_uncertainty.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_predictive_atlas_statistics,plot_predictive_atlas_statistics,predictive-distribution-atlas.R,358,x,plot_predictive_atlas_statistics.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_predictive_coverage,plot_predictive_coverage,publication-graphics.R,541,x,plot_predictive_coverage.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_predictive_quantile_envelope,plot_predictive_quantile_envelope,predictive-distribution-atlas.R,396,x,plot_predictive_quantile_envelope.Rd,gp3bayespy.predictive,mapped_not_implemented
-plot_predictive_residuals,plot_predictive_residuals,publication-graphics.R,572,x,plot_predictive_residuals.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_prior_posterior_contraction,plot_prior_posterior_contraction,prior-posterior-bridge.R,474,x,plot_prior_posterior_contraction.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
-plot_prior_posterior_density,plot_prior_posterior_density,prior-posterior-bridge.R,392,"x, max_draws = 1000L",plot_prior_posterior_density.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
-plot_prior_posterior_intervals,plot_prior_posterior_intervals,prior-posterior-bridge.R,412,x,plot_prior_posterior_intervals.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
-plot_prior_posterior_shift,plot_prior_posterior_shift,prior-posterior-bridge.R,450,x,plot_prior_posterior_shift.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
-plot_prior_sensitivity,plot_prior_sensitivity,recovery-sensitivity-publication.R,316,x,plot_prior_sensitivity.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_prior_sensitivity_scenarios,plot_prior_sensitivity_scenarios,recovery-sensitivity-publication.R,353,x,plot_prior_sensitivity_scenarios.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_pupil_autocorrelation_comparison,plot_pupil_autocorrelation_comparison,pupil-advanced-graphics.R,114,"x, absolute = TRUE, ...",plot_pupil_autocorrelation_comparison.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_dynamic_contrast,plot_pupil_dynamic_contrast,pupil-advanced-graphics.R,272,"x, ...",plot_pupil_dynamic_contrast.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_estimand,plot_pupil_estimand,pupil-graphics.R,162,x,plot_pupil_estimand.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_gp_hyperparameters,plot_pupil_gp_hyperparameters,pupil-advanced-graphics.R,85,"x, ...",plot_pupil_gp_hyperparameters.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_identifiability_audit,plot_pupil_identifiability_audit,pupil-advanced-graphics.R,287,"x, ...",plot_pupil_identifiability_audit.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_lfo,plot_pupil_lfo,pupil-advanced-graphics.R,193,"x, ...",plot_pupil_lfo.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_measurement_audit,plot_pupil_measurement_audit,pupil-graphics.R,517,x,plot_pupil_measurement_audit.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_measurement_uncertainty,plot_pupil_measurement_uncertainty,pupil-advanced-graphics.R,144,"x, ...",plot_pupil_measurement_uncertainty.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_missingness,plot_pupil_missingness,pupil-advanced-graphics.R,133,"x, ...",plot_pupil_missingness.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_model_comparison,plot_pupil_model_comparison,pupil-advanced-graphics.R,178,"x, ...",plot_pupil_model_comparison.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_model_complexity,plot_pupil_model_complexity,pupil-advanced-graphics.R,241,"x, ...",plot_pupil_model_complexity.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_observed_trajectory,plot_pupil_observed_trajectory,pupil-graphics.R,50,"x, summary = TRUE",plot_pupil_observed_trajectory.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_posterior_trajectory,plot_pupil_posterior_trajectory,pupil-graphics.R,106,x,plot_pupil_posterior_trajectory.Rd,gp3bayespy.pupil,mapped_not_implemented
+  max_draws = 500L",plot_prediction_draws.Rd,gp3bayespy.predictive,implemented
+plot_prediction_gradient,plot_prediction_gradient,prediction-surfaces.R,197,x,plot_prediction_gradient.Rd,gp3bayespy.predictive,implemented
+plot_prediction_interval_width,plot_prediction_interval_width,advanced-predictive-graphics.R,291,x,plot_prediction_interval_width.Rd,gp3bayespy.predictive,implemented
+plot_prediction_intervals,plot_prediction_intervals,publication-graphics.R,325,"x, max_rows = 100L",plot_prediction_intervals.Rd,gp3bayespy.reporting,implemented
+plot_prediction_profile,plot_prediction_profile,prediction-surfaces.R,171,x,plot_prediction_profile.Rd,gp3bayespy.predictive,implemented
+plot_prediction_rank_probabilities,plot_prediction_rank_probabilities,advanced-predictive-graphics.R,316,x,plot_prediction_rank_probabilities.Rd,gp3bayespy.predictive,implemented
+plot_prediction_score_uncertainty,plot_prediction_score_uncertainty,predictive-distribution-atlas.R,427,x,plot_prediction_score_uncertainty.Rd,gp3bayespy.predictive,implemented
+plot_prediction_support,plot_prediction_support,publication-graphics.R,594,x,plot_prediction_support.Rd,gp3bayespy.reporting,implemented
+plot_prediction_surface,plot_prediction_surface,prediction-surfaces.R,331,x,plot_prediction_surface.Rd,gp3bayespy.predictive,implemented
+plot_prediction_surface_uncertainty,plot_prediction_surface_uncertainty,prediction-surfaces.R,359,x,plot_prediction_surface_uncertainty.Rd,gp3bayespy.predictive,implemented
+plot_predictive_atlas_statistics,plot_predictive_atlas_statistics,predictive-distribution-atlas.R,358,x,plot_predictive_atlas_statistics.Rd,gp3bayespy.predictive,implemented
+plot_predictive_coverage,plot_predictive_coverage,publication-graphics.R,541,x,plot_predictive_coverage.Rd,gp3bayespy.reporting,implemented
+plot_predictive_quantile_envelope,plot_predictive_quantile_envelope,predictive-distribution-atlas.R,396,x,plot_predictive_quantile_envelope.Rd,gp3bayespy.predictive,implemented
+plot_predictive_residuals,plot_predictive_residuals,publication-graphics.R,572,x,plot_predictive_residuals.Rd,gp3bayespy.reporting,implemented
+plot_prior_posterior_contraction,plot_prior_posterior_contraction,prior-posterior-bridge.R,474,x,plot_prior_posterior_contraction.Rd,gp3bayespy.prior_posterior_bridge,implemented
+plot_prior_posterior_density,plot_prior_posterior_density,prior-posterior-bridge.R,392,"x, max_draws = 1000L",plot_prior_posterior_density.Rd,gp3bayespy.prior_posterior_bridge,implemented
+plot_prior_posterior_intervals,plot_prior_posterior_intervals,prior-posterior-bridge.R,412,x,plot_prior_posterior_intervals.Rd,gp3bayespy.prior_posterior_bridge,implemented
+plot_prior_posterior_shift,plot_prior_posterior_shift,prior-posterior-bridge.R,450,x,plot_prior_posterior_shift.Rd,gp3bayespy.prior_posterior_bridge,implemented
+plot_prior_sensitivity,plot_prior_sensitivity,recovery-sensitivity-publication.R,316,x,plot_prior_sensitivity.Rd,gp3bayespy.sensitivity,implemented
+plot_prior_sensitivity_scenarios,plot_prior_sensitivity_scenarios,recovery-sensitivity-publication.R,353,x,plot_prior_sensitivity_scenarios.Rd,gp3bayespy.sensitivity,implemented
+plot_pupil_autocorrelation_comparison,plot_pupil_autocorrelation_comparison,pupil-advanced-graphics.R,114,"x, absolute = TRUE, ...",plot_pupil_autocorrelation_comparison.Rd,gp3bayespy.pupil,implemented
+plot_pupil_dynamic_contrast,plot_pupil_dynamic_contrast,pupil-advanced-graphics.R,272,"x, ...",plot_pupil_dynamic_contrast.Rd,gp3bayespy.pupil,implemented
+plot_pupil_estimand,plot_pupil_estimand,pupil-graphics.R,162,x,plot_pupil_estimand.Rd,gp3bayespy.pupil,implemented
+plot_pupil_gp_hyperparameters,plot_pupil_gp_hyperparameters,pupil-advanced-graphics.R,85,"x, ...",plot_pupil_gp_hyperparameters.Rd,gp3bayespy.pupil,implemented
+plot_pupil_identifiability_audit,plot_pupil_identifiability_audit,pupil-advanced-graphics.R,287,"x, ...",plot_pupil_identifiability_audit.Rd,gp3bayespy.pupil,implemented
+plot_pupil_lfo,plot_pupil_lfo,pupil-advanced-graphics.R,193,"x, ...",plot_pupil_lfo.Rd,gp3bayespy.pupil,implemented
+plot_pupil_measurement_audit,plot_pupil_measurement_audit,pupil-graphics.R,517,x,plot_pupil_measurement_audit.Rd,gp3bayespy.pupil,implemented
+plot_pupil_measurement_uncertainty,plot_pupil_measurement_uncertainty,pupil-advanced-graphics.R,144,"x, ...",plot_pupil_measurement_uncertainty.Rd,gp3bayespy.pupil,implemented
+plot_pupil_missingness,plot_pupil_missingness,pupil-advanced-graphics.R,133,"x, ...",plot_pupil_missingness.Rd,gp3bayespy.pupil,implemented
+plot_pupil_model_comparison,plot_pupil_model_comparison,pupil-advanced-graphics.R,178,"x, ...",plot_pupil_model_comparison.Rd,gp3bayespy.pupil,implemented
+plot_pupil_model_complexity,plot_pupil_model_complexity,pupil-advanced-graphics.R,241,"x, ...",plot_pupil_model_complexity.Rd,gp3bayespy.pupil,implemented
+plot_pupil_observed_trajectory,plot_pupil_observed_trajectory,pupil-graphics.R,50,"x, summary = TRUE",plot_pupil_observed_trajectory.Rd,gp3bayespy.pupil,implemented
+plot_pupil_posterior_trajectory,plot_pupil_posterior_trajectory,pupil-graphics.R,106,x,plot_pupil_posterior_trajectory.Rd,gp3bayespy.pupil,implemented
 plot_pupil_ppc,plot_pupil_ppc,pupil-graphics.R,204,"x,
     component = c(
       ""trajectory"", ""residuals"", ""features"", ""autocorrelation"",
       ""heterogeneity"", ""measurement_context""
-    )",plot_pupil_ppc.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_predictive_calibration,plot_pupil_predictive_calibration,pupil-advanced-graphics.R,299,"x, ...",plot_pupil_predictive_calibration.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_readiness,plot_pupil_readiness,pupil-graphics.R,25,x,plot_pupil_readiness.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_residual_acf,plot_pupil_residual_acf,pupil-graphics.R,379,x,plot_pupil_residual_acf.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_residual_scale,plot_pupil_residual_scale,pupil-advanced-graphics.R,72,"x, ...",plot_pupil_residual_scale.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_residual_spectrum,plot_pupil_residual_spectrum,pupil-advanced-graphics.R,228,"x, ...",plot_pupil_residual_spectrum.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_response_parameters,plot_pupil_response_parameters,pupil-advanced-graphics.R,212,"x, ...",plot_pupil_response_parameters.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_sensitivity,plot_pupil_sensitivity,pupil-graphics.R,475,x,plot_pupil_sensitivity.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_temporal_dependence,plot_pupil_temporal_dependence,pupil-advanced-graphics.R,101,"x, ...",plot_pupil_temporal_dependence.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_trajectory_derivative,plot_pupil_trajectory_derivative,pupil-advanced-graphics.R,255,"x, probability = x$probability, ...",plot_pupil_trajectory_derivative.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_pupil_validation,plot_pupil_validation,pupil-graphics.R,408,x,plot_pupil_validation.Rd,gp3bayespy.pupil,mapped_not_implemented
-plot_random_intercept_variance_partition,plot_random_intercept_variance_partition,hierarchical-effects-advanced.R,354,x,plot_random_intercept_variance_partition.Rd,gp3bayespy.hierarchical_effects_advanced,mapped_not_implemented
-plot_random_slope_sensitivity,plot_random_slope_sensitivity,recovery-sensitivity-publication.R,458,x,plot_random_slope_sensitivity.Rd,gp3bayespy.sensitivity,mapped_not_implemented
+    )",plot_pupil_ppc.Rd,gp3bayespy.pupil,implemented
+plot_pupil_predictive_calibration,plot_pupil_predictive_calibration,pupil-advanced-graphics.R,299,"x, ...",plot_pupil_predictive_calibration.Rd,gp3bayespy.pupil,implemented
+plot_pupil_readiness,plot_pupil_readiness,pupil-graphics.R,25,x,plot_pupil_readiness.Rd,gp3bayespy.pupil,implemented
+plot_pupil_residual_acf,plot_pupil_residual_acf,pupil-graphics.R,379,x,plot_pupil_residual_acf.Rd,gp3bayespy.pupil,implemented
+plot_pupil_residual_scale,plot_pupil_residual_scale,pupil-advanced-graphics.R,72,"x, ...",plot_pupil_residual_scale.Rd,gp3bayespy.pupil,implemented
+plot_pupil_residual_spectrum,plot_pupil_residual_spectrum,pupil-advanced-graphics.R,228,"x, ...",plot_pupil_residual_spectrum.Rd,gp3bayespy.pupil,implemented
+plot_pupil_response_parameters,plot_pupil_response_parameters,pupil-advanced-graphics.R,212,"x, ...",plot_pupil_response_parameters.Rd,gp3bayespy.pupil,implemented
+plot_pupil_sensitivity,plot_pupil_sensitivity,pupil-graphics.R,475,x,plot_pupil_sensitivity.Rd,gp3bayespy.pupil,implemented
+plot_pupil_temporal_dependence,plot_pupil_temporal_dependence,pupil-advanced-graphics.R,101,"x, ...",plot_pupil_temporal_dependence.Rd,gp3bayespy.pupil,implemented
+plot_pupil_trajectory_derivative,plot_pupil_trajectory_derivative,pupil-advanced-graphics.R,255,"x, probability = x$probability, ...",plot_pupil_trajectory_derivative.Rd,gp3bayespy.pupil,implemented
+plot_pupil_validation,plot_pupil_validation,pupil-graphics.R,408,x,plot_pupil_validation.Rd,gp3bayespy.pupil,implemented
+plot_random_intercept_variance_partition,plot_random_intercept_variance_partition,hierarchical-effects-advanced.R,354,x,plot_random_intercept_variance_partition.Rd,gp3bayespy.hierarchical_effects_advanced,implemented
+plot_random_slope_sensitivity,plot_random_slope_sensitivity,recovery-sensitivity-publication.R,458,x,plot_random_slope_sensitivity.Rd,gp3bayespy.sensitivity,implemented
 plot_rank_diagnostics,plot_rank_diagnostics,publication-graphics.R,142,"fit,
   variables = NULL,
-  regex = ""^b_""",plot_rank_diagnostics.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_recovery_bias,plot_recovery_bias,recovery-sensitivity-publication.R,177,x,plot_recovery_bias.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_recovery_coverage,plot_recovery_coverage,recovery-sensitivity-publication.R,202,x,plot_recovery_coverage.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_recovery_estimates,plot_recovery_estimates,recovery-sensitivity-publication.R,246,"x, variables = NULL",plot_recovery_estimates.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_recovery_fit_status,plot_recovery_fit_status,recovery-sensitivity-publication.R,281,x,plot_recovery_fit_status.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_recovery_rmse,plot_recovery_rmse,recovery-sensitivity-publication.R,226,x,plot_recovery_rmse.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_reporting_checklist,plot_reporting_checklist,model-card.R,180,x,plot_reporting_checklist.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_sampler_diagnostics,plot_sampler_diagnostics,publication-graphics.R,214,fit,plot_sampler_diagnostics.Rd,gp3bayespy.reporting,mapped_not_implemented
+  regex = ""^b_""",plot_rank_diagnostics.Rd,gp3bayespy.reporting,implemented
+plot_recovery_bias,plot_recovery_bias,recovery-sensitivity-publication.R,177,x,plot_recovery_bias.Rd,gp3bayespy.sensitivity,implemented
+plot_recovery_coverage,plot_recovery_coverage,recovery-sensitivity-publication.R,202,x,plot_recovery_coverage.Rd,gp3bayespy.sensitivity,implemented
+plot_recovery_estimates,plot_recovery_estimates,recovery-sensitivity-publication.R,246,"x, variables = NULL",plot_recovery_estimates.Rd,gp3bayespy.sensitivity,implemented
+plot_recovery_fit_status,plot_recovery_fit_status,recovery-sensitivity-publication.R,281,x,plot_recovery_fit_status.Rd,gp3bayespy.sensitivity,implemented
+plot_recovery_rmse,plot_recovery_rmse,recovery-sensitivity-publication.R,226,x,plot_recovery_rmse.Rd,gp3bayespy.sensitivity,implemented
+plot_reporting_checklist,plot_reporting_checklist,model-card.R,180,x,plot_reporting_checklist.Rd,gp3bayespy.reporting,implemented
+plot_sampler_diagnostics,plot_sampler_diagnostics,publication-graphics.R,214,fit,plot_sampler_diagnostics.Rd,gp3bayespy.reporting,implemented
 plot_sampling_diagnostics,plot_sampling_diagnostics,posterior-validation-core.R,829,"fit,
   type = c(
     ""trace"",
@@ -899,46 +899,46 @@ plot_sampling_diagnostics,plot_sampling_diagnostics,posterior-validation-core.R,
     ""treedepth"",
     ""divergence""
   ),
-  variables = NULL",plot_sampling_diagnostics.Rd,gp3bayespy.posterior_validation_core,mapped_not_implemented
-plot_sbc_coverage_gg,plot_sbc_coverage_gg,recovery-sensitivity-publication.R,563,"x, variables = NULL, ...",plot_sbc_coverage_gg.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_sbc_ecdf_gg,plot_sbc_ecdf_gg,recovery-sensitivity-publication.R,548,"x, variables = NULL, ...",plot_sbc_ecdf_gg.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_sbc_rank_gg,plot_sbc_rank_gg,recovery-sensitivity-publication.R,533,"x, variables = NULL, ...",plot_sbc_rank_gg.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_sbc_simulated_vs_estimated_gg,plot_sbc_simulated_vs_estimated_gg,recovery-sensitivity-publication.R,578,"x, variables = NULL, ...",plot_sbc_simulated_vs_estimated_gg.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-plot_schema_comparison_gg,plot_schema_comparison_gg,evidence-graphics-gg.R,234,x,plot_schema_comparison_gg.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-plot_sensitivity_suite_gg,plot_sensitivity_suite_gg,evidence-graphics-gg.R,87,x,plot_sensitivity_suite_gg.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-plot_uncertainty_decomposition,plot_uncertainty_decomposition,publication-graphics.R,620,"x, max_rows = 100L",plot_uncertainty_decomposition.Rd,gp3bayespy.reporting,mapped_not_implemented
-plot_variance_components,plot_variance_components,publication-graphics.R,737,x,plot_variance_components.Rd,gp3bayespy.reporting,mapped_not_implemented
+  variables = NULL",plot_sampling_diagnostics.Rd,gp3bayespy.posterior_validation_core,implemented
+plot_sbc_coverage_gg,plot_sbc_coverage_gg,recovery-sensitivity-publication.R,563,"x, variables = NULL, ...",plot_sbc_coverage_gg.Rd,gp3bayespy.sensitivity,implemented
+plot_sbc_ecdf_gg,plot_sbc_ecdf_gg,recovery-sensitivity-publication.R,548,"x, variables = NULL, ...",plot_sbc_ecdf_gg.Rd,gp3bayespy.sensitivity,implemented
+plot_sbc_rank_gg,plot_sbc_rank_gg,recovery-sensitivity-publication.R,533,"x, variables = NULL, ...",plot_sbc_rank_gg.Rd,gp3bayespy.sensitivity,implemented
+plot_sbc_simulated_vs_estimated_gg,plot_sbc_simulated_vs_estimated_gg,recovery-sensitivity-publication.R,578,"x, variables = NULL, ...",plot_sbc_simulated_vs_estimated_gg.Rd,gp3bayespy.sensitivity,implemented
+plot_schema_comparison_gg,plot_schema_comparison_gg,evidence-graphics-gg.R,234,x,plot_schema_comparison_gg.Rd,gp3bayespy.evidence_graphics_gg,implemented
+plot_sensitivity_suite_gg,plot_sensitivity_suite_gg,evidence-graphics-gg.R,87,x,plot_sensitivity_suite_gg.Rd,gp3bayespy.evidence_graphics_gg,implemented
+plot_uncertainty_decomposition,plot_uncertainty_decomposition,publication-graphics.R,620,"x, max_rows = 100L",plot_uncertainty_decomposition.Rd,gp3bayespy.reporting,implemented
+plot_variance_components,plot_variance_components,publication-graphics.R,737,x,plot_variance_components.Rd,gp3bayespy.reporting,implemented
 posterior_correlation_table,posterior_correlation_table,postfit-exploration.R,377,"x,
   variables = NULL,
   regex = NULL,
-  method = c(""pearson"", ""spearman"")",posterior_correlation_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
+  method = c(""pearson"", ""spearman"")",posterior_correlation_table.Rd,gp3bayespy.postfit_exploration,implemented
 posterior_interval_table,posterior_interval_table,postfit-exploration.R,312,"x,
   variables = NULL,
   regex = NULL,
-  probs = c(0.025, 0.5, 0.975)",posterior_interval_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",posterior_interval_table.Rd,gp3bayespy.postfit_exploration,implemented
 posterior_predictive_statistic,posterior_predictive_statistic,predictive-diagnostics-advanced.R,167,"x,
   statistic = c(""mean"", ""sd"", ""median"", ""q90"", ""q95"", ""max"", ""tail_rate""),
-  threshold = NULL",posterior_predictive_statistic.Rd,gp3bayespy.predictive,mapped_not_implemented
+  threshold = NULL",posterior_predictive_statistic.Rd,gp3bayespy.predictive,implemented
 posterior_predictive_summary_table,posterior_predictive_summary_table,prediction-support.R,1261,"x,
   probs = c(0.025, 0.5, 0.975)",posterior_predictive_summary_table.Rd,gp3bayespy.predictive,implemented
 posterior_probability_table,posterior_probability_table,postfit-exploration.R,336,"x,
   variables = NULL,
   regex = NULL,
-  rope = NULL",posterior_probability_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
-powerscale_sensitivity_table,powerscale_sensitivity_table,recovery-sensitivity-publication.R,102,x,powerscale_sensitivity_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
+  rope = NULL",posterior_probability_table.Rd,gp3bayespy.postfit_exploration,implemented
+powerscale_sensitivity_table,powerscale_sensitivity_table,recovery-sensitivity-publication.R,102,x,powerscale_sensitivity_table.Rd,gp3bayespy.sensitivity,implemented
 powerscale_sequence_for_fit,powerscale_sequence_for_fit,advanced-optional-workflows.R,1436,"fit,
   variable = NULL,
   prior_selection = NULL,
   likelihood_selection = NULL,
-  component = ""both""",powerscale_sequence_for_fit.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-ppc_statistic_table,ppc_statistic_table,predictive-diagnostics-advanced.R,231,x,ppc_statistic_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+  component = ""both""",powerscale_sequence_for_fit.Rd,gp3bayespy.advanced_optional_workflows,implemented
+ppc_statistic_table,ppc_statistic_table,predictive-diagnostics-advanced.R,231,x,ppc_statistic_table.Rd,gp3bayespy.predictive,implemented
 predict_advanced_pupil_trajectory,predict_advanced_pupil_trajectory,pupil-advanced-estimands.R,105,"fit,
     newdata = NULL,
     type = c(""expected"", ""posterior_predictive"", ""linear""),
     ndraws = 500L,
     population_only = TRUE,
     allow_new_levels = FALSE,
-    max_grid = 5000L",predict_advanced_pupil_trajectory.Rd,gp3bayespy.pupil,mapped_not_implemented
+    max_grid = 5000L",predict_advanced_pupil_trajectory.Rd,gp3bayespy.pupil,implemented
 predict_binary_probability,predict_binary_probability,prediction-support.R,591,"fit,
   newdata = NULL,
   include_group_effects = FALSE,
@@ -967,38 +967,38 @@ predict_pupil_trajectory,predict_pupil_trajectory,pupil-estimands.R,114,"fit, ne
     population_only = TRUE,
     allow_new_levels = FALSE,
     max_grid = 5000L,
-    max_cells = 5000000L",predict_pupil_trajectory.Rd,gp3bayespy.pupil,mapped_not_implemented
+    max_cells = 5000000L",predict_pupil_trajectory.Rd,gp3bayespy.pupil,implemented
 prediction_contrast,prediction_contrast,prediction-support.R,651,"x,
   row1,
   row2,
   measure = c(""difference"", ""ratio"", ""odds_ratio""),
   probs = c(0.025, 0.5, 0.975)",prediction_contrast.Rd,gp3bayespy.predictive,implemented
-prediction_contrast_profile_table,prediction_contrast_profile_table,prediction-surfaces.R,547,x,prediction_contrast_profile_table.Rd,gp3bayespy.predictive,mapped_not_implemented
-prediction_draws_long,prediction_draws_long,predictive-diagnostics-advanced.R,87,"x, max_draws = NULL, seed = 1L",prediction_draws_long.Rd,gp3bayespy.predictive,mapped_not_implemented
+prediction_contrast_profile_table,prediction_contrast_profile_table,prediction-surfaces.R,547,x,prediction_contrast_profile_table.Rd,gp3bayespy.predictive,implemented
+prediction_draws_long,prediction_draws_long,predictive-diagnostics-advanced.R,87,"x, max_draws = NULL, seed = 1L",prediction_draws_long.Rd,gp3bayespy.predictive,implemented
 prediction_exceedance_probability,prediction_exceedance_probability,prediction-support.R,711,"x,
   threshold,
   direction = c(""above"", ""below"")",prediction_exceedance_probability.Rd,gp3bayespy.predictive,implemented
 prediction_gradient_table,prediction_gradient_table,prediction-surfaces.R,126,"x,
-  probs = c(0.025, 0.5, 0.975)",prediction_gradient_table.Rd,gp3bayespy.predictive,mapped_not_implemented
-prediction_interval_width,prediction_interval_width,predictive-diagnostics-advanced.R,665,x,prediction_interval_width.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",prediction_gradient_table.Rd,gp3bayespy.predictive,implemented
+prediction_interval_width,prediction_interval_width,predictive-diagnostics-advanced.R,665,x,prediction_interval_width.Rd,gp3bayespy.predictive,implemented
 prediction_pairwise_contrasts,prediction_pairwise_contrasts,predictive-diagnostics-advanced.R,613,"x,
   rows = NULL,
   measure = c(""difference"", ""ratio""),
   max_rows = 20L,
-  probs = c(0.025, 0.5, 0.975)",prediction_pairwise_contrasts.Rd,gp3bayespy.predictive,mapped_not_implemented
-prediction_profile_table,prediction_profile_table,prediction-surfaces.R,113,x,prediction_profile_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",prediction_pairwise_contrasts.Rd,gp3bayespy.predictive,implemented
+prediction_profile_table,prediction_profile_table,prediction-surfaces.R,113,x,prediction_profile_table.Rd,gp3bayespy.predictive,implemented
 prediction_rank_probabilities,prediction_rank_probabilities,predictive-diagnostics-advanced.R,690,"x,
   rows = NULL,
   direction = c(""higher"", ""lower""),
-  max_rows = 20L",prediction_rank_probabilities.Rd,gp3bayespy.predictive,mapped_not_implemented
+  max_rows = 20L",prediction_rank_probabilities.Rd,gp3bayespy.predictive,implemented
 prediction_score_uncertainty,prediction_score_uncertainty,predictive-distribution-atlas.R,156,"fit,
   newdata = NULL,
   include_group_effects = FALSE,
   ndraws = 1000L,
-  probs = c(0.025, 0.5, 0.975)",prediction_score_uncertainty.Rd,gp3bayespy.predictive,mapped_not_implemented
-prediction_score_uncertainty_table,prediction_score_uncertainty_table,predictive-distribution-atlas.R,251,x,prediction_score_uncertainty_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",prediction_score_uncertainty.Rd,gp3bayespy.predictive,implemented
+prediction_score_uncertainty_table,prediction_score_uncertainty_table,predictive-distribution-atlas.R,251,x,prediction_score_uncertainty_table.Rd,gp3bayespy.predictive,implemented
 prediction_support_table,prediction_support_table,prediction-support.R,386,x,prediction_support_table.Rd,gp3bayespy.predictive,implemented
-prediction_surface_table,prediction_surface_table,prediction-surfaces.R,319,x,prediction_surface_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+prediction_surface_table,prediction_surface_table,prediction-surfaces.R,319,x,prediction_surface_table.Rd,gp3bayespy.predictive,implemented
 prediction_table,prediction_table,prediction-support.R,507,x,prediction_table.Rd,gp3bayespy.predictive,implemented
 prediction_uncertainty_decomposition,prediction_uncertainty_decomposition,prediction-support.R,749,"fit,
   newdata = NULL,
@@ -1008,17 +1008,17 @@ prediction_uncertainty_decomposition,prediction_uncertainty_decomposition,predic
   seed = 1L",prediction_uncertainty_decomposition.Rd,gp3bayespy.predictive,implemented
 predictive_coverage_table,predictive_coverage_table,prediction-support.R,1227,"x,
   levels = c(0.5, 0.8, 0.9, 0.95)",predictive_coverage_table.Rd,gp3bayespy.predictive,implemented
-predictive_distribution_atlas_table,predictive_distribution_atlas_table,predictive-distribution-atlas.R,74,x,predictive_distribution_atlas_table.Rd,gp3bayespy.predictive,mapped_not_implemented
+predictive_distribution_atlas_table,predictive_distribution_atlas_table,predictive-distribution-atlas.R,74,x,predictive_distribution_atlas_table.Rd,gp3bayespy.predictive,implemented
 predictive_quantile_envelope,predictive_quantile_envelope,predictive-distribution-atlas.R,103,"x,
   probabilities = seq(0.05, 0.95, by = 0.05),
   probs = c(0.025, 0.5, 0.975),
   ndraws = 500L,
   include_group_effects = TRUE,
-  seed = 1L",predictive_quantile_envelope.Rd,gp3bayespy.predictive,mapped_not_implemented
+  seed = 1L",predictive_quantile_envelope.Rd,gp3bayespy.predictive,implemented
 predictive_residuals,predictive_residuals,prediction-support.R,912,"fit,
   type = NULL,
   ndraws = 1000L",predictive_residuals.Rd,gp3bayespy.predictive,implemented
-preflight_model_specification,preflight_model_specification,design-support-diagnostics.R,704,"specification, ...",preflight_model_specification.Rd,gp3bayespy.design_support_diagnostics,mapped_not_implemented
+preflight_model_specification,preflight_model_specification,design-support-diagnostics.R,704,"specification, ...",preflight_model_specification.Rd,gp3bayespy.design_support_diagnostics,implemented
 prepare_binocular_pupil_timecourse,prepare_binocular_pupil_timecourse,pupil-binocular.R,12,"data,
     left_col = ""pupil_left"",
     right_col = ""pupil_right"",
@@ -1027,7 +1027,7 @@ prepare_binocular_pupil_timecourse,prepare_binocular_pupil_timecourse,pupil-bino
     condition_col = ""condition"",
     trial_col = ""trial_id"",
     item_col = NULL,
-    covariates = character()",prepare_binocular_pupil_timecourse.Rd,gp3bayespy.pupil,mapped_not_implemented
+    covariates = character()",prepare_binocular_pupil_timecourse.Rd,gp3bayespy.pupil,implemented
 prepare_hierarchical_binary_data,prepare_hierarchical_binary_data,binary-workflow-foundation.R,819,"data,
   contract,
   outcome_mapping = NULL,
@@ -1059,80 +1059,80 @@ prepare_pupil_timecourse,prepare_pupil_timecourse,pupil-preparation.R,71,"data,
     output_unit = NULL,
     scale_covariates = character(),
     max_rows = 2000000L,
-    irregularity_review_cv = 0.10",prepare_pupil_timecourse.Rd,gp3bayespy.pupil,mapped_not_implemented
+    irregularity_review_cv = 0.10",prepare_pupil_timecourse.Rd,gp3bayespy.pupil,implemented
 prior_posterior_bridge,prior_posterior_bridge,prior-posterior-bridge.R,196,"fit,
   variables = NULL,
   regex = ""^(b_|sd_|cor_|sigma$)"",
   ndraws = 4000L,
   probs = c(0.025, 0.5, 0.975),
-  seed = 1L",prior_posterior_bridge.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
-prior_posterior_distance_table,prior_posterior_distance_table,prior-posterior-bridge.R,341,x,prior_posterior_distance_table.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
-prior_posterior_draws_long,prior_posterior_draws_long,prior-posterior-bridge.R,355,"x, max_draws = 1000L, seed = 1L",prior_posterior_draws_long.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
-prior_posterior_summary_table,prior_posterior_summary_table,prior-posterior-bridge.R,329,x,prior_posterior_summary_table.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
-prior_sensitivity_scenario_table,prior_sensitivity_scenario_table,recovery-sensitivity-publication.R,62,x,prior_sensitivity_scenario_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-prior_sensitivity_table,prior_sensitivity_table,recovery-sensitivity-publication.R,53,x,prior_sensitivity_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-prior_specification_table,prior_specification_table,prior-posterior-bridge.R,69,x,prior_specification_table.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
-publication_registry_table,publication_registry_table,publication-registry-dashboard.R,127,x,publication_registry_table.Rd,gp3bayespy.reporting,mapped_not_implemented
-pupil_advanced_capabilities,pupil_advanced_capabilities,pupil-advanced-utils.R,247,,pupil_advanced_capabilities.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_advanced_compatibility_table,pupil_advanced_compatibility_table,pupil-advanced-governance.R,59,,pupil_advanced_compatibility_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_advanced_mapping_table,pupil_advanced_mapping_table,pupil-advanced-utils.R,232,prepared,pupil_advanced_mapping_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_advanced_specification_table,pupil_advanced_specification_table,pupil-advanced-specification.R,690,x,pupil_advanced_specification_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_autocorrelation_table,pupil_autocorrelation_table,pupil-advanced-diagnostics.R,84,"x, level = c(""summary"", ""series"")",pupil_autocorrelation_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_binocular_agreement_table,pupil_binocular_agreement_table,pupil-binocular.R,698,"trajectory, tolerance = 0.1",pupil_binocular_agreement_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_binocular_correlation,pupil_binocular_correlation,pupil-binocular.R,679,"fit, probability = 0.95",pupil_binocular_correlation.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_binocular_difference,pupil_binocular_difference,pupil-binocular.R,666,x,pupil_binocular_difference.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_condition_contrast,pupil_condition_contrast,pupil-estimands.R,412,"prediction, contrast, threshold = 0, probability = 0.95",pupil_condition_contrast.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_distribution_table,pupil_distribution_table,pupil-advanced-governance.R,33,x,pupil_distribution_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_dynamic_contrast_table,pupil_dynamic_contrast_table,pupil-functional-estimands.R,176,x,pupil_dynamic_contrast_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_gp_hyperparameters,pupil_gp_hyperparameters,pupil-advanced-estimands.R,258,"fit, probability = 0.95",pupil_gp_hyperparameters.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_gp_table,pupil_gp_table,pupil-advanced-estimands.R,287,x,pupil_gp_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_identifiability_table,pupil_identifiability_table,pupil-advanced-audit.R,124,x,pupil_identifiability_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_measurement_audit_table,pupil_measurement_audit_table,pupil-preparation.R,687,x,pupil_measurement_audit_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_measurement_uncertainty_table,pupil_measurement_uncertainty_table,pupil-advanced-estimands.R,297,x,pupil_measurement_uncertainty_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_missingness_table,pupil_missingness_table,pupil-advanced-estimands.R,434,x,pupil_missingness_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_model_card,pupil_model_card,pupil-advanced-governance.R,218,x,pupil_model_card.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_model_card_table,pupil_model_card_table,pupil-advanced-governance.R,266,x,pupil_model_card_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_model_comparison_table,pupil_model_comparison_table,pupil-model-comparison.R,105,x,pupil_model_comparison_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_model_weights,pupil_model_weights,pupil-model-comparison.R,118,"x, method = c(""stacking"", ""pseudobma""), BB = TRUE",pupil_model_weights.Rd,gp3bayespy.pupil,mapped_not_implemented
+  seed = 1L",prior_posterior_bridge.Rd,gp3bayespy.prior_posterior_bridge,implemented
+prior_posterior_distance_table,prior_posterior_distance_table,prior-posterior-bridge.R,341,x,prior_posterior_distance_table.Rd,gp3bayespy.prior_posterior_bridge,implemented
+prior_posterior_draws_long,prior_posterior_draws_long,prior-posterior-bridge.R,355,"x, max_draws = 1000L, seed = 1L",prior_posterior_draws_long.Rd,gp3bayespy.prior_posterior_bridge,implemented
+prior_posterior_summary_table,prior_posterior_summary_table,prior-posterior-bridge.R,329,x,prior_posterior_summary_table.Rd,gp3bayespy.prior_posterior_bridge,implemented
+prior_sensitivity_scenario_table,prior_sensitivity_scenario_table,recovery-sensitivity-publication.R,62,x,prior_sensitivity_scenario_table.Rd,gp3bayespy.sensitivity,implemented
+prior_sensitivity_table,prior_sensitivity_table,recovery-sensitivity-publication.R,53,x,prior_sensitivity_table.Rd,gp3bayespy.sensitivity,implemented
+prior_specification_table,prior_specification_table,prior-posterior-bridge.R,69,x,prior_specification_table.Rd,gp3bayespy.prior_posterior_bridge,implemented
+publication_registry_table,publication_registry_table,publication-registry-dashboard.R,127,x,publication_registry_table.Rd,gp3bayespy.reporting,implemented
+pupil_advanced_capabilities,pupil_advanced_capabilities,pupil-advanced-utils.R,247,,pupil_advanced_capabilities.Rd,gp3bayespy.pupil,implemented
+pupil_advanced_compatibility_table,pupil_advanced_compatibility_table,pupil-advanced-governance.R,59,,pupil_advanced_compatibility_table.Rd,gp3bayespy.pupil,implemented
+pupil_advanced_mapping_table,pupil_advanced_mapping_table,pupil-advanced-utils.R,232,prepared,pupil_advanced_mapping_table.Rd,gp3bayespy.pupil,implemented
+pupil_advanced_specification_table,pupil_advanced_specification_table,pupil-advanced-specification.R,690,x,pupil_advanced_specification_table.Rd,gp3bayespy.pupil,implemented
+pupil_autocorrelation_table,pupil_autocorrelation_table,pupil-advanced-diagnostics.R,84,"x, level = c(""summary"", ""series"")",pupil_autocorrelation_table.Rd,gp3bayespy.pupil,implemented
+pupil_binocular_agreement_table,pupil_binocular_agreement_table,pupil-binocular.R,698,"trajectory, tolerance = 0.1",pupil_binocular_agreement_table.Rd,gp3bayespy.pupil,implemented
+pupil_binocular_correlation,pupil_binocular_correlation,pupil-binocular.R,679,"fit, probability = 0.95",pupil_binocular_correlation.Rd,gp3bayespy.pupil,implemented
+pupil_binocular_difference,pupil_binocular_difference,pupil-binocular.R,666,x,pupil_binocular_difference.Rd,gp3bayespy.pupil,implemented
+pupil_condition_contrast,pupil_condition_contrast,pupil-estimands.R,412,"prediction, contrast, threshold = 0, probability = 0.95",pupil_condition_contrast.Rd,gp3bayespy.pupil,implemented
+pupil_distribution_table,pupil_distribution_table,pupil-advanced-governance.R,33,x,pupil_distribution_table.Rd,gp3bayespy.pupil,implemented
+pupil_dynamic_contrast_table,pupil_dynamic_contrast_table,pupil-functional-estimands.R,176,x,pupil_dynamic_contrast_table.Rd,gp3bayespy.pupil,implemented
+pupil_gp_hyperparameters,pupil_gp_hyperparameters,pupil-advanced-estimands.R,258,"fit, probability = 0.95",pupil_gp_hyperparameters.Rd,gp3bayespy.pupil,implemented
+pupil_gp_table,pupil_gp_table,pupil-advanced-estimands.R,287,x,pupil_gp_table.Rd,gp3bayespy.pupil,implemented
+pupil_identifiability_table,pupil_identifiability_table,pupil-advanced-audit.R,124,x,pupil_identifiability_table.Rd,gp3bayespy.pupil,implemented
+pupil_measurement_audit_table,pupil_measurement_audit_table,pupil-preparation.R,687,x,pupil_measurement_audit_table.Rd,gp3bayespy.pupil,implemented
+pupil_measurement_uncertainty_table,pupil_measurement_uncertainty_table,pupil-advanced-estimands.R,297,x,pupil_measurement_uncertainty_table.Rd,gp3bayespy.pupil,implemented
+pupil_missingness_table,pupil_missingness_table,pupil-advanced-estimands.R,434,x,pupil_missingness_table.Rd,gp3bayespy.pupil,implemented
+pupil_model_card,pupil_model_card,pupil-advanced-governance.R,218,x,pupil_model_card.Rd,gp3bayespy.pupil,implemented
+pupil_model_card_table,pupil_model_card_table,pupil-advanced-governance.R,266,x,pupil_model_card_table.Rd,gp3bayespy.pupil,implemented
+pupil_model_comparison_table,pupil_model_comparison_table,pupil-model-comparison.R,105,x,pupil_model_comparison_table.Rd,gp3bayespy.pupil,implemented
+pupil_model_weights,pupil_model_weights,pupil-model-comparison.R,118,"x, method = c(""stacking"", ""pseudobma""), BB = TRUE",pupil_model_weights.Rd,gp3bayespy.pupil,implemented
 pupil_ppc_table,pupil_ppc_table,pupil-diagnostics.R,556,"x,
     component = c(
       ""trajectory"", ""distribution"", ""features"", ""residuals"",
       ""residual_trajectory"", ""autocorrelation"", ""heterogeneity"",
       ""measurement_context""
-    )",pupil_ppc_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_readiness_table,pupil_readiness_table,pupil-preparation.R,592,"x, component = c(""summary"", ""participant"", ""condition"", ""trial"")",pupil_readiness_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_residual_acf,pupil_residual_acf,pupil-diagnostics.R,389,"x, max_lag = 10L, ndraws = 200L",pupil_residual_acf.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_residual_scale_table,pupil_residual_scale_table,pupil-advanced-estimands.R,246,x,pupil_residual_scale_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_residual_spectrum,pupil_residual_spectrum,pupil-advanced-diagnostics.R,215,"fit, ndraws = 300L",pupil_residual_spectrum.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_response_parameter_table,pupil_response_parameter_table,pupil-response-shape.R,293,x,pupil_response_parameter_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_sensitivity_table,pupil_sensitivity_table,pupil-sensitivity.R,375,x,pupil_sensitivity_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_specification_table,pupil_specification_table,pupil-specification.R,320,x,pupil_specification_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_trajectory_derivative_table,pupil_trajectory_derivative_table,pupil-functional-estimands.R,94,"x, probability = x$probability",pupil_trajectory_derivative_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_trajectory_table,pupil_trajectory_table,pupil-estimands.R,250,x,pupil_trajectory_table.Rd,gp3bayespy.pupil,mapped_not_implemented
-pupil_validation_table,pupil_validation_table,pupil-validation.R,374,x,pupil_validation_table.Rd,gp3bayespy.pupil,mapped_not_implemented
+    )",pupil_ppc_table.Rd,gp3bayespy.pupil,implemented
+pupil_readiness_table,pupil_readiness_table,pupil-preparation.R,592,"x, component = c(""summary"", ""participant"", ""condition"", ""trial"")",pupil_readiness_table.Rd,gp3bayespy.pupil,implemented
+pupil_residual_acf,pupil_residual_acf,pupil-diagnostics.R,389,"x, max_lag = 10L, ndraws = 200L",pupil_residual_acf.Rd,gp3bayespy.pupil,implemented
+pupil_residual_scale_table,pupil_residual_scale_table,pupil-advanced-estimands.R,246,x,pupil_residual_scale_table.Rd,gp3bayespy.pupil,implemented
+pupil_residual_spectrum,pupil_residual_spectrum,pupil-advanced-diagnostics.R,215,"fit, ndraws = 300L",pupil_residual_spectrum.Rd,gp3bayespy.pupil,implemented
+pupil_response_parameter_table,pupil_response_parameter_table,pupil-response-shape.R,293,x,pupil_response_parameter_table.Rd,gp3bayespy.pupil,implemented
+pupil_sensitivity_table,pupil_sensitivity_table,pupil-sensitivity.R,375,x,pupil_sensitivity_table.Rd,gp3bayespy.pupil,implemented
+pupil_specification_table,pupil_specification_table,pupil-specification.R,320,x,pupil_specification_table.Rd,gp3bayespy.pupil,implemented
+pupil_trajectory_derivative_table,pupil_trajectory_derivative_table,pupil-functional-estimands.R,94,"x, probability = x$probability",pupil_trajectory_derivative_table.Rd,gp3bayespy.pupil,implemented
+pupil_trajectory_table,pupil_trajectory_table,pupil-estimands.R,250,x,pupil_trajectory_table.Rd,gp3bayespy.pupil,implemented
+pupil_validation_table,pupil_validation_table,pupil-validation.R,374,x,pupil_validation_table.Rd,gp3bayespy.pupil,implemented
 random_intercept_variance_partition,random_intercept_variance_partition,hierarchical-effects-advanced.R,200,"fit,
-  probs = c(0.025, 0.5, 0.975)",random_intercept_variance_partition.Rd,gp3bayespy.hierarchical_effects_advanced,mapped_not_implemented
-random_intercept_variance_partition_table,random_intercept_variance_partition_table,hierarchical-effects-advanced.R,286,x,random_intercept_variance_partition_table.Rd,gp3bayespy.hierarchical_effects_advanced,mapped_not_implemented
-random_slope_sensitivity_table,random_slope_sensitivity_table,recovery-sensitivity-publication.R,89,x,random_slope_sensitivity_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-read_analysis_manifest,read_analysis_manifest,analysis-manifest.R,402,file,read_analysis_manifest.Rd,gp3bayespy.reproducibility,mapped_not_implemented
-read_gp3bayes_schema,read_gp3bayes_schema,backend-reliability.R,764,file,read_gp3bayes_schema.Rd,gp3bayespy.backends,mapped_not_implemented
-recovery_estimate_table,recovery_estimate_table,recovery-sensitivity-publication.R,35,x,recovery_estimate_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-recovery_fit_status_table,recovery_fit_status_table,recovery-sensitivity-publication.R,44,x,recovery_fit_status_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-recovery_parameter_table,recovery_parameter_table,recovery-sensitivity-publication.R,26,x,recovery_parameter_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",random_intercept_variance_partition.Rd,gp3bayespy.hierarchical_effects_advanced,implemented
+random_intercept_variance_partition_table,random_intercept_variance_partition_table,hierarchical-effects-advanced.R,286,x,random_intercept_variance_partition_table.Rd,gp3bayespy.hierarchical_effects_advanced,implemented
+random_slope_sensitivity_table,random_slope_sensitivity_table,recovery-sensitivity-publication.R,89,x,random_slope_sensitivity_table.Rd,gp3bayespy.sensitivity,implemented
+read_analysis_manifest,read_analysis_manifest,analysis-manifest.R,402,file,read_analysis_manifest.Rd,gp3bayespy.reproducibility,implemented
+read_gp3bayes_schema,read_gp3bayes_schema,backend-reliability.R,764,file,read_gp3bayes_schema.Rd,gp3bayespy.backends,implemented
+recovery_estimate_table,recovery_estimate_table,recovery-sensitivity-publication.R,35,x,recovery_estimate_table.Rd,gp3bayespy.sensitivity,implemented
+recovery_fit_status_table,recovery_fit_status_table,recovery-sensitivity-publication.R,44,x,recovery_fit_status_table.Rd,gp3bayespy.sensitivity,implemented
+recovery_parameter_table,recovery_parameter_table,recovery-sensitivity-publication.R,26,x,recovery_parameter_table.Rd,gp3bayespy.sensitivity,implemented
 register_publication_figure,register_publication_figure,publication-registry-dashboard.R,91,"registry,
   name,
   figure,
   caption = NULL,
-  source = NULL",register_publication_figure.Rd,gp3bayespy.reporting,mapped_not_implemented
+  source = NULL",register_publication_figure.Rd,gp3bayespy.reporting,implemented
 register_publication_table,register_publication_table,publication-registry-dashboard.R,54,"registry,
   name,
   table,
   caption = NULL,
-  source = NULL",register_publication_table.Rd,gp3bayespy.reporting,mapped_not_implemented
+  source = NULL",register_publication_table.Rd,gp3bayespy.reporting,implemented
 review_duration_extremes,review_duration_extremes,specification-closure.R,489,"data,
   contract,
   mad_cutoff = 4,
-  iqr_multiplier = 3",review_duration_extremes.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  iqr_multiplier = 3",review_duration_extremes.Rd,gp3bayespy.specification_closure,implemented
 run_binary_recovery,run_binary_recovery,binary-posterior-validation.R,1011,"repetitions = 20L,
   n_participants = 30L,
   trials_per_participant = 16L,
@@ -1155,7 +1155,7 @@ run_binary_recovery,run_binary_recovery,binary-posterior-validation.R,1011,"repe
   maximum_standardized_bias = 0.25,
   minimum_coverage = 0.80,
   minimum_diagnostic_pass_fraction = 0.80,
-  continue_on_error = TRUE",run_binary_recovery.Rd,gp3bayespy.binary,mapped_not_implemented
+  continue_on_error = TRUE",run_binary_recovery.Rd,gp3bayespy.binary,implemented
 run_duration_recovery,run_duration_recovery,duration-posterior-validation.R,846,"repetitions = 20L,
   n_participants = 30L,
   trials_per_participant = 16L,
@@ -1180,7 +1180,7 @@ run_duration_recovery,run_duration_recovery,duration-posterior-validation.R,846,
   maximum_standardized_bias = 0.25,
   minimum_coverage = 0.80,
   minimum_diagnostic_pass_fraction = 0.80,
-  continue_on_error = TRUE",run_duration_recovery.Rd,gp3bayespy.duration,mapped_not_implemented
+  continue_on_error = TRUE",run_duration_recovery.Rd,gp3bayespy.duration,implemented
 run_group_deletion_sensitivity,run_group_deletion_sensitivity,specification-closure.R,1908,"plan,
   backend = c(""rstan"", ""cmdstanr""),
   chains = 4L,
@@ -1192,7 +1192,7 @@ run_group_deletion_sensitivity,run_group_deletion_sensitivity,specification-clos
   max_treedepth = 12L,
   refresh = 0L,
   ndraws = NULL,
-  retain_fits = FALSE",run_group_deletion_sensitivity.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  retain_fits = FALSE",run_group_deletion_sensitivity.Rd,gp3bayespy.specification_closure,implemented
 run_random_slope_sensitivity,run_random_slope_sensitivity,specification-closure.R,2001,"plan,
   backend = c(""rstan"", ""cmdstanr""),
   chains = 4L,
@@ -1204,37 +1204,37 @@ run_random_slope_sensitivity,run_random_slope_sensitivity,specification-closure.
   max_treedepth = 12L,
   refresh = 0L,
   ndraws = NULL,
-  retain_fits = FALSE",run_random_slope_sensitivity.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  retain_fits = FALSE",run_random_slope_sensitivity.Rd,gp3bayespy.specification_closure,implemented
 run_sbc_plan,run_sbc_plan,advanced-optional-workflows.R,2035,"plan,
   cores_per_fit = 1L,
   keep_fits = FALSE,
   thin_ranks = NULL,
   cache_mode = ""none"",
-  cache_location = NULL",run_sbc_plan.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  cache_location = NULL",run_sbc_plan.Rd,gp3bayespy.advanced_optional_workflows,implemented
 run_sensitivity_suite,run_sensitivity_suite,sensitivity-evidence-suite.R,137,"fit,
   plan = create_sensitivity_suite_plan(),
   reference_estimand = NULL,
-  stop_on_error = FALSE",run_sensitivity_suite.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-sampler_diagnostic_table,sampler_diagnostic_table,postfit-exploration.R,499,fit,sampler_diagnostic_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
+  stop_on_error = FALSE",run_sensitivity_suite.Rd,gp3bayespy.sensitivity,implemented
+sampler_diagnostic_table,sampler_diagnostic_table,postfit-exploration.R,499,fit,sampler_diagnostic_table.Rd,gp3bayespy.postfit_exploration,implemented
 save_figure_set,save_figure_set,publication-graphics.R,903,"x,
   directory,
   width = 7,
   height = 5,
   dpi = 300,
   device = ""png"",
-  overwrite = FALSE",save_figure_set.Rd,gp3bayespy.reporting,mapped_not_implemented
+  overwrite = FALSE",save_figure_set.Rd,gp3bayespy.reporting,implemented
 save_publication_registry_figures,save_publication_registry_figures,publication-registry-dashboard.R,244,"x,
   directory,
   width = 7,
   height = 5,
   dpi = 300,
   device = ""png"",
-  overwrite = FALSE",save_publication_registry_figures.Rd,gp3bayespy.reporting,mapped_not_implemented
-sbc_overview_table,sbc_overview_table,recovery-sensitivity-publication.R,144,x,sbc_overview_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-sbc_stats_table,sbc_stats_table,recovery-sensitivity-publication.R,120,x,sbc_stats_table.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-schema_comparison_table,schema_comparison_table,evidence-graphics-gg.R,60,x,schema_comparison_table.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
-score_pupil_predictions,score_pupil_predictions,pupil-advanced-audit.R,139,"observed, draws, probability = 0.90",score_pupil_predictions.Rd,gp3bayespy.pupil,mapped_not_implemented
-sensitivity_suite_table,sensitivity_suite_table,evidence-graphics-gg.R,15,x,sensitivity_suite_table.Rd,gp3bayespy.evidence_graphics_gg,mapped_not_implemented
+  overwrite = FALSE",save_publication_registry_figures.Rd,gp3bayespy.reporting,implemented
+sbc_overview_table,sbc_overview_table,recovery-sensitivity-publication.R,144,x,sbc_overview_table.Rd,gp3bayespy.sensitivity,implemented
+sbc_stats_table,sbc_stats_table,recovery-sensitivity-publication.R,120,x,sbc_stats_table.Rd,gp3bayespy.sensitivity,implemented
+schema_comparison_table,schema_comparison_table,evidence-graphics-gg.R,60,x,schema_comparison_table.Rd,gp3bayespy.evidence_graphics_gg,implemented
+score_pupil_predictions,score_pupil_predictions,pupil-advanced-audit.R,139,"observed, draws, probability = 0.90",score_pupil_predictions.Rd,gp3bayespy.pupil,implemented
+sensitivity_suite_table,sensitivity_suite_table,evidence-graphics-gg.R,15,x,sensitivity_suite_table.Rd,gp3bayespy.evidence_graphics_gg,implemented
 simulate_advanced_pupil_timecourse,simulate_advanced_pupil_timecourse,pupil-advanced-simulation.R,53,"n_participants = 24L,
     trials_per_participant = 6L,
     time_points = 41L,
@@ -1252,7 +1252,7 @@ simulate_advanced_pupil_timecourse,simulate_advanced_pupil_timecourse,pupil-adva
     missing_fraction = 0.03,
     measurement_error_sd = 0.015,
     student_df = 5,
-    seed = 2026",simulate_advanced_pupil_timecourse.Rd,gp3bayespy.pupil,mapped_not_implemented
+    seed = 2026",simulate_advanced_pupil_timecourse.Rd,gp3bayespy.pupil,implemented
 simulate_binary_pathology,simulate_binary_pathology,advanced-optional-workflows.R,1503,"scenario = c(
     ""null_contrast"",
     ""weak_information"",
@@ -1264,16 +1264,16 @@ simulate_binary_pathology,simulate_binary_pathology,advanced-optional-workflows.
     ""rank_deficiency"",
     ""missing_outcomes""
   ),
-  seed = 1L",simulate_binary_pathology.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  seed = 1L",simulate_binary_pathology.Rd,gp3bayespy.advanced_optional_workflows,implemented
 simulate_binocular_pupil_timecourse,simulate_binocular_pupil_timecourse,pupil-advanced-simulation.R,197,"...,
     residual_correlation = 0.65,
     eye_bias = 0.015,
-    eye_specific_sd = 0.035",simulate_binocular_pupil_timecourse.Rd,gp3bayespy.pupil,mapped_not_implemented
+    eye_specific_sd = 0.035",simulate_binocular_pupil_timecourse.Rd,gp3bayespy.pupil,implemented
 simulate_declared_prior_draws,simulate_declared_prior_draws,prior-posterior-bridge.R,83,"x,
   variables = NULL,
   regex = NULL,
   ndraws = 4000L,
-  seed = 1L",simulate_declared_prior_draws.Rd,gp3bayespy.prior_posterior_bridge,mapped_not_implemented
+  seed = 1L",simulate_declared_prior_draws.Rd,gp3bayespy.prior_posterior_bridge,implemented
 simulate_duration_pathology,simulate_duration_pathology,advanced-optional-workflows.R,1603,"scenario = c(
     ""null_ratio"",
     ""high_group_heterogeneity"",
@@ -1286,7 +1286,7 @@ simulate_duration_pathology,simulate_duration_pathology,advanced-optional-workfl
     ""zero_duration"",
     ""negative_duration""
   ),
-  seed = 1L",simulate_duration_pathology.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  seed = 1L",simulate_duration_pathology.Rd,gp3bayespy.advanced_optional_workflows,implemented
 simulate_hierarchical_binary_data,simulate_hierarchical_binary_data,binary-workflow-foundation.R,456,"n_participants = 40,
   trials_per_participant = 20,
   n_items = 20,
@@ -1337,7 +1337,7 @@ simulate_pupil_response_shape,simulate_pupil_response_shape,pupil-advanced-simul
     condition_amplitude_ratio = 1.2,
     condition_onset_shift = 80,
     residual_sd = 0.08,
-    seed = 2026",simulate_pupil_response_shape.Rd,gp3bayespy.pupil,mapped_not_implemented
+    seed = 2026",simulate_pupil_response_shape.Rd,gp3bayespy.pupil,implemented
 simulate_pupil_timecourse,simulate_pupil_timecourse,pupil-simulation.R,62,"n_participants = 20L,
     trials_per_participant = 12L,
     n_items = 12L,
@@ -1360,7 +1360,7 @@ simulate_pupil_timecourse,simulate_pupil_timecourse,pupil-simulation.R,62,"n_par
     gaze_drift_sd = 0.002,
     luminance_amplitude = 0.12,
     seed = 2026,
-    max_rows = 500000L",simulate_pupil_timecourse.Rd,gp3bayespy.pupil,mapped_not_implemented
+    max_rows = 500000L",simulate_pupil_timecourse.Rd,gp3bayespy.pupil,implemented
 specify_advanced_pupil_timecourse_model,specify_advanced_pupil_timecourse_model,pupil-advanced-specification.R,256,"prepared,
     temporal_structure = c(""smooth"", ""linear"", ""gaussian_process""),
     family = c(""gaussian"", ""student""),
@@ -1377,7 +1377,7 @@ specify_advanced_pupil_timecourse_model,specify_advanced_pupil_timecourse_model,
     missingness_model = NULL,
     prior_scales = NULL,
     predictive_target = c(""new_trial_known_participant"", ""new_participant"", ""future_segment"", ""new_sample_known_trial""),
-    allow_high_complexity = FALSE",specify_advanced_pupil_timecourse_model.Rd,gp3bayespy.pupil,mapped_not_implemented
+    allow_high_complexity = FALSE",specify_advanced_pupil_timecourse_model.Rd,gp3bayespy.pupil,implemented
 specify_binary_model,specify_binary_model,binary-workflow-foundation.R,1139,"prepared,
   baseline = 0.5,
   intercept_scale = 1.5,
@@ -1392,7 +1392,7 @@ specify_binary_model_with_interaction_prior,specify_binary_model_with_interactio
   interaction_scale = 0.50,
   group_sd_scale = 1,
   correlation_eta = 2,
-  student_df = 3",specify_binary_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  student_df = 3",specify_binary_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,implemented
 specify_binocular_pupil_model,specify_binocular_pupil_model,pupil-binocular.R,138,"prepared,
     temporal_structure = c(""smooth"", ""linear"", ""gaussian_process""),
     family = c(""gaussian"", ""student""),
@@ -1401,7 +1401,7 @@ specify_binocular_pupil_model,specify_binocular_pupil_model,pupil-binocular.R,13
     residual_correlation = TRUE,
     item_effects = NULL,
     prior_scales = NULL,
-    allow_high_complexity = FALSE",specify_binocular_pupil_model.Rd,gp3bayespy.pupil,mapped_not_implemented
+    allow_high_complexity = FALSE",specify_binocular_pupil_model.Rd,gp3bayespy.pupil,implemented
 specify_duration_model,specify_duration_model,duration-workflow-foundation.R,1220,"prepared,
   baseline,
   intercept_scale = 1,
@@ -1418,15 +1418,15 @@ specify_duration_model_with_interaction_prior,specify_duration_model_with_intera
   group_sd_scale = 0.5,
   residual_scale = 0.5,
   correlation_eta = 2,
-  student_df = 3",specify_duration_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
+  student_df = 3",specify_duration_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,implemented
 specify_pupil_distribution,specify_pupil_distribution,pupil-advanced-governance.R,9,"family = c(""gaussian"", ""student""),
-    residual_scale = c(""constant"", ""condition"", ""time"", ""condition_time"")",specify_pupil_distribution.Rd,gp3bayespy.pupil,mapped_not_implemented
+    residual_scale = c(""constant"", ""condition"", ""time"", ""condition_time"")",specify_pupil_distribution.Rd,gp3bayespy.pupil,implemented
 specify_pupil_response_shape_model,specify_pupil_response_shape_model,pupil-response-shape.R,23,"prepared,
     family = c(""gaussian"", ""student""),
     condition_effects = c(""amplitude"", ""onset"", ""duration""),
     participant_effects = c(""baseline"", ""amplitude""),
     covariates = character(),
-    prior_scales = NULL",specify_pupil_response_shape_model.Rd,gp3bayespy.pupil,mapped_not_implemented
+    prior_scales = NULL",specify_pupil_response_shape_model.Rd,gp3bayespy.pupil,implemented
 specify_pupil_timecourse_model,specify_pupil_timecourse_model,pupil-specification.R,136,"prepared,
     temporal_structure = c(""smooth"", ""linear""),
     smooth_basis_dimension = 10L,
@@ -1435,53 +1435,53 @@ specify_pupil_timecourse_model,specify_pupil_timecourse_model,pupil-specificatio
     participant_trajectory = c(""none"", ""factor_smooth""),
     item_effects = NULL,
     covariates = character(),
-    prior_scales = NULL",specify_pupil_timecourse_model.Rd,gp3bayespy.pupil,mapped_not_implemented
+    prior_scales = NULL",specify_pupil_timecourse_model.Rd,gp3bayespy.pupil,implemented
 summarise_binary_group_variation,summarise_binary_group_variation,specification-closure.R,287,"data,
   contract,
-  group = c(""participant"", ""item"")",summarise_binary_group_variation.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  group = c(""participant"", ""item"")",summarise_binary_group_variation.Rd,gp3bayespy.specification_closure,implemented
 summarise_binary_posterior,summarise_binary_posterior,binary-posterior-validation.R,278,"fit,
   probability = 0.95,
   variables = NULL",summarise_binary_posterior.Rd,gp3bayespy.binary,implemented
 summarise_condition_balance,summarise_condition_balance,specification-closure.R,213,"data,
   contract,
   warning_fraction = 0.10,
-  failure_fraction = 0.02",summarise_condition_balance.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+  failure_fraction = 0.02",summarise_condition_balance.Rd,gp3bayespy.specification_closure,implemented
 summarise_duration_posterior,summarise_duration_posterior,duration-posterior-validation.R,167,"fit,
   probability = 0.95,
   variables = NULL",summarise_duration_posterior.Rd,gp3bayespy.duration,implemented
 summarise_estimand_draws,summarise_estimand_draws,specification-closure.R,1523,"x,
   quantities = NULL,
-  probs = c(0.025, 0.5, 0.975)",summarise_estimand_draws.Rd,gp3bayespy.specification_closure,mapped_not_implemented
-summarise_mcmc_quality,summarise_mcmc_quality,postfit-exploration.R,582,"fit, ...",summarise_mcmc_quality.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
-summarise_model_posterior,summarise_model_posterior,unified-workflow-api.R,297,"fit, ...",summarise_model_posterior.Rd,gp3bayespy.unified_workflow_api,mapped_not_implemented
-summarise_pupil_posterior,summarise_pupil_posterior,pupil-diagnostics.R,606,"fit, probability = 0.95",summarise_pupil_posterior.Rd,gp3bayespy.pupil,mapped_not_implemented
-summarise_sbc_result,summarise_sbc_result,advanced-optional-workflows.R,2111,x,summarise_sbc_result.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-summarise_sensitivity_suite,summarise_sensitivity_suite,sensitivity-evidence-suite.R,273,x,summarise_sensitivity_suite.Rd,gp3bayespy.sensitivity,mapped_not_implemented
-theme_gp3bayes,theme_gp3bayes,publication-graphics.R,28,"base_size = 11, base_family = """"",theme_gp3bayes.Rd,gp3bayespy.reporting,mapped_not_implemented
-translate_advanced_pupil_model_to_brms,translate_advanced_pupil_model_to_brms,pupil-advanced-fit.R,466,specification,translate_advanced_pupil_model_to_brms.Rd,gp3bayespy.pupil,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",summarise_estimand_draws.Rd,gp3bayespy.specification_closure,implemented
+summarise_mcmc_quality,summarise_mcmc_quality,postfit-exploration.R,582,"fit, ...",summarise_mcmc_quality.Rd,gp3bayespy.postfit_exploration,implemented
+summarise_model_posterior,summarise_model_posterior,unified-workflow-api.R,297,"fit, ...",summarise_model_posterior.Rd,gp3bayespy.unified_workflow_api,implemented
+summarise_pupil_posterior,summarise_pupil_posterior,pupil-diagnostics.R,606,"fit, probability = 0.95",summarise_pupil_posterior.Rd,gp3bayespy.pupil,implemented
+summarise_sbc_result,summarise_sbc_result,advanced-optional-workflows.R,2111,x,summarise_sbc_result.Rd,gp3bayespy.advanced_optional_workflows,implemented
+summarise_sensitivity_suite,summarise_sensitivity_suite,sensitivity-evidence-suite.R,273,x,summarise_sensitivity_suite.Rd,gp3bayespy.sensitivity,implemented
+theme_gp3bayes,theme_gp3bayes,publication-graphics.R,28,"base_size = 11, base_family = """"",theme_gp3bayes.Rd,gp3bayespy.reporting,implemented
+translate_advanced_pupil_model_to_brms,translate_advanced_pupil_model_to_brms,pupil-advanced-fit.R,466,specification,translate_advanced_pupil_model_to_brms.Rd,gp3bayespy.pupil,implemented
 translate_binary_model_to_brms,translate_binary_model_to_brms,binary-model-fitting.R,296,specification,translate_binary_model_to_brms.Rd,gp3bayespy.binary,implemented
-translate_binary_model_with_interaction_prior,translate_binary_model_with_interaction_prior,advanced-optional-workflows.R,448,specification,translate_binary_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-translate_binocular_pupil_model_to_brms,translate_binocular_pupil_model_to_brms,pupil-binocular.R,393,specification,translate_binocular_pupil_model_to_brms.Rd,gp3bayespy.pupil,mapped_not_implemented
+translate_binary_model_with_interaction_prior,translate_binary_model_with_interaction_prior,advanced-optional-workflows.R,448,specification,translate_binary_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,implemented
+translate_binocular_pupil_model_to_brms,translate_binocular_pupil_model_to_brms,pupil-binocular.R,393,specification,translate_binocular_pupil_model_to_brms.Rd,gp3bayespy.pupil,implemented
 translate_duration_model_to_brms,translate_duration_model_to_brms,duration-model-fitting.R,229,specification,translate_duration_model_to_brms.Rd,gp3bayespy.duration,implemented
-translate_duration_model_with_interaction_prior,translate_duration_model_with_interaction_prior,advanced-optional-workflows.R,478,specification,translate_duration_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,mapped_not_implemented
-translate_pupil_model_to_brms,translate_pupil_model_to_brms,pupil-specification.R,350,specification,translate_pupil_model_to_brms.Rd,gp3bayespy.pupil,mapped_not_implemented
-translate_pupil_response_shape_to_brms,translate_pupil_response_shape_to_brms,pupil-response-shape.R,206,specification,translate_pupil_response_shape_to_brms.Rd,gp3bayespy.pupil,mapped_not_implemented
-validate_analysis_manifest,validate_analysis_manifest,analysis-manifest.R,299,"manifest, strict = FALSE",validate_analysis_manifest.Rd,gp3bayespy.reproducibility,mapped_not_implemented
+translate_duration_model_with_interaction_prior,translate_duration_model_with_interaction_prior,advanced-optional-workflows.R,478,specification,translate_duration_model_with_interaction_prior.Rd,gp3bayespy.advanced_optional_workflows,implemented
+translate_pupil_model_to_brms,translate_pupil_model_to_brms,pupil-specification.R,350,specification,translate_pupil_model_to_brms.Rd,gp3bayespy.pupil,implemented
+translate_pupil_response_shape_to_brms,translate_pupil_response_shape_to_brms,pupil-response-shape.R,206,specification,translate_pupil_response_shape_to_brms.Rd,gp3bayespy.pupil,implemented
+validate_analysis_manifest,validate_analysis_manifest,analysis-manifest.R,299,"manifest, strict = FALSE",validate_analysis_manifest.Rd,gp3bayespy.reproducibility,implemented
 validate_backend_environment,validate_backend_environment,backend-reliability.R,136,"backend = c(""rstan"", ""cmdstanr""),
   compile_test = FALSE,
-  strict = FALSE",validate_backend_environment.Rd,gp3bayespy.backends,mapped_not_implemented
-validate_gp3bayes_object,validate_gp3bayes_object,unified-workflow-api.R,60,"x, recursive = TRUE, strict = FALSE",validate_gp3bayes_object.Rd,gp3bayespy.unified_workflow_api,mapped_not_implemented
-validate_gp3bayes_schema,validate_gp3bayes_schema,backend-reliability.R,695,"x, schema, strict = FALSE, compare_lengths = FALSE",validate_gp3bayes_schema.Rd,gp3bayespy.backends,mapped_not_implemented
+  strict = FALSE",validate_backend_environment.Rd,gp3bayespy.backends,implemented
+validate_gp3bayes_object,validate_gp3bayes_object,unified-workflow-api.R,60,"x, recursive = TRUE, strict = FALSE",validate_gp3bayes_object.Rd,gp3bayespy.unified_workflow_api,implemented
+validate_gp3bayes_schema,validate_gp3bayes_schema,backend-reliability.R,695,"x, schema, strict = FALSE, compare_lengths = FALSE",validate_gp3bayes_schema.Rd,gp3bayespy.backends,implemented
 validate_prior_specification,validate_prior_specification,model-specification.R,404,"priors,
   contract = NULL",validate_prior_specification.Rd,gp3bayespy.specification,implemented
-validate_publication_registry,validate_publication_registry,publication-registry-dashboard.R,137,x,validate_publication_registry.Rd,gp3bayespy.reporting,mapped_not_implemented
-validate_pupil_leave_future_out,validate_pupil_leave_future_out,pupil-model-comparison.R,211,"fit, plan, execute = FALSE, cores = 1L, seed = 2026",validate_pupil_leave_future_out.Rd,gp3bayespy.pupil,mapped_not_implemented
-validate_pupil_model,validate_pupil_model,pupil-validation.R,233,"fit, plan, execute = FALSE, ndraws = 200L, max_cells = 3000000L",validate_pupil_model.Rd,gp3bayespy.pupil,mapped_not_implemented
-validate_transformation_replay,validate_transformation_replay,specification-closure.R,1208,"prepared, tolerance = 1e-10",validate_transformation_replay.Rd,gp3bayespy.specification_closure,mapped_not_implemented
+validate_publication_registry,validate_publication_registry,publication-registry-dashboard.R,137,x,validate_publication_registry.Rd,gp3bayespy.reporting,implemented
+validate_pupil_leave_future_out,validate_pupil_leave_future_out,pupil-model-comparison.R,211,"fit, plan, execute = FALSE, cores = 1L, seed = 2026",validate_pupil_leave_future_out.Rd,gp3bayespy.pupil,implemented
+validate_pupil_model,validate_pupil_model,pupil-validation.R,233,"fit, plan, execute = FALSE, ndraws = 200L, max_cells = 3000000L",validate_pupil_model.Rd,gp3bayespy.pupil,implemented
+validate_transformation_replay,validate_transformation_replay,specification-closure.R,1208,"prepared, tolerance = 1e-10",validate_transformation_replay.Rd,gp3bayespy.specification_closure,implemented
 variance_component_table,variance_component_table,postfit-exploration.R,691,"fit,
-  probs = c(0.025, 0.5, 0.975)",variance_component_table.Rd,gp3bayespy.postfit_exploration,mapped_not_implemented
-write_analysis_bundle_report,write_analysis_bundle_report,analysis-bundle.R,272,"x, file",write_analysis_bundle_report.Rd,gp3bayespy.reproducibility,mapped_not_implemented
-write_diagnostic_dashboard_report,write_diagnostic_dashboard_report,publication-registry-dashboard.R,553,"x, file, overwrite = FALSE",write_diagnostic_dashboard_report.Rd,gp3bayespy.reporting,mapped_not_implemented
-write_model_card,write_model_card,model-card.R,210,"x, file, overwrite = FALSE",write_model_card.Rd,gp3bayespy.reporting,mapped_not_implemented
-write_publication_registry,write_publication_registry,publication-registry-dashboard.R,190,"x, file, overwrite = FALSE",write_publication_registry.Rd,gp3bayespy.reporting,mapped_not_implemented
-write_reproducibility_report,write_reproducibility_report,analysis-manifest.R,512,"manifest, file, overwrite = FALSE",write_reproducibility_report.Rd,gp3bayespy.reproducibility,mapped_not_implemented
+  probs = c(0.025, 0.5, 0.975)",variance_component_table.Rd,gp3bayespy.postfit_exploration,implemented
+write_analysis_bundle_report,write_analysis_bundle_report,analysis-bundle.R,272,"x, file",write_analysis_bundle_report.Rd,gp3bayespy.reproducibility,implemented
+write_diagnostic_dashboard_report,write_diagnostic_dashboard_report,publication-registry-dashboard.R,553,"x, file, overwrite = FALSE",write_diagnostic_dashboard_report.Rd,gp3bayespy.reporting,implemented
+write_model_card,write_model_card,model-card.R,210,"x, file, overwrite = FALSE",write_model_card.Rd,gp3bayespy.reporting,implemented
+write_publication_registry,write_publication_registry,publication-registry-dashboard.R,190,"x, file, overwrite = FALSE",write_publication_registry.Rd,gp3bayespy.reporting,implemented
+write_reproducibility_report,write_reproducibility_report,analysis-manifest.R,512,"manifest, file, overwrite = FALSE",write_reproducibility_report.Rd,gp3bayespy.reproducibility,implemented

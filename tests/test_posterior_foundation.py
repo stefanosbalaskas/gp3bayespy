@@ -11,9 +11,7 @@ from gp3bayespy import GP3BayesError
 
 
 def _specification() -> Any:
-    prepared = SimpleNamespace(
-        model_matrix_columns=("(Intercept)", "condition", "covariate")
-    )
+    prepared = SimpleNamespace(model_matrix_columns=("(Intercept)", "condition", "covariate"))
     contract = SimpleNamespace(
         mappings={
             "outcome": "y",
@@ -133,9 +131,7 @@ def test_extract_posterior_draws_array_retains_named_dimensions():
 
 
 def test_extract_posterior_draws_df_adds_draw_metadata():
-    frame = gp.extract_posterior_draws(
-        _binary_fit(), variables="b_Intercept", format="df"
-    )
+    frame = gp.extract_posterior_draws(_binary_fit(), variables="b_Intercept", format="df")
     assert list(frame.columns) == ["b_Intercept", ".chain", ".iteration", ".draw"]
     assert frame[".chain"].nunique() == 4
     assert frame[".draw"].iloc[-1] == 1000
@@ -197,9 +193,7 @@ def test_binary_summary_has_r_style_columns_and_odds_ratios():
     assert expected <= set(summary.table.columns)
     population = summary.table[summary.table["variable"] == "b_condition"].iloc[0]
     assert population["odds_ratio_median"] > 1
-    group_sd = summary.table[
-        summary.table["variable"] == "sd_participant_id__Intercept"
-    ].iloc[0]
+    group_sd = summary.table[summary.table["variable"] == "sd_participant_id__Intercept"].iloc[0]
     assert np.isnan(group_sd["odds_ratio_median"])
     assert summary.posterior_summarised is True
     assert summary.convergence_claim is False
@@ -218,9 +212,7 @@ def test_duration_summary_has_median_ratio_and_unit():
 
 
 def test_summary_variables_are_exact_and_restricted_to_supported_parameters():
-    summary = gp.summarise_binary_posterior(
-        _binary_fit(), variables=["b_Intercept", "b_condition"]
-    )
+    summary = gp.summarise_binary_posterior(_binary_fit(), variables=["b_Intercept", "b_condition"])
     assert summary.table["variable"].tolist() == ["b_Intercept", "b_condition"]
     assert not any(summary.table["variable"].str.startswith("participant_z"))
 
@@ -243,9 +235,12 @@ def test_binary_diagnostics_pass_clean_synthetic_chains_without_claiming_converg
         "treedepth_saturation",
         "energy_ebfmi",
     ]
-    assert diagnostics.component_table.loc[
-        diagnostics.component_table["component"] == "divergences", "status"
-    ].iloc[0] == "pass"
+    assert (
+        diagnostics.component_table.loc[
+            diagnostics.component_table["component"] == "divergences", "status"
+        ].iloc[0]
+        == "pass"
+    )
     assert diagnostics.diagnostics_assessed is True
     assert diagnostics.convergence_claim is False
     assert diagnostics.posterior_adequacy_established is False

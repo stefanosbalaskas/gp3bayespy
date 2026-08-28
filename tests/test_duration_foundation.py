@@ -34,9 +34,7 @@ def _simulation(
     )
 
 
-def _contract(
-    *, random_slope: bool = True, include_item: bool = True
-):
+def _contract(*, random_slope: bool = True, include_item: bool = True):
     return create_model_contract(
         family="duration",
         outcome_col="duration",
@@ -57,9 +55,7 @@ def _prepared(
     random_slope: bool = True,
     include_items: bool = True,
 ) -> DurationPrepared:
-    simulation = _simulation(
-        seed, random_slope=random_slope, include_items=include_items
-    )
+    simulation = _simulation(seed, random_slope=random_slope, include_items=include_items)
     return prepare_hierarchical_duration_data(
         simulation.data,
         _contract(random_slope=random_slope, include_item=include_items),
@@ -76,9 +72,7 @@ def test_duration_simulation_is_deterministic_and_records_truth():
     pd.testing.assert_frame_equal(
         first.random_effects["participant"], second.random_effects["participant"]
     )
-    pd.testing.assert_frame_equal(
-        first.random_effects["item"], second.random_effects["item"]
-    )
+    pd.testing.assert_frame_equal(first.random_effects["item"], second.random_effects["item"])
     assert len(first.data) == 96
     assert np.isfinite(first.data["duration"]).all()
     assert (first.data["duration"] > 0).all()
@@ -120,9 +114,7 @@ def test_duration_preparation_records_explicit_unit_conversion():
     )
     assert isinstance(prepared, DurationPrepared)
     assert prepared.outcome_unit == "seconds"
-    np.testing.assert_allclose(
-        prepared.data["duration"], simulation.data["duration"] * 0.001
-    )
+    np.testing.assert_allclose(prepared.data["duration"], simulation.data["duration"] * 0.001)
     outcome = prepared.transformations["outcome"]
     assert outcome["source_unit"] == "milliseconds"
     assert outcome["analysis_unit"] == "seconds"
@@ -192,12 +184,8 @@ def test_duration_preparation_records_predictor_scaling():
         condition_levels=("control", "treatment"),
         scale_predictors=("participant_covariate", "trial_covariate"),
     )
-    assert math.isclose(
-        float(prepared.data["participant_covariate"].mean()), 0.0, abs_tol=1e-12
-    )
-    assert math.isclose(
-        float(prepared.data["trial_covariate"].std(ddof=1)), 1.0, abs_tol=1e-12
-    )
+    assert math.isclose(float(prepared.data["participant_covariate"].mean()), 0.0, abs_tol=1e-12)
+    assert math.isclose(float(prepared.data["trial_covariate"].std(ddof=1)), 1.0, abs_tol=1e-12)
     assert set(prepared.transformations["scaled_columns"]) == {
         "participant_covariate",
         "trial_covariate",
@@ -244,9 +232,7 @@ def test_duration_prior_predictive_is_deterministic_and_backend_independent():
     assert first.backend == "none"
     assert first.fitting_performed is False
     assert first.posterior_adequacy_established is False
-    assert set(first.checks["status"]).issubset(
-        {"pass", "fail", "not_applicable"}
-    )
+    assert set(first.checks["status"]).issubset({"pass", "fail", "not_applicable"})
 
 
 def test_duration_prior_predictive_condition_not_applicable_without_condition():
@@ -279,22 +265,16 @@ def test_duration_prior_predictive_validates_thresholds_and_draw_count():
     with pytest.raises(GP3BayesError, match="draws"):
         check_duration_prior_predictive(specification, draws=49)
     with pytest.raises(GP3BayesError, match="plausible_median"):
-        check_duration_prior_predictive(
-            specification, draws=50, plausible_median=(500, 100)
-        )
+        check_duration_prior_predictive(specification, draws=50, plausible_median=(500, 100))
     with pytest.raises(GP3BayesError, match="maximum_condition_ratio"):
-        check_duration_prior_predictive(
-            specification, draws=50, maximum_condition_ratio=1
-        )
+        check_duration_prior_predictive(specification, draws=50, maximum_condition_ratio=1)
 
 
 def test_duration_repr_states_conservative_boundaries():
     simulation = _simulation()
     prepared = _prepared()
     specification = specify_duration_model(prepared, baseline=500)
-    prior_check = check_duration_prior_predictive(
-        specification, draws=50, seed=20
-    )
+    prior_check = check_duration_prior_predictive(specification, draws=50, seed=20)
     assert "Censored: FALSE" in repr(simulation)
     assert "Fit performed: FALSE" in repr(prepared)
     assert "Family: lognormal" in repr(specification)

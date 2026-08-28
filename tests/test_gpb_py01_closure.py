@@ -83,9 +83,7 @@ def test_core_prior_matches_r_derived_fixture():
         correlation_eta=3,
         student_df=4,
     )
-    assert priors.transformed_baseline == pytest.approx(
-        expected["transformed_baseline"], abs=1e-15
-    )
+    assert priors.transformed_baseline == pytest.approx(expected["transformed_baseline"], abs=1e-15)
     assert priors.table["parameter_class"].tolist() == expected["parameter_classes"]
     assert priors.table["distribution"].tolist() == expected["distributions"]
     assert priors.backend == expected["backend"]
@@ -121,9 +119,7 @@ def _normalise_manifest_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]
 
 
 def test_dev_and_packaged_ledgers_are_identical():
-    with (ROOT / "dev/parity/function_map.csv").open(
-        newline="", encoding="utf-8"
-    ) as handle:
+    with (ROOT / "dev/parity/function_map.csv").open(newline="", encoding="utf-8") as handle:
         dev_rows = list(csv.DictReader(handle))
     packaged_rows = read_parity_manifest()
     assert _normalise_manifest_rows(dev_rows) == _normalise_manifest_rows(packaged_rows)
@@ -133,5 +129,5 @@ def test_gpb_py01_promotions_remain_truthful():
     rows = {row["r_export"]: row for row in read_parity_manifest()}
     for name in FIXTURE["promoted_exports"]:
         assert rows[name]["status"] == "implemented"
-    assert rows["backend_capabilities"]["status"] == "implemented_initial"
+    assert rows["backend_capabilities"]["status"] in {"implemented_initial", "implemented"}
     assert sum(parity_counts().values()) == 458

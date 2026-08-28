@@ -61,10 +61,7 @@ def _duration_specification() -> gp.DurationModelSpecification:
 def main() -> None:
     print(
         "Backend matrix:",
-        {
-            name: version(name)
-            for name in ("numpy", "numba", "pytensor", "pymc", "arviz")
-        },
+        {name: version(name) for name in ("numpy", "numba", "pytensor", "pymc", "arviz")},
     )
 
     binary = gp.fit_binary_model(

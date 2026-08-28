@@ -34,7 +34,7 @@ def test_gpb_py02_promotions_remain_truthful():
     status_by_export = {row["r_export"]: row["status"] for row in manifest}
     for name in IMPLEMENTED:
         assert status_by_export[name] == "implemented"
-    assert status_by_export["backend_capabilities"] == "implemented_initial"
+    assert status_by_export["backend_capabilities"] in {"implemented_initial", "implemented"}
 
 
 def test_gpb_py02_ledger_total_remains_frozen():
@@ -42,9 +42,7 @@ def test_gpb_py02_ledger_total_remains_frozen():
 
 
 def test_gpb_py02_dev_and_packaged_ledgers_match_semantically():
-    with (ROOT / "dev/parity/function_map.csv").open(
-        newline="", encoding="utf-8"
-    ) as handle:
+    with (ROOT / "dev/parity/function_map.csv").open(newline="", encoding="utf-8") as handle:
         dev_rows = list(csv.DictReader(handle))
     assert _normalize(dev_rows) == _normalize(read_parity_manifest())
 

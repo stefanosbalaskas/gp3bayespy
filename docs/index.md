@@ -1,5 +1,22 @@
 # gp3bayespy
 
-Python port of **gp3bayes 0.5.0** with contract-first scientific and computational governance.
+`gp3bayespy` is the Python port of the frozen R **gp3bayes 0.5.0** public contract.
 
-The port is being built against an immutable 458-export reference ledger. Backend-independent contracts and validation are implemented before optional Bayesian fitting layers.
+## Parity status
+
+- **458 / 458** frozen R exports implemented.
+- **59 / 59** canonical articles ported to Python-facing documentation.
+- Binary, duration, posterior, predictive, PSIS-LOO, sensitivity/recovery/SBC, reporting/reproducibility, and governed dynamic/advanced/binocular pupil workflows are included.
+
+## Start here
+
+- [Complete API reference](api.md)
+- [Articles](articles/index.md)
+- [Executable examples](examples/index.md)
+- [Migration from gp3bayes 0.5.0](migration.md)
+- [Plot gallery](plot-gallery.md)
+- [R → Python parity](development/parity.md)
+
+## Governance
+
+The package does not automatically certify model adequacy, convergence, robustness, causal identification, cognitive/emotional states, a preferred model, or automatic participant/group exclusion. Such outputs remain evidence requiring analyst interpretation.

@@ -58,9 +58,7 @@ _PRIOR_COLUMNS = [
 
 def _validate_specification_contract(contract: ModelContract) -> ModelContract:
     if not isinstance(contract, ModelContract):
-        raise GP3BayesError(
-            "`contract` must inherit from `gp3bayes_model_contract`."
-        )
+        raise GP3BayesError("`contract` must inherit from `gp3bayes_model_contract`.")
 
     mappings = contract.mappings
     if not isinstance(mappings, Mapping):
@@ -74,15 +72,9 @@ def _validate_specification_contract(contract: ModelContract) -> ModelContract:
         "condition",
         "time",
     )
-    missing_mappings = [
-        name for name in required_mappings if name not in mappings
-    ]
+    missing_mappings = [name for name in required_mappings if name not in mappings]
     if missing_mappings:
-        raise GP3BayesError(
-            "`contract$mappings` is missing: "
-            + ", ".join(missing_mappings)
-            + "."
-        )
+        raise GP3BayesError("`contract$mappings` is missing: " + ", ".join(missing_mappings) + ".")
 
     _match_contract_family(contract.family)
 
@@ -93,25 +85,21 @@ def _validate_specification_contract(contract: ModelContract) -> ModelContract:
         or any(not isinstance(value, str) or not value for value in rationale)
     ):
         raise GP3BayesError(
-            "`contract$prior_rationale` must contain at least four non-empty "
-            "character values."
+            "`contract$prior_rationale` must contain at least four non-empty character values."
         )
 
     if not isinstance(contract.random_slope, bool):
         raise GP3BayesError("`contract$random_slope` must be TRUE or FALSE.")
     if contract.random_slope and mappings["condition"] is None:
         raise GP3BayesError(
-            "A participant-level random slope requires "
-            "`contract$mappings$condition`."
+            "A participant-level random slope requires `contract$mappings$condition`."
         )
     return contract
 
 
 def _validate_specification_audit(audit: ReadinessAudit) -> ReadinessAudit:
     if not isinstance(audit, ReadinessAudit):
-        raise GP3BayesError(
-            "`audit` must inherit from `gp3bayes_readiness_audit`."
-        )
+        raise GP3BayesError("`audit` must inherit from `gp3bayes_readiness_audit`.")
     if not isinstance(audit.ready, bool):
         raise GP3BayesError("`audit$ready` must be TRUE or FALSE.")
     if audit.status not in {"ready", "ready_with_warnings", "not_ready"}:
@@ -121,8 +109,7 @@ def _validate_specification_audit(audit: ReadinessAudit) -> ReadinessAudit:
         not isinstance(counts, Mapping)
         or not all(name in counts for name in ("pass", "warn", "fail"))
         or any(
-            isinstance(counts[name], bool)
-            or not isinstance(counts[name], numbers.Real)
+            isinstance(counts[name], bool) or not isinstance(counts[name], numbers.Real)
             for name in ("pass", "warn", "fail")
         )
     ):
@@ -144,9 +131,7 @@ def _is_r_syntactic_name(value: str) -> bool:
 
 def _quote_formula_name(value: object) -> str:
     if not isinstance(value, str) or not value:
-        raise GP3BayesError(
-            "Formula column names must be non-empty character scalars."
-        )
+        raise GP3BayesError("Formula column names must be non-empty character scalars.")
     if _is_r_syntactic_name(value):
         return value
     escaped = value.replace("\\", "\\\\").replace("`", "\\`")
@@ -170,11 +155,7 @@ def build_model_formula(contract: ModelContract) -> str:
 
     terms = [_quote_formula_name(value) for value in fixed]
     if contract.interaction is not None:
-        terms.append(
-            ":".join(
-                _quote_formula_name(value) for value in contract.interaction
-            )
-        )
+        terms.append(":".join(_quote_formula_name(value) for value in contract.interaction))
 
     participant = _quote_formula_name(mappings["participant"])
     if contract.random_slope:
@@ -214,9 +195,7 @@ class PriorSpecification:
         ]
         if self.outcome_unit is not None:
             lines.append(f"  Outcome unit: {self.outcome_unit}")
-        classes = ", ".join(
-            str(value) for value in self.table["parameter_class"].tolist()
-        )
+        classes = ", ".join(str(value) for value in self.table["parameter_class"].tolist())
         lines.extend(
             [
                 f"  Parameter classes: {classes}",
@@ -245,10 +224,7 @@ class ModelSpecification:
     fit_performed: bool = False
 
     def __repr__(self) -> str:
-        classes = ", ".join(
-            str(value)
-            for value in self.priors.table["parameter_class"].tolist()
-        )
+        classes = ", ".join(str(value) for value in self.priors.table["parameter_class"].tolist())
         return "\n".join(
             [
                 "<gp3bayes_model_specification>",
@@ -269,9 +245,7 @@ def _validate_numeric_scalar(value: object, argument: str) -> float:
         or not isinstance(value, numbers.Real)
         or not math.isfinite(float(value))
     ):
-        raise GP3BayesError(
-            f"`{argument}` must be one finite numeric value."
-        )
+        raise GP3BayesError(f"`{argument}` must be one finite numeric value.")
     return float(value)
 
 
@@ -285,9 +259,7 @@ def _validate_positive_scalar(value: object, argument: str) -> float:
 def _validate_probability_scalar(value: object, argument: str) -> float:
     numeric = _validate_numeric_scalar(value, argument)
     if numeric <= 0 or numeric >= 1:
-        raise GP3BayesError(
-            f"`{argument}` must be strictly between zero and one."
-        )
+        raise GP3BayesError(f"`{argument}` must be strictly between zero and one.")
     return numeric
 
 
@@ -337,15 +309,12 @@ def create_prior_specification(
             baseline = 0.5
         else:
             raise GP3BayesError(
-                "`baseline` must be supplied for the duration family in the "
-                "recorded outcome unit."
+                "`baseline` must be supplied for the duration family in the recorded outcome unit."
             )
 
     if family == "binary":
         baseline_value = _validate_probability_scalar(baseline, "baseline")
-        transformed_baseline = math.log(
-            baseline_value / (1.0 - baseline_value)
-        )
+        transformed_baseline = math.log(baseline_value / (1.0 - baseline_value))
         if intercept_scale is None:
             intercept_scale = 1.5
         if coefficient_scale is None:
@@ -366,25 +335,17 @@ def create_prior_specification(
         if residual_scale is None:
             residual_scale = 1.0
 
-    intercept_value = _validate_positive_scalar(
-        intercept_scale, "intercept_scale"
-    )
-    coefficient_value = _validate_positive_scalar(
-        coefficient_scale, "coefficient_scale"
-    )
+    intercept_value = _validate_positive_scalar(intercept_scale, "intercept_scale")
+    coefficient_value = _validate_positive_scalar(coefficient_scale, "coefficient_scale")
     group_sd_value = _validate_positive_scalar(group_sd_scale, "group_sd_scale")
     eta = _validate_numeric_scalar(correlation_eta, "correlation_eta")
     if eta < 1:
-        raise GP3BayesError(
-            "`correlation_eta` must be greater than or equal to one."
-        )
+        raise GP3BayesError("`correlation_eta` must be greater than or equal to one.")
     student_df_value = _validate_positive_scalar(student_df, "student_df")
 
     residual_value: float | None = None
     if family == "duration":
-        residual_value = _validate_positive_scalar(
-            residual_scale, "residual_scale"
-        )
+        residual_value = _validate_positive_scalar(residual_scale, "residual_scale")
 
     rows = [
         _prior_row(
@@ -465,14 +426,10 @@ def create_prior_specification(
 
 
 def _require_nonempty_text(series: pd.Series) -> bool:
-    return bool(
-        series.map(lambda value: isinstance(value, str) and bool(value)).all()
-    )
+    return bool(series.map(lambda value: isinstance(value, str) and bool(value)).all())
 
 
-def _numeric_values(
-    table: pd.DataFrame, mask: pd.Series, column: str
-) -> np.ndarray:
+def _numeric_values(table: pd.DataFrame, mask: pd.Series, column: str) -> np.ndarray:
     selected = cast(pd.Series, table.loc[mask, column])
     values = pd.to_numeric(selected, errors="coerce")
     return values.to_numpy(dtype=float)
@@ -484,9 +441,7 @@ def validate_prior_specification(
 ) -> PriorSpecification:
     """Validate the complete prior schema and optional contract compatibility."""
     if not isinstance(priors, PriorSpecification):
-        raise GP3BayesError(
-            "`priors` must inherit from `gp3bayes_prior_specification`."
-        )
+        raise GP3BayesError("`priors` must inherit from `gp3bayes_prior_specification`.")
 
     _match_contract_family(priors.family)
     if not isinstance(priors.random_slope, bool):
@@ -507,15 +462,11 @@ def validate_prior_specification(
         incompatible = [name for name, okay in compatibility if not okay]
         if incompatible:
             raise GP3BayesError(
-                "`priors` is incompatible with `contract`: "
-                + ", ".join(incompatible)
-                + "."
+                "`priors` is incompatible with `contract`: " + ", ".join(incompatible) + "."
             )
 
     if priors.family == "binary":
-        baseline = _validate_probability_scalar(
-            priors.baseline, "priors$baseline"
-        )
+        baseline = _validate_probability_scalar(priors.baseline, "priors$baseline")
         expected = math.log(baseline / (1.0 - baseline))
     else:
         baseline = _validate_positive_scalar(priors.baseline, "priors$baseline")
@@ -536,9 +487,7 @@ def validate_prior_specification(
     missing_columns = [column for column in _PRIOR_COLUMNS if column not in table]
     if missing_columns:
         raise GP3BayesError(
-            "`priors$table` is missing required columns: "
-            + ", ".join(missing_columns)
-            + "."
+            "`priors$table` is missing required columns: " + ", ".join(missing_columns) + "."
         )
     if table.empty:
         raise GP3BayesError("`priors$table` must contain at least one prior row.")
@@ -553,12 +502,8 @@ def validate_prior_specification(
     if priors.random_slope:
         expected_classes.append("cor")
 
-    missing_classes = [
-        value for value in expected_classes if value not in parameter_classes
-    ]
-    unsupported_classes = [
-        value for value in parameter_classes if value not in expected_classes
-    ]
+    missing_classes = [value for value in expected_classes if value not in parameter_classes]
+    unsupported_classes = [value for value in parameter_classes if value not in expected_classes]
     if missing_classes or unsupported_classes:
         details: list[str] = []
         if missing_classes:
@@ -566,9 +511,7 @@ def validate_prior_specification(
         if unsupported_classes:
             details.append("unsupported: " + ", ".join(map(str, unsupported_classes)))
         raise GP3BayesError(
-            "Prior parameter classes are incomplete or unsupported ("
-            + "; ".join(details)
-            + ")."
+            "Prior parameter classes are incomplete or unsupported (" + "; ".join(details) + ")."
         )
 
     expected_distributions = {
@@ -587,9 +530,7 @@ def validate_prior_specification(
         if distribution_by_class.get(value) != expected_distributions[value]
     ]
     if incorrect:
-        raise GP3BayesError(
-            "Incorrect prior distributions for: " + ", ".join(incorrect) + "."
-        )
+        raise GP3BayesError("Incorrect prior distributions for: " + ", ".join(incorrect) + ".")
 
     if not _require_nonempty_text(table["target"]):
         raise GP3BayesError("Every prior row must contain a non-empty target.")
@@ -605,8 +546,7 @@ def validate_prior_specification(
         or bool((normal_scale <= 0).any())
     ):
         raise GP3BayesError(
-            "Normal priors require finite locations and strictly positive "
-            "finite scales."
+            "Normal priors require finite locations and strictly positive finite scales."
         )
 
     student = table["distribution"].eq("student_t")
@@ -656,9 +596,7 @@ def create_model_specification(
     _validate_specification_contract(contract)
     _validate_specification_audit(audit)
     if audit.contract != contract:
-        raise GP3BayesError(
-            "`audit$contract` must be identical to the supplied `contract`."
-        )
+        raise GP3BayesError("`audit$contract` must be identical to the supplied `contract`.")
     if not audit.ready:
         raise GP3BayesError(
             f"`audit` is not ready for model specification. Status: {audit.status}."

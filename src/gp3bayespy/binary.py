@@ -11,7 +11,7 @@ from __future__ import annotations
 import math
 import numbers
 from collections.abc import Mapping, Sequence
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, fields, replace
 from typing import Any, cast
 
 import numpy as np
@@ -63,9 +63,7 @@ def _numeric_scalar(
     if not lower_ok or not upper_ok:
         left = "(" if lower_open else "["
         right = ")" if upper_open else "]"
-        raise GP3BayesError(
-            f"`{name}` must lie in {left}{lower:g}, {upper:g}{right}."
-        )
+        raise GP3BayesError(f"`{name}` must lie in {left}{lower:g}, {upper:g}{right}.")
     return number
 
 
@@ -86,13 +84,10 @@ def _character_vector(value: Sequence[str] | str | None, name: str) -> tuple[str
     if value is None:
         return ()
     values = (value,) if isinstance(value, str) else tuple(value)
-    if (
-        any(not isinstance(item, str) or not item for item in values)
-        or len(set(values)) != len(values)
+    if any(not isinstance(item, str) or not item for item in values) or len(set(values)) != len(
+        values
     ):
-        raise GP3BayesError(
-            f"`{name}` must be a character vector of unique non-empty values."
-        )
+        raise GP3BayesError(f"`{name}` must be a character vector of unique non-empty values.")
     return values
 
 
@@ -141,8 +136,7 @@ def _quote_name(value: str) -> str:
     syntactic = (
         value not in reserved
         and (
-            value[0].isalpha()
-            or (value[0] == "." and (len(value) == 1 or not value[1].isdigit()))
+            value[0].isalpha() or (value[0] == "." and (len(value) == 1 or not value[1].isdigit()))
         )
         and all(char.isalnum() or char in "._" for char in value[1:])
     )
@@ -182,10 +176,7 @@ def _column_basis(series: pd.Series, name: str) -> list[tuple[str, np.ndarray]]:
     if len(levels) < 2:
         return []
     text = series.astype(str)
-    return [
-        (f"{name}{level}", text.eq(level).to_numpy(dtype=float))
-        for level in levels[1:]
-    ]
+    return [(f"{name}{level}", text.eq(level).to_numpy(dtype=float)) for level in levels[1:]]
 
 
 def _fixed_model_matrix(
@@ -267,9 +258,7 @@ def _code_condition(
         or not all(math.isfinite(value) for value in coding)
         or coding[0] == coding[1]
     ):
-        raise GP3BayesError(
-            "`condition_coding` must contain two distinct finite numeric values."
-        )
+        raise GP3BayesError("`condition_coding` must contain two distinct finite numeric values.")
 
     observed_raw = list(dict.fromkeys(series.dropna().tolist()))
     if len(observed_raw) != 2:
@@ -281,9 +270,7 @@ def _code_condition(
     if condition_levels is None:
         if isinstance(series.dtype, pd.CategoricalDtype):
             levels = [
-                str(level)
-                for level in series.cat.categories
-                if str(level) in set(observed_text)
+                str(level) for level in series.cat.categories if str(level) in set(observed_text)
             ]
         elif pd.api.types.is_numeric_dtype(series.dtype):
             levels = [str(value) for value in sorted(observed_raw)]
@@ -346,9 +333,7 @@ def simulate_hierarchical_binary_data(
 ) -> BinarySimulation:
     """Simulate governed repeated-measures binary data without model fitting."""
     n_participants = _integer(n_participants, "n_participants", minimum=2)
-    trials_per_participant = _integer(
-        trials_per_participant, "trials_per_participant", minimum=2
-    )
+    trials_per_participant = _integer(trials_per_participant, "trials_per_participant", minimum=2)
     n_items = _integer(n_items, "n_items", minimum=2)
     intercept = _numeric_scalar(intercept, "intercept")
     condition_effect = _numeric_scalar(condition_effect, "condition_effect")
@@ -406,8 +391,7 @@ def simulate_hierarchical_binary_data(
     z_slope = rng.normal(size=n_participants)
     participant_intercept = participant_sd * z_intercept
     participant_slope = random_slope_sd * (
-        random_slope_cor * z_intercept
-        + math.sqrt(1 - random_slope_cor**2) * z_slope
+        random_slope_cor * z_intercept + math.sqrt(1 - random_slope_cor**2) * z_slope
     )
 
     item_id: np.ndarray | None = None
@@ -452,7 +436,7 @@ def simulate_hierarchical_binary_data(
         data_dict["item_id"] = item_id
     preferred = [
         "participant_id",
-        *( ["item_id"] if include_items else [] ),
+        *(["item_id"] if include_items else []),
         "trial_id",
         "condition",
         "participant_covariate",
@@ -568,9 +552,7 @@ def prepare_hierarchical_binary_data(
     if undeclared:
         raise GP3BayesError(
             "Every `scale_predictors` entry must be declared in `contract$predictors`. "
-            "Undeclared: "
-            + ", ".join(undeclared)
-            + "."
+            "Undeclared: " + ", ".join(undeclared) + "."
         )
 
     required: list[str] = []
@@ -586,13 +568,11 @@ def prepare_hierarchical_binary_data(
     dropped_positions = [index + 1 for index, complete in enumerate(complete_rows) if not complete]
     if dropped_positions and missing == "error":
         raise GP3BayesError(
-            "Missing values are present in declared analysis columns. Use `missing = \"drop\"` "
+            'Missing values are present in declared analysis columns. Use `missing = "drop"` '
             "only after an explicit decision."
         )
     working = (
-        cast(pd.DataFrame, data.loc[complete_rows]).copy()
-        if dropped_positions
-        else data.copy()
+        cast(pd.DataFrame, data.loc[complete_rows]).copy() if dropped_positions else data.copy()
     )
     if working.empty:
         raise GP3BayesError("No complete analysis rows remain.")
@@ -1001,8 +981,7 @@ def check_binary_prior_predictive(
     summaries = pd.DataFrame(rows)
     overall_rate_probability = float(
         np.mean(
-            (summaries["overall_rate"] < plausible[0])
-            | (summaries["overall_rate"] > plausible[1])
+            (summaries["overall_rate"] < plausible[0]) | (summaries["overall_rate"] > plausible[1])
         )
     )
     condition_available = condition is not None
@@ -1054,8 +1033,7 @@ def check_binary_prior_predictive(
         if not applies
         else (
             "pass"
-            if math.isfinite(probability)
-            and probability <= maximum_extreme_probability
+            if math.isfinite(probability) and probability <= maximum_extreme_probability
             else "fail"
         )
         for applies, probability in zip(applicable, probabilities, strict=True)
@@ -1107,9 +1085,7 @@ def _validate_binary_model_specification(
     if specification.contract.link != "logit":
         raise GP3BayesError("Binary model fitting requires the approved logit link.")
     if specification.contract.likelihood != "Bernoulli":
-        raise GP3BayesError(
-            "Binary model fitting requires the approved Bernoulli likelihood."
-        )
+        raise GP3BayesError("Binary model fitting requires the approved Bernoulli likelihood.")
     return specification
 
 
@@ -1176,8 +1152,7 @@ def translate_binary_model_to_brms(
         random_slope=specification.contract.random_slope,
     )
     prior_text = {
-        str(row.parameter_class): str(row.prior)
-        for row in parameter_table.itertuples(index=False)
+        str(row.parameter_class): str(row.prior) for row in parameter_table.itertuples(index=False)
     }
     return BinaryBackendSpecification(
         translation_version="0.1",
@@ -1256,9 +1231,7 @@ def _run_binary_pymc(
     coefficient_prior = _prior_row(specification.priors, "b")
     group_sd_prior = _prior_row(specification.priors, "sd")
 
-    participant_codes, participant_levels = pd.factorize(
-        data[participant_col], sort=False
-    )
+    participant_codes, participant_levels = pd.factorize(data[participant_col], sort=False)
     item_col = contract.mappings["item"]
     condition_col = contract.mappings["condition"]
 
@@ -1297,16 +1270,10 @@ def _run_binary_pymc(
                 sigma=1.0,
                 shape=(len(participant_levels), 2),
             )
-            participant_re = pm.Deterministic(
-                "participant_re", pm.math.dot(z, chol.T)
-            )
+            participant_re = pm.Deterministic("participant_re", pm.math.dot(z, chol.T))
             if condition_col is None:
-                raise GP3BayesError(
-                    "`condition_col` must be supplied when `random_slope` is TRUE."
-                )
-            condition = pd.to_numeric(
-                data[condition_col], errors="raise"
-            ).to_numpy(dtype=float)
+                raise GP3BayesError("`condition_col` must be supplied when `random_slope` is TRUE.")
+            condition = pd.to_numeric(data[condition_col], errors="raise").to_numpy(dtype=float)
             eta = (
                 eta
                 + participant_re[participant_codes, 0]
@@ -1333,9 +1300,7 @@ def _run_binary_pymc(
                 nu=float(group_sd_prior["df"]),
                 sigma=float(group_sd_prior["scale"]),
             )
-            item_z = pm.Normal(
-                "item_z", mu=0.0, sigma=1.0, shape=len(item_levels)
-            )
+            item_z = pm.Normal("item_z", mu=0.0, sigma=1.0, shape=len(item_levels))
             eta = eta + item_sd * item_z[item_codes]
 
         pm.Bernoulli("observed", logit_p=eta, observed=y)
@@ -1382,9 +1347,7 @@ def fit_binary_model(
     )
     translation = translate_binary_model_to_brms(specification)
     _require_pymc("fit a binary model through the approved Python sampling backend")
-    backend_model, backend_fit = _run_binary_pymc(
-        specification, controls.as_dict()
-    )
+    backend_model, backend_fit = _run_binary_pymc(specification, controls.as_dict())
     return BinaryFit(
         fit_version="0.1",
         family="binary",
@@ -1471,9 +1434,7 @@ def check_binary_posterior_predictive(
 
     y = pd.to_numeric(data[outcome_col], errors="raise").to_numpy(dtype=int)
     participant = data[participant_col].to_numpy(copy=True)
-    condition = (
-        None if condition_col is None else data[condition_col].to_numpy(copy=True)
-    )
+    condition = None if condition_col is None else data[condition_col].to_numpy(copy=True)
     item = None if item_col is None else data[item_col].to_numpy(copy=True)
 
     yrep = extract_posterior_predictions(
@@ -1520,3 +1481,394 @@ def check_binary_posterior_predictive(
         checks=checks,
         brier_score=brier_score,
     )
+
+
+def _prior_scale_from_table(priors: PriorSpecification, parameter_class: str) -> float:
+    row = priors.table.loc[priors.table["parameter_class"].eq(parameter_class)]
+    if len(row) != 1:
+        raise GP3BayesError(f"Expected one `{parameter_class}` prior row.")
+    return float(row.iloc[0]["scale"])
+
+
+def assess_binary_prior_sensitivity(
+    fit: BinaryFit,
+    scale_multipliers: Mapping[str, float] | None = None,
+    chains: int | None = None,
+    iter: int | None = None,
+    warmup: int | None = None,
+    cores: int | None = None,
+    seed: int | None = None,
+    adapt_delta: float | None = None,
+    max_treedepth: int | None = None,
+    refresh: int = 0,
+    maximum_standardized_shift: float = 0.25,
+    review_standardized_shift: float = 0.50,
+    retain_fits: bool = False,
+):
+    """Refit the approved binary model under declared prior-scale multipliers."""
+    if not isinstance(fit, BinaryFit):
+        raise GP3BayesError("`fit` must be a binary gp3bayes fit.")
+    from .sensitivity import PriorSensitivity, _classify_upper, _worst_status
+
+    multipliers = (
+        {"tighter": 0.5, "wider": 2.0} if scale_multipliers is None else dict(scale_multipliers)
+    )
+    if not multipliers or any(
+        not str(k) or not math.isfinite(float(v)) or float(v) <= 0 for k, v in multipliers.items()
+    ):
+        raise GP3BayesError(
+            "`scale_multipliers` must contain uniquely named positive finite values."
+        )
+    if maximum_standardized_shift < 0 or review_standardized_shift < maximum_standardized_shift:
+        raise GP3BayesError("Sensitivity shift thresholds are invalid.")
+    controls = fit.sampling
+    chains = int(controls["chains"] if chains is None else chains)
+    iter = int(controls["iter"] if iter is None else iter)
+    warmup = int(controls["warmup"] if warmup is None else warmup)
+    cores = int(controls["cores"] if cores is None else cores)
+    seed = int(controls["seed"] + 1000 if seed is None else seed)
+    adapt_delta = float(controls["adapt_delta"] if adapt_delta is None else adapt_delta)
+    max_treedepth = int(controls["max_treedepth"] if max_treedepth is None else max_treedepth)
+
+    reference_summary = summarise_binary_posterior(fit).table
+    reference = reference_summary.loc[
+        reference_summary["variable"].astype(str).str.startswith("b_"),
+        ["variable", "median", "sd"],
+    ].copy()
+    reference_diagnostics = diagnose_binary_fit(fit)
+    rows: list[pd.DataFrame] = []
+    alternative_fits: dict[str, BinaryFit] = {}
+    base_priors = fit.specification.priors
+    for index, (label, multiplier_value) in enumerate(multipliers.items()):
+        multiplier = float(multiplier_value)
+        priors = create_prior_specification(
+            fit.specification.contract,
+            baseline=base_priors.baseline,
+            intercept_scale=_prior_scale_from_table(base_priors, "Intercept") * multiplier,
+            coefficient_scale=_prior_scale_from_table(base_priors, "b") * multiplier,
+            group_sd_scale=_prior_scale_from_table(base_priors, "sd") * multiplier,
+            correlation_eta=float(
+                base_priors.table.loc[base_priors.table["parameter_class"].eq("cor"), "shape"].iloc[
+                    0
+                ]
+            )
+            if fit.specification.contract.random_slope
+            else 2.0,
+            student_df=float(
+                base_priors.table.loc[base_priors.table["parameter_class"].eq("sd"), "df"].iloc[0]
+            ),
+        )
+        specification = replace(fit.specification, priors=priors)
+        alternative_fit = fit_binary_model(
+            specification,
+            chains=chains,
+            iter=iter,
+            warmup=warmup,
+            cores=cores,
+            seed=seed + index,
+            adapt_delta=adapt_delta,
+            max_treedepth=max_treedepth,
+            refresh=refresh,
+        )
+        alternative_diagnostics = diagnose_binary_fit(alternative_fit)
+        alternative_summary = summarise_binary_posterior(alternative_fit).table
+        alternative = alternative_summary.loc[
+            alternative_summary["variable"].astype(str).str.startswith("b_"),
+            ["variable", "median"],
+        ].rename(columns={"median": "alternative_median"})
+        merged = reference.merge(alternative, on="variable", how="inner", sort=False)
+        merged["scenario"] = str(label)
+        merged["scale_multiplier"] = multiplier
+        merged["median_shift"] = merged["alternative_median"] - merged["median"]
+        merged["standardized_shift"] = merged["median_shift"].abs() / np.maximum(
+            merged["sd"].abs(), np.finfo(float).eps
+        )
+        merged["shift_status"] = [
+            _classify_upper(float(v), maximum_standardized_shift, review_standardized_shift)
+            for v in merged["standardized_shift"]
+        ]
+        merged["diagnostic_status"] = alternative_diagnostics.status
+        merged["status"] = [
+            _worst_status([status, alternative_diagnostics.status])
+            for status in merged["shift_status"]
+        ]
+        rows.append(
+            merged[
+                [
+                    "scenario",
+                    "scale_multiplier",
+                    "variable",
+                    "median",
+                    "alternative_median",
+                    "median_shift",
+                    "standardized_shift",
+                    "shift_status",
+                    "diagnostic_status",
+                    "status",
+                ]
+            ]
+        )
+        if retain_fits:
+            alternative_fits[str(label)] = alternative_fit
+    comparison = pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
+    scenario_rows = []
+    for scenario, frame in comparison.groupby("scenario", sort=False):
+        scenario_rows.append(
+            {
+                "scenario": scenario,
+                "scale_multiplier": float(frame["scale_multiplier"].iloc[0]),
+                "maximum_standardized_shift": float(frame["standardized_shift"].max()),
+                "diagnostic_status": str(frame["diagnostic_status"].iloc[0]),
+                "status": _worst_status(frame["status"].astype(str).tolist()),
+            }
+        )
+    scenario_status = pd.DataFrame(scenario_rows)
+    overall = _worst_status(
+        [
+            reference_diagnostics.status,
+            *scenario_status.get("status", pd.Series(dtype=str)).astype(str).tolist(),
+        ]
+    )
+    return PriorSensitivity(
+        "0.1",
+        "binary",
+        multipliers,
+        comparison,
+        scenario_status,
+        reference_diagnostics.status,
+        overall,
+        alternative_fits if retain_fits else None,
+    )
+
+
+def run_binary_recovery(
+    repetitions: int = 20,
+    n_participants: int = 30,
+    trials_per_participant: int = 16,
+    n_items: int = 12,
+    include_items: bool = True,
+    random_slope: bool = True,
+    seed: int = 1001,
+    chains: int = 4,
+    iter: int = 1500,
+    warmup: int = 750,
+    cores: int | None = None,
+    adapt_delta: float = 0.95,
+    max_treedepth: int = 12,
+    refresh: int = 0,
+    interval_probability: float = 0.95,
+    minimum_repetitions: int = 20,
+    maximum_standardized_bias: float = 0.25,
+    minimum_coverage: float = 0.80,
+    minimum_diagnostic_pass_fraction: float = 0.80,
+    continue_on_error: bool = True,
+):
+    """Run simulation-based binary parameter recovery using the restricted fitter."""
+    from .contracts import create_model_contract
+    from .sensitivity import RecoveryResult, _worst_status
+
+    repetitions = _integer(repetitions, "repetitions", minimum=2)
+    estimates = []
+    fit_rows = []
+    for rep in range(repetitions):
+        rep_seed = int(seed) + rep
+        try:
+            sim = simulate_hierarchical_binary_data(
+                n_participants=n_participants,
+                trials_per_participant=trials_per_participant,
+                n_items=n_items,
+                include_items=include_items,
+                random_slope_sd=0.3 if random_slope else 0.0,
+                seed=rep_seed,
+            )
+            contract = create_model_contract(
+                family="binary",
+                outcome_col="selected",
+                participant_col="participant_id",
+                item_col="item_id" if include_items else None,
+                trial_col="trial_id",
+                condition_col="condition",
+                predictors=("participant_covariate", "trial_covariate"),
+                interaction=("condition", "participant_covariate"),
+                random_slope=random_slope,
+            )
+            prepared = prepare_hierarchical_binary_data(sim.data, contract)
+            specification = specify_binary_model(prepared)
+            fitted = fit_binary_model(
+                specification,
+                chains=chains,
+                iter=iter,
+                warmup=warmup,
+                cores=cores,
+                seed=rep_seed,
+                adapt_delta=adapt_delta,
+                max_treedepth=max_treedepth,
+                refresh=refresh,
+            )
+            diagnostics = diagnose_binary_fit(fitted)
+            table = summarise_binary_posterior(fitted, probability=interval_probability).table
+            truth = {"b_Intercept": sim.truth["fixed_effects"]["(Intercept)"]}
+            truth.update(
+                {f"b_{k}": v for k, v in sim.truth["fixed_effects"].items() if k != "(Intercept)"}
+            )
+            for variable, value in truth.items():
+                row = table.loc[table["variable"].eq(variable)]
+                if row.empty:
+                    continue
+                r = row.iloc[0]
+                estimates.append(
+                    {
+                        "repetition": rep + 1,
+                        "variable": variable,
+                        "truth": float(value),
+                        "median": float(r["median"]),
+                        "lower": float(r["lower"]),
+                        "upper": float(r["upper"]),
+                        "covered": bool(float(r["lower"]) <= float(value) <= float(r["upper"])),
+                    }
+                )
+            fit_rows.append(
+                {
+                    "repetition": rep + 1,
+                    "completed": True,
+                    "diagnostic_status": diagnostics.status,
+                    "message": "",
+                }
+            )
+        except Exception as exc:
+            if not continue_on_error:
+                raise
+            fit_rows.append(
+                {
+                    "repetition": rep + 1,
+                    "completed": False,
+                    "diagnostic_status": "error",
+                    "message": str(exc),
+                }
+            )
+    estimates_df = pd.DataFrame(estimates)
+    fit_df = pd.DataFrame(fit_rows)
+    summaries = []
+    if not estimates_df.empty:
+        for variable, frame in estimates_df.groupby("variable", sort=False):  # type: ignore[assignment]
+            error = frame["median"].to_numpy(float) - frame["truth"].to_numpy(float)
+            sd = (
+                float(np.std(frame["median"].to_numpy(float), ddof=1)) if len(frame) > 1 else np.nan
+            )
+            bias = float(np.mean(error))
+            standardized = abs(bias) / max(sd, np.finfo(float).eps) if np.isfinite(sd) else np.nan
+            coverage = float(frame["covered"].mean())
+            rmse = float(np.sqrt(np.mean(error**2)))
+            summaries.append(
+                {
+                    "variable": variable,
+                    "bias": bias,
+                    "standardized_bias": standardized,
+                    "coverage": coverage,
+                    "rmse": rmse,
+                    "n": len(frame),
+                    "status": "pass"
+                    if len(frame) >= minimum_repetitions
+                    and np.isfinite(standardized)
+                    and standardized <= maximum_standardized_bias
+                    and coverage >= minimum_coverage
+                    else "review",
+                }
+            )
+    parameter_summary = pd.DataFrame(summaries)
+    diagnostic_pass = (
+        float(np.mean(fit_df["diagnostic_status"].eq("pass"))) if not fit_df.empty else 0.0
+    )
+    status = _worst_status(
+        parameter_summary.get("status", pd.Series(["review"])).astype(str).tolist()
+    )
+    if diagnostic_pass < minimum_diagnostic_pass_fraction:
+        status = "review"
+    return RecoveryResult(
+        "0.1", "binary", parameter_summary, estimates_df, fit_df, repetitions, status
+    )
+
+
+def _markdown_table(frame: pd.DataFrame, max_rows: int = 30) -> str:
+    if frame.empty:
+        return "_(no rows)_"
+    shown = frame.head(max_rows)
+    columns = [str(c) for c in shown.columns]
+    header = "| " + " | ".join(columns) + " |"
+    sep = "| " + " | ".join(["---"] * len(columns)) + " |"
+    rows = [
+        "| " + " | ".join(str(v) for v in row) + " |"
+        for row in shown.itertuples(index=False, name=None)
+    ]
+    return "\n".join([header, sep, *rows])
+
+
+def create_binary_model_report(
+    fit: BinaryFit,
+    diagnostics: Any = None,
+    posterior_summary: Any = None,
+    posterior_predictive: Any = None,
+    prior_sensitivity: Any = None,
+    recovery: Any = None,
+    file: str = "",
+    overwrite: bool = False,
+):
+    """Write an explicit Markdown inventory for a fitted binary model."""
+    from pathlib import Path
+
+    from .sensitivity import ModelReport
+
+    if not isinstance(fit, BinaryFit):
+        raise GP3BayesError("`fit` must be a binary gp3bayes fit.")
+    path = Path(file)
+    if path.suffix.lower() != ".md" or not file:
+        raise GP3BayesError("`file` must end in `.md`.")
+    if path.exists() and not overwrite:
+        raise GP3BayesError("The report file already exists. Use `overwrite=True`.")
+    if not path.parent.exists():
+        raise GP3BayesError("The report parent directory does not exist.")
+    diagnostics = diagnose_binary_fit(fit) if diagnostics is None else diagnostics
+    posterior_summary = (
+        summarise_binary_posterior(fit) if posterior_summary is None else posterior_summary
+    )
+    lines = [
+        "# gp3bayes binary model report",
+        "",
+        f"- Formula: `{fit.translation.formula_text}`",
+        "- Family: Bernoulli-logit",
+        f"- Interface: {fit.backend_interface}",
+        f"- Sampling backend: {fit.sampling_backend}",
+        "",
+        "## Sampling diagnostics",
+        "",
+        f"**Threshold status: {diagnostics.status}**",
+        "",
+        _markdown_table(diagnostics.component_table),
+        "",
+        "**Interpretation boundary:** Numerical thresholds were assessed, but no automatic convergence or posterior-adequacy claim is made.",
+        "",
+        "## Posterior summaries",
+        "",
+        _markdown_table(posterior_summary.table),
+    ]
+    registry = [
+        {"section": "sampling_diagnostics", "status": diagnostics.status},
+        {"section": "posterior_summary", "status": "reported"},
+    ]
+    for name, obj in (
+        ("posterior_predictive", posterior_predictive),
+        ("prior_sensitivity", prior_sensitivity),
+        ("recovery", recovery),
+    ):
+        if obj is not None:
+            status = getattr(obj, "status", "reported")
+            lines += ["", f"## {name.replace('_', ' ').title()}", "", f"Status: {status}"]
+            registry.append({"section": name, "status": status})
+    lines += [
+        "",
+        "## Interpretation boundary",
+        "",
+        "This report does not automatically establish convergence, posterior adequacy, robustness, substantive validity, or causal identification.",
+    ]
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return ModelReport("binary", str(path.resolve()), pd.DataFrame(registry))

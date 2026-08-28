@@ -43,6 +43,7 @@ from .posterior import summarise_duration as _summarise_duration
 from .readiness import ReadinessAudit, audit_model_readiness
 from .specification import (
     ModelSpecification,
+    PriorSpecification,
     create_model_specification,
     create_prior_specification,
     validate_prior_specification,
@@ -55,13 +56,9 @@ def _validate_duration_contract(contract: ModelContract) -> ModelContract:
     if contract.family != "duration":
         raise GP3BayesError("This workflow requires a duration model contract.")
     if contract.likelihood != "lognormal":
-        raise GP3BayesError(
-            "The duration workflow requires the approved lognormal likelihood."
-        )
+        raise GP3BayesError("The duration workflow requires the approved lognormal likelihood.")
     if not isinstance(contract.outcome_unit, str) or not contract.outcome_unit:
-        raise GP3BayesError(
-            "A duration contract must record one non-empty `outcome_unit`."
-        )
+        raise GP3BayesError("A duration contract must record one non-empty `outcome_unit`.")
     return contract
 
 
@@ -171,20 +168,14 @@ def simulate_hierarchical_duration_data(
 ) -> DurationSimulation:
     """Simulate governed positive uncensored lognormal duration data."""
     n_participants = _integer(n_participants, "n_participants", minimum=2)
-    trials_per_participant = _integer(
-        trials_per_participant, "trials_per_participant", minimum=2
-    )
+    trials_per_participant = _integer(trials_per_participant, "trials_per_participant", minimum=2)
     n_items = _integer(n_items, "n_items", minimum=2)
-    baseline_median = _numeric_scalar(
-        baseline_median, "baseline_median", lower=0, lower_open=True
-    )
+    baseline_median = _numeric_scalar(baseline_median, "baseline_median", lower=0, lower_open=True)
     condition_effect = _numeric_scalar(condition_effect, "condition_effect")
     participant_covariate_effect = _numeric_scalar(
         participant_covariate_effect, "participant_covariate_effect"
     )
-    trial_covariate_effect = _numeric_scalar(
-        trial_covariate_effect, "trial_covariate_effect"
-    )
+    trial_covariate_effect = _numeric_scalar(trial_covariate_effect, "trial_covariate_effect")
     interaction_effect = _numeric_scalar(interaction_effect, "interaction_effect")
     participant_sd = _numeric_scalar(participant_sd, "participant_sd", lower=0)
     item_sd = _numeric_scalar(item_sd, "item_sd", lower=0)
@@ -197,9 +188,7 @@ def simulate_hierarchical_duration_data(
         lower_open=True,
         upper_open=True,
     )
-    residual_sd = _numeric_scalar(
-        residual_sd, "residual_sd", lower=0, lower_open=True
-    )
+    residual_sd = _numeric_scalar(residual_sd, "residual_sd", lower=0, lower_open=True)
     condition_probability = _numeric_scalar(
         condition_probability,
         "condition_probability",
@@ -224,18 +213,12 @@ def simulate_hierarchical_duration_data(
 
     if balanced_condition:
         base = np.resize(np.array([-0.5, 0.5], dtype=float), trials_per_participant)
-        condition_code = np.concatenate(
-            [rng.permutation(base) for _ in range(n_participants)]
-        )
+        condition_code = np.concatenate([rng.permutation(base) for _ in range(n_participants)])
     else:
-        condition_code = np.where(
-            rng.uniform(size=n_rows) < condition_probability, 0.5, -0.5
-        )
+        condition_code = np.where(rng.uniform(size=n_rows) < condition_probability, 0.5, -0.5)
 
     participant_covariate_by_id = _standardize(rng.normal(size=n_participants))
-    participant_index = pd.Categorical(
-        participant_id, categories=participant_levels
-    ).codes
+    participant_index = pd.Categorical(participant_id, categories=participant_levels).codes
     participant_covariate = participant_covariate_by_id[participant_index]
     trial_covariate = _standardize(rng.normal(size=n_rows))
 
@@ -243,8 +226,7 @@ def simulate_hierarchical_duration_data(
     z_slope = rng.normal(size=n_participants)
     participant_intercept = participant_sd * z_intercept
     participant_slope = random_slope_sd * (
-        random_slope_cor * z_intercept
-        + math.sqrt(1 - random_slope_cor**2) * z_slope
+        random_slope_cor * z_intercept + math.sqrt(1 - random_slope_cor**2) * z_slope
     )
 
     item_id: np.ndarray | None = None
@@ -252,12 +234,8 @@ def simulate_hierarchical_duration_data(
     item_effect_by_id = np.array([], dtype=float)
     item_levels = np.array([], dtype=object)
     if include_items:
-        item_levels = np.array(
-            [f"i{index:03d}" for index in range(1, n_items + 1)], dtype=object
-        )
-        participant_offsets = np.repeat(
-            np.arange(n_participants), trials_per_participant
-        )
+        item_levels = np.array([f"i{index:03d}" for index in range(1, n_items + 1)], dtype=object)
+        participant_offsets = np.repeat(np.arange(n_participants), trials_per_participant)
         item_index = (trial_id + participant_offsets - 1) % n_items
         item_id = item_levels[item_index]
         item_effect_by_id = rng.normal(loc=0.0, scale=item_sd, size=n_items)
@@ -273,9 +251,7 @@ def simulate_hierarchical_duration_data(
         + participant_slope[participant_index] * condition_code
         + item_effect
     )
-    duration = rng.lognormal(
-        mean=linear_predictor, sigma=residual_sd, size=n_rows
-    )
+    duration = rng.lognormal(mean=linear_predictor, sigma=residual_sd, size=n_rows)
 
     data_dict: dict[str, Any] = {
         "participant_id": participant_id,
@@ -418,52 +394,38 @@ def prepare_hierarchical_duration_data(
         outcome_multiplier, "outcome_multiplier", lower=0, lower_open=True
     )
     if any(value not in contract.predictors for value in scale_predictors_tuple):
-        raise GP3BayesError(
-            "Every scaled predictor must be declared in the model contract."
-        )
+        raise GP3BayesError("Every scaled predictor must be declared in the model contract.")
 
     if not math.isclose(outcome_multiplier, 1.0):
         if not isinstance(converted_unit, str) or not converted_unit:
             raise GP3BayesError(
                 "`converted_unit` must be supplied when `outcome_multiplier` is not one."
             )
-    elif converted_unit is not None and (
-        not isinstance(converted_unit, str) or not converted_unit
-    ):
-        raise GP3BayesError(
-            "`converted_unit` must be NULL or one non-empty character value."
-        )
+    elif converted_unit is not None and (not isinstance(converted_unit, str) or not converted_unit):
+        raise GP3BayesError("`converted_unit` must be NULL or one non-empty character value.")
 
     required = _required_columns(contract)
     absent = [value for value in required if value not in data.columns]
     if absent:
-        raise GP3BayesError(
-            "Required duration columns were not found: " + ", ".join(absent) + "."
-        )
+        raise GP3BayesError("Required duration columns were not found: " + ", ".join(absent) + ".")
 
     required_frame = cast(pd.DataFrame, data.loc[:, list(required)])
     complete_rows = ~required_frame.isna().any(axis=1)
-    dropped_positions = [
-        index + 1 for index, complete in enumerate(complete_rows) if not complete
-    ]
+    dropped_positions = [index + 1 for index, complete in enumerate(complete_rows) if not complete]
     if dropped_positions and missing == "error":
         raise GP3BayesError(
             "Missing values were found in required duration columns. "
             'Use `missing = "drop"` only after an explicit exclusion decision.'
         )
     working = (
-        cast(pd.DataFrame, data.loc[complete_rows]).copy()
-        if dropped_positions
-        else data.copy()
+        cast(pd.DataFrame, data.loc[complete_rows]).copy() if dropped_positions else data.copy()
     )
 
     outcome_column = cast(str, contract.mappings["outcome"])
     raw_outcome = pd.to_numeric(working[outcome_column], errors="coerce")
     values = raw_outcome.to_numpy(dtype=float)
     if not np.isfinite(values).all():
-        raise GP3BayesError(
-            "The duration outcome must contain only finite numeric values."
-        )
+        raise GP3BayesError("The duration outcome must contain only finite numeric values.")
     values = values * outcome_multiplier
     if np.any(values <= 0):
         raise GP3BayesError(
@@ -473,9 +435,7 @@ def prepare_hierarchical_duration_data(
     working[outcome_column] = values
 
     analysis_contract = (
-        replace(contract, outcome_unit=converted_unit)
-        if converted_unit is not None
-        else contract
+        replace(contract, outcome_unit=converted_unit) if converted_unit is not None else contract
     )
     analysis_unit = cast(str, analysis_contract.outcome_unit)
     transformations: dict[str, Any] = {
@@ -522,8 +482,7 @@ def prepare_hierarchical_duration_data(
         scale_value = _sample_sd(numeric)
         if not math.isfinite(scale_value) or scale_value <= 0:
             raise GP3BayesError(
-                f"The declared scaling column `{column}` has zero or undefined "
-                "standard deviation."
+                f"The declared scaling column `{column}` has zero or undefined standard deviation."
             )
         working[column] = (numeric - center) / scale_value
         scaled_registry[column] = {
@@ -534,9 +493,7 @@ def prepare_hierarchical_duration_data(
 
     audit = audit_model_readiness(working, analysis_contract)
     if not audit.ready:
-        raise GP3BayesError(
-            "The prepared duration data did not pass the readiness gate."
-        )
+        raise GP3BayesError("The prepared duration data did not pass the readiness gate.")
 
     fixed_formula = _fixed_formula_text(analysis_contract)
     model_matrix, matrix_columns = _fixed_model_matrix(working, analysis_contract)
@@ -548,9 +505,7 @@ def prepare_hierarchical_duration_data(
         condition_value = "not applicable"
     else:
         condition_map = cast(Mapping[str, float], condition_transform["coding"])
-        condition_value = ", ".join(
-            f"{key}={value:g}" for key, value in condition_map.items()
-        )
+        condition_value = ", ".join(f"{key}={value:g}" for key, value in condition_map.items())
     decision_log = pd.DataFrame(
         {
             "decision": [
@@ -646,9 +601,7 @@ def specify_duration_model(
         student_df=student_df,
     )
     core = create_model_specification(prepared.contract, prepared.audit, priors)
-    core_values = {
-        field.name: getattr(core, field.name) for field in fields(ModelSpecification)
-    }
+    core_values = {field.name: getattr(core, field.name) for field in fields(ModelSpecification)}
     return DurationModelSpecification(
         **core_values,
         duration_workflow_version="0.1",
@@ -686,10 +639,7 @@ def _duration_summary(
     log_y = np.log(y_valid)
     participant_levels = pd.unique(participant_valid)
     participant_medians = np.array(
-        [
-            float(np.median(log_y[participant_valid == level]))
-            for level in participant_levels
-        ]
+        [float(np.median(log_y[participant_valid == level])) for level in participant_levels]
     )
 
     condition_ratio = math.nan
@@ -697,9 +647,7 @@ def _duration_summary(
         condition_valid = condition[valid]
         levels = np.sort(np.unique(condition_valid))
         if len(levels) == 2:
-            medians = [
-                float(np.median(y_valid[condition_valid == level])) for level in levels
-            ]
+            medians = [float(np.median(y_valid[condition_valid == level])) for level in levels]
             if all(math.isfinite(value) for value in medians) and medians[0] > 0:
                 condition_ratio = medians[1] / medians[0]
 
@@ -726,9 +674,7 @@ def _duration_summary(
         ),
         "condition_median_ratio": condition_ratio,
         "participant_log_median_sd": (
-            _sample_sd(participant_medians)
-            if len(participant_medians) > 1
-            else math.nan
+            _sample_sd(participant_medians) if len(participant_medians) > 1 else math.nan
         ),
         "item_log_median_sd": item_log_median_sd,
         "nonfinite_fraction": nonfinite_fraction,
@@ -768,9 +714,7 @@ class DurationPriorPredictiveCheck:
         )
 
 
-def _positive_pair(
-    value: Sequence[float] | None, baseline: float
-) -> tuple[float, float]:
+def _positive_pair(value: Sequence[float] | None, baseline: float) -> tuple[float, float]:
     values = (baseline * 0.1, baseline * 10.0) if value is None else tuple(value)
     pair = tuple(float(item) for item in values)
     if (
@@ -797,8 +741,7 @@ def check_duration_prior_predictive(
     """Simulate lognormal prior predictive outcomes without fitting a model."""
     if not isinstance(specification, DurationModelSpecification):
         raise GP3BayesError(
-            "`specification` must inherit from "
-            "`gp3bayes_duration_model_specification`."
+            "`specification` must inherit from `gp3bayes_duration_model_specification`."
         )
     prepared = specification.prepared
     if not isinstance(prepared, DurationPrepared):
@@ -816,9 +759,7 @@ def check_duration_prior_predictive(
         lower=0,
         lower_open=True,
     )
-    maximum_cv = _numeric_scalar(
-        maximum_cv, "maximum_cv", lower=0, lower_open=True
-    )
+    maximum_cv = _numeric_scalar(maximum_cv, "maximum_cv", lower=0, lower_open=True)
     maximum_condition_ratio = _numeric_scalar(
         maximum_condition_ratio,
         "maximum_condition_ratio",
@@ -852,17 +793,13 @@ def check_duration_prior_predictive(
     condition: np.ndarray | None = None
     condition_column = contract.mappings["condition"]
     if condition_column is not None:
-        condition = pd.to_numeric(
-            data[condition_column], errors="raise"
-        ).to_numpy(dtype=float)
+        condition = pd.to_numeric(data[condition_column], errors="raise").to_numpy(dtype=float)
 
     intercept_prior = _prior_row(specification.priors, "Intercept")
     coefficient_prior = _prior_row(specification.priors, "b")
     group_prior = _prior_row(specification.priors, "sd")
     sigma_prior = _prior_row(specification.priors, "sigma")
-    correlation_prior = (
-        _prior_row(specification.priors, "cor") if contract.random_slope else None
-    )
+    correlation_prior = _prior_row(specification.priors, "cor") if contract.random_slope else None
 
     rng = np.random.RandomState(seed)
     rows: list[dict[str, float]] = []
@@ -879,17 +816,13 @@ def check_duration_prior_predictive(
                 scale=float(coefficient_prior["scale"]),
                 size=coefficient_count,
             )
-            linear_predictor = (
-                linear_predictor + model_matrix[:, 1:] @ coefficients
-            )
+            linear_predictor = linear_predictor + model_matrix[:, 1:] @ coefficients
 
         group_scale = float(group_prior["scale"])
         group_df = float(group_prior["df"])
         participant_intercept_sd = abs(rng.standard_t(group_df)) * group_scale
         participant_slope_sd = (
-            abs(rng.standard_t(group_df)) * group_scale
-            if contract.random_slope
-            else 0.0
+            abs(rng.standard_t(group_df)) * group_scale if contract.random_slope else 0.0
         )
         z_intercept = rng.normal(size=participant_count)
         z_slope = rng.normal(size=participant_count)
@@ -900,18 +833,12 @@ def check_duration_prior_predictive(
             correlation = 2 * rng.beta(shape, shape) - 1
         participant_intercept = participant_intercept_sd * z_intercept
         participant_slope = participant_slope_sd * (
-            correlation * z_intercept
-            + math.sqrt(1 - correlation**2) * z_slope
+            correlation * z_intercept + math.sqrt(1 - correlation**2) * z_slope
         )
-        linear_predictor = (
-            linear_predictor + participant_intercept[participant_index]
-        )
+        linear_predictor = linear_predictor + participant_intercept[participant_index]
         if contract.random_slope:
             assert condition is not None
-            linear_predictor = (
-                linear_predictor
-                + participant_slope[participant_index] * condition
-            )
+            linear_predictor = linear_predictor + participant_slope[participant_index] * condition
 
         if item is not None:
             assert item_index is not None
@@ -919,18 +846,13 @@ def check_duration_prior_predictive(
             item_effect = rng.normal(loc=0.0, scale=item_effect_sd, size=item_count)
             linear_predictor = linear_predictor + item_effect[item_index]
 
-        sigma = abs(rng.standard_t(float(sigma_prior["df"]))) * float(
-            sigma_prior["scale"]
-        )
+        sigma = abs(rng.standard_t(float(sigma_prior["df"]))) * float(sigma_prior["scale"])
         y = rng.lognormal(mean=linear_predictor, sigma=sigma, size=len(data))
         rows.append(_duration_summary(y, condition, participant, item))
 
     summaries = pd.DataFrame(rows)
     median_violation = float(
-        np.mean(
-            (summaries["median"] < plausible[0])
-            | (summaries["median"] > plausible[1])
-        )
+        np.mean((summaries["median"] < plausible[0]) | (summaries["median"] > plausible[1]))
     )
     q99_violation = float(np.mean(summaries["q99"] > q99_limit))
     cv_values = summaries["coefficient_of_variation"].to_numpy(dtype=float)
@@ -945,14 +867,9 @@ def check_duration_prior_predictive(
     else:
         finite = ratios[~np.isnan(ratios)]
         condition_violation = float(
-            np.mean(
-                (finite > maximum_condition_ratio)
-                | (finite < 1 / maximum_condition_ratio)
-            )
+            np.mean((finite > maximum_condition_ratio) | (finite < 1 / maximum_condition_ratio))
         )
-    nonfinite_violation = float(
-        np.mean(summaries["nonfinite_fraction"] > 0)
-    )
+    nonfinite_violation = float(np.mean(summaries["nonfinite_fraction"] > 0))
 
     probabilities = [
         median_violation,
@@ -964,11 +881,7 @@ def check_duration_prior_predictive(
     statuses = [
         "not_applicable"
         if math.isnan(probability)
-        else (
-            "pass"
-            if probability <= maximum_extreme_probability
-            else "fail"
-        )
+        else ("pass" if probability <= maximum_extreme_probability else "fail")
         for probability in probabilities
     ]
     checks = pd.DataFrame(
@@ -1082,8 +995,7 @@ def translate_duration_model_to_brms(
         random_slope=specification.contract.random_slope,
     )
     prior_text = {
-        str(row.parameter_class): str(row.prior)
-        for row in parameter_table.itertuples(index=False)
+        str(row.parameter_class): str(row.prior) for row in parameter_table.itertuples(index=False)
     }
     return DurationBackendSpecification(
         translation_version="0.1",
@@ -1166,9 +1078,7 @@ def _run_duration_pymc(
     group_sd_prior = _prior_row(specification.priors, "sd")
     sigma_prior = _prior_row(specification.priors, "sigma")
 
-    participant_codes, participant_levels = pd.factorize(
-        data[participant_col], sort=False
-    )
+    participant_codes, participant_levels = pd.factorize(data[participant_col], sort=False)
     item_col = contract.mappings["item"]
     condition_col = contract.mappings["condition"]
 
@@ -1207,16 +1117,10 @@ def _run_duration_pymc(
                 sigma=1.0,
                 shape=(len(participant_levels), 2),
             )
-            participant_re = pm.Deterministic(
-                "participant_re", pm.math.dot(z, chol.T)
-            )
+            participant_re = pm.Deterministic("participant_re", pm.math.dot(z, chol.T))
             if condition_col is None:
-                raise GP3BayesError(
-                    "`condition_col` must be supplied when `random_slope` is TRUE."
-                )
-            condition = pd.to_numeric(
-                data[condition_col], errors="raise"
-            ).to_numpy(dtype=float)
+                raise GP3BayesError("`condition_col` must be supplied when `random_slope` is TRUE.")
+            condition = pd.to_numeric(data[condition_col], errors="raise").to_numpy(dtype=float)
             eta = (
                 eta
                 + participant_re[participant_codes, 0]
@@ -1243,9 +1147,7 @@ def _run_duration_pymc(
                 nu=float(group_sd_prior["df"]),
                 sigma=float(group_sd_prior["scale"]),
             )
-            item_z = pm.Normal(
-                "item_z", mu=0.0, sigma=1.0, shape=len(item_levels)
-            )
+            item_z = pm.Normal("item_z", mu=0.0, sigma=1.0, shape=len(item_levels))
             eta = eta + item_sd * item_z[item_codes]
 
         sigma = pm.HalfStudentT(
@@ -1297,9 +1199,7 @@ def fit_duration_model(
     )
     translation = translate_duration_model_to_brms(specification)
     _require_pymc("fit a duration model through the approved Python sampling backend")
-    backend_model, backend_fit = _run_duration_pymc(
-        specification, controls.as_dict()
-    )
+    backend_model, backend_fit = _run_duration_pymc(specification, controls.as_dict())
     return DurationFit(
         fit_version="0.1",
         family="duration",
@@ -1387,9 +1287,7 @@ def check_duration_posterior_predictive(
 
     y = pd.to_numeric(data[outcome_col], errors="raise").to_numpy(dtype=float)
     participant = data[participant_col].to_numpy(copy=True)
-    condition = (
-        None if condition_col is None else data[condition_col].to_numpy(copy=True)
-    )
+    condition = None if condition_col is None else data[condition_col].to_numpy(copy=True)
     item = None if item_col is None else data[item_col].to_numpy(copy=True)
 
     yrep = extract_posterior_predictions(
@@ -1401,9 +1299,7 @@ def check_duration_posterior_predictive(
         seed=seed_value,
     )
     if not np.isfinite(yrep).all() or np.any(yrep <= 0):
-        raise GP3BayesError(
-            "Posterior predictive draws must be finite and strictly positive."
-        )
+        raise GP3BayesError("Posterior predictive draws must be finite and strictly positive.")
     replicated = _replicated_table(
         yrep,
         summary_function=_duration_summary,
@@ -1431,9 +1327,7 @@ def check_duration_posterior_predictive(
         ndraws=draw_count,
     )
     predicted_mean = np.mean(expected, axis=0)
-    log_scale_rmse = float(
-        np.sqrt(np.mean((np.log(y) - np.log(predicted_mean)) ** 2))
-    )
+    log_scale_rmse = float(np.sqrt(np.mean((np.log(y) - np.log(predicted_mean)) ** 2)))
     return _duration_result(
         outcome_unit=fit.outcome_unit,
         draws=int(yrep.shape[0]),
@@ -1443,3 +1337,393 @@ def check_duration_posterior_predictive(
         checks=checks,
         log_scale_rmse=log_scale_rmse,
     )
+
+
+def _duration_prior_scale_from_table(priors: PriorSpecification, parameter_class: str) -> float:
+    row = priors.table.loc[priors.table["parameter_class"].eq(parameter_class)]
+    if len(row) != 1:
+        raise GP3BayesError(f"Expected one `{parameter_class}` prior row.")
+    return float(row.iloc[0]["scale"])
+
+
+def assess_duration_prior_sensitivity(
+    fit: DurationFit,
+    scale_multipliers: Mapping[str, float] | None = None,
+    chains: int | None = None,
+    iter: int | None = None,
+    warmup: int | None = None,
+    cores: int | None = None,
+    seed: int | None = None,
+    adapt_delta: float | None = None,
+    max_treedepth: int | None = None,
+    refresh: int = 0,
+    maximum_standardized_shift: float = 0.25,
+    review_standardized_shift: float = 0.50,
+    retain_fits: bool = False,
+):
+    """Refit the approved duration model under declared prior-scale multipliers."""
+    if not isinstance(fit, DurationFit):
+        raise GP3BayesError("`fit` must be a duration gp3bayes fit.")
+    from .sensitivity import PriorSensitivity, _classify_upper, _worst_status
+
+    multipliers = (
+        {"tighter": 0.5, "wider": 2.0} if scale_multipliers is None else dict(scale_multipliers)
+    )
+    if not multipliers or any(
+        not str(k) or not math.isfinite(float(v)) or float(v) <= 0 for k, v in multipliers.items()
+    ):
+        raise GP3BayesError("`scale_multipliers` must be named unique positive finite values.")
+    if maximum_standardized_shift < 0 or review_standardized_shift < maximum_standardized_shift:
+        raise GP3BayesError("Sensitivity shift thresholds are invalid.")
+    controls = fit.sampling
+    chains = int(controls["chains"] if chains is None else chains)
+    iter = int(controls["iter"] if iter is None else iter)
+    warmup = int(controls["warmup"] if warmup is None else warmup)
+    cores = int(controls["cores"] if cores is None else cores)
+    seed = int(controls["seed"] + 2000 if seed is None else seed)
+    adapt_delta = float(controls["adapt_delta"] if adapt_delta is None else adapt_delta)
+    max_treedepth = int(controls["max_treedepth"] if max_treedepth is None else max_treedepth)
+    reference_summary = summarise_duration_posterior(fit).table
+    reference = reference_summary.loc[
+        reference_summary["variable"].astype(str).str.match(r"^b_|^sigma$"),
+        ["variable", "median", "sd"],
+    ].copy()
+    reference_diagnostics = diagnose_duration_fit(fit)
+    base = fit.specification.priors
+    rows = []
+    alternative_fits = {}
+    for index, (label, mvalue) in enumerate(multipliers.items()):
+        multiplier = float(mvalue)
+        cor_rows = base.table.loc[base.table["parameter_class"].eq("cor")]
+        priors = create_prior_specification(
+            fit.specification.contract,
+            baseline=base.baseline,
+            intercept_scale=_duration_prior_scale_from_table(base, "Intercept") * multiplier,
+            coefficient_scale=_duration_prior_scale_from_table(base, "b") * multiplier,
+            group_sd_scale=_duration_prior_scale_from_table(base, "sd") * multiplier,
+            residual_scale=_duration_prior_scale_from_table(base, "sigma") * multiplier,
+            correlation_eta=float(cor_rows["shape"].iloc[0]) if not cor_rows.empty else 2.0,
+            student_df=float(base.table.loc[base.table["parameter_class"].eq("sd"), "df"].iloc[0]),
+        )
+        specification = replace(fit.specification, priors=priors)
+        alternative_fit = fit_duration_model(
+            specification,
+            chains=chains,
+            iter=iter,
+            warmup=warmup,
+            cores=cores,
+            seed=seed + index,
+            adapt_delta=adapt_delta,
+            max_treedepth=max_treedepth,
+            refresh=refresh,
+        )
+        alternative_diagnostics = diagnose_duration_fit(alternative_fit)
+        alternative_summary = summarise_duration_posterior(alternative_fit).table
+        alternative = alternative_summary.loc[
+            alternative_summary["variable"].astype(str).str.match(r"^b_|^sigma$"),
+            ["variable", "median"],
+        ].rename(columns={"median": "alternative_median"})
+        merged = reference.merge(alternative, on="variable", how="inner", sort=False)
+        merged["scenario"] = str(label)
+        merged["scale_multiplier"] = multiplier
+        merged["median_shift"] = merged["alternative_median"] - merged["median"]
+        merged["standardized_shift"] = merged["median_shift"].abs() / np.maximum(
+            merged["sd"].abs(), np.finfo(float).eps
+        )
+        merged["shift_status"] = [
+            _classify_upper(float(v), maximum_standardized_shift, review_standardized_shift)
+            for v in merged["standardized_shift"]
+        ]
+        merged["diagnostic_status"] = alternative_diagnostics.status
+        merged["status"] = [
+            _worst_status([v, alternative_diagnostics.status]) for v in merged["shift_status"]
+        ]
+        rows.append(
+            merged[
+                [
+                    "scenario",
+                    "scale_multiplier",
+                    "variable",
+                    "median",
+                    "alternative_median",
+                    "median_shift",
+                    "standardized_shift",
+                    "shift_status",
+                    "diagnostic_status",
+                    "status",
+                ]
+            ]
+        )
+        if retain_fits:
+            alternative_fits[str(label)] = alternative_fit
+    comparison = pd.concat(rows, ignore_index=True) if rows else pd.DataFrame()
+    scenario_rows = []
+    for scenario, frame in comparison.groupby("scenario", sort=False):
+        scenario_rows.append(
+            {
+                "scenario": scenario,
+                "scale_multiplier": float(frame["scale_multiplier"].iloc[0]),
+                "maximum_standardized_shift": float(frame["standardized_shift"].max()),
+                "diagnostic_status": str(frame["diagnostic_status"].iloc[0]),
+                "status": _worst_status(frame["status"].astype(str).tolist()),
+            }
+        )
+    scenario_status = pd.DataFrame(scenario_rows)
+    overall = _worst_status(
+        [
+            reference_diagnostics.status,
+            *scenario_status.get("status", pd.Series(dtype=str)).astype(str).tolist(),
+        ]
+    )
+    return PriorSensitivity(
+        "0.1",
+        "duration",
+        multipliers,
+        comparison,
+        scenario_status,
+        reference_diagnostics.status,
+        overall,
+        alternative_fits if retain_fits else None,
+    )
+
+
+def run_duration_recovery(
+    repetitions: int = 20,
+    n_participants: int = 30,
+    trials_per_participant: int = 16,
+    n_items: int = 12,
+    include_items: bool = True,
+    random_slope: bool = True,
+    baseline_median: float = 500.0,
+    outcome_unit: str = "milliseconds",
+    seed: int = 2001,
+    chains: int = 4,
+    iter: int = 1500,
+    warmup: int = 750,
+    cores: int | None = None,
+    adapt_delta: float = 0.95,
+    max_treedepth: int = 12,
+    refresh: int = 0,
+    interval_probability: float = 0.95,
+    minimum_repetitions: int = 20,
+    maximum_standardized_bias: float = 0.25,
+    minimum_coverage: float = 0.80,
+    minimum_diagnostic_pass_fraction: float = 0.80,
+    continue_on_error: bool = True,
+):
+    """Run simulation-based duration parameter recovery with the restricted fitter."""
+    from .contracts import create_model_contract
+    from .sensitivity import RecoveryResult, _worst_status
+
+    repetitions = _integer(repetitions, "repetitions", minimum=2)
+    estimates = []
+    fit_rows = []
+    for rep in range(repetitions):
+        rep_seed = int(seed) + rep
+        try:
+            sim = simulate_hierarchical_duration_data(
+                n_participants=n_participants,
+                trials_per_participant=trials_per_participant,
+                n_items=n_items,
+                include_items=include_items,
+                random_slope_sd=0.15 if random_slope else 0.0,
+                baseline_median=baseline_median,
+                outcome_unit=outcome_unit,
+                seed=rep_seed,
+            )
+            contract = create_model_contract(
+                family="duration",
+                outcome_col="duration",
+                participant_col="participant_id",
+                item_col="item_id" if include_items else None,
+                trial_col="trial_id",
+                condition_col="condition",
+                predictors=("participant_covariate", "trial_covariate"),
+                interaction=("condition", "participant_covariate"),
+                random_slope=random_slope,
+                outcome_unit=outcome_unit,
+            )
+            prepared = prepare_hierarchical_duration_data(
+                sim.data, contract, converted_unit=outcome_unit
+            )
+            specification = specify_duration_model(prepared, baseline=baseline_median)
+            fitted = fit_duration_model(
+                specification,
+                chains=chains,
+                iter=iter,
+                warmup=warmup,
+                cores=cores,
+                seed=rep_seed,
+                adapt_delta=adapt_delta,
+                max_treedepth=max_treedepth,
+                refresh=refresh,
+            )
+            diagnostics = diagnose_duration_fit(fitted)
+            table = summarise_duration_posterior(fitted, probability=interval_probability).table
+            truth = {
+                "b_Intercept": sim.truth["fixed_effects"]["(Intercept)"],
+                "sigma": sim.truth["residual_sd"],
+            }
+            truth.update(
+                {f"b_{k}": v for k, v in sim.truth["fixed_effects"].items() if k != "(Intercept)"}
+            )
+            for variable, value in truth.items():
+                row = table.loc[table["variable"].eq(variable)]
+                if row.empty:
+                    continue
+                r = row.iloc[0]
+                estimates.append(
+                    {
+                        "repetition": rep + 1,
+                        "variable": variable,
+                        "truth": float(value),
+                        "median": float(r["median"]),
+                        "lower": float(r["lower"]),
+                        "upper": float(r["upper"]),
+                        "covered": bool(float(r["lower"]) <= float(value) <= float(r["upper"])),
+                    }
+                )
+            fit_rows.append(
+                {
+                    "repetition": rep + 1,
+                    "completed": True,
+                    "diagnostic_status": diagnostics.status,
+                    "message": "",
+                }
+            )
+        except Exception as exc:
+            if not continue_on_error:
+                raise
+            fit_rows.append(
+                {
+                    "repetition": rep + 1,
+                    "completed": False,
+                    "diagnostic_status": "error",
+                    "message": str(exc),
+                }
+            )
+    estimates_df = pd.DataFrame(estimates)
+    fit_df = pd.DataFrame(fit_rows)
+    summaries = []
+    if not estimates_df.empty:
+        for variable, frame in estimates_df.groupby("variable", sort=False):  # type: ignore[assignment]
+            error = frame["median"].to_numpy(float) - frame["truth"].to_numpy(float)
+            sd = (
+                float(np.std(frame["median"].to_numpy(float), ddof=1)) if len(frame) > 1 else np.nan
+            )
+            bias = float(np.mean(error))
+            standardized = abs(bias) / max(sd, np.finfo(float).eps) if np.isfinite(sd) else np.nan
+            coverage = float(frame["covered"].mean())
+            rmse = float(np.sqrt(np.mean(error**2)))
+            summaries.append(
+                {
+                    "variable": variable,
+                    "bias": bias,
+                    "standardized_bias": standardized,
+                    "coverage": coverage,
+                    "rmse": rmse,
+                    "n": len(frame),
+                    "status": "pass"
+                    if len(frame) >= minimum_repetitions
+                    and np.isfinite(standardized)
+                    and standardized <= maximum_standardized_bias
+                    and coverage >= minimum_coverage
+                    else "review",
+                }
+            )
+    parameter_summary = pd.DataFrame(summaries)
+    diagnostic_pass = (
+        float(np.mean(fit_df["diagnostic_status"].eq("pass"))) if not fit_df.empty else 0.0
+    )
+    status = _worst_status(
+        parameter_summary.get("status", pd.Series(["review"])).astype(str).tolist()
+    )
+    status = "review" if diagnostic_pass < minimum_diagnostic_pass_fraction else status
+    return RecoveryResult(
+        "0.1", "duration", parameter_summary, estimates_df, fit_df, repetitions, status
+    )
+
+
+def _duration_markdown_table(frame: pd.DataFrame, max_rows: int = 30) -> str:
+    if frame.empty:
+        return "_(no rows)_"
+    shown = frame.head(max_rows)
+    cols = [str(c) for c in shown.columns]
+    lines = ["| " + " | ".join(cols) + " |", "| " + " | ".join(["---"] * len(cols)) + " |"]
+    lines.extend(
+        "| " + " | ".join(str(v) for v in row) + " |"
+        for row in shown.itertuples(index=False, name=None)
+    )
+    return "\n".join(lines)
+
+
+def create_duration_model_report(
+    fit: DurationFit,
+    diagnostics: Any = None,
+    posterior_summary: Any = None,
+    posterior_predictive: Any = None,
+    prior_sensitivity: Any = None,
+    recovery: Any = None,
+    file: str = "",
+    overwrite: bool = False,
+):
+    """Write an explicit Markdown inventory for a fitted duration model."""
+    from pathlib import Path
+
+    from .sensitivity import ModelReport
+
+    if not isinstance(fit, DurationFit):
+        raise GP3BayesError("`fit` must be a duration gp3bayes fit.")
+    path = Path(file)
+    if path.suffix.lower() != ".md" or not file:
+        raise GP3BayesError("`file` must end in `.md`.")
+    if path.exists() and not overwrite:
+        raise GP3BayesError("The report file already exists. Use `overwrite=True`.")
+    if not path.parent.exists():
+        raise GP3BayesError("The report parent directory does not exist.")
+    diagnostics = diagnose_duration_fit(fit) if diagnostics is None else diagnostics
+    posterior_summary = (
+        summarise_duration_posterior(fit) if posterior_summary is None else posterior_summary
+    )
+    lines = [
+        "# gp3bayes duration model report",
+        "",
+        f"- Formula: `{fit.translation.formula_text}`",
+        "- Family: lognormal",
+        f"- Outcome unit: {fit.outcome_unit}",
+        f"- Interface: {fit.backend_interface}",
+        f"- Sampling backend: {fit.sampling_backend}",
+        "",
+        "## Sampling diagnostics",
+        "",
+        f"**Threshold status: {diagnostics.status}**",
+        "",
+        _duration_markdown_table(diagnostics.component_table),
+        "",
+        "Numerical thresholds were assessed, but no automatic convergence or posterior-adequacy claim is made.",
+        "",
+        "## Posterior summaries",
+        "",
+        _duration_markdown_table(posterior_summary.table),
+    ]
+    registry = [
+        {"section": "sampling_diagnostics", "status": diagnostics.status},
+        {"section": "posterior_summary", "status": "reported"},
+    ]
+    for name, obj in (
+        ("posterior_predictive", posterior_predictive),
+        ("prior_sensitivity", prior_sensitivity),
+        ("recovery", recovery),
+    ):
+        if obj is not None:
+            status = getattr(obj, "status", "reported")
+            lines += ["", f"## {name.replace('_', ' ').title()}", "", f"Status: {status}"]
+            registry.append({"section": name, "status": status})
+    lines += [
+        "",
+        "## Interpretation boundary",
+        "",
+        "This report does not automatically establish convergence, posterior adequacy, robustness, substantive validity, or causal identification.",
+    ]
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    return ModelReport("duration", str(path.resolve()), pd.DataFrame(registry))

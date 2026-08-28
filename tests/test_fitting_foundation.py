@@ -228,9 +228,7 @@ def test_backend_and_fit_representations_remain_conservative(monkeypatch):
         "_run_binary_pymc",
         lambda specification, controls: ("model", "idata"),
     )
-    binary_fit = gp.fit_binary_model(
-        binary_spec, chains=1, iter=100, warmup=50, cores=1
-    )
+    binary_fit = gp.fit_binary_model(binary_spec, chains=1, iter=100, warmup=50, cores=1)
     assert "Diagnostics assessed: FALSE" in repr(binary_fit)
     assert "Posterior adequacy established: FALSE" in repr(binary_fit)
 

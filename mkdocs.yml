@@ -7,6 +7,9 @@ theme:
 nav:
   - Home: index.md
   - API: api.md
+  - Migration: migration.md
+  - Examples: examples/index.md
+  - Plot gallery: plot-gallery.md
   - Articles: articles/index.md
   - Development:
       - R → Python parity: development/parity.md

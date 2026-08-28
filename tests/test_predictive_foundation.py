@@ -87,9 +87,7 @@ def _posterior(spec, *, duration: bool) -> _Posterior:
             ),
             "sd_item": _Variable(np.full((chains, draws), 0.15)),
             "item_z": _Variable(
-                np.linspace(-0.5, 0.5, chains * draws * items).reshape(
-                    chains, draws, items
-                )
+                np.linspace(-0.5, 0.5, chains * draws * items).reshape(chains, draws, items)
             ),
         }
     )
@@ -246,9 +244,7 @@ def test_duration_median_expected_and_predictive_are_distinct():
     )
     median = gp.predict_duration(fit, newdata, type="median", ndraws=5)
     expected = gp.predict_duration(fit, newdata, type="expected", ndraws=5)
-    predictive = gp.predict_duration(
-        fit, newdata, type="predictive", ndraws=5, seed=24
-    )
+    predictive = gp.predict_duration(fit, newdata, type="predictive", ndraws=5, seed=24)
     assert median.scale == "duration_median"
     assert expected.scale == predictive.scale == "response"
     assert np.all(expected.draws > median.draws)
@@ -319,9 +315,7 @@ def test_new_group_levels_are_supported_when_explicitly_allowed():
 
 def test_missing_group_columns_do_not_block_population_predictions():
     fit = _binary_fit()
-    data = fit.specification.prepared.data.head(2).drop(
-        columns=["participant_id", "item_id"]
-    )
+    data = fit.specification.prepared.data.head(2).drop(columns=["participant_id", "item_id"])
     out = gp.predict_model(fit, data, include_group_effects=False, ndraws=4)
     assert out.draws.shape == (4, 2)
     assert out.support.has_missing_required

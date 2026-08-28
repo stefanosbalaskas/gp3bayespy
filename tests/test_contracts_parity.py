@@ -63,14 +63,20 @@ def test_contract_validation_messages_match_r_reference():
         match=r"^`random_slope` must be TRUE or FALSE\.$",
     ):
         create_model_contract(
-            "binary", "y", "id", random_slope=1  # type: ignore[arg-type]
+            "binary",
+            "y",
+            "id",
+            random_slope=1,  # type: ignore[arg-type]
         )
 
 
 def test_character_vectors_require_unique_nonempty_values():
     with pytest.raises(GP3BayesError, match="character vector of unique"):
         create_model_contract(
-            "binary", "y", "id", predictors=None  # type: ignore[arg-type]
+            "binary",
+            "y",
+            "id",
+            predictors=None,  # type: ignore[arg-type]
         )
     with pytest.raises(GP3BayesError, match="character vector of unique"):
         create_model_contract("binary", "y", "id", predictors=["x", "x"])
@@ -87,9 +93,7 @@ def test_duplicate_column_message_preserves_r_encounter_order():
             item_col="b",
             predictors=["b", "a"],
         )
-    assert str(error.value) == (
-        "Column mappings and predictors must be unique. Duplicated: b, a."
-    )
+    assert str(error.value) == ("Column mappings and predictors must be unique. Duplicated: b, a.")
 
 
 def test_interaction_and_outcome_unit_rules_match_reference():
@@ -118,9 +122,7 @@ def test_interaction_and_outcome_unit_rules_match_reference():
         create_model_contract("binary", "y", "id", random_slope=True)
 
     with pytest.raises(GP3BayesError, match="must be NULL"):
-        create_model_contract(
-            "binary", "y", "id", outcome_unit="probability"
-        )
+        create_model_contract("binary", "y", "id", outcome_unit="probability")
 
     with pytest.raises(GP3BayesError, match="one non-empty character"):
         create_model_contract("duration", "y", "id")

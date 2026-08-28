@@ -52,9 +52,7 @@ def _validate_controls(
     pass_value = _probability(pass_probability, "pass_probability")
     review_value = _probability(review_probability, "review_probability")
     if pass_value >= review_value:
-        raise GP3BayesError(
-            "`pass_probability` must be smaller than `review_probability`."
-        )
+        raise GP3BayesError("`pass_probability` must be smaller than `review_probability`.")
     return draw_count, seed_value, pass_value, review_value
 
 
@@ -144,9 +142,7 @@ def _duration_summary(
     if condition_values is not None:
         levels = sorted(pd.unique(condition_values).tolist())
         if len(levels) == 2:
-            medians = [
-                float(np.median(y_valid[condition_values == level])) for level in levels
-            ]
+            medians = [float(np.median(y_valid[condition_values == level])) for level in levels]
             if all(math.isfinite(value) for value in medians) and medians[0] > 0:
                 condition_ratio = medians[1] / medians[0]
 

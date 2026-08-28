@@ -1,0 +1,57 @@
+# Analysis Manifests and Reproducible Bayesian Workflows
+
+> Python-facing port of `reproducible-analysis-manifests.Rmd` from the frozen R gp3bayes 0.5.0 reference. The statistical and governance framing below follows the canonical vignette; executable Python workflows use the mapped APIs listed later.
+
+## A manifest is an analysis contract about the analysis contract
+
+A fitted model is not enough to reconstruct an analysis decision process.
+`gp3bayespy` 0.2.0 therefore provides an analysis manifest that records the
+approved model contract, preparation/transformation record, specification,
+prespecified estimands, sensitivity plan, seed, backend metadata, software
+versions, and a fingerprint of the analysis data.
+
+The manifest stores a fingerprint rather than duplicating the analysis data.
+It is provenance metadata, not a hidden data archive.
+
+## Create a manifest before fitting
+
+## Freeze only when the analysis-defining fields are ready
+
+Freezing computes a manifest hash. With `file = NULL`, no file is written.
+
+Writing is always explicit. Temporary files are used here so the vignette does
+not write into the package or working directory.
+
+## Compare analysis provenance
+
+A difference is reported, not judged automatically.
+
+This comparison is particularly useful during revisions, refits, or a package
+upgrade: it makes changes to the data fingerprint, transformations, priors,
+estimands, seed, backend settings, or software environment visible without
+pretending that every difference is scientifically consequential.
+
+## Python API mapping
+
+- `gp3bayespy.analysis_manifest_table`
+- `gp3bayespy.compare_analysis_manifests`
+- `gp3bayespy.create_analysis_manifest`
+- `gp3bayespy.create_model_contract`
+- `gp3bayespy.freeze_analysis_manifest`
+- `gp3bayespy.prepare_hierarchical_binary_data`
+- `gp3bayespy.read_analysis_manifest`
+- `gp3bayespy.simulate_hierarchical_binary_data`
+- `gp3bayespy.specify_binary_model`
+- `gp3bayespy.validate_analysis_manifest`
+- `gp3bayespy.write_reproducibility_report`
+
+## Python usage
+
+```python
+import gp3bayespy as gp
+
+# All functions listed above are available from the package root.
+# Use help(gp.<function>) or the API reference for the exact Python signature.
+```
+
+An executable workflow for this family is included in `../../examples/reproducibility_workflow.py`.

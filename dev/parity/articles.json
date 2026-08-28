@@ -3,354 +3,354 @@
     "r_vignette": "advanced-dynamic-pupillometry-0-5.Rmd",
     "title": "Advanced Dynamic Pupillometry in gp3bayes 0.5",
     "python_article": "advanced-dynamic-pupillometry-0-5.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "advanced-optional-workflows.Rmd",
     "title": "Advanced Optional Bayesian Workflows",
     "python_article": "advanced-optional-workflows.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "advanced-predictive-diagnostics.Rmd",
     "title": "Advanced Predictive Diagnostics",
     "python_article": "advanced-predictive-diagnostics.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "arma-and-temporal-diagnostics.Rmd",
     "title": "Bounded ARMA and Temporal Diagnostics",
     "python_article": "arma-and-temporal-diagnostics.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "backend-portability.Rmd",
     "title": "Backend Portability and Installation",
     "python_article": "backend-portability.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "backend-reliability.Rmd",
     "title": "Backend Reliability, Parity and Object Schemas",
     "python_article": "backend-reliability.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "bayesian-dynamic-pupillometry.Rmd",
     "title": "Bayesian dynamic pupillometry: governed foundation",
     "python_article": "bayesian-dynamic-pupillometry.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "binary-end-to-end.Rmd",
     "title": "End-to-End Hierarchical Binary Workflow",
     "python_article": "binary-end-to-end.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "binocular-pupil-models.Rmd",
     "title": "Joint Binocular Pupil Models",
     "python_article": "binocular-pupil-models.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "computational-governance-and-model-cards.Rmd",
     "title": "Computational Governance and Model Cards",
     "python_article": "computational-governance-and-model-cards.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "declared-prior-versus-posterior.Rmd",
     "title": "Declared Priors versus Fitted Posteriors",
     "python_article": "declared-prior-versus-posterior.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "duration-end-to-end.Rmd",
     "title": "End-to-End Hierarchical Lognormal Duration Workflow",
     "python_article": "duration-end-to-end.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "end-to-end-evidence-showcase.Rmd",
     "title": "End-to-End Evidence and Publication Showcase",
     "python_article": "end-to-end-evidence-showcase.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "estimands-and-sensitivity.Rmd",
     "title": "First-Class Estimands and Sensitivity Workflows",
     "python_article": "estimands-and-sensitivity.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "evidence-graphics-and-governance.Rmd",
     "title": "Evidence Graphics and Governance",
     "python_article": "evidence-graphics-and-governance.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "experimental-pupil-response-shape.Rmd",
     "title": "Experimental Interpretable Pupil Response Shape",
     "python_article": "experimental-pupil-response-shape.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "fitting-pupil-timecourse-models.Rmd",
     "title": "Fitting hierarchical pupil time-course models",
     "python_article": "fitting-pupil-timecourse-models.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "functional-dynamics-and-predictive-calibration.Rmd",
     "title": "Functional Dynamics and Predictive Calibration",
     "python_article": "functional-dynamics-and-predictive-calibration.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "gaussian-process-pupil-trajectories.Rmd",
     "title": "Gaussian-Process Pupil Trajectories",
     "python_article": "gaussian-process-pupil-trajectories.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "gazepoint-pupil-interoperability.Rmd",
     "title": "Gazepoint pupil-data interoperability",
     "python_article": "gazepoint-pupil-interoperability.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "governed-pupil-model-comparison.Rmd",
     "title": "Governed Predictive Model Comparison",
     "python_article": "governed-pupil-model-comparison.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "grouped-loo-influence.Rmd",
     "title": "Grouped PSIS-LOO Influence",
     "python_article": "grouped-loo-influence.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "hierarchical-effect-atlas.Rmd",
     "title": "Hierarchical Effect and Variance Atlases",
     "python_article": "hierarchical-effect-atlas.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "hierarchical-effects-and-uncertainty.Rmd",
     "title": "Hierarchical Effects and Predictive Uncertainty",
     "python_article": "hierarchical-effects-and-uncertainty.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "loo-influence-and-model-comparison.Rmd",
     "title": "LOO Influence and Predictive Model Comparison",
     "python_article": "loo-influence-and-model-comparison.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "loo-influence-atlas.Rmd",
     "title": "Pointwise LOO Influence Atlases",
     "python_article": "loo-influence-atlas.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "measurement-error-and-missing-pupil-data.Rmd",
     "title": "Measurement Uncertainty and Missing Pupil Data",
     "python_article": "measurement-error-and-missing-pupil-data.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "model-cards-and-reporting-inventories.Rmd",
     "title": "Model Cards and Reporting Inventories",
     "python_article": "model-cards-and-reporting-inventories.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "optional-backend-installation.Rmd",
     "title": "Optional Bayesian Backend Installation",
     "python_article": "optional-backend-installation.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "pathological-simulation-scenarios.Rmd",
     "title": "Pathological Simulation Scenarios",
     "python_article": "pathological-simulation-scenarios.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "posterior-diagnostics.Rmd",
     "title": "Sampling Diagnostics and Conservative Decisions",
     "python_article": "posterior-diagnostics.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "posterior-exploration-and-graphics.Rmd",
     "title": "Posterior Exploration and Publication Graphics",
     "python_article": "posterior-exploration-and-graphics.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "pre-fit-design-diagnostics.Rmd",
     "title": "Pre-fit Design-Support Diagnostics",
     "python_article": "pre-fit-design-diagnostics.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "prediction-calibration-and-scoring.Rmd",
     "title": "Prediction, Calibration, and Scoring",
     "python_article": "prediction-calibration-and-scoring.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "prediction-contrasts-ranking-and-groups.Rmd",
     "title": "Prediction Contrasts, Rankings, and Groups",
     "python_article": "prediction-contrasts-ranking-and-groups.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "prediction-profiles-surfaces-and-contrasts.Rmd",
     "title": "Prediction Profiles, Surfaces, and Contrast Profiles",
     "python_article": "prediction-profiles-surfaces-and-contrasts.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "predictive-distribution-and-calibration-uncertainty.Rmd",
     "title": "Predictive Distribution and Calibration Uncertainty",
     "python_article": "predictive-distribution-and-calibration-uncertainty.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "public-api-map.Rmd",
     "title": "Complete Public API Map",
     "python_article": "public-api-map.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "publication-analysis-bundles.Rmd",
     "title": "Publication-Ready Analysis Bundles",
     "python_article": "publication-analysis-bundles.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "publication-registries-and-dashboards.Rmd",
     "title": "Publication Registries and Diagnostic Dashboards",
     "python_article": "publication-registries-and-dashboards.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "pupil-baseline-gaze-luminance-sensitivity.Rmd",
     "title": "Baseline, gaze/PFE, and luminance sensitivity",
     "python_article": "pupil-baseline-gaze-luminance-sensitivity.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "pupil-ppc-and-temporal-diagnostics.Rmd",
     "title": "Pupil posterior predictive checks and temporal diagnostics",
     "python_article": "pupil-ppc-and-temporal-diagnostics.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "pupil-preparation-and-auditing.Rmd",
     "title": "Preparing and auditing pupil time courses",
     "python_article": "pupil-preparation-and-auditing.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "pupil-temporal-validation.Rmd",
     "title": "Validation for temporally dependent pupil data",
     "python_article": "pupil-temporal-validation.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "pupil-trajectories-and-estimands.Rmd",
     "title": "Posterior pupil trajectories and declared estimands",
     "python_article": "pupil-trajectories-and-estimands.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "quality-hardening-and-failure-contracts.Rmd",
     "title": "Quality Hardening and Failure Contracts",
     "python_article": "quality-hardening-and-failure-contracts.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "recovery-diagnostics-for-publication.Rmd",
     "title": "Parameter Recovery Diagnostics for Publication",
     "python_article": "recovery-diagnostics-for-publication.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "release-case-study.Rmd",
     "title": "A Reproducible 0.2.0 Release Case Study",
     "python_article": "release-case-study.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "reproducible-analysis-manifests.Rmd",
     "title": "Analysis Manifests and Reproducible Bayesian Workflows",
     "python_article": "reproducible-analysis-manifests.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "robust-distributional-pupil-models.Rmd",
     "title": "Robust and Distributional Pupil Models",
     "python_article": "robust-distributional-pupil-models.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "sbc-publication-diagnostics.Rmd",
     "title": "Simulation-Based Calibration Diagnostics",
     "python_article": "sbc-publication-diagnostics.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "sensitivity-and-recovery.Rmd",
     "title": "Prior Sensitivity and Simulation-Based Recovery",
     "python_article": "sensitivity-and-recovery.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "sensitivity-atlas.Rmd",
     "title": "Sensitivity Atlases",
     "python_article": "sensitivity-atlas.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "sensitivity-evidence-workflow.Rmd",
     "title": "Unified Sensitivity Suites and Evidence Inventories",
     "python_article": "sensitivity-evidence-workflow.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "specification-closure.Rmd",
     "title": "Specification Closure: Strict Readiness and Governed Validation",
     "python_article": "specification-closure.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "stable-unified-workflow.Rmd",
     "title": "A Stable Unified Workflow API",
     "python_article": "stable-unified-workflow.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "synthetic-advanced-pupillometry-gallery.Rmd",
     "title": "Synthetic Advanced Pupillometry Gallery",
     "python_article": "synthetic-advanced-pupillometry-gallery.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "synthetic-gazepoint-pupillometry-case-study.Rmd",
     "title": "Synthetic Gazepoint pupillometry case study",
     "python_article": "synthetic-gazepoint-pupillometry-case-study.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   },
   {
     "r_vignette": "transformation-replay-and-detailed-ppc.Rmd",
     "title": "Transformation Replay and Detailed Posterior Predictive Checks",
     "python_article": "transformation-replay-and-detailed-ppc.md",
-    "status": "mapped_not_ported"
+    "status": "ported"
   }
 ]

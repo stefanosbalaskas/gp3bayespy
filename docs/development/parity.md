@@ -89,3 +89,11 @@ Contrast rows retain R one-based identifiers and ratio or odds-ratio summaries r
 A real Windows/Python 3.13.15 PyMC/NUTS smoke completed binary and duration diagnostic paths at implementation commit `c4c5221`. The smoke produced a difference mean of -0.010147057651756204, odds-ratio mean of 1.071040109372952, duration-ratio mean of 0.8580219252316759, and six grouped rows. No contrast or exceedance result made an automatic decision; no group was automatically excluded; uncertainty was not interpreted causally; and global adequacy remained unestablished. Runtime evidence is frozen in `dev/parity/predictive_diagnostics_backend_validation_0.1.0.dev0.json`.
 
 Current ledger counts: 48 `implemented`, 1 `implemented_initial`, 409 `mapped_not_implemented` = 458 total exports. `backend_capabilities` remains `implemented_initial` until its broader capability contract is separately closed.
+
+## Full 0.5.0 Python closure
+
+The cumulative completion candidate promotes all 458 frozen exports to `implemented`. `backend_capabilities`, previously `implemented_initial`, is now closed with the backend/schema reliability layer. The packaged and development manifests are identical at **458 implemented / 0 implemented_initial / 0 mapped_not_implemented**.
+
+All 59 canonical R vignettes have Python-facing article pages, and the repository includes executable family-level examples. Historical GPB-PY-01 through GPB-PY-10 closure tests remain as minimum milestone checks rather than freezing obsolete ledger counts.
+
+No final closure claim is inferred from namespace existence alone: the candidate is gated by regression tests, explicit-signature checks, build/fresh-install validation, runnable examples, and pupil/predictive/LOO integration smokes.

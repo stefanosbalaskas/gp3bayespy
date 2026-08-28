@@ -97,9 +97,7 @@ def _numeric_scalar(
     if not lower_ok or not upper_ok:
         left = "(" if lower_open else "["
         right = ")" if upper_open else "]"
-        raise GP3BayesError(
-            f"`{name}` must lie in {left}{lower:g}, {upper:g}{right}."
-        )
+        raise GP3BayesError(f"`{name}` must lie in {left}{lower:g}, {upper:g}{right}.")
     return number
 
 
@@ -219,9 +217,9 @@ def _posterior_components(fit: Any) -> dict[str, np.ndarray]:
                 reverse_index.append(remainder % size_int)
                 remainder //= size_int
             component_index = tuple(reversed(reverse_index))
-            components[_component_name(str(raw), component_index)] = (
-                flattened_extra[:, :, flat_index]
-            )
+            components[_component_name(str(raw), component_index)] = flattened_extra[
+                :, :, flat_index
+            ]
 
     if not components:
         raise GP3BayesError("No posterior variables were found.")
@@ -254,9 +252,7 @@ def _select_components(
         if missing:
             if parameters_only:
                 raise GP3BayesError(
-                    "Requested posterior variables were not found: "
-                    + ", ".join(missing)
-                    + "."
+                    "Requested posterior variables were not found: " + ", ".join(missing) + "."
                 )
             raise GP3BayesError("Unknown posterior variables: " + ", ".join(missing) + ".")
         requested_set = set(requested)
@@ -347,12 +343,8 @@ def _diagnostic_metrics(selected: Mapping[str, np.ndarray]) -> pd.DataFrame:
     az = _arviz()
     posterior = {name: np.asarray(values, dtype=float) for name, values in selected.items()}
     rhat = az.rhat(posterior, method="rank", chain_axis=0, draw_axis=1)
-    ess_bulk = az.ess(
-        posterior, method="bulk", relative=False, chain_axis=0, draw_axis=1
-    )
-    ess_tail = az.ess(
-        posterior, method="tail", relative=False, chain_axis=0, draw_axis=1
-    )
+    ess_bulk = az.ess(posterior, method="bulk", relative=False, chain_axis=0, draw_axis=1)
+    ess_tail = az.ess(posterior, method="tail", relative=False, chain_axis=0, draw_axis=1)
     return pd.DataFrame(
         {
             "variable": list(selected),
@@ -434,13 +426,9 @@ def _chain_table(fit: Any, max_treedepth: int) -> pd.DataFrame:
             {
                 "chain": chain + 1,
                 "iterations": draws,
-                "divergences": (
-                    math.nan if div_values is None else int(np.sum(div_values > 0))
-                ),
+                "divergences": (math.nan if div_values is None else int(np.sum(div_values > 0))),
                 "treedepth_hits": (
-                    math.nan
-                    if tree_values is None
-                    else int(np.sum(tree_values >= max_treedepth))
+                    math.nan if tree_values is None else int(np.sum(tree_values >= max_treedepth))
                 ),
                 "treedepth_hit_fraction": (
                     math.nan
@@ -468,9 +456,7 @@ def diagnose_fit(
     fit = _validate_fit_like(fit, family=family)
     rhat_pass = _numeric_scalar(rhat_pass, "rhat_pass", lower=1)
     rhat_fail = _numeric_scalar(rhat_fail, "rhat_fail", lower=rhat_pass)
-    ess_per_chain_pass = _numeric_scalar(
-        ess_per_chain_pass, "ess_per_chain_pass", lower=1
-    )
+    ess_per_chain_pass = _numeric_scalar(ess_per_chain_pass, "ess_per_chain_pass", lower=1)
     ess_per_chain_fail = _numeric_scalar(
         ess_per_chain_fail,
         "ess_per_chain_fail",
@@ -489,8 +475,7 @@ def diagnose_fit(
     parameter_table["ess_bulk_per_chain"] = parameter_table["ess_bulk"] / chain_count
     parameter_table["ess_tail_per_chain"] = parameter_table["ess_tail"] / chain_count
     parameter_table["rhat_status"] = [
-        _classify_upper(float(value), rhat_pass, rhat_fail)
-        for value in parameter_table["rhat"]
+        _classify_upper(float(value), rhat_pass, rhat_fail) for value in parameter_table["rhat"]
     ]
     parameter_table["ess_bulk_status"] = [
         _classify_lower(float(value), ess_per_chain_pass, ess_per_chain_fail)
@@ -533,7 +518,9 @@ def diagnose_fit(
         (
             "not_assessed"
             if not math.isfinite(total_divergences)
-            else "pass" if total_divergences == 0 else "fail"
+            else "pass"
+            if total_divergences == 0
+            else "fail"
         ),
         (
             "not_assessed"
@@ -613,12 +600,8 @@ def _summary_table(
                 "mean": float(np.mean(flattened)),
                 "median": float(np.median(flattened)),
                 "sd": float(np.std(flattened, ddof=1)),
-                "lower": float(
-                    np.quantile(flattened, alpha / 2, method="median_unbiased")
-                ),
-                "upper": float(
-                    np.quantile(flattened, 1 - alpha / 2, method="median_unbiased")
-                ),
+                "lower": float(np.quantile(flattened, alpha / 2, method="median_unbiased")),
+                "upper": float(np.quantile(flattened, 1 - alpha / 2, method="median_unbiased")),
                 "probability_positive": float(np.mean(flattened > 0)),
                 "rhat": float(cast(Any, metrics.loc[name, "rhat"])),
                 "ess_bulk": float(cast(Any, metrics.loc[name, "ess_bulk"])),

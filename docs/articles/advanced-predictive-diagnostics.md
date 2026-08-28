@@ -1,0 +1,41 @@
+# Advanced Predictive Diagnostics
+
+> Python-facing port of `advanced-predictive-diagnostics.Rmd` from the frozen R gp3bayes 0.5.0 reference. The statistical and governance framing below follows the canonical vignette; executable Python workflows use the mapped APIs listed later.
+
+This article extends the prediction layer with diagnostics that remain
+descriptive rather than becoming automatic acceptance or rejection rules.
+
+For a fitted model, posterior predictive discrepancy checks retain the entire
+replicated distribution:
+
+Duration models additionally support predictive Q-Q and tail checks:
+
+None of these diagnostics certifies adequacy automatically.
+
+## Python API mapping
+
+- `gp3bayespy.binary_calibration_error`
+- `gp3bayespy.binary_confusion_table`
+- `gp3bayespy.binary_precision_recall_curve`
+- `gp3bayespy.binary_roc_curve`
+- `gp3bayespy.duration_qq_table`
+- `gp3bayespy.duration_tail_check`
+- `gp3bayespy.plot_binary_precision_recall`
+- `gp3bayespy.plot_binary_roc`
+- `gp3bayespy.plot_duration_qq`
+- `gp3bayespy.plot_duration_tail`
+- `gp3bayespy.plot_ppc_statistic`
+- `gp3bayespy.posterior_predictive_statistic`
+- `gp3bayespy.ppc_statistic_table`
+- `gp3bayespy.predict_model`
+
+## Python usage
+
+```python
+import gp3bayespy as gp
+
+# All functions listed above are available from the package root.
+# Use help(gp.<function>) or the API reference for the exact Python signature.
+```
+
+An executable workflow for this family is included in `../../examples/predictive_diagnostics.py`.

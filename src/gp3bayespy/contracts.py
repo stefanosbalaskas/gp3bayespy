@@ -4,6 +4,7 @@ This module is a Python-native port of the frozen gp3bayes 0.5.0
 ``model-contract.R`` contract layer.  Creating a contract does not validate
 input data and never implies model adequacy, convergence, or causal validity.
 """
+
 from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
@@ -120,8 +121,7 @@ _BINARY_TEMPLATE: dict[str, Any] = {
         ),
     ),
     "computational_requirements": (
-        "Contract creation is backend-independent; fitting requires an approved optional "
-        "backend"
+        "Contract creation is backend-independent; fitting requires an approved optional backend"
     ),
 }
 
@@ -233,9 +233,7 @@ def _match_contract_family(family: object) -> str:
         raise GP3BayesError("`family` must be one non-missing character value.")
     if family not in _MODEL_FAMILIES:
         allowed = ", ".join(_MODEL_FAMILIES)
-        raise GP3BayesError(
-            f"Unsupported `family`: {family}. Supported values are: {allowed}."
-        )
+        raise GP3BayesError(f"Unsupported `family`: {family}. Supported values are: {allowed}.")
     return family
 
 
@@ -248,9 +246,7 @@ def _nonempty_name(
     if optional and value is None:
         return None
     if not isinstance(value, str) or not value:
-        raise GP3BayesError(
-            f"`{argument}` must be one non-empty character value."
-        )
+        raise GP3BayesError(f"`{argument}` must be one non-empty character value.")
     return value
 
 
@@ -261,17 +257,12 @@ def _unique_strings(value: Sequence[str], argument: str) -> tuple[str, ...]:
     elif isinstance(value, Sequence) and not isinstance(value, (bytes, bytearray)):
         values = tuple(value)
     else:
-        raise GP3BayesError(
-            f"`{argument}` must be a character vector of unique, non-empty values."
-        )
+        raise GP3BayesError(f"`{argument}` must be a character vector of unique, non-empty values.")
 
-    if (
-        any(not isinstance(item, str) or not item for item in values)
-        or len(set(values)) != len(values)
+    if any(not isinstance(item, str) or not item for item in values) or len(set(values)) != len(
+        values
     ):
-        raise GP3BayesError(
-            f"`{argument}` must be a character vector of unique, non-empty values."
-        )
+        raise GP3BayesError(f"`{argument}` must be a character vector of unique, non-empty values.")
     return values
 
 
@@ -315,9 +306,7 @@ class ModelContract:
             "model_family": self.model_family,
             "mappings": dict(self.mappings),
             "predictors": list(self.predictors),
-            "interaction": (
-                None if self.interaction is None else list(self.interaction)
-            ),
+            "interaction": (None if self.interaction is None else list(self.interaction)),
             "random_slope": self.random_slope,
             "outcome_unit": self.outcome_unit,
             "notes": list(self.notes),
@@ -369,9 +358,7 @@ def create_model_contract(
         "participant": _nonempty_name(participant_col, "participant_col"),
         "item": _nonempty_name(item_col, "item_col", optional=True),
         "trial": _nonempty_name(trial_col, "trial_col", optional=True),
-        "condition": _nonempty_name(
-            condition_col, "condition_col", optional=True
-        ),
+        "condition": _nonempty_name(condition_col, "condition_col", optional=True),
         "time": _nonempty_name(time_col, "time_col", optional=True),
     }
 
@@ -382,9 +369,7 @@ def create_model_contract(
     if interaction is not None:
         values = _unique_strings(interaction, "interaction")
         if len(values) != 2:
-            raise GP3BayesError(
-                "`interaction` must contain exactly two declared variables."
-            )
+            raise GP3BayesError("`interaction` must contain exactly two declared variables.")
         available = {
             value
             for value in (
@@ -404,13 +389,9 @@ def create_model_contract(
     if not isinstance(random_slope, bool):
         raise GP3BayesError("`random_slope` must be TRUE or FALSE.")
     if random_slope and mappings["condition"] is None:
-        raise GP3BayesError(
-            "`condition_col` must be supplied when `random_slope = TRUE`."
-        )
+        raise GP3BayesError("`condition_col` must be supplied when `random_slope = TRUE`.")
 
-    declared = [
-        value for value in mappings.values() if value is not None
-    ] + list(predictor_values)
+    declared = [value for value in mappings.values() if value is not None] + list(predictor_values)
     seen: set[str] = set()
     duplicates: list[str] = []
     for value in declared:
@@ -426,9 +407,7 @@ def create_model_contract(
 
     if family_value == "binary":
         if outcome_unit is not None:
-            raise GP3BayesError(
-                "`outcome_unit` must be NULL for the binary family."
-            )
+            raise GP3BayesError("`outcome_unit` must be NULL for the binary family.")
         outcome_unit_value = None
         template = _BINARY_TEMPLATE
     else:

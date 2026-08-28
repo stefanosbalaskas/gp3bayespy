@@ -36,18 +36,12 @@ def _check(audit, check_id):
 def test_readiness_exact_core_ids_and_messages():
     audit = audit_model_readiness(_balanced_binary(), _binary_contract())
     assert _check(audit, "participant_levels")["category"] == "repeated_measures"
-    assert _check(audit, "participant_levels")["message"] == (
-        "2 participants are observed."
-    )
+    assert _check(audit, "participant_levels")["message"] == ("2 participants are observed.")
     assert _check(audit, "repeated_measurement")["message"] == (
         "Every participant contributes repeated observations."
     )
-    assert _check(audit, "trial_key")["message"] == (
-        "Participant-trial identifiers are unique."
-    )
-    assert _check(audit, "condition_levels")["message"] == (
-        "2 condition levels are observed."
-    )
+    assert _check(audit, "trial_key")["message"] == ("Participant-trial identifiers are unique.")
+    assert _check(audit, "condition_levels")["message"] == ("2 condition levels are observed.")
     assert _check(audit, "random_slope_support")["message"] == (
         "No participant-level random slope was requested."
     )
@@ -84,9 +78,7 @@ def test_declared_item_with_one_level_is_failure():
     audit = audit_model_readiness(data, contract)
     row = _check(audit, "item_levels")
     assert row["status"] == "fail"
-    assert row["message"] == (
-        "At least two items must be observed when an item is declared."
-    )
+    assert row["message"] == ("At least two items must be observed when an item is declared.")
 
 
 def test_item_crossing_warning_is_recorded():
@@ -165,9 +157,7 @@ def test_categorical_interaction_singleton_combination_warns():
     audit = audit_model_readiness(data, contract)
     row = _check(audit, "interaction_support")
     assert row["status"] == "warn"
-    assert row["message"].endswith(
-        "categorical interaction combinations contain one row."
-    )
+    assert row["message"].endswith("categorical interaction combinations contain one row.")
 
 
 def test_nonfinite_time_is_failure():

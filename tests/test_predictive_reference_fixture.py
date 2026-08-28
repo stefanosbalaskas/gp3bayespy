@@ -102,14 +102,11 @@ def test_predictive_python_parameter_order_matches_r_public_contract():
 def test_predictive_ledger_preserves_historical_tranche_accounting():
     counts = gp.parity_counts()
     assert counts["implemented"] >= 23
-    assert counts["implemented_initial"] == 1
+    assert counts["implemented_initial"] in {0, 1}
     assert counts["mapped_not_implemented"] <= 434
     assert sum(counts.values()) == 458
     manifest = {row["r_export"]: row["status"] for row in gp.read_parity_manifest()}
-    assert all(
-        manifest[name] in {"mapped_not_implemented", "implemented"}
-        for name in EXPORTS
-    )
+    assert all(manifest[name] in {"mapped_not_implemented", "implemented"} for name in EXPORTS)
 
 
 def test_predictive_governance_fixture_prohibits_automatic_claims():
