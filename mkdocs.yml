@@ -1,18 +1,72 @@
 site_name: gp3bayespy
+site_description: Contract-first Bayesian workflows for hierarchical behavioural data in Python.
+site_author: Stefanos Balaskas
 site_url: https://stefanosbalaskas.github.io/gp3bayespy/
+
 repo_url: https://github.com/stefanosbalaskas/gp3bayespy
 repo_name: stefanosbalaskas/gp3bayespy
+edit_uri: edit/main/docs/
+
+copyright: Copyright &copy; 2026 Stefanos Balaskas
+
 theme:
   name: material
+  language: en
+  icon:
+    repo: fontawesome/brands/github
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - toc.follow
+    - content.code.copy
+    - content.tabs.link
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
 nav:
   - Home: index.md
-  - API: api.md
-  - Migration: migration.md
-  - Examples: examples/index.md
-  - Plot gallery: plot-gallery.md
+  - User guide:
+      - Examples: examples/index.md
+      - Plot gallery: plot-gallery.md
+      - Migration from R: migration.md
   - Articles: articles/index.md
-  - Development:
+  - API reference: api.md
+  - Parity & development:
       - R → Python parity: development/parity.md
+
+not_in_nav: |
+  /articles/*.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
 plugins:
   - search
   - mkdocstrings
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/stefanosbalaskas/gp3bayespy
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/gp3bayespy/
