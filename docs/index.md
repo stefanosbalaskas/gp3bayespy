@@ -13,9 +13,9 @@ hide:
       with predictive diagnostics, sensitivity analysis, reproducibility, and dynamic pupillometry.
     </p>
     <div class="gp-actions">
-      <a class="gp-btn gp-btn--primary" href="getting-started.md">Get started</a>
-      <a class="gp-btn gp-btn--secondary" href="reference/index.md">Browse the API</a>
-      <a class="gp-btn gp-btn--ghost" href="articles/index.md">Explore 59 articles</a>
+      <a class="gp-btn gp-btn--primary" href="/gp3bayespy/getting-started/">Get started</a>
+      <a class="gp-btn gp-btn--secondary" href="/gp3bayespy/reference/">Browse the API</a>
+      <a class="gp-btn gp-btn--ghost" href="/gp3bayespy/articles/">Explore 59 articles</a>
     </div>
     <div class="gp-chip-row">
       <span>Python ≥ 3.11</span>
@@ -59,21 +59,21 @@ print(audit.status)</code></pre>
 ## Choose your path
 
 <div class="gp-paths">
-  <a class="gp-path" href="articles/binary-end-to-end.md">
+  <a class="gp-path" href="/gp3bayespy/articles/binary-end-to-end/">
     <span class="gp-path__eyebrow">Behavioural models</span>
     <h3>Binary & duration workflows</h3>
     <p>Simulate, prepare, specify, fit, diagnose, predict, recover, and report hierarchical outcomes.</p>
     <strong>Start a model →</strong>
   </a>
 
-  <a class="gp-path" href="articles/advanced-predictive-diagnostics.md">
+  <a class="gp-path" href="/gp3bayespy/articles/advanced-predictive-diagnostics/">
     <span class="gp-path__eyebrow">Predictive evidence</span>
     <h3>Diagnostics, calibration & PSIS-LOO</h3>
     <p>Inspect out-of-sample performance, calibration, uncertainty, influence, and comparison without automatic selection.</p>
     <strong>Inspect evidence →</strong>
   </a>
 
-  <a class="gp-path" href="articles/bayesian-dynamic-pupillometry.md">
+  <a class="gp-path" href="/gp3bayespy/articles/bayesian-dynamic-pupillometry/">
     <span class="gp-path__eyebrow">Time-course modelling</span>
     <h3>Dynamic pupillometry</h3>
     <p>Model pupil trajectories with explicit measurement context, temporal diagnostics, binocular extensions, GP models, and sensitivity workflows.</p>
@@ -168,19 +168,19 @@ print(audit.status)</code></pre>
 ## See the package, not just the API
 
 <div class="gp-showcase">
-  <a href="plot-gallery.md">
+  <a href="/gp3bayespy/plot-gallery/">
     <strong>Plot gallery</strong>
     <span>Real graphics generated from gp3bayespy workflows →</span>
   </a>
-  <a href="examples/index.md">
+  <a href="/gp3bayespy/examples/">
     <strong>8 executable examples</strong>
     <span>Small scripts that run end to end →</span>
   </a>
-  <a href="articles/index.md">
+  <a href="/gp3bayespy/articles/">
     <strong>59 guided articles</strong>
     <span>Browse by workflow instead of filename →</span>
   </a>
-  <a href="reference/index.md">
+  <a href="/gp3bayespy/reference/">
     <strong>API reference hub</strong>
     <span>458 functions organized by module →</span>
   </a>
@@ -198,6 +198,8 @@ print(audit.status)</code></pre>
 
 The release is frozen against **gp3bayes 0.5.0**. The full validation record is available in [Release v0.5.0](release.md) and the machine-readable closure evidence is documented under [R → Python parity](development/parity.md).
 
+Archived software DOI: [**10.5281/zenodo.22150746**](https://doi.org/10.5281/zenodo.22150746). See [Citing gp3bayespy](citation.md) for citation-ready metadata.
+
 !!! warning "Evidence is not an automatic conclusion"
 
     `gp3bayespy` does not automatically select a preferred model, exclude participants,
@@ -210,7 +212,7 @@ The release is frozen against **gp3bayes 0.5.0**. The full validation record is 
     <h2>Start with a complete workflow.</h2>
   </div>
   <div class="gp-actions">
-    <a class="gp-btn gp-btn--primary" href="getting-started.md">Getting started</a>
-    <a class="gp-btn gp-btn--secondary" href="examples/index.md">Run an example</a>
+    <a class="gp-btn gp-btn--primary" href="/gp3bayespy/getting-started/">Getting started</a>
+    <a class="gp-btn gp-btn--secondary" href="/gp3bayespy/examples/">Run an example</a>
   </div>
 </div>

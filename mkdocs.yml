@@ -11,8 +11,9 @@ copyright: Copyright &copy; 2026 Stefanos Balaskas
 
 theme:
   name: material
-  custom_dir: docs/overrides
+  custom_dir: overrides
   language: en
+  favicon: assets/favicon.svg
   icon:
     logo: material/chart-line
     repo: fontawesome/brands/github
@@ -74,6 +75,7 @@ nav:
   - Reference:
       - API reference: reference/index.md
   - Project:
+      - Citation: citation.md
       - Release v0.5.0: release.md
       - Governance: governance.md
       - R → Python parity: development/parity.md
@@ -82,6 +84,7 @@ not_in_nav: |
   /articles/*.md
   /reference/*.md
   /api.md
+  /404.md
 
 markdown_extensions:
   - admonition
@@ -112,3 +115,6 @@ extra:
     - icon: fontawesome/brands/r-project
       link: https://cran.r-project.org/package=gp3bayes
       name: gp3bayes R reference
+    - icon: fontawesome/solid/fingerprint
+      link: https://doi.org/10.5281/zenodo.22150746
+      name: gp3bayespy DOI on Zenodo

@@ -51,7 +51,7 @@ dev = [
   "arviz>=1.0; python_version >= '3.12'",
   "xarray>=2024.1",
 ]
-docs = ["mkdocs>=1.6", "mkdocs-material>=9.5", "mkdocstrings[python]>=0.25"]
+docs = ["mkdocs>=1.6,<2", "mkdocs-material>=9.5", "mkdocstrings[python]>=0.25"]
 all = [
   "arviz>=0.18,<1; python_version < '3.12'",
   "pymc>=5.10,<6; python_version < '3.12'",
@@ -70,7 +70,7 @@ all = [
   "pandas-stubs>=2.2",
   "build>=1.2",
   "twine>=5",
-  "mkdocs>=1.6",
+  "mkdocs>=1.6,<2",
   "mkdocs-material>=9.5",
   "mkdocstrings[python]>=0.25",
 ]
@@ -80,6 +80,9 @@ Homepage = "https://stefanosbalaskas.github.io/gp3bayespy/"
 Repository = "https://github.com/stefanosbalaskas/gp3bayespy"
 Issues = "https://github.com/stefanosbalaskas/gp3bayespy/issues"
 "R reference" = "https://cran.r-project.org/package=gp3bayes"
+Documentation = "https://stefanosbalaskas.github.io/gp3bayespy/"
+DOI = "https://doi.org/10.5281/zenodo.22150746"
+Release = "https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.5.0"
 
 [tool.setuptools.packages.find]
 where = ["src"]

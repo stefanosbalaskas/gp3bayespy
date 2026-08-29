@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://stefanosbalaskas.github.io/gp3bayespy/sitemap.xml

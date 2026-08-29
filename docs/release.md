@@ -2,6 +2,8 @@
 
 Version **0.5.0** is the first public Python release of `gp3bayespy`, frozen against **gp3bayes 0.5.0**.
 
+Archived software DOI: [**10.5281/zenodo.22150746**](https://doi.org/10.5281/zenodo.22150746).
+
 ## Release status
 
 <div class="gp-release-strip">

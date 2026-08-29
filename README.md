@@ -10,13 +10,15 @@
 [![Docs](https://github.com/stefanosbalaskas/gp3bayespy/actions/workflows/docs.yml/badge.svg?branch=main)](https://stefanosbalaskas.github.io/gp3bayespy/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![R reference](https://img.shields.io/badge/R%20reference-gp3bayes%200.5.0-276DC3.svg)](https://cran.r-project.org/package=gp3bayes)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22150746.svg)](https://doi.org/10.5281/zenodo.22150746)
 
 [Documentation](https://stefanosbalaskas.github.io/gp3bayespy/) ·
 [PyPI](https://pypi.org/project/gp3bayespy/) ·
 [Examples](examples/) ·
 [Articles](docs/articles/) ·
 [Migration guide](docs/migration.md) ·
-[Release v0.5.0](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.5.0)
+[Release v0.5.0](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.5.0) ·
+[DOI](https://doi.org/10.5281/zenodo.22150746)
 
 </div>
 
@@ -113,7 +115,7 @@ The package separates **data readiness**, **prior declaration**, **model specifi
 The documentation site is the primary user guide:
 
 - **[Getting started](https://stefanosbalaskas.github.io/gp3bayespy/)** — package orientation and first workflow.
-- **[API reference](https://stefanosbalaskas.github.io/gp3bayespy/api/)** — public Python API.
+- **[API reference](https://stefanosbalaskas.github.io/gp3bayespy/reference/)** — public Python API.
 - **[59 articles](https://stefanosbalaskas.github.io/gp3bayespy/articles/)** — Python-facing ports of the canonical gp3bayes vignettes.
 - **[Executable examples](https://stefanosbalaskas.github.io/gp3bayespy/examples/)** — eight end-to-end scripts.
 - **[Plot gallery](https://stefanosbalaskas.github.io/gp3bayespy/plot-gallery/)** — publication-oriented plotting workflows.
@@ -159,7 +161,7 @@ Automatic-selection and automatic-adequacy fields remain explicit and conservati
 
 ## Citation
 
-If you use `gp3bayespy`, cite the version you used and the `gp3bayes` R reference where appropriate. Repository citation metadata are provided in [`CITATION.cff`](CITATION.cff).
+If you use `gp3bayespy`, cite the archived software record for the version you used. The DOI for **gp3bayespy 0.5.0** is [`10.5281/zenodo.22150746`](https://doi.org/10.5281/zenodo.22150746). Repository citation metadata are provided in [`CITATION.cff`](CITATION.cff). Cite the `gp3bayes` R reference where it is methodologically relevant.
 
 ## License
 
