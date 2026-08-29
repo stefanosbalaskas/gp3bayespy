@@ -4322,7 +4322,7 @@ def compare_pupil_autocorrelation(
     for name, fit in models.items():
         if not isinstance(fit, AdvancedPupilFit):
             raise GP3BayesError("All models must be advanced pupil fits.")
-        data = fit.translation.data
+        data = fit.translation.data.reset_index(drop=True)
         response = str(fit.specification.mapping["response"])
         observed = pd.to_numeric(data[response], errors="coerce").to_numpy(dtype=float)
         mean = np.nanmean(_advanced_training_prediction(fit, ndraws), axis=0)
@@ -4409,7 +4409,7 @@ def pupil_residual_spectrum(
 ) -> PupilResidualSpectrum:
     if not isinstance(fit, AdvancedPupilFit):
         raise GP3BayesError("Expected an advanced fit.")
-    data = fit.translation.data
+    data = fit.translation.data.reset_index(drop=True)
     response = str(fit.specification.mapping["response"])
     observed = pd.to_numeric(data[response], errors="coerce").to_numpy(dtype=float)
     residual = observed - np.nanmean(_advanced_training_prediction(fit, ndraws), axis=0)

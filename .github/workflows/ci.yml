@@ -24,7 +24,7 @@ jobs:
       - run: python -m pip install -e ".[dev,plots]"
       - run: ruff check .
       - run: mypy src/gp3bayespy
-      - run: pytest --cov=gp3bayespy --cov-branch --cov-report=term-missing --cov-fail-under=85
+      - run: pytest --cov=gp3bayespy --cov-branch --cov-report=term-missing --cov-fail-under=90
       - run: python -m build
       - run: python examples/backend_status.py
       - run: python examples/binary_workflow.py
