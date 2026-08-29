@@ -1699,6 +1699,8 @@ def _functional_parts(
     grid = getattr(prediction, "grid", None)
     draws = getattr(prediction, "draws", None)
     spec = getattr(prediction, "specification", None)
+    if isinstance(spec, AdvancedPupilSpecification):
+        spec = {"mapping": dict(spec.mapping)}
     if (
         isinstance(grid, pd.DataFrame)
         and isinstance(draws, np.ndarray)
@@ -6251,7 +6253,7 @@ def plot_pupil_trajectory_derivative(
     table = pupil_trajectory_derivative_table(x, probability)
     time_col = next((c for c in table.columns if "time" in c.lower()), table.columns[0])
     return _plot_interval_frame(
-        table, time_col, "mean", "q_low", "q_high", "Pupil trajectory derivative"
+        table, time_col, "estimate", "lower", "upper", "Pupil trajectory derivative"
     )
 
 
@@ -6259,7 +6261,7 @@ def plot_pupil_dynamic_contrast(x: PupilDynamicContrast):
     table = pupil_dynamic_contrast_table(x)
     time_col = next((c for c in table.columns if "time" in c.lower()), table.columns[0])
     return _plot_interval_frame(
-        table, time_col, "mean", "q_low", "q_high", "Pupil dynamic contrast"
+        table, time_col, "estimate", "lower", "upper", "Pupil dynamic contrast"
     )
 
 
@@ -6342,7 +6344,9 @@ def plot_pupil_posterior_trajectory(x: PupilTrajectory | PupilPrediction):
         else next((c for c in table if "time" in c.lower()), table.columns[0])  # type: ignore[attr-defined]
     )
     condition = ".condition" if ".condition" in table else None
-    mean_col = "mean" if "mean" in table else "predicted_mean"
+    mean_col = (
+        "mean" if "mean" in table else "estimate" if "estimate" in table else "predicted_mean"
+    )
     low_col = "lower" if "lower" in table else "q_low"
     high_col = "upper" if "upper" in table else "q_high"
     return _plot_interval_frame(

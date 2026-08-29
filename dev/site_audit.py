@@ -75,7 +75,7 @@ def parse_html(text: str) -> PageParser:
 
 def strip_site_prefix(path: str) -> str:
     if path.startswith(SITE_PREFIX):
-        return path[len(SITE_PREFIX):]
+        return path[len(SITE_PREFIX) :]
     return path.lstrip("/")
 
 
@@ -113,9 +113,7 @@ def audit_local(site_dir: Path) -> None:
         raise AuditFailure(f"Site directory not found: {site}")
 
     pages = sorted(
-        page
-        for page in site.rglob("*.html")
-        if "overrides" not in page.relative_to(site).parts
+        page for page in site.rglob("*.html") if "overrides" not in page.relative_to(site).parts
     )
     if not pages:
         raise AuditFailure("No HTML pages generated.")
@@ -193,6 +191,11 @@ def audit_local(site_dir: Path) -> None:
         "assets/gallery/binary-roc.png",
         "assets/gallery/binary-pr.png",
         "assets/gallery/pupil-simulation.png",
+        "assets/gallery/predictive/binary-roc.png",
+        "assets/gallery/posterior/posterior-intervals.png",
+        "assets/gallery/loo/influence-rank.png",
+        "assets/gallery/sensitivity/sensitivity-suite.png",
+        "assets/gallery/publication/diagnostic-dashboard.png",
     }
     for rel in sorted(required):
         if not (site / rel).exists():
@@ -233,9 +236,7 @@ def audit_local(site_dir: Path) -> None:
                 failures.append(f"homepage marker missing: {marker}")
 
     if failures:
-        raise AuditFailure(
-            f"{len(failures)} issue(s):\n- " + "\n- ".join(failures[:100])
-        )
+        raise AuditFailure(f"{len(failures)} issue(s):\n- " + "\n- ".join(failures[:100]))
 
     print(
         f"Site audit PASS: {len(pages)} HTML pages; "
