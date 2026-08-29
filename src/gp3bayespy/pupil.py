@@ -2625,6 +2625,8 @@ def specify_advanced_pupil_timecourse_model(
         raise GP3BayesError("Unsupported advanced pupil family.")
     if residual_scale not in {"constant", "condition", "time", "condition_time"}:
         raise GP3BayesError("Unsupported residual-scale declaration.")
+    if missingness_model is not None and not isinstance(missingness_model, PupilMissingnessSpec):
+        raise GP3BayesError("`missingness_model` must come from create_pupil_missingness_spec().")
     ac = _ac_spec(autocorrelation)
     if family == "student" and ac is not None:
         raise GP3BayesError(
@@ -2685,10 +2687,6 @@ def specify_advanced_pupil_timecourse_model(
                     "Measurement-error standard-error columns must be numeric, finite, strictly positive, and non-missing."
                 )
     if missingness_model is not None:
-        if not isinstance(missingness_model, PupilMissingnessSpec):
-            raise GP3BayesError(
-                "`missingness_model` must come from create_pupil_missingness_spec()."
-            )
         unknown = set(
             (*missingness_model.predictors, *missingness_model.auxiliary_predictors)
         ).difference(data.columns)
@@ -6149,7 +6147,17 @@ def plot_pupil_gp_hyperparameters(x: PupilGPHyperparameters):
 def plot_pupil_temporal_dependence(x: PupilTemporalDependenceAudit):
     table = x.series
     fig, ax = _mpl_axes("Pupil temporal dependence", "Lag-1 correlation", "Series")
-    ax.hist(table["lag1"].dropna().to_numpy(dtype=float), bins=min(20, max(len(table), 5)))
+    values = table["lag1"].dropna().to_numpy(dtype=float)
+    if values.size:
+        spread = float(np.ptp(values))
+        bins = (
+            1
+            if not np.isfinite(spread) or np.isclose(spread, 0.0, rtol=1e-12, atol=1e-12)
+            else min(20, max(len(values), 5))
+        )
+        ax.hist(values, bins=bins)
+    else:
+        ax.text(0.5, 0.5, "No finite lag-1 correlations", ha="center")
     return fig
 
 

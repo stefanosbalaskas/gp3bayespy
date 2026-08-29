@@ -2,61 +2,19 @@
   "metric": "branch-aware pytest coverage",
   "released_0_5_0_percent": 47.9482,
   "visual_docs_phase1_percent": 52.8043,
-  "current_percent": 92.01011378002528,
-  "coverage_floor_percent": 90,
-  "passing_tests": 464,
+  "current_percent": 95.02116636128136,
+  "coverage_floor_percent": 93,
+  "passing_tests": 491,
   "canonical_exports": 458,
   "canonical_articles": 59,
   "generated_documentation_figures": 30,
   "supplementary_visual_galleries": 6,
   "module_coverage": [
     {
-      "module": "pupil.py",
-      "coverage": 86.73589804106679,
-      "missing_lines": 313,
-      "missing_branches": 249
-    },
-    {
-      "module": "evidence_graphics_gg.py",
-      "coverage": 90.2439024390244,
-      "missing_lines": 8,
-      "missing_branches": 4
-    },
-    {
-      "module": "binary.py",
-      "coverage": 90.72164948453609,
-      "missing_lines": 43,
-      "missing_branches": 47
-    },
-    {
-      "module": "readiness.py",
-      "coverage": 90.893760539629,
-      "missing_lines": 29,
-      "missing_branches": 25
-    },
-    {
-      "module": "backends/__init__.py",
-      "coverage": 91.9753086419753,
-      "missing_lines": 21,
-      "missing_branches": 5
-    },
-    {
       "module": "specification_closure.py",
-      "coverage": 92.1875,
-      "missing_lines": 57,
-      "missing_branches": 38
-    },
-    {
-      "module": "design_support_diagnostics.py",
-      "coverage": 92.60355029585799,
-      "missing_lines": 15,
-      "missing_branches": 10
-    },
-    {
-      "module": "specification.py",
-      "coverage": 92.7860696517413,
-      "missing_lines": 14,
-      "missing_branches": 15
+      "coverage": 93.00986842105263,
+      "missing_lines": 52,
+      "missing_branches": 33
     },
     {
       "module": "predictive.py",
@@ -65,10 +23,16 @@
       "missing_branches": 61
     },
     {
-      "module": "ppc.py",
-      "coverage": 93.02325581395348,
-      "missing_lines": 3,
-      "missing_branches": 9
+      "module": "readiness.py",
+      "coverage": 93.76053962900505,
+      "missing_lines": 19,
+      "missing_branches": 18
+    },
+    {
+      "module": "pupil.py",
+      "coverage": 93.82657869934025,
+      "missing_lines": 138,
+      "missing_branches": 124
     },
     {
       "module": "duration.py",
@@ -83,16 +47,16 @@
       "missing_branches": 17
     },
     {
-      "module": "unified_workflow_api.py",
-      "coverage": 94.28571428571429,
-      "missing_lines": 11,
-      "missing_branches": 1
-    },
-    {
       "module": "prior_posterior_bridge.py",
       "coverage": 95.11278195488721,
       "missing_lines": 6,
       "missing_branches": 7
+    },
+    {
+      "module": "binary.py",
+      "coverage": 95.4639175257732,
+      "missing_lines": 19,
+      "missing_branches": 25
     },
     {
       "module": "sensitivity.py",
@@ -143,6 +107,30 @@
       "missing_branches": 1
     },
     {
+      "module": "design_support_diagnostics.py",
+      "coverage": 98.22485207100591,
+      "missing_lines": 2,
+      "missing_branches": 4
+    },
+    {
+      "module": "ppc.py",
+      "coverage": 98.25581395348837,
+      "missing_lines": 0,
+      "missing_branches": 3
+    },
+    {
+      "module": "evidence_graphics_gg.py",
+      "coverage": 98.3739837398374,
+      "missing_lines": 2,
+      "missing_branches": 0
+    },
+    {
+      "module": "unified_workflow_api.py",
+      "coverage": 99.04761904761905,
+      "missing_lines": 1,
+      "missing_branches": 1
+    },
+    {
       "module": "__init__.py",
       "coverage": 100.0,
       "missing_lines": 0,
@@ -150,6 +138,12 @@
     },
     {
       "module": "_reference/__init__.py",
+      "coverage": 100.0,
+      "missing_lines": 0,
+      "missing_branches": 0
+    },
+    {
+      "module": "backends/__init__.py",
       "coverage": 100.0,
       "missing_lines": 0,
       "missing_branches": 0
@@ -177,9 +171,15 @@
       "coverage": 100.0,
       "missing_lines": 0,
       "missing_branches": 0
+    },
+    {
+      "module": "specification.py",
+      "coverage": 100.0,
+      "missing_lines": 0,
+      "missing_branches": 0
     }
   ],
   "coverage_target_percent": 100.0,
-  "coverage_phase": "coverage-to-100 milestone 4 / phases H-H5",
+  "coverage_phase": "coverage-to-100 milestone 5 / phases I1-I5",
   "coverage_exclusions_added": 0
 }

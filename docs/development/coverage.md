@@ -11,8 +11,8 @@ Coverage is reported separately for the immutable 0.5.0 release and the protecte
 | --- | ---: |
 | Released v0.5.0 branch-aware coverage | **47.9482%** |
 | Visual-docs phase-1 checkpoint | **52.8043%** |
-| Current branch-aware coverage | **92.0101%** |
-| Current measured tests | **464 / 464 passing** |
+| Current branch-aware coverage | **95.0212%** |
+| Current measured tests | **491 / 491 passing** |
 | Frozen R exports | **458 / 458 implemented** |
 | Canonical articles | **59 / 59 ported** |
 | Deterministic documentation figures | **30** |
