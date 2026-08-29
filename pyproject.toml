@@ -33,7 +33,7 @@ bayes = [
   "arviz>=1.0; python_version >= '3.12'",
   "pymc>=6.3.1; python_version >= '3.12'",
   "numpy>=2.0,<2.5; python_version >= '3.12'",
-  "numba>=0.64,<=0.66.0; python_version >= '3.12'",
+  "numba>=0.64,<=0.67.0; python_version >= '3.12'",
   "cmdstanpy>=1.2",
   "xarray>=2024.1",
 ]
@@ -58,7 +58,7 @@ all = [
   "arviz>=1.0; python_version >= '3.12'",
   "pymc>=6.3.1; python_version >= '3.12'",
   "numpy>=2.0,<2.5; python_version >= '3.12'",
-  "numba>=0.64,<=0.66.0; python_version >= '3.12'",
+  "numba>=0.64,<=0.67.0; python_version >= '3.12'",
   "cmdstanpy>=1.2",
   "xarray>=2024.1",
   "matplotlib>=3.8",
