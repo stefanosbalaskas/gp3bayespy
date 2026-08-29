@@ -2,32 +2,14 @@
   "metric": "branch-aware pytest coverage",
   "released_0_5_0_percent": 47.9482,
   "visual_docs_phase1_percent": 52.8043,
-  "current_percent": 78.43100069536634,
-  "coverage_floor_percent": 75,
-  "passing_tests": 400,
+  "current_percent": 84.03818193311841,
+  "coverage_floor_percent": 80,
+  "passing_tests": 414,
   "canonical_exports": 458,
   "canonical_articles": 59,
   "generated_documentation_figures": 30,
   "supplementary_visual_galleries": 6,
   "module_coverage": [
-    {
-      "module": "pupil.py",
-      "coverage": 66.5093226339391,
-      "missing_lines": 838,
-      "missing_branches": 581
-    },
-    {
-      "module": "binary.py",
-      "coverage": 68.04123711340206,
-      "missing_lines": 214,
-      "missing_branches": 96
-    },
-    {
-      "module": "duration.py",
-      "coverage": 68.18181818181819,
-      "missing_lines": 196,
-      "missing_branches": 77
-    },
     {
       "module": "readiness.py",
       "coverage": 74.87352445193929,
@@ -39,6 +21,12 @@
       "coverage": 76.8724279835391,
       "missing_lines": 188,
       "missing_branches": 93
+    },
+    {
+      "module": "pupil.py",
+      "coverage": 79.25418928487137,
+      "missing_lines": 495,
+      "missing_branches": 384
     },
     {
       "module": "reporting.py",
@@ -83,6 +71,12 @@
       "missing_branches": 11
     },
     {
+      "module": "binary.py",
+      "coverage": 85.97938144329896,
+      "missing_lines": 83,
+      "missing_branches": 53
+    },
+    {
       "module": "prior_posterior_bridge.py",
       "coverage": 86.84210526315789,
       "missing_lines": 19,
@@ -93,6 +87,12 @@
       "coverage": 87.41721854304636,
       "missing_lines": 12,
       "missing_branches": 7
+    },
+    {
+      "module": "duration.py",
+      "coverage": 88.34498834498835,
+      "missing_lines": 64,
+      "missing_branches": 36
     },
     {
       "module": "posterior_validation_core.py",
@@ -180,6 +180,6 @@
     }
   ],
   "coverage_target_percent": 100.0,
-  "coverage_phase": "coverage-to-100 milestone 1",
+  "coverage_phase": "coverage-to-100 milestone 2 / phase E",
   "coverage_exclusions_added": 0
 }
