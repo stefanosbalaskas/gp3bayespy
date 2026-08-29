@@ -11,8 +11,8 @@ Coverage is reported separately for the immutable 0.5.0 release and the protecte
 | --- | ---: |
 | Released v0.5.0 branch-aware coverage | **47.9482%** |
 | Visual-docs phase-1 checkpoint | **52.8043%** |
-| Current branch-aware coverage | **68.0637%** |
-| Current measured tests | **350 / 350 passing** |
+| Current branch-aware coverage | **78.4310%** |
+| Current measured tests | **400 / 400 passing** |
 | Frozen R exports | **458 / 458 implemented** |
 | Canonical articles | **59 / 59 ported** |
 | Deterministic documentation figures | **30** |
@@ -62,3 +62,7 @@ Coverage is an execution metric, not a certificate of convergence, model adequac
 The visual-documentation tranche executes plotting adapters, regenerates deterministic package figures, supplies six gallery-style articles, and places figures into canonical articles where a visual materially improves interpretation.
 
 The tranche also regression-tests the advanced-pupil derivative, dynamic-contrast, and posterior-trajectory adapters exposed during coverage expansion.
+
+## Coverage-to-100 programme
+
+The explicit development target is **100% branch-aware coverage**. Coverage is raised through meaningful behavioral, validation, error-path, plotting, backend-governance, reproducibility, predictive, sensitivity, specification-closure, and post-fit tests. No new coverage exclusions are introduced to manufacture the metric.

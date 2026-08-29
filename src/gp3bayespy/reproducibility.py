@@ -597,7 +597,7 @@ def create_analysis_figure_set(x: AnalysisBundle):
         plots["loo_influence"] = plot_loo_influence(x.components["loo"].value)
     if not plots:
         raise GP3BayesError("No bundle components could be converted to figures.")
-    return create_figure_set(**plots, title="gp3bayes analysis figures")
+    return create_figure_set(plots, title="gp3bayes analysis figures")
 
 
 def write_analysis_bundle_report(x: AnalysisBundle, file: str | Path) -> str:

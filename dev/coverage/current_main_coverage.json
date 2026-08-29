@@ -2,237 +2,184 @@
   "metric": "branch-aware pytest coverage",
   "released_0_5_0_percent": 47.9482,
   "visual_docs_phase1_percent": 52.8043,
-  "current_percent": 68.06372084202542,
-  "coverage_floor_percent": 65,
-  "passing_tests": 350,
+  "current_percent": 78.43100069536634,
+  "coverage_floor_percent": 75,
+  "passing_tests": 400,
   "canonical_exports": 458,
   "canonical_articles": 59,
   "generated_documentation_figures": 30,
   "supplementary_visual_galleries": 6,
   "module_coverage": [
     {
-      "module": "advanced_optional_workflows.py",
-      "coverage": 35.27272727272727,
-      "statements": 416,
-      "branches": 134,
-      "missing_lines": 236,
-      "missing_branches": 120
-    },
-    {
-      "module": "postfit_exploration.py",
-      "coverage": 51.76470588235294,
-      "statements": 356,
-      "branches": 154,
-      "missing_lines": 155,
-      "missing_branches": 91
-    },
-    {
-      "module": "reproducibility.py",
-      "coverage": 57.5609756097561,
-      "statements": 290,
-      "branches": 120,
-      "missing_lines": 102,
-      "missing_branches": 72
-    },
-    {
-      "module": "predictive.py",
-      "coverage": 62.135416666666664,
-      "statements": 1416,
-      "branches": 504,
-      "missing_lines": 503,
-      "missing_branches": 224
-    },
-    {
-      "module": "reporting.py",
-      "coverage": 62.5748502994012,
-      "statements": 532,
-      "branches": 136,
-      "missing_lines": 167,
-      "missing_branches": 83
-    },
-    {
-      "module": "design_support_diagnostics.py",
-      "coverage": 65.08875739644971,
-      "statements": 258,
-      "branches": 80,
-      "missing_lines": 76,
-      "missing_branches": 42
-    },
-    {
       "module": "pupil.py",
       "coverage": 66.5093226339391,
-      "statements": 3185,
-      "branches": 1052,
       "missing_lines": 838,
       "missing_branches": 581
     },
     {
-      "module": "specification_closure.py",
-      "coverage": 66.91358024691358,
-      "statements": 939,
-      "branches": 276,
-      "missing_lines": 267,
-      "missing_branches": 135
-    },
-    {
       "module": "binary.py",
       "coverage": 68.04123711340206,
-      "statements": 754,
-      "branches": 216,
       "missing_lines": 214,
       "missing_branches": 96
     },
     {
       "module": "duration.py",
       "coverage": 68.18181818181819,
-      "statements": 680,
-      "branches": 178,
       "missing_lines": 196,
       "missing_branches": 77
     },
     {
-      "module": "sensitivity.py",
-      "coverage": 68.69565217391305,
-      "statements": 520,
-      "branches": 170,
-      "missing_lines": 128,
-      "missing_branches": 88
-    },
-    {
       "module": "readiness.py",
       "coverage": 74.87352445193929,
-      "statements": 407,
-      "branches": 186,
       "missing_lines": 85,
       "missing_branches": 64
     },
     {
-      "module": "backends/__init__.py",
-      "coverage": 75.0,
-      "statements": 268,
-      "branches": 56,
-      "missing_lines": 56,
-      "missing_branches": 25
+      "module": "specification_closure.py",
+      "coverage": 76.8724279835391,
+      "missing_lines": 188,
+      "missing_branches": 93
+    },
+    {
+      "module": "reporting.py",
+      "coverage": 80.08982035928143,
+      "missing_lines": 88,
+      "missing_branches": 45
     },
     {
       "module": "loo.py",
-      "coverage": 79.58115183246073,
-      "statements": 143,
-      "branches": 48,
-      "missing_lines": 22,
-      "missing_branches": 17
+      "coverage": 80.6282722513089,
+      "missing_lines": 21,
+      "missing_branches": 16
+    },
+    {
+      "module": "predictive.py",
+      "coverage": 81.82291666666667,
+      "missing_lines": 233,
+      "missing_branches": 116
     },
     {
       "module": "posterior.py",
       "coverage": 81.95652173913044,
-      "statements": 350,
-      "branches": 110,
       "missing_lines": 48,
       "missing_branches": 35
     },
     {
+      "module": "design_support_diagnostics.py",
+      "coverage": 84.02366863905326,
+      "missing_lines": 40,
+      "missing_branches": 14
+    },
+    {
       "module": "hierarchical_effects_advanced.py",
       "coverage": 84.43579766536965,
-      "statements": 197,
-      "branches": 60,
       "missing_lines": 21,
       "missing_branches": 19
     },
     {
       "module": "unified_workflow_api.py",
       "coverage": 85.23809523809524,
-      "statements": 154,
-      "branches": 56,
       "missing_lines": 20,
       "missing_branches": 11
     },
     {
       "module": "prior_posterior_bridge.py",
       "coverage": 86.84210526315789,
-      "statements": 202,
-      "branches": 64,
       "missing_lines": 19,
       "missing_branches": 16
     },
     {
       "module": "fitting.py",
       "coverage": 87.41721854304636,
-      "statements": 123,
-      "branches": 28,
       "missing_lines": 12,
       "missing_branches": 7
     },
     {
       "module": "posterior_validation_core.py",
       "coverage": 89.0909090909091,
-      "statements": 78,
-      "branches": 32,
       "missing_lines": 5,
       "missing_branches": 7
     },
     {
       "module": "specification.py",
       "coverage": 89.55223880597015,
-      "statements": 272,
-      "branches": 130,
       "missing_lines": 20,
       "missing_branches": 22
     },
     {
       "module": "evidence_graphics_gg.py",
       "coverage": 90.2439024390244,
-      "statements": 105,
-      "branches": 18,
       "missing_lines": 8,
       "missing_branches": 4
     },
     {
+      "module": "backends/__init__.py",
+      "coverage": 91.9753086419753,
+      "missing_lines": 21,
+      "missing_branches": 5
+    },
+    {
       "module": "ppc.py",
       "coverage": 93.02325581395348,
-      "statements": 140,
-      "branches": 32,
       "missing_lines": 3,
       "missing_branches": 9
     },
     {
+      "module": "reproducibility.py",
+      "coverage": 94.14634146341463,
+      "missing_lines": 7,
+      "missing_branches": 17
+    },
+    {
+      "module": "sensitivity.py",
+      "coverage": 95.65217391304348,
+      "missing_lines": 17,
+      "missing_branches": 13
+    },
+    {
+      "module": "postfit_exploration.py",
+      "coverage": 95.68627450980392,
+      "missing_lines": 8,
+      "missing_branches": 14
+    },
+    {
       "module": "contracts.py",
       "coverage": 95.86206896551724,
-      "statements": 103,
-      "branches": 42,
       "missing_lines": 3,
       "missing_branches": 3
     },
     {
+      "module": "advanced_optional_workflows.py",
+      "coverage": 97.63636363636364,
+      "missing_lines": 9,
+      "missing_branches": 4
+    },
+    {
       "module": "__init__.py",
       "coverage": 100.0,
-      "statements": 27,
-      "branches": 0,
       "missing_lines": 0,
       "missing_branches": 0
     },
     {
       "module": "_reference/__init__.py",
       "coverage": 100.0,
-      "statements": 0,
-      "branches": 0,
       "missing_lines": 0,
       "missing_branches": 0
     },
     {
       "module": "exceptions.py",
       "coverage": 100.0,
-      "statements": 2,
-      "branches": 0,
       "missing_lines": 0,
       "missing_branches": 0
     },
     {
       "module": "parity.py",
       "coverage": 100.0,
-      "statements": 18,
-      "branches": 2,
       "missing_lines": 0,
       "missing_branches": 0
     }
-  ]
+  ],
+  "coverage_target_percent": 100.0,
+  "coverage_phase": "coverage-to-100 milestone 1",
+  "coverage_exclusions_added": 0
 }
