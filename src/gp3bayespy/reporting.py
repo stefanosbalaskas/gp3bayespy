@@ -440,7 +440,7 @@ def create_diagnostic_dashboard_figures(x: DiagnosticDashboard) -> FigureSet:
         plots["recovery_coverage"] = plot_recovery_coverage(z["recovery"])
     if not plots:
         raise GP3BayesError("No dashboard component can be plotted.")
-    return create_figure_set(title=x.label or "gp3bayes diagnostic dashboard", **plots)
+    return create_figure_set(plots, title=x.label or "gp3bayes diagnostic dashboard")
 
 
 def write_diagnostic_dashboard_report(
