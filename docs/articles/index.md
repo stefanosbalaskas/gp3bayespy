@@ -5,6 +5,7 @@ All **59 canonical gp3bayes 0.5.0 articles** are available as Python-facing guid
 <div class="gp-stats">
   <div class="gp-stat"><strong>59</strong><span>guided articles</span></div>
   <div class="gp-stat"><strong>6</strong><span>workflow collections</span></div>
+  <div class="gp-stat"><strong>6</strong><span>supplementary visual galleries</span></div>
   <div class="gp-stat"><strong>458</strong><span>public functions covered by the package</span></div>
   <div class="gp-stat"><strong>0.5.0</strong><span>frozen R reference</span></div>
   <div class="gp-stat"><strong>Search</strong><span>use the site search for function or concept names</span></div>
@@ -120,6 +121,21 @@ Advanced dynamics, binocular models, Gaussian processes, ARMA, robust distributi
 - [Experimental Interpretable Pupil Response Shape](experimental-pupil-response-shape.md)
 - [Governed Predictive Model Comparison](governed-pupil-model-comparison.md)
 - [Synthetic Advanced Pupillometry Gallery](synthetic-advanced-pupillometry-gallery.md)
+
+</div>
+
+## Supplementary visual galleries
+
+These are additional Python visual guides and are **not** counted among the frozen 59 canonical gp3bayes articles.
+
+<div class="gp-link-grid" markdown>
+
+- [Predictive Diagnostics Gallery](predictive-diagnostics-gallery.md)
+- [Posterior Diagnostics Gallery](posterior-diagnostics-gallery.md)
+- [PSIS-LOO Influence Gallery](loo-influence-gallery.md)
+- [Sensitivity and Evidence Gallery](sensitivity-and-recovery-gallery.md)
+- [Publication Graphics Gallery](publication-graphics-gallery.md)
+- [Dynamic Pupillometry Gallery](pupil-gallery.md)
 
 </div>
 

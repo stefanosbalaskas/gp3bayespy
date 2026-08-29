@@ -1,0 +1,242 @@
+[
+  {
+    "group": "predictive",
+    "name": "binary-roc",
+    "title": "Binary ROC curve",
+    "file": "predictive/binary-roc.png",
+    "functions": "binary_roc_curve(); plot_binary_roc()",
+    "article": "advanced-predictive-diagnostics"
+  },
+  {
+    "group": "predictive",
+    "name": "binary-precision-recall",
+    "title": "Precision-recall curve",
+    "file": "predictive/binary-precision-recall.png",
+    "functions": "binary_precision_recall_curve(); plot_binary_precision_recall()",
+    "article": "advanced-predictive-diagnostics"
+  },
+  {
+    "group": "predictive",
+    "name": "binary-calibration",
+    "title": "Binary calibration",
+    "file": "predictive/binary-calibration.png",
+    "functions": "plot_binary_calibration()",
+    "article": "advanced-predictive-diagnostics"
+  },
+  {
+    "group": "predictive",
+    "name": "binary-threshold-metrics",
+    "title": "Threshold diagnostics",
+    "file": "predictive/binary-threshold-metrics.png",
+    "functions": "plot_binary_threshold_metrics()",
+    "article": "prediction-calibration-and-scoring"
+  },
+  {
+    "group": "predictive",
+    "name": "prediction-intervals",
+    "title": "Prediction intervals",
+    "file": "predictive/prediction-intervals.png",
+    "functions": "plot_prediction_intervals()",
+    "article": "prediction-profiles-surfaces-and-contrasts"
+  },
+  {
+    "group": "predictive",
+    "name": "predictive-coverage",
+    "title": "Predictive coverage",
+    "file": "predictive/predictive-coverage.png",
+    "functions": "plot_predictive_coverage()",
+    "article": "predictive-distribution-and-calibration-uncertainty"
+  },
+  {
+    "group": "predictive",
+    "name": "predictive-residuals",
+    "title": "Predictive residuals",
+    "file": "predictive/predictive-residuals.png",
+    "functions": "plot_predictive_residuals()",
+    "article": "advanced-predictive-diagnostics"
+  },
+  {
+    "group": "posterior",
+    "name": "posterior-intervals",
+    "title": "Posterior intervals",
+    "file": "posterior/posterior-intervals.png",
+    "functions": "plot_posterior_intervals()",
+    "article": "posterior-exploration-and-graphics"
+  },
+  {
+    "group": "posterior",
+    "name": "posterior-areas",
+    "title": "Posterior areas",
+    "file": "posterior/posterior-areas.png",
+    "functions": "plot_posterior_areas()",
+    "article": "posterior-exploration-and-graphics"
+  },
+  {
+    "group": "posterior",
+    "name": "posterior-density",
+    "title": "Posterior density",
+    "file": "posterior/posterior-density.png",
+    "functions": "plot_posterior_density()",
+    "article": "posterior-exploration-and-graphics"
+  },
+  {
+    "group": "posterior",
+    "name": "posterior-correlations",
+    "title": "Posterior correlations",
+    "file": "posterior/posterior-correlations.png",
+    "functions": "plot_posterior_correlations()",
+    "article": "posterior-exploration-and-graphics"
+  },
+  {
+    "group": "posterior",
+    "name": "mcmc-quality",
+    "title": "MCMC quality inventory",
+    "file": "posterior/mcmc-quality.png",
+    "functions": "plot_mcmc_quality()",
+    "article": "posterior-diagnostics"
+  },
+  {
+    "group": "loo",
+    "name": "pointwise-elpd",
+    "title": "Pointwise ELPD-LOO",
+    "file": "loo/pointwise-elpd.png",
+    "functions": "plot_loo_pointwise_elpd()",
+    "article": "loo-influence-atlas"
+  },
+  {
+    "group": "loo",
+    "name": "pareto-vs-elpd",
+    "title": "Pareto-k versus ELPD",
+    "file": "loo/pareto-vs-elpd.png",
+    "functions": "plot_loo_pareto_vs_elpd()",
+    "article": "loo-influence-atlas"
+  },
+  {
+    "group": "loo",
+    "name": "influence-rank",
+    "title": "Ranked PSIS-LOO influence",
+    "file": "loo/influence-rank.png",
+    "functions": "plot_loo_influence_rank()",
+    "article": "loo-influence-atlas"
+  },
+  {
+    "group": "loo",
+    "name": "group-influence",
+    "title": "Grouped PSIS-LOO influence",
+    "file": "loo/group-influence.png",
+    "functions": "plot_loo_group_influence()",
+    "article": "grouped-loo-influence"
+  },
+  {
+    "group": "loo",
+    "name": "group-elpd",
+    "title": "Grouped predictive contribution",
+    "file": "loo/group-elpd.png",
+    "functions": "plot_loo_group_elpd()",
+    "article": "grouped-loo-influence"
+  },
+  {
+    "group": "sensitivity",
+    "name": "sensitivity-suite",
+    "title": "Sensitivity suite",
+    "file": "sensitivity/sensitivity-suite.png",
+    "functions": "plot_sensitivity_suite_gg()",
+    "article": "sensitivity-atlas"
+  },
+  {
+    "group": "sensitivity",
+    "name": "model-evidence",
+    "title": "Model evidence inventory",
+    "file": "sensitivity/model-evidence.png",
+    "functions": "plot_model_evidence_gg()",
+    "article": "evidence-graphics-and-governance"
+  },
+  {
+    "group": "sensitivity",
+    "name": "backend-parity",
+    "title": "Backend posterior parity",
+    "file": "sensitivity/backend-parity.png",
+    "functions": "plot_backend_parity_gg()",
+    "article": "backend-reliability"
+  },
+  {
+    "group": "sensitivity",
+    "name": "manifest-comparison",
+    "title": "Analysis-manifest comparison",
+    "file": "sensitivity/manifest-comparison.png",
+    "functions": "plot_manifest_comparison_gg()",
+    "article": "reproducible-analysis-manifests"
+  },
+  {
+    "group": "sensitivity",
+    "name": "design-support",
+    "title": "Design-support diagnostics",
+    "file": "sensitivity/design-support.png",
+    "functions": "plot_design_support_gg()",
+    "article": "pre-fit-design-diagnostics"
+  },
+  {
+    "group": "sensitivity",
+    "name": "missingness",
+    "title": "Missingness audit",
+    "file": "sensitivity/missingness.png",
+    "functions": "plot_missingness_gg()",
+    "article": "measurement-error-and-missing-pupil-data"
+  },
+  {
+    "group": "publication",
+    "name": "diagnostic-dashboard",
+    "title": "Diagnostic dashboard",
+    "file": "publication/diagnostic-dashboard.png",
+    "functions": "plot_diagnostic_dashboard()",
+    "article": "publication-registries-and-dashboards"
+  },
+  {
+    "group": "publication",
+    "name": "reporting-checklist",
+    "title": "Reporting checklist",
+    "file": "publication/reporting-checklist.png",
+    "functions": "plot_reporting_checklist()",
+    "article": "model-cards-and-reporting-inventories"
+  },
+  {
+    "group": "publication",
+    "name": "model-comparison",
+    "title": "Model comparison",
+    "file": "publication/model-comparison.png",
+    "functions": "plot_model_comparison()",
+    "article": "end-to-end-evidence-showcase"
+  },
+  {
+    "group": "publication",
+    "name": "model-weights",
+    "title": "Model weights",
+    "file": "publication/model-weights.png",
+    "functions": "plot_model_weights()",
+    "article": "end-to-end-evidence-showcase"
+  },
+  {
+    "group": "publication",
+    "name": "uncertainty-decomposition",
+    "title": "Uncertainty decomposition",
+    "file": "publication/uncertainty-decomposition.png",
+    "functions": "plot_uncertainty_decomposition()",
+    "article": "hierarchical-effects-and-uncertainty"
+  },
+  {
+    "group": "publication",
+    "name": "group-effects",
+    "title": "Group effects",
+    "file": "publication/group-effects.png",
+    "functions": "plot_group_effects()",
+    "article": "hierarchical-effect-atlas"
+  },
+  {
+    "group": "publication",
+    "name": "variance-components",
+    "title": "Variance components",
+    "file": "publication/variance-components.png",
+    "functions": "plot_variance_components()",
+    "article": "hierarchical-effect-atlas"
+  }
+]

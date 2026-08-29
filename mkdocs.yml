@@ -72,12 +72,20 @@ nav:
   - Learn:
       - Article library: articles/index.md
       - Plot gallery: plot-gallery.md
+      - Visual galleries:
+          - Predictive diagnostics: articles/predictive-diagnostics-gallery.md
+          - Posterior diagnostics: articles/posterior-diagnostics-gallery.md
+          - PSIS-LOO influence: articles/loo-influence-gallery.md
+          - Sensitivity & evidence: articles/sensitivity-and-recovery-gallery.md
+          - Publication graphics: articles/publication-graphics-gallery.md
+          - Dynamic pupillometry: articles/pupil-gallery.md
   - Reference:
       - API reference: reference/index.md
   - Project:
       - Citation: citation.md
       - Release v0.5.0: release.md
       - Governance: governance.md
+      - Coverage & visual QA: development/coverage.md
       - R → Python parity: development/parity.md
 
 not_in_nav: |
