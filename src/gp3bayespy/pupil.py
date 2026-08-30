@@ -4170,15 +4170,12 @@ def audit_pupil_missingness(
     finite = time.dropna().to_numpy(dtype=float)
     if len(np.unique(finite)) >= 2:
         breaks = np.unique(np.quantile(finite, np.linspace(0, 1, 6)))
-        if len(breaks) >= 2:
-            bins = pd.cut(
-                time.astype(float),
-                bins=[float(value) for value in breaks],
-                include_lowest=True,
-                duplicates="drop",
-            )
-        else:
-            bins = pd.Series(["all_times"] * len(time), index=time.index)
+        bins = pd.cut(
+            time.astype(float),
+            bins=[float(value) for value in breaks],
+            include_lowest=True,
+            duplicates="drop",
+        )
     else:
         bins = pd.Series(["all_times"] * len(time), index=time.index)
     missing_response = specification.data[response].isna()

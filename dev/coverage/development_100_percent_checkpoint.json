@@ -1,0 +1,49 @@
+{
+  "articles_ported": 59,
+  "articles_total": 59,
+  "base_commit": "c950066bb739943b1048f6904ae54d078d7b9011",
+  "branch": "development/coverage-to-100-20260829",
+  "branch_aware_coverage_percent": 100.0,
+  "branches": 3878,
+  "checkpoint": "exact_global_zero_exclusion_branch_coverage_100",
+  "coverage_configuration_exclusions": 0,
+  "coverage_exclusions_added": false,
+  "coverage_pragma_exclusions": 0,
+  "coverage_test_tranches": [
+    "tests/test_coverage_to_100_predictive_residual_j9.py",
+    "tests/test_coverage_to_100_nonpupil_compact_j10.py",
+    "tests/test_coverage_to_100_nonpupil_exact_j11.py",
+    "tests/test_coverage_to_100_nonpupil_final_j12.py",
+    "tests/test_coverage_to_100_pupil_residual_j13.py",
+    "tests/test_coverage_to_100_pupil_final_j14.py",
+    "tests/test_coverage_to_100_no_exclusion_optional_imports_j15.py"
+  ],
+  "date": "2026-08-31",
+  "known_runtime_warnings": [
+    "pupil.py synthetic advanced-fit coverage case may warn that covariance is not symmetric positive-semidefinite",
+    "pupil.py synthetic CRPS coverage case may warn about Mean of empty slice"
+  ],
+  "legacy_coverage_pragma_removals": [
+    "src/gp3bayespy/hierarchical_effects_advanced.py",
+    "src/gp3bayespy/posterior_validation_core.py",
+    "src/gp3bayespy/predictive.py",
+    "src/gp3bayespy/reporting.py",
+    "src/gp3bayespy/sensitivity.py"
+  ],
+  "missing_branches": 0,
+  "missing_statements": 0,
+  "package_version": "0.5.0",
+  "r_exports_implemented": 458,
+  "r_exports_total": 458,
+  "r_reference": "gp3bayes 0.5.0",
+  "release_tag_v0.5.0_must_remain_immutable": true,
+  "release_tag_v0.5.0_peeled_commit": "5840e7cb04640a1ea79a38cf91a7545e2a92d7ef",
+  "semantics_preserving_source_cleanups": [
+    "src/gp3bayespy/postfit_exploration.py",
+    "src/gp3bayespy/duration.py",
+    "src/gp3bayespy/ppc.py",
+    "src/gp3bayespy/pupil.py"
+  ],
+  "statements": 11945,
+  "tests_passed": 687
+}

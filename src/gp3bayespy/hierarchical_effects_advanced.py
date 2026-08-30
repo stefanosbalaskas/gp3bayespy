@@ -20,7 +20,7 @@ from .posterior import _posterior_components, _posterior_data_vars, _validate_fi
 def _mpl():
     try:
         import matplotlib.pyplot as plt  # type: ignore[import-not-found]
-    except Exception as exc:  # pragma: no cover - optional dependency
+    except Exception as exc:
         raise GP3BayesError(
             "Matplotlib is required for plotting; install gp3bayespy[plots]."
         ) from exc

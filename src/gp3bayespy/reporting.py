@@ -22,7 +22,7 @@ from .exceptions import GP3BayesError
 def _plt():
     try:
         import matplotlib.pyplot as plt
-    except ImportError as exc:  # pragma: no cover
+    except ImportError as exc:
         raise GP3BayesError("Matplotlib is required for publication graphics.") from exc
     return plt
 
