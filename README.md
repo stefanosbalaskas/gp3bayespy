@@ -131,10 +131,10 @@ The 0.5.0 release is frozen against the CRAN source archive `gp3bayes_0.5.0.tar.
 | Canonical articles | **59 / 59 ported** |
 | Public unrestricted `**kwargs` | **0** |
 | Released v0.5.0 test suite | **321 / 321 passing** |
-| Current development measured test suite | **689 / 689 passing** |
+| Current `main` measured test suite | **689 / 689 passing** |
 | Released v0.5.0 branch-aware coverage | **47.9482%** |
-| Current development branch-aware coverage | **100.00%** |
-| Current development coverage exclusions | **0** |
+| Current `main` branch-aware coverage | **100.00%** |
+| Current `main` coverage exclusions | **0** |
 | Source examples | **8 / 8** |
 | Installed-wheel examples | **8 / 8** |
 | Ruff / mypy | **PASS / PASS** |
