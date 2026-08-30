@@ -6,6 +6,8 @@
   "branch_aware_coverage_percent": 100.0,
   "branches": 3878,
   "checkpoint": "exact_global_zero_exclusion_branch_coverage_100",
+  "ci_portability_fix_commit_parent": "ffd89df0f07c33ca1301fd5b19f3cbe7c5d2dd4c",
+  "ci_portability_guard": "Explicitly covers fitting._importable() when a module is discoverable but raises during import, so exact coverage is invariant across CI environments.",
   "coverage_configuration_exclusions": 0,
   "coverage_exclusions_added": false,
   "coverage_pragma_exclusions": 0,
@@ -45,5 +47,5 @@
     "src/gp3bayespy/pupil.py"
   ],
   "statements": 11945,
-  "tests_passed": 687
+  "tests_passed": 688
 }
