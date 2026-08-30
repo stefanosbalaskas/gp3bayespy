@@ -35,6 +35,13 @@
   "missing_branches": 0,
   "missing_statements": 0,
   "package_version": "0.5.0",
+  "python311_coverage_trace_portability_fix": {
+    "commit_parent": "828ba6a0fd773830033c5528ca982cd07d92c218",
+    "function": "_importable",
+    "production_semantics_changed": false,
+    "reason": "Python 3.11/coverage.py did not attribute execution to a return statement located directly inside the exception handler even when the exception path was explicitly exercised. The equivalent failure-state assignment plus return outside the handler preserves behavior and yields stable line attribution across supported Python versions.",
+    "source": "src/gp3bayespy/fitting.py"
+  },
   "r_exports_implemented": 458,
   "r_exports_total": 458,
   "r_reference": "gp3bayes 0.5.0",
@@ -46,6 +53,6 @@
     "src/gp3bayespy/ppc.py",
     "src/gp3bayespy/pupil.py"
   ],
-  "statements": 11945,
+  "statements": 11946,
   "tests_passed": 688
 }
