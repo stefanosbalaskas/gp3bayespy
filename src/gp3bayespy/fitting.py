@@ -226,8 +226,10 @@ def _importable(package: str) -> bool:
             warnings.simplefilter("ignore")
             import_module(package)
     except Exception:
-        return False
-    return True
+        import_failed = True
+    else:
+        import_failed = False
+    return not import_failed
 
 
 def _pymc_available() -> bool:

@@ -22,7 +22,7 @@ from .exceptions import GP3BayesError
 def _mpl():
     try:
         import matplotlib.pyplot as plt
-    except ImportError as exc:  # pragma: no cover - optional plotting dependency
+    except ImportError as exc:
         raise GP3BayesError("Matplotlib is required for sensitivity plots.") from exc
     return plt
 

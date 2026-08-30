@@ -212,10 +212,7 @@ def _ess_1d(z: np.ndarray) -> float:
     rho_sum = 0.0
     for lag in range(1, max_lag, 2):
         r1 = np.dot(z[:-lag], z[lag:]) / ((n - lag) * var)
-        if lag + 1 <= max_lag:
-            r2 = np.dot(z[: -(lag + 1)], z[lag + 1 :]) / ((n - lag - 1) * var)
-        else:
-            r2 = 0.0
+        r2 = np.dot(z[: -(lag + 1)], z[lag + 1 :]) / ((n - lag - 1) * var)
         pair = r1 + r2
         if not np.isfinite(pair) or pair < 0:
             break

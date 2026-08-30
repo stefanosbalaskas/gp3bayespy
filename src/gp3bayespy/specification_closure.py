@@ -1608,6 +1608,7 @@ class SensitivityRun:
     automatic_selection: bool = False
     reference_fit: Any | None = None
     interpretation: str = "Sensitivity analysis reports declared perturbations without automatic exclusion or model selection."
+    fits: Mapping[str, Any] | None = None
 
 
 def _fit_spec(

@@ -143,8 +143,7 @@ def _duration_summary(
         levels = sorted(pd.unique(condition_values).tolist())
         if len(levels) == 2:
             medians = [float(np.median(y_valid[condition_values == level])) for level in levels]
-            if all(math.isfinite(value) for value in medians) and medians[0] > 0:
-                condition_ratio = medians[1] / medians[0]
+            condition_ratio = medians[1] / medians[0]
 
     item_log_median_sd = math.nan
     if item_values is not None:

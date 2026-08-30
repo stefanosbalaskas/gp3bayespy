@@ -2625,6 +2625,8 @@ def specify_advanced_pupil_timecourse_model(
         raise GP3BayesError("Unsupported advanced pupil family.")
     if residual_scale not in {"constant", "condition", "time", "condition_time"}:
         raise GP3BayesError("Unsupported residual-scale declaration.")
+    if missingness_model is not None and not isinstance(missingness_model, PupilMissingnessSpec):
+        raise GP3BayesError("`missingness_model` must come from create_pupil_missingness_spec().")
     ac = _ac_spec(autocorrelation)
     if family == "student" and ac is not None:
         raise GP3BayesError(
@@ -2685,10 +2687,6 @@ def specify_advanced_pupil_timecourse_model(
                     "Measurement-error standard-error columns must be numeric, finite, strictly positive, and non-missing."
                 )
     if missingness_model is not None:
-        if not isinstance(missingness_model, PupilMissingnessSpec):
-            raise GP3BayesError(
-                "`missingness_model` must come from create_pupil_missingness_spec()."
-            )
         unknown = set(
             (*missingness_model.predictors, *missingness_model.auxiliary_predictors)
         ).difference(data.columns)
@@ -4172,15 +4170,12 @@ def audit_pupil_missingness(
     finite = time.dropna().to_numpy(dtype=float)
     if len(np.unique(finite)) >= 2:
         breaks = np.unique(np.quantile(finite, np.linspace(0, 1, 6)))
-        if len(breaks) >= 2:
-            bins = pd.cut(
-                time.astype(float),
-                bins=[float(value) for value in breaks],
-                include_lowest=True,
-                duplicates="drop",
-            )
-        else:
-            bins = pd.Series(["all_times"] * len(time), index=time.index)
+        bins = pd.cut(
+            time.astype(float),
+            bins=[float(value) for value in breaks],
+            include_lowest=True,
+            duplicates="drop",
+        )
     else:
         bins = pd.Series(["all_times"] * len(time), index=time.index)
     missing_response = specification.data[response].isna()
@@ -4322,7 +4317,7 @@ def compare_pupil_autocorrelation(
     for name, fit in models.items():
         if not isinstance(fit, AdvancedPupilFit):
             raise GP3BayesError("All models must be advanced pupil fits.")
-        data = fit.translation.data
+        data = fit.translation.data.reset_index(drop=True)
         response = str(fit.specification.mapping["response"])
         observed = pd.to_numeric(data[response], errors="coerce").to_numpy(dtype=float)
         mean = np.nanmean(_advanced_training_prediction(fit, ndraws), axis=0)
@@ -4409,7 +4404,7 @@ def pupil_residual_spectrum(
 ) -> PupilResidualSpectrum:
     if not isinstance(fit, AdvancedPupilFit):
         raise GP3BayesError("Expected an advanced fit.")
-    data = fit.translation.data
+    data = fit.translation.data.reset_index(drop=True)
     response = str(fit.specification.mapping["response"])
     observed = pd.to_numeric(data[response], errors="coerce").to_numpy(dtype=float)
     residual = observed - np.nanmean(_advanced_training_prediction(fit, ndraws), axis=0)
@@ -6149,7 +6144,17 @@ def plot_pupil_gp_hyperparameters(x: PupilGPHyperparameters):
 def plot_pupil_temporal_dependence(x: PupilTemporalDependenceAudit):
     table = x.series
     fig, ax = _mpl_axes("Pupil temporal dependence", "Lag-1 correlation", "Series")
-    ax.hist(table["lag1"].dropna().to_numpy(dtype=float), bins=min(20, max(len(table), 5)))
+    values = table["lag1"].dropna().to_numpy(dtype=float)
+    if values.size:
+        spread = float(np.ptp(values))
+        bins = (
+            1
+            if not np.isfinite(spread) or np.isclose(spread, 0.0, rtol=1e-12, atol=1e-12)
+            else min(20, max(len(values), 5))
+        )
+        ax.hist(values, bins=bins)
+    else:
+        ax.text(0.5, 0.5, "No finite lag-1 correlations", ha="center")
     return fig
 
 

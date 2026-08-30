@@ -15,7 +15,7 @@ from .postfit_exploration import extract_sampler_diagnostics
 def _mpl():
     try:
         import matplotlib.pyplot as plt  # type: ignore[import-not-found]
-    except Exception as exc:  # pragma: no cover
+    except Exception as exc:
         raise GP3BayesError(
             "Matplotlib is required for plotting; install gp3bayespy[plots]."
         ) from exc

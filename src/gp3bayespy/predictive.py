@@ -2720,7 +2720,7 @@ def binary_calibration_uncertainty_table(x: _BinaryCalibrationUncertainty) -> pd
 def _plt():
     try:
         import matplotlib.pyplot as plt
-    except ImportError as exc:  # pragma: no cover - optional plotting dependency
+    except ImportError as exc:
         raise GP3BayesError("Matplotlib is required for plotting.") from exc
     return plt
 
