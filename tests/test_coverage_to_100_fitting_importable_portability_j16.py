@@ -14,3 +14,12 @@ def test_importable_returns_false_when_discoverable_module_import_fails(monkeypa
 
     assert fitting._importable("synthetic_discoverable_but_broken") is False
     fitting._importable.cache_clear()
+
+
+def test_importable_returns_true_when_discoverable_module_import_succeeds(monkeypatch):
+    fitting._importable.cache_clear()
+    monkeypatch.setattr(fitting, "find_spec", lambda package: object())
+    monkeypatch.setattr(fitting, "import_module", lambda package: object())
+
+    assert fitting._importable("synthetic_discoverable_and_importable") is True
+    fitting._importable.cache_clear()

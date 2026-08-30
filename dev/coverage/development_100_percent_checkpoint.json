@@ -6,6 +6,16 @@
   "branch_aware_coverage_percent": 100.0,
   "branches": 3878,
   "checkpoint": "exact_global_zero_exclusion_branch_coverage_100",
+  "ci_environment_invariant_importability_coverage": {
+    "commit_parent": "1568b679e3c29a6c3bb34bc2e5b34c88deaee2d4",
+    "explicit_outcomes": [
+      "discoverable module import raises -> False",
+      "discoverable module import succeeds -> True"
+    ],
+    "reason": "Do not rely on incidental availability of optional backends on CI runners. Both execution outcomes of fitting._importable() are now driven deterministically.",
+    "source": "src/gp3bayespy/fitting.py",
+    "test": "tests/test_coverage_to_100_fitting_importable_portability_j16.py"
+  },
   "ci_portability_fix_commit_parent": "ffd89df0f07c33ca1301fd5b19f3cbe7c5d2dd4c",
   "ci_portability_guard": "Explicitly covers fitting._importable() when a module is discoverable but raises during import, so exact coverage is invariant across CI environments.",
   "coverage_configuration_exclusions": 0,
@@ -54,5 +64,5 @@
     "src/gp3bayespy/pupil.py"
   ],
   "statements": 11946,
-  "tests_passed": 688
+  "tests_passed": 689
 }
