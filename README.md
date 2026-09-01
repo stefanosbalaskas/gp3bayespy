@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="https://raw.githubusercontent.com/stefanosbalaskas/gp3bayespy/main/docs/assets/python-suite-logo.png" width="260" alt="Python Suite research packages logo">
+
 # gp3bayespy
 
 **Contract-first Bayesian workflows for hierarchical behavioural data in Python**
