@@ -14,8 +14,8 @@ theme:
   custom_dir: overrides
   language: en
   favicon: assets/favicon.svg
+  logo: assets/python-suite-logo.png
   icon:
-    logo: material/chart-line
     repo: fontawesome/brands/github
   font:
     text: Inter
