@@ -18,7 +18,7 @@ PR #129 is pinned to gpbiometricspy merge SHA `d078e0366ace49c3ebeb2f6800bad6394
 - 19 unchanged audited structural arcs, with 0 unexpected, 0 stale and 0 unaudited debt;
 - frozen `gpbiometrics 2.0.0` parity unchanged at 406/406.
 
-[Read the crossed participant–item random-slope guide](https://stefanosbalaskas.github.io/gpbiometricspy/methods/crossed-random-slopes-location-scale/)
+[Read the crossed participant–item random-slope guide](https://github.com/stefanosbalaskas/gpbiometricspy/blob/d078e0366ace49c3ebeb2f6800bad6394d70631e/docs/methods/crossed-random-slopes-location-scale.md)
 
 [Open gpbiometricspy PR #129](https://github.com/stefanosbalaskas/gpbiometricspy/pull/129)
 
