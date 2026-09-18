@@ -37,6 +37,14 @@ Twelve small scripts exercise the main workflow families. They are intentionally
 </div>
 
 <div class="gp-example-card">
+  <span class="gp-card-tag">Validation</span>
+  <h3>Simulation/recovery planning</h3>
+  <p>Generate weak, moderate, and strong known-truth mediation scenarios and verify the same preparation/model contract before backend-enabled recovery studies.</p>
+  <code>python examples/multilevel_gaze_mediation_simulation_recovery_contract.py</code>
+  <a href="https://github.com/stefanosbalaskas/gp3bayespy/blob/main/examples/multilevel_gaze_mediation_simulation_recovery_contract.py">View source →</a>
+</div>
+
+<div class="gp-example-card">
   <span class="gp-card-tag">Foundation</span>
   <h3>Binary workflow</h3>
   <p>Simulation → preparation → specification → prior predictive checking.</p>
