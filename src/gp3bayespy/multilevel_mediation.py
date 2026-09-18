@@ -927,18 +927,50 @@ def prior_predictive_check_mediation(
     return pd.DataFrame(rows)
 
 
+def _same_comparison_observations(
+    reference: MultilevelMediationSpecification,
+    candidate: MultilevelMediationSpecification,
+) -> bool:
+    """Return whether two specifications contain the same ordered responses."""
+    if reference.mediator_col != candidate.mediator_col or reference.outcome_col != candidate.outcome_col:
+        return False
+    if reference.analysis_rows != candidate.analysis_rows:
+        return False
+    ref_keys = reference.data[[reference.participant_col, reference.trial_col]].reset_index(drop=True)
+    cand_keys = candidate.data[[candidate.participant_col, candidate.trial_col]].reset_index(drop=True)
+    if not ref_keys.set_axis(["participant", "trial"], axis=1).equals(
+        cand_keys.set_axis(["participant", "trial"], axis=1)
+    ):
+        return False
+    ref_values = reference.data[[reference.mediator_col, reference.outcome_col]].reset_index(drop=True)
+    cand_values = candidate.data[[candidate.mediator_col, candidate.outcome_col]].reset_index(drop=True)
+    return ref_values.set_axis(["mediator", "outcome"], axis=1).equals(
+        cand_values.set_axis(["mediator", "outcome"], axis=1)
+    )
+
+
 def compare_multilevel_mediation_models(fits: Mapping[str, MultilevelMediationFit]) -> pd.DataFrame:
-    """Compare mediation fits using joint PSIS-LOO when ArviZ is available."""
+    """Compare mediation fits using joint PSIS-LOO on identical observations only."""
     if not isinstance(fits, Mapping) or len(fits) < 2:
         raise GP3BayesError("`fits` must contain at least two named mediation fits.")
+    fit_items = list(fits.items())
+    for label, fit in fit_items:
+        if not isinstance(fit, MultilevelMediationFit) or fit.backend_fit is None:
+            raise GP3BayesError(f"Model `{label}` is not a fitted mediation object.")
+    reference_label, reference_fit = fit_items[0]
+    for label, fit in fit_items[1:]:
+        if not _same_comparison_observations(reference_fit.specification, fit.specification):
+            raise GP3BayesError(
+                "PSIS-LOO comparison requires the same mediator/outcome observations in the same "
+                f"participant-trial order; `{label}` does not match `{reference_label}`. "
+                "Do not compare fits produced from different missingness/exclusion sets."
+            )
     try:
         az = import_module("arviz")
     except Exception as exc:
         raise BackendUnavailableError("ArviZ is required for PSIS-LOO model comparison.") from exc
     rows: list[dict[str, Any]] = []
-    for label, fit in fits.items():
-        if not isinstance(fit, MultilevelMediationFit) or fit.backend_fit is None:
-            raise GP3BayesError(f"Model `{label}` is not a fitted mediation object.")
+    for label, fit in fit_items:
         ll = getattr(fit.backend_fit, "log_likelihood", None)
         if ll is None or "M_obs" not in ll or "Y_obs" not in ll:
             raise GP3BayesError(f"Model `{label}` lacks mediator/outcome log-likelihood draws.")
