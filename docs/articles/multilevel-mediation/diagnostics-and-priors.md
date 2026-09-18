@@ -36,3 +36,8 @@ Refit the same declared model under at least one defensible narrower and wider c
 ## Random slopes
 
 Random slopes are optional and should reflect the repeated-measures design rather than a maximal-by-default rule. For the stable **simple** mediation model, the Python implementation recognizes `mediator_x`, `outcome_x`, and `outcome_m`. If both participant-specific `a` and `b` slopes are estimated, participant-specific indirect effects can be derived; otherwise the package does not fabricate them. Serial and moderated extensions currently use participant random intercepts only; non-empty random-slope requests are rejected explicitly rather than ignored.
+
+
+## Worked sensitivity example
+
+See [Worked example: prior sensitivity](prior-sensitivity-worked-example.md) for a reproducible narrow/default/wide coefficient-prior workflow and reporting language.
