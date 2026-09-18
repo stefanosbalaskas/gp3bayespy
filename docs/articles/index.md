@@ -38,9 +38,11 @@ Repeated-measures mechanism models that keep within- and between-participant pat
 - [Worked 100 × 20 trial example](multilevel-mediation/worked-example.md)
 - [Mediator and outcome family selection](multilevel-mediation/family-selection.md)
 - [Estimands, causal scope, and interpretation](multilevel-mediation/interpretation-and-estimands.md)
+- [Assumptions and limitations](multilevel-mediation/assumptions-and-limitations.md)
 - [Diagnostics and priors](multilevel-mediation/diagnostics-and-priors.md)
 - [Serial and moderated extensions](multilevel-mediation/serial-and-moderated.md)
 - [Reporting multilevel mediation](multilevel-mediation/reporting.md)
+- [Worked reporting example](multilevel-mediation/reporting-example.md)
 - [Troubleshooting and failure modes](multilevel-mediation/troubleshooting.md)
 
 </div>
