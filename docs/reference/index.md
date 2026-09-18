@@ -18,6 +18,7 @@ Use the site search for a function name, or choose a module below.
 <div class="gp-api-grid">
 <a class="gp-api-card" href="advanced-optional-workflows/"><strong>gp3bayespy.advanced_optional_workflows</strong><span>26 public functions</span></a>
 <a class="gp-api-card" href="binary/"><strong>gp3bayespy.binary</strong><span>12 public functions</span></a>
+<a class="gp-api-card" href="../articles/multilevel-mediation/reference/"><strong>gp3bayespy.multilevel_mediation</strong><span>trial-level within/between mediation API</span></a>
 <a class="gp-api-card" href="duration/"><strong>gp3bayespy.duration</strong><span>12 public functions</span></a>
 <a class="gp-api-card" href="postfit-exploration/"><strong>gp3bayespy.postfit_exploration</strong><span>16 public functions</span></a>
 <a class="gp-api-card" href="unified-workflow-api/"><strong>gp3bayespy.unified_workflow_api</strong><span>6 public functions</span></a>
