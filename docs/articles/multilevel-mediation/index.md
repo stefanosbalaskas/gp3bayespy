@@ -86,6 +86,7 @@ This is a deterministic synthetic illustration of the **linear-predictor product
 - [Assumptions and limitations](assumptions-and-limitations.md)
 - [Diagnostics and priors](diagnostics-and-priors.md)
 - [Worked prior-sensitivity example](prior-sensitivity-worked-example.md)
+- [Simulation and recovery planning](simulation-and-recovery.md)
 - [Model comparison for mediation](model-comparison.md)
 - [Serial and moderated extensions](serial-and-moderated.md)
 - [Reporting guidance](reporting.md)
@@ -100,5 +101,6 @@ This is a deterministic synthetic illustration of the **linear-predictor product
 - `examples/multilevel_gaze_mediation_failure_cases.py` demonstrates the explicit missingness gate and a balanced within-subject design where between-X paths are not estimable.
 - `examples/multilevel_gaze_mediation_family_contracts.py` validates lognormal, Gamma, beta, Bernoulli, Poisson, and negative-binomial mediator contracts without sampling.
 - `examples/multilevel_gaze_mediation_prior_sensitivity_contract.py` holds the data/model contract fixed while varying a declared coefficient-prior scale.
+- `examples/multilevel_gaze_mediation_simulation_recovery_contract.py` materializes weak, moderate, and strong known-truth design scenarios without faking a sampler run.
 
 These examples are synthetic and CI-small. Posterior examples belong in backend-enabled validation because sampling must never be faked.
