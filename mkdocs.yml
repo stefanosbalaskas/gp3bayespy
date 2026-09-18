@@ -62,6 +62,16 @@ nav:
       - Executable examples: examples/index.md
       - Migration from R: migration.md
   - Workflows:
+      - Trial-level gaze mediation:
+          - Overview: articles/multilevel-mediation/index.md
+          - Worked example: articles/multilevel-mediation/worked-example.md
+          - Family selection: articles/multilevel-mediation/family-selection.md
+          - Estimands & interpretation: articles/multilevel-mediation/interpretation-and-estimands.md
+          - Diagnostics & priors: articles/multilevel-mediation/diagnostics-and-priors.md
+          - Serial & moderated extensions: articles/multilevel-mediation/serial-and-moderated.md
+          - Reporting: articles/multilevel-mediation/reporting.md
+          - Troubleshooting: articles/multilevel-mediation/troubleshooting.md
+          - API map: articles/multilevel-mediation/reference.md
       - Binary models: articles/binary-end-to-end.md
       - Duration models: articles/duration-end-to-end.md
       - Predictive diagnostics: articles/advanced-predictive-diagnostics.md
