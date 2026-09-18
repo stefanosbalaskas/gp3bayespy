@@ -949,6 +949,36 @@ def _same_comparison_observations(
     )
 
 
+def _joint_pointwise_log_likelihood(mediator_ll: Any, outcome_ll: Any, *, expected_rows: int) -> Any:
+    """Align mediator/outcome pointwise log likelihoods before summing them."""
+    if hasattr(mediator_ll, "dims") and hasattr(outcome_ll, "dims"):
+        sample_dims = {"chain", "draw", "sample"}
+        mediator_obs_dims = [dim for dim in mediator_ll.dims if dim not in sample_dims]
+        outcome_obs_dims = [dim for dim in outcome_ll.dims if dim not in sample_dims]
+        if len(mediator_obs_dims) != 1 or len(outcome_obs_dims) != 1:
+            raise GP3BayesError(
+                "Mediator and outcome log-likelihood arrays must each have exactly one observation dimension."
+            )
+        mediator_dim = mediator_obs_dims[0]
+        outcome_dim = outcome_obs_dims[0]
+        if int(mediator_ll.sizes[mediator_dim]) != expected_rows or int(outcome_ll.sizes[outcome_dim]) != expected_rows:
+            raise GP3BayesError(
+                "Mediator/outcome log-likelihood observation dimensions do not match the analysis rows."
+            )
+        mediator_aligned = mediator_ll if mediator_dim == "observation" else mediator_ll.rename({mediator_dim: "observation"})
+        outcome_aligned = outcome_ll if outcome_dim == "observation" else outcome_ll.rename({outcome_dim: "observation"})
+        return mediator_aligned + outcome_aligned
+
+    mediator_array = np.asarray(mediator_ll)
+    outcome_array = np.asarray(outcome_ll)
+    if mediator_array.shape != outcome_array.shape or mediator_array.ndim < 1 or mediator_array.shape[-1] != expected_rows:
+        raise GP3BayesError(
+            "Mediator/outcome log-likelihood arrays must have matching shapes with the final dimension equal "
+            "to the number of analysis rows."
+        )
+    return mediator_array + outcome_array
+
+
 def compare_multilevel_mediation_models(fits: Mapping[str, MultilevelMediationFit]) -> pd.DataFrame:
     """Compare mediation fits using joint PSIS-LOO on identical observations only."""
     if not isinstance(fits, Mapping) or len(fits) < 2:
@@ -974,7 +1004,9 @@ def compare_multilevel_mediation_models(fits: Mapping[str, MultilevelMediationFi
         ll = getattr(fit.backend_fit, "log_likelihood", None)
         if ll is None or "M_obs" not in ll or "Y_obs" not in ll:
             raise GP3BayesError(f"Model `{label}` lacks mediator/outcome log-likelihood draws.")
-        joint = ll["M_obs"] + ll["Y_obs"]
+        joint = _joint_pointwise_log_likelihood(
+            ll["M_obs"], ll["Y_obs"], expected_rows=fit.specification.analysis_rows
+        )
         temp = fit.backend_fit.copy()
         try:
             temp.log_likelihood["joint"] = joint
