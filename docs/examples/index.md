@@ -1,6 +1,6 @@
 # Executable examples
 
-Twelve small scripts exercise the main workflow families. They are intentionally compact enough to read in one sitting and concrete enough to run as smoke tests.
+Thirteen small scripts exercise the main workflow families. They are intentionally compact enough to read in one sitting and concrete enough to run as smoke tests.
 
 <div class="gp-example-grid">
 
@@ -124,11 +124,12 @@ After installation, ordinary `python` is sufficient because `gp3bayespy` is impo
 2. `multilevel_gaze_mediation_failure_cases.py`
 3. `multilevel_gaze_mediation_prior_sensitivity_contract.py`
 4. `multilevel_gaze_mediation_family_contracts.py`
-5. `binary_workflow.py`
-6. `predictive_diagnostics.py`
-7. `loo_model_comparison.py`
-8. `sensitivity_workflow.py`
-9. `reproducibility_workflow.py`
-10. `pupil_workflow.py`
+5. `multilevel_gaze_mediation_simulation_recovery_contract.py`
+6. `binary_workflow.py`
+7. `predictive_diagnostics.py`
+8. `loo_model_comparison.py`
+9. `sensitivity_workflow.py`
+10. `reproducibility_workflow.py`
+11. `pupil_workflow.py`
 
 For a guided narrative rather than scripts, continue to the [Article library](../articles/index.md).
