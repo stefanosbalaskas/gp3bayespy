@@ -187,7 +187,7 @@ print(audit.status)</code></pre>
     <span>Real graphics generated from gp3bayespy workflows →</span>
   </a>
   <a href="/gp3bayespy/examples/">
-    <strong>10 executable examples</strong>
+    <strong>11 executable examples</strong>
     <span>Small scripts that run end to end →</span>
   </a>
   <a href="/gp3bayespy/articles/">
