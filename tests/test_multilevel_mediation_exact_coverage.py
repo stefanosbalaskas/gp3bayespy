@@ -167,14 +167,30 @@ class FakeArviz:
         return SimpleNamespace(elpd_loo=10 + offset, se=0.5, p_loo=1.2, warning=False)
 
 
+class FakeXArray:
+    def __init__(self, values, dims):
+        self.values = np.asarray(values)
+        self.dims = tuple(dims)
+        self.sizes = {dim: size for dim, size in zip(self.dims, self.values.shape)}
+    def rename(self, mapping):
+        return FakeXArray(self.values, [mapping.get(dim, dim) for dim in self.dims])
+    def __add__(self, other):
+        if self.dims != other.dims:
+            raise AssertionError(f"unaligned dims: {self.dims} != {other.dims}")
+        return FakeXArray(self.values + other.values, self.dims)
+    def __array__(self, dtype=None):
+        return np.asarray(self.values, dtype=dtype)
+
+
 class FakeBackendFit:
-    def __init__(self, offset=0.0):
+    def __init__(self, offset=0.0, n_rows=48):
         self.log_likelihood = {
-            "M_obs": np.ones((2, 3, 4)) * offset,
-            "Y_obs": np.ones((2, 3, 4)) * (offset + 0.1),
+            "M_obs": np.ones((2, 3, n_rows)) * offset,
+            "Y_obs": np.ones((2, 3, n_rows)) * (offset + 0.1),
         }
     def copy(self):
-        out = FakeBackendFit()
+        n_rows = int(np.asarray(self.log_likelihood["M_obs"]).shape[-1])
+        out = FakeBackendFit(n_rows=n_rows)
         out.log_likelihood = {k: np.array(v, copy=True) for k, v in self.log_likelihood.items()}
         return out
 
@@ -495,6 +511,26 @@ def test_model_comparison_success_and_failures(monkeypatch):
     )
     with pytest.raises(mm.GP3BayesError, match="same mediator/outcome observations"):
         mm.compare_multilevel_mediation_models({"a": fit1, "mismatch": mismatch_fit})
+
+    m = FakeXArray(np.ones((2, 3, base.analysis_rows)), ("chain", "draw", "observation"))
+    y = FakeXArray(np.ones((2, 3, base.analysis_rows)), ("chain", "draw", "y_obs"))
+    joint = mm._joint_pointwise_log_likelihood(m, y, expected_rows=base.analysis_rows)
+    assert joint.dims == ("chain", "draw", "observation")
+    m2 = FakeXArray(np.ones((2, 3, base.analysis_rows)), ("chain", "draw", "m_obs"))
+    y2 = FakeXArray(np.ones((2, 3, base.analysis_rows)), ("chain", "draw", "observation"))
+    assert mm._joint_pointwise_log_likelihood(m2, y2, expected_rows=base.analysis_rows).dims[-1] == "observation"
+    with pytest.raises(mm.GP3BayesError, match="exactly one observation dimension"):
+        mm._joint_pointwise_log_likelihood(
+            FakeXArray(np.ones((2, 3)), ("chain", "draw")), y, expected_rows=base.analysis_rows
+        )
+    with pytest.raises(mm.GP3BayesError, match="do not match the analysis rows"):
+        mm._joint_pointwise_log_likelihood(
+            FakeXArray(np.ones((2, 3, 2)), ("chain", "draw", "m_obs")),
+            FakeXArray(np.ones((2, 3, 2)), ("chain", "draw", "y_obs")),
+            expected_rows=base.analysis_rows,
+        )
+    with pytest.raises(mm.GP3BayesError, match="matching shapes"):
+        mm._joint_pointwise_log_likelihood(np.ones((2, 3, 4)), np.ones((2, 3, 5)), expected_rows=4)
 
     real_import = pyimportlib.import_module
     monkeypatch.setattr(mm, "import_module", lambda name: FakeArviz() if name == "arviz" else real_import(name))
