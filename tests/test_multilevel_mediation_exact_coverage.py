@@ -397,3 +397,204 @@ def test_flatten_posterior_and_sampler_diagnostics(monkeypatch):
     assert d2["treedepth_hits"] == 1
     d3 = mm._sampler_diagnostics(SimpleNamespace(), max_treedepth=6)
     assert d3["divergences"] == 0
+
+
+def test_convergence_effect_and_summary_failure_edges():
+    with pytest.raises(mm.GP3BayesError, match="MultilevelMediationFit"):
+        mm.check_mediation_convergence(object())
+    fit = passing_fit()
+    nanfit = mm.MultilevelMediationFit(
+        specification=fit.specification, posterior=fit.posterior,
+        sampler_diagnostics={"max_rhat": np.nan, "min_ess_bulk": np.nan, "divergences": 0, "treedepth_hits": 0},
+    )
+    conv = mm.check_mediation_convergence(nanfit)
+    assert "R-hat was not available" in conv.issues and "bulk ESS was not available" in conv.issues
+    with pytest.raises(mm.GP3BayesError, match="missing or non-finite"):
+        mm._effect_from_draws("x", np.array([]), .95, "x")
+    with pytest.raises(mm.GP3BayesError, match="missing or non-finite"):
+        mm._effect_from_draws("x", np.array([np.nan]), .95, "x")
+    with pytest.raises(mm.GP3BayesError, match="probability"):
+        mm._effect_from_draws("x", np.array([1., 2.]), 1.0, "x")
+    mm._require_acceptable_fit(fit, False)
+    with pytest.raises(mm.GP3BayesError, match="level"):
+        mm.posterior_indirect_effect(fit, level="bad")
+    fallback = passing_fit(posterior={"a_within": np.ones(5), "b_within": np.ones(5) * 2, "cprime_within": np.ones(5)})
+    assert mm.posterior_indirect_effect(fallback).mean == 2
+    with pytest.raises(mm.GP3BayesError, match="unavailable"):
+        mm.posterior_indirect_effect(fallback, level="between")
+    assert mm.estimate_indirect_effect(fallback).mean == 2
+    with pytest.raises(mm.GP3BayesError, match="level"):
+        mm.posterior_direct_effect(fit, level="bad")
+    with pytest.raises(mm.GP3BayesError, match="unavailable"):
+        mm.posterior_direct_effect(fallback, level="between")
+    with pytest.raises(mm.GP3BayesError, match="level"):
+        mm.posterior_total_effect(fit, level="bad")
+    assert mm.posterior_total_effect(fallback).mean == 3
+    no_c = passing_fit(posterior={"a_within": np.ones(5), "b_within": np.ones(5)})
+    with pytest.raises(mm.GP3BayesError, match="unavailable"):
+        mm.posterior_total_effect(no_c)
+    summary = mm.summarise_multilevel_mediation(no_c)
+    assert set(summary.effect) == {"a_within", "b_within", "indirect_within"}
+
+
+def test_predictive_checks_with_fake_backend(monkeypatch):
+    p = prepared()
+    spec = mm.specify_multilevel_gaze_mediation(p, random_slopes=())
+    fake_pm = FakePM(spec.analysis_rows)
+    monkeypatch.setattr(mm, "_load_pymc", lambda: fake_pm)
+    monkeypatch.setattr(mm, "_build_pymc_model", lambda s: fake_pm.model)
+    fit = passing_fit(p, backend_fit=object(), backend_model=fake_pm.model)
+    ppc = mm.posterior_predictive_check_mediation(fit, draws=2, seed=2)
+    assert list(ppc.variable) == ["M_obs", "Y_obs"]
+    assert np.isfinite(ppc.predictive_mean).all()
+    prior = mm.prior_predictive_check_mediation(spec, draws=3, seed=2)
+    assert (prior.draws == 3).all()
+
+    empty_fit = passing_fit()
+    with pytest.raises(mm.GP3BayesError, match="fitted backend model"):
+        mm.posterior_predictive_check_mediation(empty_fit)
+    with pytest.raises(mm.GP3BayesError, match="specification"):
+        mm.prior_predictive_check_mediation(object())
+
+    class NoPPC(FakePM):
+        def sample_posterior_predictive(self, *args, **kwargs): return SimpleNamespace()
+        def sample_prior_predictive(self, draws, random_seed): return SimpleNamespace()
+    bad = NoPPC(spec.analysis_rows)
+    monkeypatch.setattr(mm, "_load_pymc", lambda: bad)
+    with pytest.raises(mm.GP3BayesError, match="posterior predictive"):
+        mm.posterior_predictive_check_mediation(fit)
+    monkeypatch.setattr(mm, "_build_pymc_model", lambda s: bad.model)
+    with pytest.raises(mm.GP3BayesError, match="prior predictive"):
+        mm.prior_predictive_check_mediation(spec)
+
+
+def test_model_comparison_success_and_failures(monkeypatch):
+    fit1 = passing_fit(backend_fit=FakeBackendFit(0.0), backend_model=FakeModel())
+    fit2 = passing_fit(backend_fit=FakeBackendFit(1.0), backend_model=FakeModel())
+    with pytest.raises(mm.GP3BayesError, match="at least two"):
+        mm.compare_multilevel_mediation_models({"one": fit1})
+
+    real_import = pyimportlib.import_module
+    monkeypatch.setattr(mm, "import_module", lambda name: FakeArviz() if name == "arviz" else real_import(name))
+    out = mm.compare_multilevel_mediation_models({"a": fit1, "b": fit2})
+    assert list(out.model) == ["b", "a"]
+    with pytest.raises(mm.GP3BayesError, match="not a fitted"):
+        mm.compare_multilevel_mediation_models({"a": fit1, "bad": object()})
+    badfit = passing_fit(backend_fit=SimpleNamespace(log_likelihood={}), backend_model=FakeModel())
+    with pytest.raises(mm.GP3BayesError, match="lacks mediator/outcome"):
+        mm.compare_multilevel_mediation_models({"a": fit1, "bad": badfit})
+    monkeypatch.setattr(mm, "import_module", lambda name: FakeArviz(loo_fail=True) if name == "arviz" else real_import(name))
+    with pytest.raises(mm.GP3BayesError, match="Could not compute"):
+        mm.compare_multilevel_mediation_models({"a": fit1, "b": fit2})
+    def no_arviz(name):
+        if name == "arviz": raise ImportError("missing")
+        return real_import(name)
+    monkeypatch.setattr(mm, "import_module", no_arviz)
+    with pytest.raises(mm.BackendUnavailableError, match="ArviZ"):
+        mm.compare_multilevel_mediation_models({"a": fit1, "b": fit2})
+
+
+def test_plots_reports_and_simulation_guards(monkeypatch):
+    import matplotlib.pyplot as plt
+    fit = passing_fit()
+    ax = mm.plot_indirect_effect_distribution(fit)
+    assert ax.get_title()
+    fig, supplied = plt.subplots()
+    assert mm.plot_indirect_effect_distribution(fit, ax=supplied) is supplied
+    ax2 = mm.plot_mediation_posteriors(fit)
+    assert ax2.get_title()
+    fig2, supplied2 = plt.subplots()
+    assert mm.plot_mediation_posteriors(fit, ax=supplied2) is supplied2
+
+    participant = passing_fit(posterior={**fit.posterior, "participant_indirect_within": np.ones((10, 3))})
+    ax3 = mm.plot_participant_mediation_effects(participant)
+    assert ax3.get_xlabel() == "Participant"
+    with pytest.raises(mm.GP3BayesError, match="Participant-specific"):
+        mm.plot_participant_mediation_effects(fit)
+
+    failed = mm.MultilevelMediationFit(
+        specification=fit.specification, posterior=fit.posterior,
+        sampler_diagnostics={"max_rhat": 1.2, "min_ess_bulk": 10, "divergences": 1, "treedepth_hits": 1},
+    )
+    with pytest.raises(mm.GP3BayesError, match="substantive report"):
+        mm.report_multilevel_gaze_mediation(failed)
+    assert "Sampler diagnostics status: fail" in mm.report_multilevel_gaze_mediation(failed, require_convergence=False)
+    with pytest.raises(mm.GP3BayesError, match="at least two participants"):
+        mm.simulate_multilevel_gaze_mediation(n_participants=1)
+    with pytest.raises(mm.GP3BayesError, match="two trials"):
+        mm.simulate_multilevel_gaze_mediation(trials_per_participant=1)
+
+    real_import = pyimportlib.import_module
+    def no_mpl(name):
+        if name == "matplotlib.pyplot": raise ImportError("no mpl")
+        return real_import(name)
+    monkeypatch.setattr(mm, "import_module", no_mpl)
+    with pytest.raises(mm.BackendUnavailableError, match="Matplotlib"):
+        mm.plot_indirect_effect_distribution(fit)
+    with pytest.raises(mm.BackendUnavailableError, match="Matplotlib"):
+        mm.plot_mediation_posteriors(fit)
+    with pytest.raises(mm.BackendUnavailableError, match="Matplotlib"):
+        mm.plot_participant_mediation_effects(participant)
+
+
+def test_select_rows_and_serial_spec_edge_cases(monkeypatch):
+    p = augment_serial(prepared())
+    d = p.data
+    required = ["participant_id", "trust"]
+    with pytest.raises(mm.GP3BayesError, match="missingness_policy"):
+        mm._select_analysis_rows(d, required=required, missingness_policy="bad")
+    d2 = d.copy(); d2.loc[d2.index[0], "trust"] = np.nan
+    with pytest.raises(mm.GP3BayesError, match="explicit `missingness_policy`"):
+        mm._select_analysis_rows(d2, required=required, missingness_policy="error")
+    a, ex = mm._select_analysis_rows(d2, required=required, missingness_policy="complete_case")
+    assert len(ex) == 1 and len(a) == len(d2)-1
+    d3 = d.copy(); d3["mediation_analysis_eligible"] = False
+    with pytest.raises(mm.GP3BayesError, match="No rows remain"):
+        mm._select_analysis_rows(d3, required=required, missingness_policy="quality_eligible")
+
+    with pytest.raises(mm.GP3BayesError, match="MediationPriorSpecification"):
+        mm.specify_multilevel_serial_gaze_mediation(p, priors={"bad": 1})
+    q = copy.deepcopy(p); q.data = q.data.drop(columns=["M2_within"])
+    with pytest.raises(mm.GP3BayesError, match="missing model columns"):
+        mm.specify_multilevel_serial_gaze_mediation(q)
+    q = copy.deepcopy(p); q.data = q.data[q.data.participant_id.eq(q.data.participant_id.iloc[0])].copy()
+    with pytest.raises(mm.GP3BayesError, match="At least two participants"):
+        mm.specify_multilevel_serial_gaze_mediation(q)
+    flat = augment_serial(prepared(), constant=True)
+    with pytest.raises(mm.GP3BayesError, match="serial indirect effect is not estimable"):
+        mm.specify_multilevel_serial_gaze_mediation(flat)
+
+
+def test_serial_build_fit_and_effects(monkeypatch):
+    p = augment_serial(prepared())
+    spec = mm.specify_multilevel_serial_gaze_mediation(p)
+    fake = FakePM(spec.analysis_rows)
+    monkeypatch.setattr(mm, "_load_pymc", lambda: fake)
+    assert mm._build_serial_pymc_model(spec) is fake.model
+    monkeypatch.setattr(mm, "_sampler_diagnostics", lambda idata, max_treedepth: {"max_rhat":1.0,"min_ess_bulk":1000,"divergences":0,"treedepth_hits":0})
+    fit = mm.fit_multilevel_serial_gaze_mediation(p, chains=2, draws=50, tune=0, cores=1)
+    assert fit.specification.model_kind == "serial"
+    fit2 = mm.MultilevelMediationFit(
+        specification=fit.specification,
+        posterior={"serial_indirect_within": np.ones(10), "serial_indirect_between": np.ones(10)*2},
+        sampler_diagnostics={"max_rhat":1.0,"min_ess_bulk":1000,"divergences":0,"treedepth_hits":0},
+    )
+    assert mm.posterior_serial_indirect_effect(fit2).mean == 1
+    assert mm.posterior_serial_indirect_effect(fit2, level="between").mean == 2
+    with pytest.raises(mm.GP3BayesError, match="level"):
+        mm.posterior_serial_indirect_effect(fit2, level="bad")
+    missing = mm.MultilevelMediationFit(specification=fit.specification, posterior={}, sampler_diagnostics=fit2.sampler_diagnostics)
+    with pytest.raises(mm.GP3BayesError, match="unavailable"):
+        mm.posterior_serial_indirect_effect(missing)
+    with pytest.raises(mm.GP3BayesError, match="not a serial"):
+        mm.posterior_serial_indirect_effect(passing_fit())
+
+    monkeypatch.setattr(mm, "_sampler_diagnostics", lambda idata, max_treedepth: {"max_rhat":1.2,"min_ess_bulk":10,"divergences":1,"treedepth_hits":0})
+    with pytest.warns(RuntimeWarning, match="Serial mediation fit failed"):
+        mm.fit_multilevel_serial_gaze_mediation(p, chains=2, draws=50, tune=0, cores=1)
+
+
+def test_moderated_spec_build_fit_and_effect_edges(monkeypatch):
+    p = augment_moderator(prepared())
+    with pytest.raises(mm.GP3BayesError, match="moderation_path"):
+        mm.specify_multilevel_moderated_gaze_mediation(p, moderation_path="x")
