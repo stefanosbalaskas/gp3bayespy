@@ -1004,3 +1004,7 @@ __all__ = [
     "write_publication_registry",
     "write_reproducibility_report",
 ]
+
+from . import multilevel_mediation as _multilevel_mediation
+from .multilevel_mediation import *
+__all__ = list(dict.fromkeys([*__all__, *_multilevel_mediation.__all__]))
