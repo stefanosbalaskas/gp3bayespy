@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="300" viewBox="0 0 960 300" role="img" aria-labelledby="title desc">
+<title id="title">Within-person indirect effect path</title><desc id="desc">X within predicts M within by path a and M within predicts Y by path b. The coefficient product a times b is reported on the linear predictor product scale.</desc>
+<style>text{font-family:system-ui,sans-serif;fill:#222}.node{fill:#f7f7fb;stroke:#5b5f97;stroke-width:2}.arrow{stroke:#444;stroke-width:2;marker-end:url(#a)}.big{font-size:22px;font-weight:650}.small{font-size:17px}</style><defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#444"/></marker></defs>
+<rect class="node" x="70" y="75" rx="14" width="200" height="90"/><text class="big" x="170" y="115" text-anchor="middle">X within</text><text class="small" x="170" y="143" text-anchor="middle">trial manipulation</text>
+<rect class="node" x="380" y="75" rx="14" width="200" height="90"/><text class="big" x="480" y="115" text-anchor="middle">M within</text><text class="small" x="480" y="143" text-anchor="middle">gaze mediator</text>
+<rect class="node" x="690" y="75" rx="14" width="200" height="90"/><text class="big" x="790" y="115" text-anchor="middle">Y</text><text class="small" x="790" y="143" text-anchor="middle">decision/outcome</text>
+<line class="arrow" x1="270" y1="120" x2="375" y2="120"/><text class="big" x="322" y="102" text-anchor="middle">aW</text><line class="arrow" x1="580" y1="120" x2="685" y2="120"/><text class="big" x="632" y="102" text-anchor="middle">bW</text>
+<text class="big" x="480" y="225" text-anchor="middle">Indirect effect = aW × bW</text><text class="small" x="480" y="255" text-anchor="middle">For nonlinear families: coefficient product on the linear-predictor scale, not a probability-scale natural indirect effect.</text>
+</svg>
