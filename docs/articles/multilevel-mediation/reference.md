@@ -38,3 +38,8 @@
 - `specify_multilevel_moderated_gaze_mediation()`
 - `fit_multilevel_moderated_gaze_mediation()`
 - `posterior_conditional_indirect_effect()`
+
+
+## Generated full module reference
+
+For signatures, parameter documentation, return contracts, and source-linked docstrings, use the [generated multilevel mediation API reference](../../reference/multilevel-mediation.md).
