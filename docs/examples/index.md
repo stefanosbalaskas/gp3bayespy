@@ -1,8 +1,24 @@
 # Executable examples
 
-Eight small scripts exercise the main workflow families. They are intentionally compact enough to read in one sitting and concrete enough to run as smoke tests.
+Ten small scripts exercise the main workflow families. They are intentionally compact enough to read in one sitting and concrete enough to run as smoke tests.
 
 <div class="gp-example-grid">
+
+<div class="gp-example-card">
+  <span class="gp-card-tag">Mediation</span>
+  <h3>Multilevel gaze mediation contract</h3>
+  <p>Simulate repeated trials, prepare within/between components, specify the Bayesian model, and inspect estimable paths without requiring a sampler run.</p>
+  <code>python examples/multilevel_gaze_mediation_contract.py</code>
+  <a href="https://github.com/stefanosbalaskas/gp3bayespy/blob/main/examples/multilevel_gaze_mediation_contract.py">View source →</a>
+</div>
+
+<div class="gp-example-card">
+  <span class="gp-card-tag">Guardrails</span>
+  <h3>Mediation failure cases</h3>
+  <p>Exercise missingness, non-estimable paths, unsupported random slopes, and family-support errors explicitly.</p>
+  <code>python examples/multilevel_gaze_mediation_failure_cases.py</code>
+  <a href="https://github.com/stefanosbalaskas/gp3bayespy/blob/main/examples/multilevel_gaze_mediation_failure_cases.py">View source →</a>
+</div>
 
 <div class="gp-example-card">
   <span class="gp-card-tag">Foundation</span>
@@ -80,11 +96,13 @@ After installation, ordinary `python` is sufficient because `gp3bayespy` is impo
 
 ## Suggested order
 
-1. `binary_workflow.py`
-2. `predictive_diagnostics.py`
-3. `loo_model_comparison.py`
-4. `sensitivity_workflow.py`
-5. `reproducibility_workflow.py`
-6. `pupil_workflow.py`
+1. `multilevel_gaze_mediation_contract.py`
+2. `multilevel_gaze_mediation_failure_cases.py`
+3. `binary_workflow.py`
+4. `predictive_diagnostics.py`
+5. `loo_model_comparison.py`
+6. `sensitivity_workflow.py`
+7. `reproducibility_workflow.py`
+8. `pupil_workflow.py`
 
 For a guided narrative rather than scripts, continue to the [Article library](../articles/index.md).
