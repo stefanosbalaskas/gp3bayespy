@@ -24,7 +24,7 @@
 - `posterior_direct_effect()`
 - `posterior_total_effect()`
 - `summarise_multilevel_mediation()`
-- `compare_multilevel_mediation_models()`
+- `compare_multilevel_mediation_models()` — PSIS-LOO comparison; requires identical ordered mediator/outcome observations across fits.
 - `check_mediation_convergence()`
 - `prior_predictive_check_mediation()`
 - `posterior_predictive_check_mediation()`
