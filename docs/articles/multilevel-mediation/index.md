@@ -82,9 +82,11 @@ This is a deterministic synthetic illustration of the **linear-predictor product
 - [Worked AI-advice example](worked-example.md)
 - [Choosing mediator and outcome families](family-selection.md)
 - [Interpretation and estimands](interpretation-and-estimands.md)
+- [Assumptions and limitations](assumptions-and-limitations.md)
 - [Diagnostics and priors](diagnostics-and-priors.md)
 - [Serial and moderated extensions](serial-and-moderated.md)
 - [Reporting guidance](reporting.md)
+- [Worked reporting example](reporting-example.md)
 - [Troubleshooting](troubleshooting.md)
 - [API map](reference.md)
 
