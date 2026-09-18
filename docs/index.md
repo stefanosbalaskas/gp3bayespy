@@ -15,7 +15,7 @@ hide:
     <div class="gp-actions">
       <a class="gp-btn gp-btn--primary" href="/gp3bayespy/getting-started/">Get started</a>
       <a class="gp-btn gp-btn--secondary" href="/gp3bayespy/reference/">Browse the API</a>
-      <a class="gp-btn gp-btn--ghost" href="/gp3bayespy/articles/">Explore 59 articles</a>
+      <a class="gp-btn gp-btn--ghost" href="/gp3bayespy/articles/">Explore articles & guides</a>
     </div>
     <div class="gp-chip-row">
       <span>Python ≥ 3.11</span>
@@ -187,16 +187,16 @@ print(audit.status)</code></pre>
     <span>Real graphics generated from gp3bayespy workflows →</span>
   </a>
   <a href="/gp3bayespy/examples/">
-    <strong>8 executable examples</strong>
+    <strong>10 executable examples</strong>
     <span>Small scripts that run end to end →</span>
   </a>
   <a href="/gp3bayespy/articles/">
-    <strong>59 guided articles</strong>
+    <strong>59 canonical articles + mediation guides</strong>
     <span>Browse by workflow instead of filename →</span>
   </a>
   <a href="/gp3bayespy/reference/">
     <strong>API reference hub</strong>
-    <span>458 functions organized by module →</span>
+    <span>483 public functions, with the frozen 458-function parity ledger preserved →</span>
   </a>
 </div>
 
