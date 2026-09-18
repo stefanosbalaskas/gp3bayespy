@@ -1,6 +1,6 @@
 # Executable examples
 
-Ten small scripts exercise the main workflow families. They are intentionally compact enough to read in one sitting and concrete enough to run as smoke tests.
+Eleven small scripts exercise the main workflow families. They are intentionally compact enough to read in one sitting and concrete enough to run as smoke tests.
 
 <div class="gp-example-grid">
 
@@ -18,6 +18,14 @@ Ten small scripts exercise the main workflow families. They are intentionally co
   <p>Exercise missingness, non-estimable paths, unsupported random slopes, and family-support errors explicitly.</p>
   <code>python examples/multilevel_gaze_mediation_failure_cases.py</code>
   <a href="https://github.com/stefanosbalaskas/gp3bayespy/blob/main/examples/multilevel_gaze_mediation_failure_cases.py">View source →</a>
+</div>
+
+<div class="gp-example-card">
+  <span class="gp-card-tag">Sensitivity</span>
+  <h3>Multilevel mediation prior sensitivity</h3>
+  <p>Keep the mediation data/model contract fixed while declaring narrower, default, and wider coefficient-prior scales.</p>
+  <code>python examples/multilevel_gaze_mediation_prior_sensitivity_contract.py</code>
+  <a href="https://github.com/stefanosbalaskas/gp3bayespy/blob/main/examples/multilevel_gaze_mediation_prior_sensitivity_contract.py">View source →</a>
 </div>
 
 <div class="gp-example-card">
@@ -98,11 +106,12 @@ After installation, ordinary `python` is sufficient because `gp3bayespy` is impo
 
 1. `multilevel_gaze_mediation_contract.py`
 2. `multilevel_gaze_mediation_failure_cases.py`
-3. `binary_workflow.py`
-4. `predictive_diagnostics.py`
-5. `loo_model_comparison.py`
-6. `sensitivity_workflow.py`
-7. `reproducibility_workflow.py`
-8. `pupil_workflow.py`
+3. `multilevel_gaze_mediation_prior_sensitivity_contract.py`
+4. `binary_workflow.py`
+5. `predictive_diagnostics.py`
+6. `loo_model_comparison.py`
+7. `sensitivity_workflow.py`
+8. `reproducibility_workflow.py`
+9. `pupil_workflow.py`
 
 For a guided narrative rather than scripts, continue to the [Article library](../articles/index.md).
