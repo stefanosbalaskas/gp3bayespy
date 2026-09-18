@@ -42,6 +42,7 @@ Repeated-measures mechanism models that keep within- and between-participant pat
 - [Assumptions and limitations](multilevel-mediation/assumptions-and-limitations.md)
 - [Diagnostics and priors](multilevel-mediation/diagnostics-and-priors.md)
 - [Worked prior-sensitivity example](multilevel-mediation/prior-sensitivity-worked-example.md)
+- [Simulation and recovery planning](multilevel-mediation/simulation-and-recovery.md)
 - [Model comparison for mediation](multilevel-mediation/model-comparison.md)
 - [Serial and moderated extensions](multilevel-mediation/serial-and-moderated.md)
 - [Reporting multilevel mediation](multilevel-mediation/reporting.md)
