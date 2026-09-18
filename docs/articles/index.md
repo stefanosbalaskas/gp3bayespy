@@ -6,7 +6,8 @@ All **59 canonical gp3bayes 0.5.0 articles** are available as Python-facing guid
   <div class="gp-stat"><strong>59</strong><span>guided articles</span></div>
   <div class="gp-stat"><strong>6</strong><span>workflow collections</span></div>
   <div class="gp-stat"><strong>6</strong><span>supplementary visual galleries</span></div>
-  <div class="gp-stat"><strong>458</strong><span>public functions covered by the package</span></div>
+  <div class="gp-stat"><strong>458</strong><span>frozen parity functions</span></div>
+  <div class="gp-stat"><strong>+25</strong><span>mediation functions beyond frozen parity</span></div>
   <div class="gp-stat"><strong>0.5.0</strong><span>frozen R reference</span></div>
   <div class="gp-stat"><strong>Search</strong><span>use the site search for function or concept names</span></div>
 </div>
