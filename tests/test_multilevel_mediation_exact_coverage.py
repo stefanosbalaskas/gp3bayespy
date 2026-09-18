@@ -598,3 +598,176 @@ def test_moderated_spec_build_fit_and_effect_edges(monkeypatch):
     p = augment_moderator(prepared())
     with pytest.raises(mm.GP3BayesError, match="moderation_path"):
         mm.specify_multilevel_moderated_gaze_mediation(p, moderation_path="x")
+    with pytest.raises(mm.GP3BayesError, match="moderator_component"):
+        mm.specify_multilevel_moderated_gaze_mediation(p, moderator_component="x")
+    q = copy.deepcopy(p); del q.columns["moderator_within"]
+    with pytest.raises(mm.GP3BayesError, match="moderator_within"):
+        mm.specify_multilevel_moderated_gaze_mediation(q)
+    q = copy.deepcopy(p); q.data = q.data.drop(columns=["Z_within"])
+    with pytest.raises(mm.GP3BayesError, match="missing"):
+        mm.specify_multilevel_moderated_gaze_mediation(q)
+    q = copy.deepcopy(p); q.data.loc[q.data.index[0], "Z_within"] = np.nan
+    with pytest.raises(mm.GP3BayesError, match="Moderator contains missing"):
+        mm.specify_multilevel_moderated_gaze_mediation(q)
+    spec_cc = mm.specify_multilevel_moderated_gaze_mediation(q, missingness_policy="complete_case")
+    assert spec_cc.analysis_rows == len(q.data)-1
+    constant = augment_moderator(prepared(), constant=True)
+    with pytest.raises(mm.GP3BayesError, match="moderator component has no"):
+        mm.specify_multilevel_moderated_gaze_mediation(constant)
+
+    spec_a = mm.specify_multilevel_moderated_gaze_mediation(p, moderation_path="a")
+    fake = FakePM(spec_a.analysis_rows)
+    monkeypatch.setattr(mm, "_load_pymc", lambda: fake)
+    assert mm._build_moderated_pymc_model(spec_a) is fake.model
+    spec_b = mm.specify_multilevel_moderated_gaze_mediation(p, moderation_path="b")
+    assert mm._build_moderated_pymc_model(spec_b) is fake.model
+    monkeypatch.setattr(mm, "_sampler_diagnostics", lambda idata, max_treedepth: {"max_rhat":1.0,"min_ess_bulk":1000,"divergences":0,"treedepth_hits":0})
+    fit = mm.fit_multilevel_moderated_gaze_mediation(p, chains=2, draws=50, tune=0, cores=1)
+    assert fit.specification.moderated
+
+    posterior = {"a_within": np.ones(10)*.5, "b_within": np.ones(10)*.6, "moderation": np.ones(10)*.2}
+    fit_a = mm.MultilevelMediationFit(specification=spec_a, posterior=posterior, sampler_diagnostics={"max_rhat":1.,"min_ess_bulk":1000,"divergences":0,"treedepth_hits":0})
+    fit_b = mm.MultilevelMediationFit(specification=spec_b, posterior=posterior, sampler_diagnostics=fit_a.sampler_diagnostics)
+    assert mm.posterior_conditional_indirect_effect(fit_a, moderator_value=1).mean == pytest.approx(.7*.6)
+    assert mm.posterior_conditional_indirect_effect(fit_b, moderator_value=1).mean == pytest.approx(.5*.8)
+    with pytest.raises(mm.GP3BayesError, match="finite numeric"):
+        mm.posterior_conditional_indirect_effect(fit_a, moderator_value=np.inf)
+    missing = mm.MultilevelMediationFit(specification=spec_a, posterior={}, sampler_diagnostics=fit_a.sampler_diagnostics)
+    with pytest.raises(mm.GP3BayesError, match="unavailable"):
+        mm.posterior_conditional_indirect_effect(missing, moderator_value=0)
+    with pytest.raises(mm.GP3BayesError, match="not a moderated"):
+        mm.posterior_conditional_indirect_effect(passing_fit(), moderator_value=0)
+
+    monkeypatch.setattr(mm, "_sampler_diagnostics", lambda idata, max_treedepth: {"max_rhat":1.2,"min_ess_bulk":10,"divergences":1,"treedepth_hits":0})
+    with pytest.warns(RuntimeWarning, match="Moderated mediation fit failed"):
+        mm.fit_multilevel_moderated_gaze_mediation(p, chains=2, draws=50, tune=0, cores=1)
+
+
+def test_full_simple_fit_with_fake_sampler_and_warning(monkeypatch):
+    p = prepared()
+    fake = FakePM(len(p.data))
+    monkeypatch.setattr(mm, "_load_pymc", lambda: fake)
+    monkeypatch.setattr(mm, "_sampler_diagnostics", lambda idata, max_treedepth: {
+        "max_rhat": 1.0, "min_ess_bulk": 1000, "divergences": 0, "treedepth_hits": 0
+    })
+    fit = mm.fit_multilevel_gaze_mediation(
+        p, random_slopes=(), chains=2, draws=50, tune=0, cores=1, seed=2, target_accept=.9, max_treedepth=6
+    )
+    assert fit.fit_performed and fit.backend_fit is not None
+    assert "indirect_within" in fit.posterior
+
+    monkeypatch.setattr(mm, "_sampler_diagnostics", lambda idata, max_treedepth: {
+        "max_rhat": 1.2, "min_ess_bulk": 20, "divergences": 1, "treedepth_hits": 1
+    })
+    with pytest.warns(RuntimeWarning, match="failed one or more critical convergence"):
+        mm.fit_multilevel_gaze_mediation(
+            p, random_slopes=(), chains=2, draws=50, tune=0, cores=1, max_treedepth=6
+        )
+
+
+def test_sampler_empty_metrics_missing_stats_and_ppc_no_truncation(monkeypatch):
+    class EmptyAZ:
+        def rhat(self, idata): return FakeDataVars([])
+        def ess(self, idata, method="bulk"): return FakeDataVars([])
+    real_import = pyimportlib.import_module
+    monkeypatch.setattr(mm, "import_module", lambda name: EmptyAZ() if name == "arviz" else real_import(name))
+    d = mm._sampler_diagnostics(SimpleNamespace(sample_stats={}), max_treedepth=6)
+    assert np.isnan(d["max_rhat"]) and np.isnan(d["min_ess_bulk"])
+    assert d["treedepth_hits"] == 0
+
+    p = prepared()
+    spec = mm.specify_multilevel_gaze_mediation(p, random_slopes=())
+    fake = FakePM(spec.analysis_rows)
+    monkeypatch.setattr(mm, "_load_pymc", lambda: fake)
+    fit = passing_fit(p, backend_fit=object(), backend_model=fake.model)
+    out = mm.posterior_predictive_check_mediation(fit, draws=10)
+    assert len(out) == 2
+
+    import matplotlib.pyplot as plt
+    participant = passing_fit(posterior={"participant_indirect_within": np.ones((4, 3))})
+    _, ax = plt.subplots()
+    assert mm.plot_participant_mediation_effects(participant, ax=ax) is ax
+
+
+def test_serial_variation_false_branches_and_between_optional_builder(monkeypatch):
+    p = augment_serial(prepared())
+    original = mm._has_variation
+    # Each invocation reaches a different false branch; keep required within paths true unless testing its guard.
+    for false_index in [1, 3, 5]:  # X_between, M_between, M2_between
+        calls = {"i": 0}
+        def sequence(values, tolerance=1e-12, *, _idx=false_index):
+            i = calls["i"]; calls["i"] += 1
+            return False if i == _idx else True
+        monkeypatch.setattr(mm, "_has_variation", sequence)
+        spec = mm.specify_multilevel_serial_gaze_mediation(p)
+        assert spec.serial
+    # Required within branches false trigger the estimability guard.
+    for false_index in [0, 2, 4]:
+        calls = {"i": 0}
+        def sequence_required(values, tolerance=1e-12, *, _idx=false_index):
+            i = calls["i"]; calls["i"] += 1
+            return False if i == _idx else True
+        monkeypatch.setattr(mm, "_has_variation", sequence_required)
+        with pytest.raises(mm.GP3BayesError, match="serial indirect effect is not estimable"):
+            mm.specify_multilevel_serial_gaze_mediation(p)
+    monkeypatch.setattr(mm, "_has_variation", original)
+
+    # Build a valid serial model with all between paths removed to exercise optional branches.
+    spec = mm.specify_multilevel_serial_gaze_mediation(p)
+    no_between = tuple(x for x in spec.estimable_paths if not x.endswith("_between"))
+    spec2 = mm.MultilevelMediationSpecification(
+        **{**{name: getattr(spec, name) for name in spec.__dataclass_fields__}, "estimable_paths": no_between}
+    )
+    fake = FakePM(spec2.analysis_rows)
+    monkeypatch.setattr(mm, "_load_pymc", lambda: fake)
+    assert mm._build_serial_pymc_model(spec2) is fake.model
+
+
+def test_moderated_empty_interaction_and_postfilter_estimability(monkeypatch):
+    p = augment_moderator(prepared())
+    q = copy.deepcopy(p)
+    q.data["Z_within"] = np.nan
+    with pytest.raises(mm.GP3BayesError, match="No rows remain after applying moderator"):
+        mm.specify_multilevel_moderated_gaze_mediation(q, missingness_policy="complete_case")
+
+    base = mm.specify_multilevel_gaze_mediation(p, random_slopes=())
+    original_specify = mm.specify_multilevel_gaze_mediation
+    monkeypatch.setattr(mm, "specify_multilevel_gaze_mediation", lambda *args, **kwargs: base)
+    original_has = mm._has_variation
+    calls = {"i": 0}
+    def moderator_then_no_interaction(values, tolerance=1e-12):
+        calls["i"] += 1
+        return calls["i"] == 1
+    monkeypatch.setattr(mm, "_has_variation", moderator_then_no_interaction)
+    with pytest.raises(mm.GP3BayesError, match="interaction has no observed variation"):
+        mm.specify_multilevel_moderated_gaze_mediation(p)
+    monkeypatch.setattr(mm, "_has_variation", original_has)
+
+    monkeypatch.setattr(mm, "_estimable_simple_paths", lambda data: ("a_within",))
+    with pytest.raises(mm.GP3BayesError, match="indirect effect is not estimable after moderator filtering"):
+        mm.specify_multilevel_moderated_gaze_mediation(p)
+    monkeypatch.setattr(mm, "specify_multilevel_gaze_mediation", original_specify)
+
+
+def test_moderated_builder_optional_between_paths_false(monkeypatch):
+    p = augment_moderator(prepared())
+    spec = mm.specify_multilevel_moderated_gaze_mediation(p, moderation_path="a")
+    no_between = tuple(x for x in spec.estimable_paths if not x.endswith("_between"))
+    spec2 = mm.MultilevelMediationSpecification(
+        **{**{name: getattr(spec, name) for name in spec.__dataclass_fields__}, "estimable_paths": no_between}
+    )
+    fake = FakePM(spec2.analysis_rows)
+    monkeypatch.setattr(mm, "_load_pymc", lambda: fake)
+    assert mm._build_moderated_pymc_model(spec2) is fake.model
+
+
+def test_serial_and_moderated_contract_guards_without_eyeprocess_dependency():
+    base = prepared()
+    with pytest.raises(mm.GP3BayesError, match="Serial mediation requires"):
+        mm.specify_multilevel_serial_gaze_mediation(base)
+    serial = augment_serial(base)
+    with pytest.raises(mm.GP3BayesError, match="random slopes are not yet implemented"):
+        mm.specify_multilevel_serial_gaze_mediation(serial, random_slopes=("mediator_x",))
+    moderated = augment_moderator(base)
+    with pytest.raises(mm.GP3BayesError, match="random slopes are not yet implemented"):
+        mm.specify_multilevel_moderated_gaze_mediation(moderated, random_slopes=("outcome_m",))
