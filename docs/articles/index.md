@@ -37,6 +37,7 @@ Repeated-measures mechanism models that keep within- and between-participant pat
 - [Multilevel gaze mediation overview](multilevel-mediation/index.md)
 - [Worked 100 × 20 trial example](multilevel-mediation/worked-example.md)
 - [Mediator and outcome family selection](multilevel-mediation/family-selection.md)
+- [Worked non-Gaussian family contracts](multilevel-mediation/non-gaussian-family-contracts.md)
 - [Estimands, causal scope, and interpretation](multilevel-mediation/interpretation-and-estimands.md)
 - [Assumptions and limitations](multilevel-mediation/assumptions-and-limitations.md)
 - [Diagnostics and priors](multilevel-mediation/diagnostics-and-priors.md)
