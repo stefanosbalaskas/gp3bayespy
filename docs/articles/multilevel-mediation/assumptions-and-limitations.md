@@ -62,3 +62,10 @@ At minimum, consider sensitivity to:
 6. alternative operationalizations of the gaze mediator when construct validity is uncertain.
 
 Do not select the sensitivity result that gives the preferred indirect effect. Report material changes across defensible specifications.
+
+
+## Model comparison requires identical observations
+
+PSIS-LOO comparisons are only meaningful when competing mediation models are evaluated on the **same observed mediator/outcome rows in the same participant-trial order**. A model fitted after a different missingness policy, quality exclusion, or response set cannot be compared directly to another fit as if the pointwise predictive units were aligned.
+
+`compare_multilevel_mediation_models()` therefore refuses comparisons when the ordered participant/trial keys or the observed mediator/outcome values differ. This guard is deliberate: do not work around it by manually dropping or reordering observations after fitting. Recreate the candidate models from one common analysis dataset instead.
