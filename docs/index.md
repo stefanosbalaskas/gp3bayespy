@@ -59,6 +59,13 @@ print(audit.status)</code></pre>
 ## Choose your path
 
 <div class="gp-paths">
+  <a class="gp-path" href="/gp3bayespy/articles/multilevel-mediation/">
+    <span class="gp-path__eyebrow">Mechanism models</span>
+    <h3>Trial-level multilevel mediation</h3>
+    <p>Estimate within- and between-participant gaze-mediated pathways without collapsing repeated trials, with explicit priors, diagnostics, and estimability gates.</p>
+    <strong>Open mediation workflow →</strong>
+  </a>
+
   <a class="gp-path" href="/gp3bayespy/articles/binary-end-to-end/">
     <span class="gp-path__eyebrow">Behavioural models</span>
     <h3>Binary & duration workflows</h3>
@@ -126,6 +133,12 @@ print(audit.status)</code></pre>
 ## What is inside?
 
 <div class="grid cards" markdown>
+
+-   **Trial-level multilevel mediation**
+
+    Within/between indirect effects, explicit missingness policy, non-Gaussian mediator families, convergence gating, and serial/moderated extensions.
+
+    [Mediation workflow →](articles/multilevel-mediation/index.md)
 
 -   **Contracts & readiness**
 
