@@ -27,6 +27,23 @@ The shortest route from a declared design to an inspectable Bayesian workflow.
 
 </div>
 
+## Trial-level multilevel mediation
+
+Repeated-measures mechanism models that keep within- and between-participant pathways separate and preserve explicit model-scale interpretation.
+
+<div class="gp-link-grid" markdown>
+
+- [Multilevel gaze mediation overview](multilevel-mediation/index.md)
+- [Worked 100 × 20 trial example](multilevel-mediation/worked-example.md)
+- [Mediator and outcome family selection](multilevel-mediation/family-selection.md)
+- [Estimands, causal scope, and interpretation](multilevel-mediation/interpretation-and-estimands.md)
+- [Diagnostics and priors](multilevel-mediation/diagnostics-and-priors.md)
+- [Serial and moderated extensions](multilevel-mediation/serial-and-moderated.md)
+- [Reporting multilevel mediation](multilevel-mediation/reporting.md)
+- [Troubleshooting and failure modes](multilevel-mediation/troubleshooting.md)
+
+</div>
+
 ## Posterior & predictive evidence
 
 Diagnostics, prediction, calibration, uncertainty, hierarchical effects, and PSIS-LOO.
