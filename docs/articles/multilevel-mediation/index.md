@@ -81,6 +81,7 @@ This is a deterministic synthetic illustration of the **linear-predictor product
 
 - [Worked AI-advice example](worked-example.md)
 - [Choosing mediator and outcome families](family-selection.md)
+- [Worked non-Gaussian family contracts](non-gaussian-family-contracts.md)
 - [Interpretation and estimands](interpretation-and-estimands.md)
 - [Assumptions and limitations](assumptions-and-limitations.md)
 - [Diagnostics and priors](diagnostics-and-priors.md)
@@ -97,6 +98,7 @@ This is a deterministic synthetic illustration of the **linear-predictor product
 
 - `examples/multilevel_gaze_mediation_contract.py` demonstrates the deterministic preparation → prior → specification contract without sampling.
 - `examples/multilevel_gaze_mediation_failure_cases.py` demonstrates the explicit missingness gate and a balanced within-subject design where between-X paths are not estimable.
+- `examples/multilevel_gaze_mediation_family_contracts.py` validates lognormal, Gamma, beta, Bernoulli, Poisson, and negative-binomial mediator contracts without sampling.
 - `examples/multilevel_gaze_mediation_prior_sensitivity_contract.py` holds the data/model contract fixed while varying a declared coefficient-prior scale.
 
 These examples are synthetic and CI-small. Posterior examples belong in backend-enabled validation because sampling must never be faked.
