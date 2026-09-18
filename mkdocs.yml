@@ -69,6 +69,8 @@ nav:
           - Estimands & interpretation: articles/multilevel-mediation/interpretation-and-estimands.md
           - Assumptions & limitations: articles/multilevel-mediation/assumptions-and-limitations.md
           - Diagnostics & priors: articles/multilevel-mediation/diagnostics-and-priors.md
+          - Worked prior sensitivity: articles/multilevel-mediation/prior-sensitivity-worked-example.md
+          - Model comparison: articles/multilevel-mediation/model-comparison.md
           - Serial & moderated extensions: articles/multilevel-mediation/serial-and-moderated.md
           - Reporting: articles/multilevel-mediation/reporting.md
           - Worked reporting example: articles/multilevel-mediation/reporting-example.md
