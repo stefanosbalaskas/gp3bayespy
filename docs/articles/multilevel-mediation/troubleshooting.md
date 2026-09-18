@@ -23,3 +23,8 @@ Treat the indirect effect as blocked. Inspect parameterization, priors, family c
 ## PyMC cannot import
 
 The package raises `BackendUnavailableError`; it does not silently choose another estimator. Repair the optional Bayesian environment or use the corresponding supported R/brms implementation explicitly.
+
+
+## Model comparison says observations do not match
+
+This is a scientific guard, not a formatting error. PSIS-LOO requires aligned pointwise predictive units. Check whether the fits used different `missingness_policy` values, quality eligibility rules, excluded rows, mediator/outcome variables, or trial ordering. Refit all candidate models on the same ordered analysis rows before calling `compare_multilevel_mediation_models()`.
