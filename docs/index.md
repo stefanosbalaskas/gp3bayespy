@@ -50,6 +50,7 @@ print(audit.status)</code></pre>
 
 <div class="gp-stats">
   <div class="gp-stat"><strong>458 / 458</strong><span>frozen R exports implemented</span></div>
+  <div class="gp-stat"><strong>+25</strong><span>new mediation functions beyond frozen parity</span></div>
   <div class="gp-stat"><strong>59 / 59</strong><span>canonical articles ported</span></div>
   <div class="gp-stat"><strong>689 / 689</strong><span>current main tests passing</span></div>
   <div class="gp-stat"><strong>100.00%</strong><span>current main branch coverage</span></div>
