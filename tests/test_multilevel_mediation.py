@@ -11,6 +11,7 @@ from gp3bayespy.multilevel_mediation import (
     GP3BayesError,
     MultilevelMediationFit,
     check_mediation_convergence,
+    compare_multilevel_mediation_models,
     create_mediation_prior_specification,
     estimate_between_indirect_effect,
     estimate_within_indirect_effect,
@@ -391,6 +392,24 @@ def test_ordinal_outcome_requires_contiguous_categories():
     with pytest.raises(GP3BayesError, match="contiguous integer categories"):
         specify_multilevel_gaze_mediation(prepared, outcome_family="ordinal", random_slopes=())
 
+
+
+def test_model_comparison_requires_identical_ordered_observations():
+    prepared_a = prepared_binary(seed=31)
+    prepared_b = prepared_binary(seed=31)
+    prepared_b.data.loc[prepared_b.data.index[0], "correct_override"] = (
+        1 - int(prepared_b.data.loc[prepared_b.data.index[0], "correct_override"])
+    )
+    spec_a = specify_multilevel_gaze_mediation(prepared_a, random_slopes=())
+    spec_b = specify_multilevel_gaze_mediation(prepared_b, random_slopes=())
+    fit_a = MultilevelMediationFit(
+        specification=spec_a, posterior={}, sampler_diagnostics={}, backend_fit=object(), backend="fixture"
+    )
+    fit_b = MultilevelMediationFit(
+        specification=spec_b, posterior={}, sampler_diagnostics={}, backend_fit=object(), backend="fixture"
+    )
+    with pytest.raises(GP3BayesError, match="same mediator/outcome observations"):
+        compare_multilevel_mediation_models({"a": fit_a, "b": fit_b})
 
 def test_strong_synthetic_path_signal_exceeds_weak_signal():
     strong = simulate_multilevel_gaze_mediation(
