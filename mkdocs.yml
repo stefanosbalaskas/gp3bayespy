@@ -66,6 +66,7 @@ nav:
           - Overview: articles/multilevel-mediation/index.md
           - Worked example: articles/multilevel-mediation/worked-example.md
           - Family selection: articles/multilevel-mediation/family-selection.md
+          - Non-Gaussian family contracts: articles/multilevel-mediation/non-gaussian-family-contracts.md
           - Estimands & interpretation: articles/multilevel-mediation/interpretation-and-estimands.md
           - Assumptions & limitations: articles/multilevel-mediation/assumptions-and-limitations.md
           - Diagnostics & priors: articles/multilevel-mediation/diagnostics-and-priors.md
@@ -95,6 +96,7 @@ nav:
           - Dynamic pupillometry: articles/pupil-gallery.md
   - Reference:
       - API reference: reference/index.md
+      - Multilevel mediation API: reference/multilevel-mediation.md
   - Project:
       - Citation: citation.md
       - Release v0.5.0: release.md
