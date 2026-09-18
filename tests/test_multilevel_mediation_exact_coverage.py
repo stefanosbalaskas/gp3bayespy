@@ -474,6 +474,28 @@ def test_model_comparison_success_and_failures(monkeypatch):
     with pytest.raises(mm.GP3BayesError, match="at least two"):
         mm.compare_multilevel_mediation_models({"one": fit1})
 
+    base = fit1.specification
+    fields = {name: getattr(base, name) for name in base.__dataclass_fields__}
+    assert mm._same_comparison_observations(base, fit2.specification)
+    renamed = mm.MultilevelMediationSpecification(**{**fields, "mediator_col": "different_mediator"})
+    assert not mm._same_comparison_observations(base, renamed)
+    count_changed = mm.MultilevelMediationSpecification(**{**fields, "analysis_rows": base.analysis_rows + 1})
+    assert not mm._same_comparison_observations(base, count_changed)
+    key_data = base.data.copy()
+    key_data.loc[key_data.index[0], base.trial_col] = 999
+    key_changed = mm.MultilevelMediationSpecification(**{**fields, "data": key_data})
+    assert not mm._same_comparison_observations(base, key_changed)
+    value_data = base.data.copy()
+    value_data.loc[value_data.index[0], base.outcome_col] = 1 - int(value_data.loc[value_data.index[0], base.outcome_col])
+    value_changed = mm.MultilevelMediationSpecification(**{**fields, "data": value_data})
+    assert not mm._same_comparison_observations(base, value_changed)
+    mismatch_fit = mm.MultilevelMediationFit(
+        specification=value_changed, posterior=fit2.posterior, sampler_diagnostics=fit2.sampler_diagnostics,
+        backend_fit=fit2.backend_fit, backend_model=fit2.backend_model, backend="fixture",
+    )
+    with pytest.raises(mm.GP3BayesError, match="same mediator/outcome observations"):
+        mm.compare_multilevel_mediation_models({"a": fit1, "mismatch": mismatch_fit})
+
     real_import = pyimportlib.import_module
     monkeypatch.setattr(mm, "import_module", lambda name: FakeArviz() if name == "arviz" else real_import(name))
     out = mm.compare_multilevel_mediation_models({"a": fit1, "b": fit2})
