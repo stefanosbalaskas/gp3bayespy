@@ -19,3 +19,8 @@ A dwell variable with many genuine zeros is not compatible with the current logn
 ## Indirect-effect scale
 
 For nonlinear likelihoods, the default path-product estimand is on the model's linear-predictor scale. `a_W × b_W` remains a useful coefficient-product summary, but it is not automatically a probability-scale natural indirect effect. Report the stored estimand scale explicitly.
+
+
+## Worked family-contract example
+
+See [Worked example: non-Gaussian mediator contracts](non-gaussian-family-contracts.md) for a deterministic support-validation workflow across lognormal, Gamma, beta, Bernoulli, Poisson, and negative-binomial mediators.
