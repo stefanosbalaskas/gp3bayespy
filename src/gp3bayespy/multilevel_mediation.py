@@ -492,9 +492,7 @@ def _build_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         paths = {name: pm.Normal(name, 0.0, priors.coefficient_sd) for name in estimable}
         alpha_m = pm.Normal("alpha_m", 0.0, priors.intercept_sd)
         alpha_y = pm.Normal("alpha_y", 0.0, priors.intercept_sd)
-        eta_m = alpha_m
-        if "a_within" in paths:
-            eta_m = eta_m + paths["a_within"] * xw
+        eta_m = alpha_m + paths["a_within"] * xw
         if "a_between" in paths:
             eta_m = eta_m + paths["a_between"] * xb
         eta_m = eta_m + _random_effect(pm, "participant_m", n_participants, participant_idx, priors.group_sd_scale)
@@ -506,11 +504,8 @@ def _build_pymc_model(spec: MultilevelMediationSpecification) -> Any:
             eta_m = eta_m + participant_a_slope[participant_idx] * xw
         _observe_family(pm, "M_obs", spec.mediator_family, eta_m, mediator, priors)
 
-        eta_y = alpha_y
-        for name, predictor in [
-            ("cprime_within", xw), ("cprime_between", xb),
-            ("b_within", mw), ("b_between", mb),
-        ]:
+        eta_y = alpha_y + paths["cprime_within"] * xw + paths["b_within"] * mw
+        for name, predictor in [("cprime_between", xb), ("b_between", mb)]:
             if name in paths:
                 eta_y = eta_y + paths[name] * predictor
         eta_y = eta_y + _random_effect(pm, "participant_y", n_participants, participant_idx, priors.group_sd_scale)
@@ -527,8 +522,7 @@ def _build_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         pm.Deterministic("indirect_within", paths["a_within"] * paths["b_within"])
         if {"a_between", "b_between"}.issubset(paths):
             pm.Deterministic("indirect_between", paths["a_between"] * paths["b_between"])
-        if "cprime_within" in paths:
-            pm.Deterministic("total_within", paths["cprime_within"] + paths["a_within"] * paths["b_within"])
+        pm.Deterministic("total_within", paths["cprime_within"] + paths["a_within"] * paths["b_within"])
         if {"cprime_between", "a_between", "b_between"}.issubset(paths):
             pm.Deterministic("total_between", paths["cprime_between"] + paths["a_between"] * paths["b_between"])
         if participant_a_slope is not None and participant_b_slope is not None:
@@ -1286,29 +1280,30 @@ def _build_serial_pymc_model(spec: MultilevelMediationSpecification) -> Any:
     estimable = set(spec.estimable_paths)
     with pm.Model() as model:
         path = {name: pm.Normal(name, 0, p.coefficient_sd) for name in estimable}
-        eta_m1 = pm.Normal("alpha_m1", 0, p.intercept_sd)
-        for name, pred in [("a1_within", "xw"), ("a1_between", "xb")]:
-            if name in path:
-                eta_m1 = eta_m1 + path[name] * predictors[pred]
+        eta_m1 = pm.Normal("alpha_m1", 0, p.intercept_sd) + path["a1_within"] * predictors["xw"]
+        if "a1_between" in path:
+            eta_m1 = eta_m1 + path["a1_between"] * predictors["xb"]
         eta_m1 += _random_effect(pm, "participant_m1", n_participants, idx, p.group_sd_scale)
         _observe_family(pm, "M1_obs", spec.mediator_family, eta_m1, m1, p)
 
-        eta_m2 = pm.Normal("alpha_m2", 0, p.intercept_sd)
-        for name, pred in [
-            ("a2_within", "xw"), ("a2_between", "xb"),
-            ("d_within", "m1w"), ("d_between", "m1b"),
-        ]:
+        eta_m2 = (
+            pm.Normal("alpha_m2", 0, p.intercept_sd)
+            + path["a2_within"] * predictors["xw"]
+            + path["d_within"] * predictors["m1w"]
+        )
+        for name, pred in [("a2_between", "xb"), ("d_between", "m1b")]:
             if name in path:
                 eta_m2 = eta_m2 + path[name] * predictors[pred]
         eta_m2 += _random_effect(pm, "participant_m2", n_participants, idx, p.group_sd_scale)
         _observe_family(pm, "M2_obs", spec.extra_columns["mediator2_family"], eta_m2, m2, p)
 
-        eta_y = pm.Normal("alpha_y", 0, p.intercept_sd)
-        for name, pred in [
-            ("cprime_within", "xw"), ("cprime_between", "xb"),
-            ("b1_within", "m1w"), ("b1_between", "m1b"),
-            ("b2_within", "m2w"), ("b2_between", "m2b"),
-        ]:
+        eta_y = (
+            pm.Normal("alpha_y", 0, p.intercept_sd)
+            + path["cprime_within"] * predictors["xw"]
+            + path["b1_within"] * predictors["m1w"]
+            + path["b2_within"] * predictors["m2w"]
+        )
+        for name, pred in [("cprime_between", "xb"), ("b1_between", "m1b"), ("b2_between", "m2b")]:
             if name in path:
                 eta_y = eta_y + path[name] * predictors[pred]
         eta_y += _random_effect(pm, "participant_y", n_participants, idx, p.group_sd_scale)
@@ -1317,15 +1312,11 @@ def _build_serial_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         pm.Deterministic("serial_indirect_within", path["a1_within"] * path["d_within"] * path["b2_within"])
         if {"a1_between", "d_between", "b2_between"}.issubset(path):
             pm.Deterministic("serial_indirect_between", path["a1_between"] * path["d_between"] * path["b2_between"])
-        if {"a1_within", "b1_within"}.issubset(path):
-            pm.Deterministic("m1_indirect_within", path["a1_within"] * path["b1_within"])
-        if {"a2_within", "b2_within"}.issubset(path):
-            pm.Deterministic("m2_indirect_within", path["a2_within"] * path["b2_within"])
-        if {"a1_within", "b1_within", "a2_within", "b2_within", "d_within"}.issubset(path):
-            total_ind = path["a1_within"] * path["b1_within"] + path["a2_within"] * path["b2_within"] + path["a1_within"] * path["d_within"] * path["b2_within"]
-            pm.Deterministic("total_indirect_within", total_ind)
-            if "cprime_within" in path:
-                pm.Deterministic("total_within", path["cprime_within"] + total_ind)
+        pm.Deterministic("m1_indirect_within", path["a1_within"] * path["b1_within"])
+        pm.Deterministic("m2_indirect_within", path["a2_within"] * path["b2_within"])
+        total_ind = path["a1_within"] * path["b1_within"] + path["a2_within"] * path["b2_within"] + path["a1_within"] * path["d_within"] * path["b2_within"]
+        pm.Deterministic("total_indirect_within", total_ind)
+        pm.Deterministic("total_within", path["cprime_within"] + total_ind)
     return model
 
 def fit_multilevel_serial_gaze_mediation(
@@ -1494,9 +1485,7 @@ def _build_moderated_pymc_model(spec: MultilevelMediationSpecification) -> Any:
     with pm.Model() as model:
         path = {name: pm.Normal(name, 0, p.coefficient_sd) for name in estimable}
         moderation = pm.Normal("moderation", 0, p.coefficient_sd)
-        eta_m = pm.Normal("alpha_m", 0, p.intercept_sd)
-        if "a_within" in path:
-            eta_m = eta_m + path["a_within"] * xw
+        eta_m = pm.Normal("alpha_m", 0, p.intercept_sd) + path["a_within"] * xw
         if "a_between" in path:
             eta_m = eta_m + path["a_between"] * xb
         if spec.moderation["path"] == "a":
@@ -1504,11 +1493,8 @@ def _build_moderated_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         eta_m += _random_effect(pm, "participant_m", n_participants, idx, p.group_sd_scale)
         _observe_family(pm, "M_obs", spec.mediator_family, eta_m, m, p)
 
-        eta_y = pm.Normal("alpha_y", 0, p.intercept_sd)
-        for name, predictor in [
-            ("cprime_within", xw), ("cprime_between", xb),
-            ("b_within", mw), ("b_between", mb),
-        ]:
+        eta_y = pm.Normal("alpha_y", 0, p.intercept_sd) + path["cprime_within"] * xw + path["b_within"] * mw
+        for name, predictor in [("cprime_between", xb), ("b_between", mb)]:
             if name in path:
                 eta_y = eta_y + path[name] * predictor
         if spec.moderation["path"] == "b":
