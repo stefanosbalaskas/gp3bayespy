@@ -84,6 +84,7 @@ This is a deterministic synthetic illustration of the **linear-predictor product
 - [Worked non-Gaussian family contracts](non-gaussian-family-contracts.md)
 - [Interpretation and estimands](interpretation-and-estimands.md)
 - [Assumptions and limitations](assumptions-and-limitations.md)
+- [Analysis plan and preregistration template](analysis-plan-and-preregistration.md)
 - [Diagnostics and priors](diagnostics-and-priors.md)
 - [Worked prior-sensitivity example](prior-sensitivity-worked-example.md)
 - [Simulation and recovery planning](simulation-and-recovery.md)
