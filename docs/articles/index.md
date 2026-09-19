@@ -40,6 +40,7 @@ Repeated-measures mechanism models that keep within- and between-participant pat
 - [Worked non-Gaussian family contracts](multilevel-mediation/non-gaussian-family-contracts.md)
 - [Estimands, causal scope, and interpretation](multilevel-mediation/interpretation-and-estimands.md)
 - [Assumptions and limitations](multilevel-mediation/assumptions-and-limitations.md)
+- [Analysis plan and preregistration template](multilevel-mediation/analysis-plan-and-preregistration.md)
 - [Diagnostics and priors](multilevel-mediation/diagnostics-and-priors.md)
 - [Worked prior-sensitivity example](multilevel-mediation/prior-sensitivity-worked-example.md)
 - [Simulation and recovery planning](multilevel-mediation/simulation-and-recovery.md)
