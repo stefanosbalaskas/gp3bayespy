@@ -15,7 +15,7 @@ hide:
     <div class="gp-actions">
       <a class="gp-btn gp-btn--primary" href="/gp3bayespy/getting-started/">Get started</a>
       <a class="gp-btn gp-btn--secondary" href="/gp3bayespy/reference/">Browse the API</a>
-      <a class="gp-btn gp-btn--ghost" href="/gp3bayespy/articles/">Explore 59 articles</a>
+      <a class="gp-btn gp-btn--ghost" href="/gp3bayespy/articles/">Explore articles & guides</a>
     </div>
     <div class="gp-chip-row">
       <span>Python ≥ 3.11</span>
@@ -50,6 +50,7 @@ print(audit.status)</code></pre>
 
 <div class="gp-stats">
   <div class="gp-stat"><strong>458 / 458</strong><span>frozen R exports implemented</span></div>
+  <div class="gp-stat"><strong>+25</strong><span>new mediation functions beyond frozen parity</span></div>
   <div class="gp-stat"><strong>59 / 59</strong><span>canonical articles ported</span></div>
   <div class="gp-stat"><strong>689 / 689</strong><span>current main tests passing</span></div>
   <div class="gp-stat"><strong>100.00%</strong><span>current main branch coverage</span></div>
@@ -59,6 +60,13 @@ print(audit.status)</code></pre>
 ## Choose your path
 
 <div class="gp-paths">
+  <a class="gp-path" href="/gp3bayespy/articles/multilevel-mediation/">
+    <span class="gp-path__eyebrow">Mechanism models</span>
+    <h3>Trial-level multilevel mediation</h3>
+    <p>Estimate within- and between-participant gaze-mediated pathways without collapsing repeated trials, with explicit priors, diagnostics, and estimability gates.</p>
+    <strong>Open mediation workflow →</strong>
+  </a>
+
   <a class="gp-path" href="/gp3bayespy/articles/binary-end-to-end/">
     <span class="gp-path__eyebrow">Behavioural models</span>
     <h3>Binary & duration workflows</h3>
@@ -127,6 +135,12 @@ print(audit.status)</code></pre>
 
 <div class="grid cards" markdown>
 
+-   **Trial-level multilevel mediation**
+
+    Within/between indirect effects, explicit missingness policy, non-Gaussian mediator families, convergence gating, and serial/moderated extensions.
+
+    [Mediation workflow →](articles/multilevel-mediation/index.md)
+
 -   **Contracts & readiness**
 
     Define the model family, mappings, assumptions, priors, and readiness gates before fitting.
@@ -173,16 +187,16 @@ print(audit.status)</code></pre>
     <span>Real graphics generated from gp3bayespy workflows →</span>
   </a>
   <a href="/gp3bayespy/examples/">
-    <strong>8 executable examples</strong>
+    <strong>13 executable examples</strong>
     <span>Small scripts that run end to end →</span>
   </a>
   <a href="/gp3bayespy/articles/">
-    <strong>59 guided articles</strong>
+    <strong>59 canonical articles + mediation guides</strong>
     <span>Browse by workflow instead of filename →</span>
   </a>
   <a href="/gp3bayespy/reference/">
     <strong>API reference hub</strong>
-    <span>458 functions organized by module →</span>
+    <span>483 public functions, with the frozen 458-function parity ledger preserved →</span>
   </a>
 </div>
 

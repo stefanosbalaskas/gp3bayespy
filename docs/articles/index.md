@@ -6,7 +6,8 @@ All **59 canonical gp3bayes 0.5.0 articles** are available as Python-facing guid
   <div class="gp-stat"><strong>59</strong><span>guided articles</span></div>
   <div class="gp-stat"><strong>6</strong><span>workflow collections</span></div>
   <div class="gp-stat"><strong>6</strong><span>supplementary visual galleries</span></div>
-  <div class="gp-stat"><strong>458</strong><span>public functions covered by the package</span></div>
+  <div class="gp-stat"><strong>458</strong><span>frozen parity functions</span></div>
+  <div class="gp-stat"><strong>+25</strong><span>mediation functions beyond frozen parity</span></div>
   <div class="gp-stat"><strong>0.5.0</strong><span>frozen R reference</span></div>
   <div class="gp-stat"><strong>Search</strong><span>use the site search for function or concept names</span></div>
 </div>
@@ -24,6 +25,30 @@ The shortest route from a declared design to an inspectable Bayesian workflow.
 - [First-Class Estimands and Sensitivity Workflows](estimands-and-sensitivity.md)
 - [Transformation Replay and Detailed Posterior Predictive Checks](transformation-replay-and-detailed-ppc.md)
 - [Pre-fit Design-Support Diagnostics](pre-fit-design-diagnostics.md)
+
+</div>
+
+## Trial-level multilevel mediation
+
+Repeated-measures mechanism models that keep within- and between-participant pathways separate and preserve explicit model-scale interpretation.
+
+<div class="gp-link-grid" markdown>
+
+- [Multilevel gaze mediation overview](multilevel-mediation/index.md)
+- [Worked 100 × 20 trial example](multilevel-mediation/worked-example.md)
+- [Mediator and outcome family selection](multilevel-mediation/family-selection.md)
+- [Worked non-Gaussian family contracts](multilevel-mediation/non-gaussian-family-contracts.md)
+- [Estimands, causal scope, and interpretation](multilevel-mediation/interpretation-and-estimands.md)
+- [Assumptions and limitations](multilevel-mediation/assumptions-and-limitations.md)
+- [Analysis plan and preregistration template](multilevel-mediation/analysis-plan-and-preregistration.md)
+- [Diagnostics and priors](multilevel-mediation/diagnostics-and-priors.md)
+- [Worked prior-sensitivity example](multilevel-mediation/prior-sensitivity-worked-example.md)
+- [Simulation and recovery planning](multilevel-mediation/simulation-and-recovery.md)
+- [Model comparison for mediation](multilevel-mediation/model-comparison.md)
+- [Serial and moderated extensions](multilevel-mediation/serial-and-moderated.md)
+- [Reporting multilevel mediation](multilevel-mediation/reporting.md)
+- [Worked reporting example](multilevel-mediation/reporting-example.md)
+- [Troubleshooting and failure modes](multilevel-mediation/troubleshooting.md)
 
 </div>
 
