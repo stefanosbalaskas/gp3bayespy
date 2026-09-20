@@ -24,7 +24,6 @@ from gp3bayespy.multilevel_mediation import (
 )
 
 
-
 class PreparedFixture:
     def __init__(self, data: pd.DataFrame):
         frame = data.copy()
@@ -39,8 +38,12 @@ class PreparedFixture:
         )
         self.data = frame
         self.columns = {
-            "participant": "participant_id", "trial": "trial_id", "x": "ai_correct",
-            "mediator": "source_dwell", "outcome": "correct_override", "quality": "valid_fraction",
+            "participant": "participant_id",
+            "trial": "trial_id",
+            "x": "ai_correct",
+            "mediator": "source_dwell",
+            "outcome": "correct_override",
+            "quality": "valid_fraction",
         }
         self.provenance = {"fixture": True, "row_position_convention": {"base": 0}}
 
@@ -49,9 +52,16 @@ def _prepare(data: pd.DataFrame):
     if prepare_multilevel_mediation_data is None:
         return PreparedFixture(data)
     return prepare_multilevel_mediation_data(
-        data, x_col="ai_correct", mediator_col="source_dwell", outcome_col="correct_override",
-        quality_col="valid_fraction", minimum_quality=0.8, source_id="synthetic-ai-advice", warn=False,
+        data,
+        x_col="ai_correct",
+        mediator_col="source_dwell",
+        outcome_col="correct_override",
+        quality_col="valid_fraction",
+        minimum_quality=0.8,
+        source_id="synthetic-ai-advice",
+        warn=False,
     )
+
 
 def prepared_binary(n=8, trials=6, seed=3):
     data = simulate_multilevel_gaze_mediation(
@@ -186,7 +196,9 @@ def test_effect_extraction_and_summary_after_passing_diagnostics():
     assert direct.effect == "cprime_within"
     assert total.effect == "total_within"
     summary = summarise_multilevel_mediation(fit)
-    assert {"indirect_within", "indirect_between", "total_within", "total_between"}.issubset(set(summary["effect"]))
+    assert {"indirect_within", "indirect_between", "total_within", "total_between"}.issubset(
+        set(summary["effect"])
+    )
 
 
 def test_report_states_scale_missingness_and_diagnostics():
@@ -208,10 +220,12 @@ def test_backend_failure_is_informative_in_current_test_environment():
     # The tranche unit suite validates backend-independent contracts regardless of
     # optional backend state. If PyMC imports successfully, this test is skipped.
     import importlib
+
     try:
         importlib.import_module("pymc")
     except Exception:
         from gp3bayespy.multilevel_mediation import _load_pymc
+
         with pytest.raises(BackendUnavailableError, match="PyMC could not be imported"):
             _load_pymc()
     else:
@@ -225,7 +239,12 @@ def test_serial_specification_requires_eyeprocess_prepared_second_mediator():
 
     data = simulate_multilevel_gaze_mediation(n_participants=6, trials_per_participant=5, seed=17)
     rng = np.random.default_rng(17)
-    data["trust"] = 3.0 + 0.003 * data["source_dwell"] + 0.4 * data["ai_correct"] + rng.normal(0, 0.2, len(data))
+    data["trust"] = (
+        3.0
+        + 0.003 * data["source_dwell"]
+        + 0.4 * data["ai_correct"]
+        + rng.normal(0, 0.2, len(data))
+    )
     prepared = prepare_multilevel_mediation_data(
         data,
         x_col="ai_correct",
@@ -295,7 +314,12 @@ def test_moderated_specification_and_conditional_indirect_effect():
             "cprime_within": draws,
             "cprime_between": draws,
         },
-        sampler_diagnostics={"max_rhat": 1.001, "min_ess_bulk": 900, "divergences": 0, "treedepth_hits": 0},
+        sampler_diagnostics={
+            "max_rhat": 1.001,
+            "min_ess_bulk": 900,
+            "divergences": 0,
+            "treedepth_hits": 0,
+        },
         backend="fixture",
     )
     low = posterior_conditional_indirect_effect(fit, moderator_value=-1)
@@ -311,11 +335,16 @@ def test_balanced_within_design_marks_between_x_paths_not_estimable():
         for j in range(6):
             x = j % 2
             m = 1.0 + 0.5 * x + 0.1 * i + 0.02 * j
-            rows.append({
-                "participant_id": f"p{i}", "trial_id": j + 1, "ai_correct": x,
-                "source_dwell": m, "correct_override": int((i + j) % 2 == 0),
-                "valid_fraction": 1.0,
-            })
+            rows.append(
+                {
+                    "participant_id": f"p{i}",
+                    "trial_id": j + 1,
+                    "ai_correct": x,
+                    "source_dwell": m,
+                    "correct_override": int((i + j) % 2 == 0),
+                    "valid_fraction": 1.0,
+                }
+            )
     prepared = _prepare(pd.DataFrame(rows))
     spec = specify_multilevel_gaze_mediation(prepared, random_slopes=())
     assert "a_within" in spec.estimable_paths
@@ -332,7 +361,12 @@ def test_balanced_within_design_marks_between_x_paths_not_estimable():
             "indirect_within": (x + 0.6) * (x + 0.5),
             "total_within": x + 0.1 + (x + 0.6) * (x + 0.5),
         },
-        sampler_diagnostics={"max_rhat": 1.001, "min_ess_bulk": 900, "divergences": 0, "treedepth_hits": 0},
+        sampler_diagnostics={
+            "max_rhat": 1.001,
+            "min_ess_bulk": 900,
+            "divergences": 0,
+            "treedepth_hits": 0,
+        },
         backend="fixture",
     )
     with pytest.raises(GP3BayesError, match="unavailable"):
@@ -347,17 +381,26 @@ def test_serial_and_moderated_extensions_reject_unimplemented_random_slopes():
         specify_multilevel_moderated_gaze_mediation,
         specify_multilevel_serial_gaze_mediation,
     )
+
     data = simulate_multilevel_gaze_mediation(n_participants=8, trials_per_participant=6, seed=41)
     data["trust"] = 2.0 + 0.4 * data["ai_correct"] + 0.2 * data["source_dwell"]
     data["moderator"] = np.tile([-0.5, 0.5, -0.5, 0.5, -0.5, 0.5], 8)
     prepared = _prepare(data)
     serial = ep.add_multilevel_mediation_component(
-        prepared, value_col="trust", semantic="mediator2", within_col="M2_within", between_col="M2_between"
+        prepared,
+        value_col="trust",
+        semantic="mediator2",
+        within_col="M2_within",
+        between_col="M2_between",
     )
     with pytest.raises(GP3BayesError, match="not yet implemented"):
         specify_multilevel_serial_gaze_mediation(serial, random_slopes=("mediator_x",))
     moderated = ep.add_multilevel_mediation_component(
-        prepared, value_col="moderator", semantic="moderator", within_col="Z_within", between_col="Z_between"
+        prepared,
+        value_col="moderator",
+        semantic="moderator",
+        within_col="Z_within",
+        between_col="Z_between",
     )
     with pytest.raises(GP3BayesError, match="not yet implemented"):
         specify_multilevel_moderated_gaze_mediation(moderated, random_slopes=("outcome_m",))
@@ -365,6 +408,7 @@ def test_serial_and_moderated_extensions_reject_unimplemented_random_slopes():
 
 def test_sampling_controls_fail_before_optional_backend_load():
     from gp3bayespy.multilevel_mediation import fit_multilevel_gaze_mediation
+
     prepared = prepared_binary()
     with pytest.raises(GP3BayesError, match="draws"):
         fit_multilevel_gaze_mediation(prepared, random_slopes=(), draws=10)
@@ -393,23 +437,31 @@ def test_ordinal_outcome_requires_contiguous_categories():
         specify_multilevel_gaze_mediation(prepared, outcome_family="ordinal", random_slopes=())
 
 
-
 def test_model_comparison_requires_identical_ordered_observations():
     prepared_a = prepared_binary(seed=31)
     prepared_b = prepared_binary(seed=31)
-    prepared_b.data.loc[prepared_b.data.index[0], "correct_override"] = (
-        1 - int(prepared_b.data.loc[prepared_b.data.index[0], "correct_override"])
+    prepared_b.data.loc[prepared_b.data.index[0], "correct_override"] = 1 - int(
+        prepared_b.data.loc[prepared_b.data.index[0], "correct_override"]
     )
     spec_a = specify_multilevel_gaze_mediation(prepared_a, random_slopes=())
     spec_b = specify_multilevel_gaze_mediation(prepared_b, random_slopes=())
     fit_a = MultilevelMediationFit(
-        specification=spec_a, posterior={}, sampler_diagnostics={}, backend_fit=object(), backend="fixture"
+        specification=spec_a,
+        posterior={},
+        sampler_diagnostics={},
+        backend_fit=object(),
+        backend="fixture",
     )
     fit_b = MultilevelMediationFit(
-        specification=spec_b, posterior={}, sampler_diagnostics={}, backend_fit=object(), backend="fixture"
+        specification=spec_b,
+        posterior={},
+        sampler_diagnostics={},
+        backend_fit=object(),
+        backend="fixture",
     )
     with pytest.raises(GP3BayesError, match="same mediator/outcome observations"):
         compare_multilevel_mediation_models({"a": fit_a, "b": fit_b})
+
 
 def test_strong_synthetic_path_signal_exceeds_weak_signal():
     strong = simulate_multilevel_gaze_mediation(
@@ -418,8 +470,12 @@ def test_strong_synthetic_path_signal_exceeds_weak_signal():
     weak = simulate_multilevel_gaze_mediation(
         n_participants=120, trials_per_participant=12, a_within=0.05, b_within=0.05, seed=61
     )
+
     def within_cov(frame):
         xw = frame["ai_correct"] - frame.groupby("participant_id")["ai_correct"].transform("mean")
-        mw = frame["source_dwell"] - frame.groupby("participant_id")["source_dwell"].transform("mean")
+        mw = frame["source_dwell"] - frame.groupby("participant_id")["source_dwell"].transform(
+            "mean"
+        )
         return abs(float(np.cov(xw, mw)[0, 1]))
+
     assert within_cov(strong) > within_cov(weak) * 3

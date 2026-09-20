@@ -9,14 +9,17 @@ predictor scale. For nonlinear outcome families these are *not* probability-
 scale natural indirect effects; the scale is therefore stored and reported
 explicitly.
 """
+
 from __future__ import annotations
 
+import math
+import warnings
+from collections.abc import Mapping, Sequence
+from contextlib import suppress
 from dataclasses import dataclass, field
 from importlib import import_module
 from importlib.metadata import PackageNotFoundError, version
-from typing import Any, Mapping, Sequence
-import math
-import warnings
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -24,6 +27,7 @@ import pandas as pd
 try:  # integration path inside gp3bayespy
     from .exceptions import BackendUnavailableError, GP3BayesError
 except Exception:  # standalone tranche validation
+
     class GP3BayesError(ValueError):
         pass
 
@@ -32,7 +36,13 @@ except Exception:  # standalone tranche validation
 
 
 _MEDIATOR_FAMILIES = {
-    "gaussian", "lognormal", "gamma", "beta", "bernoulli", "poisson", "negative_binomial"
+    "gaussian",
+    "lognormal",
+    "gamma",
+    "beta",
+    "bernoulli",
+    "poisson",
+    "negative_binomial",
 }
 _OUTCOME_FAMILIES = {"gaussian", "bernoulli", "poisson", "negative_binomial", "ordinal"}
 _MISSING_POLICIES = {"error", "complete_case", "quality_eligible"}
@@ -148,7 +158,12 @@ def _normalize_family(value: str, allowed: set[str], name: str) -> str:
 
 
 def _finite_positive(value: float, name: str) -> float:
-    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(float(value)) or float(value) <= 0:
+    if (
+        isinstance(value, bool)
+        or not isinstance(value, (int, float))
+        or not math.isfinite(float(value))
+        or float(value) <= 0
+    ):
         raise GP3BayesError(f"`{name}` must be one finite positive number.")
     return float(value)
 
@@ -173,7 +188,9 @@ def create_mediation_prior_specification(
     )
 
 
-def _prepared_contract(prepared: Any) -> tuple[pd.DataFrame, Mapping[str, str | None], Mapping[str, Any]]:
+def _prepared_contract(
+    prepared: Any,
+) -> tuple[pd.DataFrame, Mapping[str, str | None], Mapping[str, Any]]:
     if not hasattr(prepared, "data") or not isinstance(prepared.data, pd.DataFrame):
         raise GP3BayesError(
             "`prepared` must be an eyeprocess/eyeprocesspy multilevel mediation preparation object."
@@ -187,7 +204,13 @@ def _prepared_contract(prepared: Any) -> tuple[pd.DataFrame, Mapping[str, str | 
     required_semantic = {"participant", "trial", "mediator", "outcome"}
     if not required_semantic.issubset(columns):
         raise GP3BayesError("`prepared$columns` is missing canonical mediation semantics.")
-    required_data = {"X_within", "X_between", "M_within", "M_between", "mediation_analysis_eligible"}
+    required_data = {
+        "X_within",
+        "X_between",
+        "M_within",
+        "M_between",
+        "mediation_analysis_eligible",
+    }
     missing = sorted(required_data - set(prepared.data.columns))
     if missing:
         raise GP3BayesError(
@@ -196,26 +219,45 @@ def _prepared_contract(prepared: Any) -> tuple[pd.DataFrame, Mapping[str, str | 
     return prepared.data.copy(deep=True), columns, provenance
 
 
-def _validate_family_data(data: pd.DataFrame, mediator_col: str, outcome_col: str, mediator_family: str, outcome_family: str) -> None:
+def _validate_family_data(
+    data: pd.DataFrame,
+    mediator_col: str,
+    outcome_col: str,
+    mediator_family: str,
+    outcome_family: str,
+) -> None:
     m = pd.to_numeric(data[mediator_col], errors="raise").to_numpy(dtype=float)
     y = pd.to_numeric(data[outcome_col], errors="raise").to_numpy(dtype=float)
     if mediator_family in {"lognormal", "gamma"} and not np.all(m > 0):
-        raise GP3BayesError(f"Mediator family `{mediator_family}` requires strictly positive mediator values.")
+        raise GP3BayesError(
+            f"Mediator family `{mediator_family}` requires strictly positive mediator values."
+        )
     if mediator_family == "beta" and not np.all((m > 0) & (m < 1)):
-        raise GP3BayesError("Mediator family `beta` requires mediator values strictly between 0 and 1.")
+        raise GP3BayesError(
+            "Mediator family `beta` requires mediator values strictly between 0 and 1."
+        )
     if mediator_family == "bernoulli" and not np.all(np.isin(m, [0, 1])):
         raise GP3BayesError("Mediator family `bernoulli` requires mediator values coded 0/1.")
-    if mediator_family in {"poisson", "negative_binomial"} and not np.all((m >= 0) & (np.floor(m) == m)):
-        raise GP3BayesError(f"Mediator family `{mediator_family}` requires non-negative integer counts.")
+    if mediator_family in {"poisson", "negative_binomial"} and not np.all(
+        (m >= 0) & (np.floor(m) == m)
+    ):
+        raise GP3BayesError(
+            f"Mediator family `{mediator_family}` requires non-negative integer counts."
+        )
     if outcome_family == "bernoulli" and not np.all(np.isin(y, [0, 1])):
         raise GP3BayesError("Outcome family `bernoulli` requires outcome values coded 0/1.")
-    if outcome_family in {"poisson", "negative_binomial"} and not np.all((y >= 0) & (np.floor(y) == y)):
-        raise GP3BayesError(f"Outcome family `{outcome_family}` requires non-negative integer counts.")
+    if outcome_family in {"poisson", "negative_binomial"} and not np.all(
+        (y >= 0) & (np.floor(y) == y)
+    ):
+        raise GP3BayesError(
+            f"Outcome family `{outcome_family}` requires non-negative integer counts."
+        )
     if outcome_family == "ordinal":
         unique = np.unique(y)
         if len(unique) < 3 or not np.array_equal(unique, np.arange(unique.min(), unique.max() + 1)):
-            raise GP3BayesError("Ordinal outcomes must be contiguous integer categories with at least three levels.")
-
+            raise GP3BayesError(
+                "Ordinal outcomes must be contiguous integer categories with at least three levels."
+            )
 
 
 def _has_variation(values: pd.Series | np.ndarray, *, tolerance: float = 1e-12) -> bool:
@@ -252,7 +294,11 @@ def _validate_sampling_controls(
         (tune, "tune", 0),
         (max_treedepth, "max_treedepth", 5),
     ]:
-        if isinstance(value, bool) or not isinstance(value, (int, np.integer)) or int(value) < minimum:
+        if (
+            isinstance(value, bool)
+            or not isinstance(value, (int, np.integer))
+            or int(value) < minimum
+        ):
             raise GP3BayesError(f"`{name}` must be an integer >= {minimum}.")
     if cores is None:
         cores_value = min(int(chains), 2)
@@ -264,7 +310,12 @@ def _validate_sampling_controls(
         raise GP3BayesError("`cores` cannot exceed `chains`.")
     if isinstance(seed, bool) or not isinstance(seed, (int, np.integer)) or int(seed) < 0:
         raise GP3BayesError("`seed` must be a non-negative integer.")
-    if isinstance(target_accept, bool) or not isinstance(target_accept, (int, float)) or not math.isfinite(float(target_accept)) or not 0 < float(target_accept) < 1:
+    if (
+        isinstance(target_accept, bool)
+        or not isinstance(target_accept, (int, float))
+        or not math.isfinite(float(target_accept))
+        or not 0 < float(target_accept) < 1
+    ):
         raise GP3BayesError("`target_accept` must lie strictly between 0 and 1.")
     return {
         "chains": int(chains),
@@ -283,6 +334,7 @@ def _validate_draw_seed(draws: int, seed: int) -> tuple[int, int]:
     if isinstance(seed, bool) or not isinstance(seed, (int, np.integer)) or int(seed) < 0:
         raise GP3BayesError("`seed` must be a non-negative integer.")
     return int(draws), int(seed)
+
 
 def specify_multilevel_gaze_mediation(
     prepared: Any,
@@ -320,10 +372,21 @@ def specify_multilevel_gaze_mediation(
     outcome_col = str(columns["outcome"])
     participant_col = str(columns["participant"])
     trial_col = str(columns["trial"])
-    required = [participant_col, trial_col, mediator_col, outcome_col, "X_within", "X_between", "M_within", "M_between"]
+    required = [
+        participant_col,
+        trial_col,
+        mediator_col,
+        outcome_col,
+        "X_within",
+        "X_between",
+        "M_within",
+        "M_between",
+    ]
     missing_cols = [c for c in required if c not in data]
     if missing_cols:
-        raise GP3BayesError("Prepared data is missing model columns: " + ", ".join(missing_cols) + ".")
+        raise GP3BayesError(
+            "Prepared data is missing model columns: " + ", ".join(missing_cols) + "."
+        )
 
     complete = data[required].notna().all(axis=1)
     eligible = data["mediation_analysis_eligible"].fillna(False).astype(bool)
@@ -360,7 +423,8 @@ def specify_multilevel_gaze_mediation(
     if unsupported_slopes:
         raise GP3BayesError(
             "Requested random slope(s) are not estimable from observed within-participant variation: "
-            + ", ".join(unsupported_slopes) + "."
+            + ", ".join(unsupported_slopes)
+            + "."
         )
 
     # Trial-level random slopes need repeated observations within at least some groups.
@@ -419,23 +483,46 @@ def _load_pymc() -> Any:
 def _normal_paths(pm: Any, sd: float) -> dict[str, Any]:
     return {
         name: pm.Normal(name, mu=0.0, sigma=sd)
-        for name in ["a_within", "a_between", "b_within", "b_between", "cprime_within", "cprime_between"]
+        for name in [
+            "a_within",
+            "a_between",
+            "b_within",
+            "b_between",
+            "cprime_within",
+            "cprime_between",
+        ]
     }
 
 
-def _random_effect(pm: Any, name: str, n_participants: int, participant_idx: np.ndarray, scale: float) -> Any:
+def _random_effect(
+    pm: Any, name: str, n_participants: int, participant_idx: np.ndarray, scale: float
+) -> Any:
     sd = pm.HalfNormal(f"sd_{name}", sigma=scale)
     z = pm.Normal(f"z_{name}", 0.0, 1.0, shape=n_participants)
     return sd * z[participant_idx]
 
 
-def _random_slope(pm: Any, name: str, predictor: np.ndarray, n_participants: int, participant_idx: np.ndarray, scale: float) -> Any:
+def _random_slope(
+    pm: Any,
+    name: str,
+    predictor: np.ndarray,
+    n_participants: int,
+    participant_idx: np.ndarray,
+    scale: float,
+) -> Any:
     sd = pm.HalfNormal(f"sd_{name}", sigma=scale)
     z = pm.Normal(f"z_{name}", 0.0, 1.0, shape=n_participants)
     return sd * z[participant_idx] * predictor
 
 
-def _observe_family(pm: Any, name: str, family: str, eta: Any, observed: np.ndarray, priors: MediationPriorSpecification) -> None:
+def _observe_family(
+    pm: Any,
+    name: str,
+    family: str,
+    eta: Any,
+    observed: np.ndarray,
+    priors: MediationPriorSpecification,
+) -> None:
     if family == "gaussian":
         sigma = pm.HalfNormal(f"sigma_{name}", sigma=priors.residual_sd_scale)
         pm.Normal(name, mu=eta, sigma=sigma, observed=observed)
@@ -495,7 +582,9 @@ def _build_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         eta_m = alpha_m + paths["a_within"] * xw
         if "a_between" in paths:
             eta_m = eta_m + paths["a_between"] * xb
-        eta_m = eta_m + _random_effect(pm, "participant_m", n_participants, participant_idx, priors.group_sd_scale)
+        eta_m = eta_m + _random_effect(
+            pm, "participant_m", n_participants, participant_idx, priors.group_sd_scale
+        )
         participant_a_slope = None
         if "mediator_x" in spec.random_slopes:
             sd_a = pm.HalfNormal("sd_participant_a", sigma=priors.group_sd_scale)
@@ -508,9 +597,13 @@ def _build_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         for name, predictor in [("cprime_between", xb), ("b_between", mb)]:
             if name in paths:
                 eta_y = eta_y + paths[name] * predictor
-        eta_y = eta_y + _random_effect(pm, "participant_y", n_participants, participant_idx, priors.group_sd_scale)
+        eta_y = eta_y + _random_effect(
+            pm, "participant_y", n_participants, participant_idx, priors.group_sd_scale
+        )
         if "outcome_x" in spec.random_slopes:
-            eta_y = eta_y + _random_slope(pm, "participant_c", xw, n_participants, participant_idx, priors.group_sd_scale)
+            eta_y = eta_y + _random_slope(
+                pm, "participant_c", xw, n_participants, participant_idx, priors.group_sd_scale
+            )
         participant_b_slope = None
         if "outcome_m" in spec.random_slopes:
             sd_b = pm.HalfNormal("sd_participant_b", sigma=priors.group_sd_scale)
@@ -522,15 +615,21 @@ def _build_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         pm.Deterministic("indirect_within", paths["a_within"] * paths["b_within"])
         if {"a_between", "b_between"}.issubset(paths):
             pm.Deterministic("indirect_between", paths["a_between"] * paths["b_between"])
-        pm.Deterministic("total_within", paths["cprime_within"] + paths["a_within"] * paths["b_within"])
+        pm.Deterministic(
+            "total_within", paths["cprime_within"] + paths["a_within"] * paths["b_within"]
+        )
         if {"cprime_between", "a_between", "b_between"}.issubset(paths):
-            pm.Deterministic("total_between", paths["cprime_between"] + paths["a_between"] * paths["b_between"])
+            pm.Deterministic(
+                "total_between", paths["cprime_between"] + paths["a_between"] * paths["b_between"]
+            )
         if participant_a_slope is not None and participant_b_slope is not None:
             pm.Deterministic(
                 "participant_indirect_within",
-                (paths["a_within"] + participant_a_slope) * (paths["b_within"] + participant_b_slope),
+                (paths["a_within"] + participant_a_slope)
+                * (paths["b_within"] + participant_b_slope),
             )
     return model
+
 
 def _flatten_posterior(idata: Any, names: Sequence[str]) -> dict[str, np.ndarray]:
     out: dict[str, np.ndarray] = {}
@@ -569,10 +668,8 @@ def _sampler_diagnostics(idata: Any, *, max_treedepth: int) -> dict[str, Any]:
         pass
     stats = getattr(idata, "sample_stats", None)
     if stats is not None:
-        try:
+        with suppress(Exception):
             diagnostics["divergences"] = int(np.asarray(stats["diverging"]).sum())
-        except Exception:
-            pass
         for candidate in ("tree_depth", "treedepth"):
             try:
                 values = np.asarray(stats[candidate])
@@ -609,8 +706,13 @@ def fit_multilevel_gaze_mediation(
         missingness_policy=missingness_policy,
     )
     controls = _validate_sampling_controls(
-        chains=chains, draws=draws, tune=tune, cores=cores, seed=seed,
-        target_accept=target_accept, max_treedepth=max_treedepth,
+        chains=chains,
+        draws=draws,
+        tune=tune,
+        cores=cores,
+        seed=seed,
+        target_accept=target_accept,
+        max_treedepth=max_treedepth,
     )
 
     pm = _load_pymc()
@@ -630,9 +732,19 @@ def fit_multilevel_gaze_mediation(
             idata_kwargs={"log_likelihood": True},
         )
     names = [
-        "a_within", "a_between", "b_within", "b_between", "cprime_within", "cprime_between",
-        "indirect_within", "indirect_between", "total_within", "total_between",
-        "participant_a_slope", "participant_b_slope", "participant_indirect_within",
+        "a_within",
+        "a_between",
+        "b_within",
+        "b_between",
+        "cprime_within",
+        "cprime_between",
+        "indirect_within",
+        "indirect_between",
+        "total_within",
+        "total_between",
+        "participant_a_slope",
+        "participant_b_slope",
+        "participant_indirect_within",
     ]
     posterior = _flatten_posterior(idata, names)
     diagnostics = _sampler_diagnostics(idata, max_treedepth=int(controls["max_treedepth"]))
@@ -702,7 +814,9 @@ def check_mediation_convergence(
     )
 
 
-def _effect_from_draws(name: str, draws: np.ndarray, probability: float, scale: str) -> MediationEffect:
+def _effect_from_draws(
+    name: str, draws: np.ndarray, probability: float, scale: str
+) -> MediationEffect:
     values = np.asarray(draws, dtype=float).reshape(-1)
     if len(values) == 0 or not np.isfinite(values).all():
         raise GP3BayesError(f"Posterior draws for `{name}` are missing or non-finite.")
@@ -765,7 +879,9 @@ def estimate_between_indirect_effect(fit: MultilevelMediationFit, **kwargs: Any)
     return posterior_indirect_effect(fit, level="between", **kwargs)
 
 
-def estimate_indirect_effect(fit: MultilevelMediationFit, *, level: str = "within", **kwargs: Any) -> MediationEffect:
+def estimate_indirect_effect(
+    fit: MultilevelMediationFit, *, level: str = "within", **kwargs: Any
+) -> MediationEffect:
     return posterior_indirect_effect(fit, level=level, **kwargs)
 
 
@@ -827,14 +943,28 @@ def summarise_multilevel_mediation(
             if name in fit.posterior:
                 effect = _effect_from_draws(name, fit.posterior[name], probability, scale)
                 rows.append(_effect_row(effect))
-        try:
-            rows.append(_effect_row(posterior_indirect_effect(fit, level=level, probability=probability, require_convergence=False)))
-        except GP3BayesError:
-            pass
-        try:
-            rows.append(_effect_row(posterior_total_effect(fit, level=level, probability=probability, require_convergence=False)))
-        except GP3BayesError:
-            pass
+        with suppress(GP3BayesError):
+            rows.append(
+                _effect_row(
+                    posterior_indirect_effect(
+                        fit,
+                        level=level,
+                        probability=probability,
+                        require_convergence=False,
+                    )
+                )
+            )
+        with suppress(GP3BayesError):
+            rows.append(
+                _effect_row(
+                    posterior_total_effect(
+                        fit,
+                        level=level,
+                        probability=probability,
+                        require_convergence=False,
+                    )
+                )
+            )
     return pd.DataFrame(rows)
 
 
@@ -875,11 +1005,16 @@ def posterior_predictive_check_mediation(
     if predictive is None:
         raise GP3BayesError("Backend did not return posterior predictive draws.")
     rows: list[dict[str, Any]] = []
-    for var, observed_col in [("M_obs", fit.specification.mediator_col), ("Y_obs", fit.specification.outcome_col)]:
+    for var, observed_col in [
+        ("M_obs", fit.specification.mediator_col),
+        ("Y_obs", fit.specification.outcome_col),
+    ]:
         sims = np.asarray(predictive[var]).reshape(-1, fit.specification.analysis_rows)
         if len(sims) > draws:
             sims = sims[:draws]
-        observed = pd.to_numeric(fit.specification.data[observed_col], errors="raise").to_numpy(dtype=float)
+        observed = pd.to_numeric(fit.specification.data[observed_col], errors="raise").to_numpy(
+            dtype=float
+        )
         sim_means = sims.mean(axis=1)
         obs_mean = float(np.mean(observed))
         rows.append(
@@ -932,24 +1067,37 @@ def _same_comparison_observations(
     candidate: MultilevelMediationSpecification,
 ) -> bool:
     """Return whether two specifications contain the same ordered responses."""
-    if reference.mediator_col != candidate.mediator_col or reference.outcome_col != candidate.outcome_col:
+    if (
+        reference.mediator_col != candidate.mediator_col
+        or reference.outcome_col != candidate.outcome_col
+    ):
         return False
     if reference.analysis_rows != candidate.analysis_rows:
         return False
-    ref_keys = reference.data[[reference.participant_col, reference.trial_col]].reset_index(drop=True)
-    cand_keys = candidate.data[[candidate.participant_col, candidate.trial_col]].reset_index(drop=True)
+    ref_keys = reference.data[[reference.participant_col, reference.trial_col]].reset_index(
+        drop=True
+    )
+    cand_keys = candidate.data[[candidate.participant_col, candidate.trial_col]].reset_index(
+        drop=True
+    )
     if not ref_keys.set_axis(["participant", "trial"], axis=1).equals(
         cand_keys.set_axis(["participant", "trial"], axis=1)
     ):
         return False
-    ref_values = reference.data[[reference.mediator_col, reference.outcome_col]].reset_index(drop=True)
-    cand_values = candidate.data[[candidate.mediator_col, candidate.outcome_col]].reset_index(drop=True)
+    ref_values = reference.data[[reference.mediator_col, reference.outcome_col]].reset_index(
+        drop=True
+    )
+    cand_values = candidate.data[[candidate.mediator_col, candidate.outcome_col]].reset_index(
+        drop=True
+    )
     return ref_values.set_axis(["mediator", "outcome"], axis=1).equals(
         cand_values.set_axis(["mediator", "outcome"], axis=1)
     )
 
 
-def _joint_pointwise_log_likelihood(mediator_ll: Any, outcome_ll: Any, *, expected_rows: int) -> Any:
+def _joint_pointwise_log_likelihood(
+    mediator_ll: Any, outcome_ll: Any, *, expected_rows: int
+) -> Any:
     """Align mediator/outcome pointwise log likelihoods before summing them."""
     if hasattr(mediator_ll, "dims") and hasattr(outcome_ll, "dims"):
         sample_dims = {"chain", "draw", "sample"}
@@ -961,17 +1109,32 @@ def _joint_pointwise_log_likelihood(mediator_ll: Any, outcome_ll: Any, *, expect
             )
         mediator_dim = mediator_obs_dims[0]
         outcome_dim = outcome_obs_dims[0]
-        if int(mediator_ll.sizes[mediator_dim]) != expected_rows or int(outcome_ll.sizes[outcome_dim]) != expected_rows:
+        if (
+            int(mediator_ll.sizes[mediator_dim]) != expected_rows
+            or int(outcome_ll.sizes[outcome_dim]) != expected_rows
+        ):
             raise GP3BayesError(
                 "Mediator/outcome log-likelihood observation dimensions do not match the analysis rows."
             )
-        mediator_aligned = mediator_ll if mediator_dim == "observation" else mediator_ll.rename({mediator_dim: "observation"})
-        outcome_aligned = outcome_ll if outcome_dim == "observation" else outcome_ll.rename({outcome_dim: "observation"})
+        mediator_aligned = (
+            mediator_ll
+            if mediator_dim == "observation"
+            else mediator_ll.rename({mediator_dim: "observation"})
+        )
+        outcome_aligned = (
+            outcome_ll
+            if outcome_dim == "observation"
+            else outcome_ll.rename({outcome_dim: "observation"})
+        )
         return mediator_aligned + outcome_aligned
 
     mediator_array = np.asarray(mediator_ll)
     outcome_array = np.asarray(outcome_ll)
-    if mediator_array.shape != outcome_array.shape or mediator_array.ndim < 1 or mediator_array.shape[-1] != expected_rows:
+    if (
+        mediator_array.shape != outcome_array.shape
+        or mediator_array.ndim < 1
+        or mediator_array.shape[-1] != expected_rows
+    ):
         raise GP3BayesError(
             "Mediator/outcome log-likelihood arrays must have matching shapes with the final dimension equal "
             "to the number of analysis rows."
@@ -1120,9 +1283,13 @@ def report_multilevel_gaze_mediation(
     convergence = check_mediation_convergence(fit)
     if require_convergence and not convergence.passed:
         raise GP3BayesError("A substantive report is blocked because convergence checks failed.")
-    within = posterior_indirect_effect(fit, level="within", probability=probability, require_convergence=False)
+    within = posterior_indirect_effect(
+        fit, level="within", probability=probability, require_convergence=False
+    )
     try:
-        between = posterior_indirect_effect(fit, level="between", probability=probability, require_convergence=False)
+        between = posterior_indirect_effect(
+            fit, level="between", probability=probability, require_convergence=False
+        )
         between_text = f"{between.mean:.3f} [{between.lower:.3f}, {between.upper:.3f}]"
     except GP3BayesError:
         between_text = "not estimable from the observed design"
@@ -1154,7 +1321,9 @@ def simulate_multilevel_gaze_mediation(
 ) -> pd.DataFrame:
     """Simulate the repeated AI-advice example used by tests and documentation."""
     if n_participants < 2 or trials_per_participant < 2:
-        raise GP3BayesError("Simulation requires at least two participants and two trials per participant.")
+        raise GP3BayesError(
+            "Simulation requires at least two participants and two trials per participant."
+        )
     rng = np.random.default_rng(seed)
     rows: list[dict[str, Any]] = []
     participant_intercept_m = rng.normal(0, 0.5, n_participants)
@@ -1164,17 +1333,29 @@ def simulate_multilevel_gaze_mediation(
         x = rng.binomial(1, participant_x_propensity[i], trials_per_participant)
         x_between = float(np.mean(x))
         x_within = x - x_between
-        mediator = 1.5 + a_within * x_within + a_between * x_between + participant_intercept_m[i] + rng.normal(0, 0.6, trials_per_participant)
+        mediator = (
+            1.5
+            + a_within * x_within
+            + a_between * x_between
+            + participant_intercept_m[i]
+            + rng.normal(0, 0.6, trials_per_participant)
+        )
         mediator = np.maximum(mediator, 0.02)
         m_between = float(np.mean(mediator))
         m_within = mediator - m_between
-        eta = -0.5 + cprime_within * x_within + b_within * m_within + b_between * m_between + participant_intercept_y[i]
+        eta = (
+            -0.5
+            + cprime_within * x_within
+            + b_within * m_within
+            + b_between * m_between
+            + participant_intercept_y[i]
+        )
         p = 1.0 / (1.0 + np.exp(-eta))
         outcome = rng.binomial(1, p)
         for j in range(trials_per_participant):
             rows.append(
                 {
-                    "participant_id": f"p{i+1:03d}",
+                    "participant_id": f"p{i + 1:03d}",
                     "trial_id": j + 1,
                     "ai_correct": int(x[j]),
                     "source_dwell": float(mediator[j]),
@@ -1262,15 +1443,30 @@ def specify_multilevel_serial_gaze_mediation(
     m2w = str(columns["mediator2_within"])
     m2b = str(columns["mediator2_between"])
     required = [
-        participant_col, trial_col, mediator_col, mediator2_col, outcome_col,
-        "X_within", "X_between", "M_within", "M_between", m2w, m2b,
+        participant_col,
+        trial_col,
+        mediator_col,
+        mediator2_col,
+        outcome_col,
+        "X_within",
+        "X_between",
+        "M_within",
+        "M_between",
+        m2w,
+        m2b,
     ]
     missing_cols = [c for c in required if c not in data]
     if missing_cols:
-        raise GP3BayesError("Prepared serial data is missing model columns: " + ", ".join(missing_cols) + ".")
-    analysis, excluded = _select_analysis_rows(data, required=required, missingness_policy=missingness_policy)
+        raise GP3BayesError(
+            "Prepared serial data is missing model columns: " + ", ".join(missing_cols) + "."
+        )
+    analysis, excluded = _select_analysis_rows(
+        data, required=required, missingness_policy=missingness_policy
+    )
     if analysis[participant_col].nunique() < 2:
-        raise GP3BayesError("At least two participants are required for serial multilevel mediation.")
+        raise GP3BayesError(
+            "At least two participants are required for serial multilevel mediation."
+        )
     _validate_family_data(analysis, mediator_col, outcome_col, m1_family, y_family)
     temp = analysis.rename(columns={mediator2_col: "__m2__", outcome_col: "__y__"})
     _validate_family_data(temp, "__m2__", "__y__", m2_family, y_family)
@@ -1312,17 +1508,31 @@ def specify_multilevel_serial_gaze_mediation(
         },
     }
     return MultilevelMediationSpecification(
-        data=analysis, participant_col=participant_col, trial_col=trial_col,
-        outcome_col=outcome_col, mediator_col=mediator_col, mediator_family=m1_family,
-        outcome_family=y_family, priors=priors, random_slopes=(),
-        missingness_policy=missingness_policy, input_rows=len(data), analysis_rows=len(analysis),
-        excluded_row_positions=excluded, provenance=model_provenance, model_kind="serial",
+        data=analysis,
+        participant_col=participant_col,
+        trial_col=trial_col,
+        outcome_col=outcome_col,
+        mediator_col=mediator_col,
+        mediator_family=m1_family,
+        outcome_family=y_family,
+        priors=priors,
+        random_slopes=(),
+        missingness_policy=missingness_policy,
+        input_rows=len(data),
+        analysis_rows=len(analysis),
+        excluded_row_positions=excluded,
+        provenance=model_provenance,
+        model_kind="serial",
         extra_columns={
-            "mediator2": mediator2_col, "mediator2_within": m2w,
-            "mediator2_between": m2b, "mediator2_family": m2_family,
+            "mediator2": mediator2_col,
+            "mediator2_within": m2w,
+            "mediator2_between": m2b,
+            "mediator2_family": m2_family,
         },
-        serial=True, estimable_paths=estimable_paths,
+        serial=True,
+        estimable_paths=estimable_paths,
     )
+
 
 def _build_serial_pymc_model(spec: MultilevelMediationSpecification) -> Any:
     pm = _load_pymc()
@@ -1373,15 +1583,25 @@ def _build_serial_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         eta_y += _random_effect(pm, "participant_y", n_participants, idx, p.group_sd_scale)
         _observe_family(pm, "Y_obs", spec.outcome_family, eta_y, y, p)
 
-        pm.Deterministic("serial_indirect_within", path["a1_within"] * path["d_within"] * path["b2_within"])
+        pm.Deterministic(
+            "serial_indirect_within", path["a1_within"] * path["d_within"] * path["b2_within"]
+        )
         if {"a1_between", "d_between", "b2_between"}.issubset(path):
-            pm.Deterministic("serial_indirect_between", path["a1_between"] * path["d_between"] * path["b2_between"])
+            pm.Deterministic(
+                "serial_indirect_between",
+                path["a1_between"] * path["d_between"] * path["b2_between"],
+            )
         pm.Deterministic("m1_indirect_within", path["a1_within"] * path["b1_within"])
         pm.Deterministic("m2_indirect_within", path["a2_within"] * path["b2_within"])
-        total_ind = path["a1_within"] * path["b1_within"] + path["a2_within"] * path["b2_within"] + path["a1_within"] * path["d_within"] * path["b2_within"]
+        total_ind = (
+            path["a1_within"] * path["b1_within"]
+            + path["a2_within"] * path["b2_within"]
+            + path["a1_within"] * path["d_within"] * path["b2_within"]
+        )
         pm.Deterministic("total_indirect_within", total_ind)
         pm.Deterministic("total_within", path["cprime_within"] + total_ind)
     return model
+
 
 def fit_multilevel_serial_gaze_mediation(
     prepared: Any,
@@ -1411,36 +1631,64 @@ def fit_multilevel_serial_gaze_mediation(
         missingness_policy=missingness_policy,
     )
     controls = _validate_sampling_controls(
-        chains=chains, draws=draws, tune=tune, cores=cores, seed=seed,
-        target_accept=target_accept, max_treedepth=max_treedepth,
+        chains=chains,
+        draws=draws,
+        tune=tune,
+        cores=cores,
+        seed=seed,
+        target_accept=target_accept,
+        max_treedepth=max_treedepth,
     )
     pm = _load_pymc()
     model = _build_serial_pymc_model(spec)
     with model:
         idata = pm.sample(
-            draws=controls["draws"], tune=controls["tune"], chains=controls["chains"],
-            cores=controls["cores"], random_seed=controls["seed"],
+            draws=controls["draws"],
+            tune=controls["tune"],
+            chains=controls["chains"],
+            cores=controls["cores"],
+            random_seed=controls["seed"],
             target_accept=controls["target_accept"],
-            nuts={"max_treedepth": controls["max_treedepth"]}, progressbar=False,
-            compute_convergence_checks=False, return_inferencedata=True,
+            nuts={"max_treedepth": controls["max_treedepth"]},
+            progressbar=False,
+            compute_convergence_checks=False,
+            return_inferencedata=True,
             idata_kwargs={"log_likelihood": True},
         )
     names = [
-        "a1_within", "a1_between", "a2_within", "a2_between", "d_within", "d_between",
-        "b1_within", "b1_between", "b2_within", "b2_between", "cprime_within", "cprime_between",
-        "serial_indirect_within", "serial_indirect_between", "m1_indirect_within", "m2_indirect_within",
-        "total_indirect_within", "total_within",
+        "a1_within",
+        "a1_between",
+        "a2_within",
+        "a2_between",
+        "d_within",
+        "d_between",
+        "b1_within",
+        "b1_between",
+        "b2_within",
+        "b2_between",
+        "cprime_within",
+        "cprime_between",
+        "serial_indirect_within",
+        "serial_indirect_between",
+        "m1_indirect_within",
+        "m2_indirect_within",
+        "total_indirect_within",
+        "total_within",
     ]
     fit = MultilevelMediationFit(
         specification=spec,
         posterior=_flatten_posterior(idata, names),
-        sampler_diagnostics=_sampler_diagnostics(idata, max_treedepth=int(controls["max_treedepth"])),
+        sampler_diagnostics=_sampler_diagnostics(
+            idata, max_treedepth=int(controls["max_treedepth"])
+        ),
         backend_fit=idata,
         backend_model=model,
         package_versions={"pymc": _package_version("pymc"), "arviz": _package_version("arviz")},
     )
     if not check_mediation_convergence(fit).passed:
-        warnings.warn("Serial mediation fit failed critical convergence checks.", RuntimeWarning, stacklevel=2)
+        warnings.warn(
+            "Serial mediation fit failed critical convergence checks.", RuntimeWarning, stacklevel=2
+        )
     return fit
 
 
@@ -1492,15 +1740,21 @@ def specify_multilevel_moderated_gaze_mediation(
     if key not in columns:
         raise GP3BayesError(f"Moderated mediation requires eyeprocess-prepared `{key}` semantics.")
     base = specify_multilevel_gaze_mediation(
-        prepared, mediator_family=mediator_family, outcome_family=outcome_family,
-        priors=priors, random_slopes=(), missingness_policy=missingness_policy,
+        prepared,
+        mediator_family=mediator_family,
+        outcome_family=outcome_family,
+        priors=priors,
+        random_slopes=(),
+        missingness_policy=missingness_policy,
     )
     zcol = str(columns[key])
     if zcol not in data:
         raise GP3BayesError(f"Prepared moderator column `{zcol}` is missing.")
     z_missing = data[zcol].isna()
     if bool(z_missing.any()) and missingness_policy == "error":
-        raise GP3BayesError("Moderator contains missing values; choose an explicit missingness policy.")
+        raise GP3BayesError(
+            "Moderator contains missing values; choose an explicit missingness policy."
+        )
     analysis = base.data.loc[base.data[zcol].notna()].copy()
     excluded_extra = tuple(np.flatnonzero(z_missing.to_numpy()).astype(int).tolist())
     excluded = tuple(sorted(set(base.excluded_row_positions) | set(excluded_extra)))
@@ -1508,29 +1762,51 @@ def specify_multilevel_moderated_gaze_mediation(
         raise GP3BayesError("No rows remain after applying moderator missingness rules.")
     if not _has_variation(analysis[zcol]):
         raise GP3BayesError("The selected moderator component has no observed variation.")
-    interaction = analysis["X_within"] * pd.to_numeric(analysis[zcol], errors="raise") if moderation_path == "a" else analysis["M_within"] * pd.to_numeric(analysis[zcol], errors="raise")
+    interaction = (
+        analysis["X_within"] * pd.to_numeric(analysis[zcol], errors="raise")
+        if moderation_path == "a"
+        else analysis["M_within"] * pd.to_numeric(analysis[zcol], errors="raise")
+    )
     if not _has_variation(interaction):
         raise GP3BayesError("The requested moderated path interaction has no observed variation.")
     estimable_paths = _estimable_simple_paths(analysis)
     if not {"a_within", "b_within"}.issubset(estimable_paths):
-        raise GP3BayesError("The within-participant indirect effect is not estimable after moderator filtering.")
+        raise GP3BayesError(
+            "The within-participant indirect effect is not estimable after moderator filtering."
+        )
     provenance2 = dict(base.provenance)
     provenance2["model_specification"] = dict(provenance2["model_specification"])
-    provenance2["model_specification"].update({
-        "model_kind": "moderated", "moderation_path": moderation_path,
-        "moderator_component": moderator_component, "random_effects_scope": "participant_random_intercepts",
-        "estimable_paths": list(estimable_paths),
-    })
-    return MultilevelMediationSpecification(
-        data=analysis, participant_col=base.participant_col, trial_col=base.trial_col,
-        outcome_col=base.outcome_col, mediator_col=base.mediator_col,
-        mediator_family=base.mediator_family, outcome_family=base.outcome_family,
-        priors=base.priors, random_slopes=(), missingness_policy=base.missingness_policy,
-        input_rows=base.input_rows, analysis_rows=len(analysis), excluded_row_positions=excluded,
-        provenance=provenance2, model_kind="moderated", extra_columns={"moderator": zcol},
-        moderation={"path": moderation_path, "component": moderator_component},
-        moderated=True, estimable_paths=estimable_paths,
+    provenance2["model_specification"].update(
+        {
+            "model_kind": "moderated",
+            "moderation_path": moderation_path,
+            "moderator_component": moderator_component,
+            "random_effects_scope": "participant_random_intercepts",
+            "estimable_paths": list(estimable_paths),
+        }
     )
+    return MultilevelMediationSpecification(
+        data=analysis,
+        participant_col=base.participant_col,
+        trial_col=base.trial_col,
+        outcome_col=base.outcome_col,
+        mediator_col=base.mediator_col,
+        mediator_family=base.mediator_family,
+        outcome_family=base.outcome_family,
+        priors=base.priors,
+        random_slopes=(),
+        missingness_policy=base.missingness_policy,
+        input_rows=base.input_rows,
+        analysis_rows=len(analysis),
+        excluded_row_positions=excluded,
+        provenance=provenance2,
+        model_kind="moderated",
+        extra_columns={"moderator": zcol},
+        moderation={"path": moderation_path, "component": moderator_component},
+        moderated=True,
+        estimable_paths=estimable_paths,
+    )
+
 
 def _build_moderated_pymc_model(spec: MultilevelMediationSpecification) -> Any:
     pm = _load_pymc()
@@ -1557,7 +1833,11 @@ def _build_moderated_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         eta_m += _random_effect(pm, "participant_m", n_participants, idx, p.group_sd_scale)
         _observe_family(pm, "M_obs", spec.mediator_family, eta_m, m, p)
 
-        eta_y = pm.Normal("alpha_y", 0, p.intercept_sd) + path["cprime_within"] * xw + path["b_within"] * mw
+        eta_y = (
+            pm.Normal("alpha_y", 0, p.intercept_sd)
+            + path["cprime_within"] * xw
+            + path["b_within"] * mw
+        )
         for name, predictor in [("cprime_between", xb), ("b_between", mb)]:
             if name in path:
                 eta_y = eta_y + path[name] * predictor
@@ -1569,6 +1849,7 @@ def _build_moderated_pymc_model(spec: MultilevelMediationSpecification) -> Any:
         if {"a_between", "b_between"}.issubset(path):
             pm.Deterministic("indirect_between", path["a_between"] * path["b_between"])
     return model
+
 
 def fit_multilevel_moderated_gaze_mediation(
     prepared: Any,
@@ -1600,33 +1881,57 @@ def fit_multilevel_moderated_gaze_mediation(
         missingness_policy=missingness_policy,
     )
     controls = _validate_sampling_controls(
-        chains=chains, draws=draws, tune=tune, cores=cores, seed=seed,
-        target_accept=target_accept, max_treedepth=max_treedepth,
+        chains=chains,
+        draws=draws,
+        tune=tune,
+        cores=cores,
+        seed=seed,
+        target_accept=target_accept,
+        max_treedepth=max_treedepth,
     )
     pm = _load_pymc()
     model = _build_moderated_pymc_model(spec)
     with model:
         idata = pm.sample(
-            draws=controls["draws"], tune=controls["tune"], chains=controls["chains"],
-            cores=controls["cores"], random_seed=controls["seed"],
+            draws=controls["draws"],
+            tune=controls["tune"],
+            chains=controls["chains"],
+            cores=controls["cores"],
+            random_seed=controls["seed"],
             target_accept=controls["target_accept"],
-            nuts={"max_treedepth": controls["max_treedepth"]}, progressbar=False,
-            compute_convergence_checks=False, return_inferencedata=True,
+            nuts={"max_treedepth": controls["max_treedepth"]},
+            progressbar=False,
+            compute_convergence_checks=False,
+            return_inferencedata=True,
             idata_kwargs={"log_likelihood": True},
         )
     names = [
-        "a_within", "a_between", "b_within", "b_between", "cprime_within", "cprime_between",
-        "moderation", "indirect_within", "indirect_between",
+        "a_within",
+        "a_between",
+        "b_within",
+        "b_between",
+        "cprime_within",
+        "cprime_between",
+        "moderation",
+        "indirect_within",
+        "indirect_between",
     ]
     fit = MultilevelMediationFit(
         specification=spec,
         posterior=_flatten_posterior(idata, names),
-        sampler_diagnostics=_sampler_diagnostics(idata, max_treedepth=int(controls["max_treedepth"])),
-        backend_fit=idata, backend_model=model,
+        sampler_diagnostics=_sampler_diagnostics(
+            idata, max_treedepth=int(controls["max_treedepth"])
+        ),
+        backend_fit=idata,
+        backend_model=model,
         package_versions={"pymc": _package_version("pymc"), "arviz": _package_version("arviz")},
     )
     if not check_mediation_convergence(fit).passed:
-        warnings.warn("Moderated mediation fit failed critical convergence checks.", RuntimeWarning, stacklevel=2)
+        warnings.warn(
+            "Moderated mediation fit failed critical convergence checks.",
+            RuntimeWarning,
+            stacklevel=2,
+        )
     return fit
 
 
@@ -1641,7 +1946,11 @@ def posterior_conditional_indirect_effect(
     if fit.specification.model_kind != "moderated":
         raise GP3BayesError("`fit` is not a moderated mediation model.")
     _require_acceptable_fit(fit, require_convergence)
-    if isinstance(moderator_value, bool) or not isinstance(moderator_value, (int, float)) or not math.isfinite(float(moderator_value)):
+    if (
+        isinstance(moderator_value, bool)
+        or not isinstance(moderator_value, (int, float))
+        or not math.isfinite(float(moderator_value))
+    ):
         raise GP3BayesError("`moderator_value` must be one finite numeric value.")
     z = float(moderator_value)
     raw_a = fit.posterior.get("a_within")
@@ -1652,10 +1961,7 @@ def posterior_conditional_indirect_effect(
     a = np.asarray(raw_a)
     b = np.asarray(raw_b)
     mod = np.asarray(raw_mod)
-    if fit.specification.moderation["path"] == "a":
-        draws = (a + mod * z) * b
-    else:
-        draws = a * (b + mod * z)
+    draws = (a + mod * z) * b if fit.specification.moderation["path"] == "a" else a * (b + mod * z)
     return _effect_from_draws(
         f"conditional_indirect_within_z_{z:g}", draws, probability, "linear_predictor_product"
     )
