@@ -9,8 +9,13 @@ permissions:
 
 jobs:
   build:
-    name: Build release distributions
+    name: Build and validate release distributions
+    if: ${{ !github.event.release.prerelease && !github.event.release.draft }}
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout released tag
         uses: actions/checkout@v7
@@ -24,7 +29,7 @@ jobs:
           python-version: "3.13"
 
       - name: Install build tooling
-        run: python -m pip install --upgrade build twine
+        run: python -m pip install --upgrade pip build twine
 
       - name: Verify release tag matches package version
         shell: python
@@ -32,20 +37,65 @@ jobs:
           import pathlib
           import tomllib
 
-          version = tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"]
+          version = tomllib.loads(
+              pathlib.Path("pyproject.toml").read_text()
+          )["project"]["version"]
+
           expected = f"v{version}"
           actual = "${{ github.event.release.tag_name }}"
+
           if actual != expected:
-              raise SystemExit(f"Release tag {actual!r} does not match package version {expected!r}.")
+              raise SystemExit(
+                  f"Release tag {actual!r} does not match "
+                  f"package version {expected!r}."
+              )
+
           print("Release tag/version contract: PASS")
 
-      - name: Build sdist and wheel
+      - name: Build wheel and sdist
         run: python -m build
 
       - name: Validate distributions
         run: python -m twine check dist/*
 
-      - name: Upload distributions
+      - name: Smoke-test exact wheel
+        shell: bash
+        run: |
+          python -m venv .release-smoke
+          . .release-smoke/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install dist/*.whl
+          python - <<'PY'
+          from importlib.metadata import version
+          import gp3bayespy
+
+          expected = "${{ github.event.release.tag_name }}".removeprefix("v")
+
+          assert version("gp3bayespy") == expected
+
+          required = [
+              "specify_multilevel_gaze_mediation",
+              "fit_multilevel_gaze_mediation",
+              "posterior_indirect_effect",
+              "report_multilevel_gaze_mediation",
+          ]
+
+          missing = [
+              name
+              for name in required
+              if not hasattr(gp3bayespy, name)
+          ]
+
+          assert not missing, missing
+
+          print("Exact wheel smoke test: PASS")
+          PY
+
+      - name: Generate SHA-256 sums
+        shell: bash
+        run: sha256sum dist/* > SHA256SUMS.txt
+
+      - name: Upload exact distributions
         uses: actions/upload-artifact@v7
         with:
           name: python-package-distributions
@@ -53,17 +103,32 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+      - name: Attach exact distributions to GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload \
+            "${{ github.event.release.tag_name }}" \
+            dist/* \
+            SHA256SUMS.txt \
+            --clobber
+
   publish:
-    name: Publish to PyPI
+    name: Publish exact distributions to PyPI
+    if: ${{ !github.event.release.prerelease && !github.event.release.draft }}
     needs: build
     runs-on: ubuntu-latest
+
     environment:
       name: pypi
       url: https://pypi.org/project/gp3bayespy/
+
     permissions:
+      contents: read
       id-token: write
+
     steps:
-      - name: Download distributions
+      - name: Download validated distributions
         uses: actions/download-artifact@v4
         with:
           name: python-package-distributions

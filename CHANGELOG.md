@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.0 — 2026-09-21
+
+- Add contract-first Bayesian multilevel gaze mediation.
+- Separate within- and between-participant pathways with explicit estimability checks.
+- Add likelihood-family, prior, missingness, convergence, serial, moderated, posterior-effect, sensitivity, PSIS-LOO, simulation/recovery, plotting, and reporting contracts.
+- Preserve the frozen gp3bayes 0.5.0 parity baseline while extending the Python API beyond frozen parity.
+- Require repository-wide 100% branch-aware coverage with zero exclusions.
+- Harden exact release-artifact validation and PyPI Trusted Publishing.
+- Replace the placeholder license file with the complete MIT License.
+
 ## 0.5.0 — 2026-08-28
 
 - First public Python release aligned with the frozen `gp3bayes` 0.5.0 reference.
