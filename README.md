@@ -12,21 +12,23 @@
 [![Docs](https://github.com/stefanosbalaskas/gp3bayespy/actions/workflows/docs.yml/badge.svg?branch=main)](https://stefanosbalaskas.github.io/gp3bayespy/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![R reference](https://img.shields.io/badge/R%20reference-gp3bayes%200.5.0-276DC3.svg)](https://cran.r-project.org/package=gp3bayes)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22150746.svg)](https://doi.org/10.5281/zenodo.22150746)
+[![Archived v0.5.0 DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22150746.svg)](https://doi.org/10.5281/zenodo.22150746)
 
 [Documentation](https://stefanosbalaskas.github.io/gp3bayespy/) ·
 [PyPI](https://pypi.org/project/gp3bayespy/) ·
 [Examples](examples/) ·
 [Articles](docs/articles/) ·
 [Migration guide](docs/migration.md) ·
-[Release v0.5.0](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.5.0) ·
-[DOI](https://doi.org/10.5281/zenodo.22150746)
+[Release v0.6.0](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.6.0) ·
+[Archived v0.5.0 DOI](https://doi.org/10.5281/zenodo.22150746)
 
 </div>
 
 `gp3bayespy` is the Python port of the R package [`gp3bayes`](https://cran.r-project.org/package=gp3bayes). It provides governed Bayesian workflows for repeated-measures and hierarchical behavioural data, with first-class support for model contracts, posterior and predictive diagnostics, sensitivity analysis, PSIS-LOO model comparison, reproducibility, and dynamic pupillometry.
 
 Version **0.5.0** is the first public Python release frozen against **gp3bayes 0.5.0**.
+
+Version **0.6.0** adds contract-first Bayesian multilevel gaze mediation while preserving the frozen gp3bayes 0.5.0 parity baseline.
 
 ## Why gp3bayespy?
 
@@ -133,7 +135,7 @@ The 0.5.0 release is frozen against the CRAN source archive `gp3bayes_0.5.0.tar.
 | Canonical articles | **59 / 59 ported** |
 | Public unrestricted `**kwargs` | **0** |
 | Released v0.5.0 test suite | **321 / 321 passing** |
-| Current `main` measured test suite | **689 / 689 passing** |
+| 0.6.0 release test suite | **689 / 689 passing** |
 | Released v0.5.0 branch-aware coverage | **47.9482%** |
 | Current `main` branch-aware coverage | **100.00%** |
 | Current `main` coverage exclusions | **0** |

@@ -1,185 +1,245 @@
 {
   "metric": "branch-aware pytest coverage",
   "released_0_5_0_percent": 47.9482,
-  "visual_docs_phase1_percent": 52.8043,
-  "current_percent": 98.14241486068111,
-  "coverage_floor_percent": 97,
-  "passing_tests": 611,
+  "current_percent": 100.0,
+  "coverage_floor_percent": 100.0,
+  "passing_tests": 689,
+  "statements": 11946,
+  "branches": 3878,
+  "missing_statements": 0,
+  "missing_branches": 0,
+  "coverage_configuration_exclusions": 0,
+  "coverage_exclusions_added": false,
   "canonical_exports": 458,
   "canonical_articles": 59,
-  "generated_documentation_figures": 30,
-  "supplementary_visual_galleries": 6,
+  "mediation_public_functions_beyond_frozen_parity": 25,
+  "package_version": "0.6.0",
+  "coverage_phase": "0.6.0 release candidate",
+  "coverage_target_percent": 100.0,
   "module_coverage": [
-    {
-      "module": "pupil.py",
-      "coverage": 96.1592836946277,
-      "missing_lines": 86,
-      "missing_branches": 77
-    },
-    {
-      "module": "predictive.py",
-      "coverage": 97.13541666666667,
-      "missing_lines": 29,
-      "missing_branches": 26
-    },
-    {
-      "module": "duration.py",
-      "coverage": 97.9020979020979,
-      "missing_lines": 6,
-      "missing_branches": 12
-    },
-    {
-      "module": "loo.py",
-      "coverage": 97.90575916230367,
-      "missing_lines": 3,
-      "missing_branches": 1
-    },
-    {
-      "module": "binary.py",
-      "coverage": 98.35051546391753,
-      "missing_lines": 6,
-      "missing_branches": 10
-    },
-    {
-      "module": "advanced_optional_workflows.py",
-      "coverage": 98.36363636363636,
-      "missing_lines": 6,
-      "missing_branches": 3
-    },
-    {
-      "module": "evidence_graphics_gg.py",
-      "coverage": 98.3739837398374,
-      "missing_lines": 2,
-      "missing_branches": 0
-    },
-    {
-      "module": "hierarchical_effects_advanced.py",
-      "coverage": 98.44357976653697,
-      "missing_lines": 1,
-      "missing_branches": 3
-    },
-    {
-      "module": "design_support_diagnostics.py",
-      "coverage": 98.52071005917159,
-      "missing_lines": 2,
-      "missing_branches": 3
-    },
-    {
-      "module": "posterior.py",
-      "coverage": 99.1304347826087,
-      "missing_lines": 2,
-      "missing_branches": 2
-    },
-    {
-      "module": "postfit_exploration.py",
-      "coverage": 99.41176470588235,
-      "missing_lines": 1,
-      "missing_branches": 2
-    },
-    {
-      "module": "ppc.py",
-      "coverage": 99.4186046511628,
-      "missing_lines": 0,
-      "missing_branches": 1
-    },
-    {
-      "module": "specification_closure.py",
-      "coverage": 99.58881578947368,
-      "missing_lines": 1,
-      "missing_branches": 4
-    },
-    {
-      "module": "readiness.py",
-      "coverage": 99.6627318718381,
-      "missing_lines": 1,
-      "missing_branches": 1
-    },
-    {
-      "module": "sensitivity.py",
-      "coverage": 99.71014492753623,
-      "missing_lines": 1,
-      "missing_branches": 1
-    },
-    {
-      "module": "reproducibility.py",
-      "coverage": 99.7560975609756,
-      "missing_lines": 0,
-      "missing_branches": 1
-    },
     {
       "module": "__init__.py",
       "coverage": 100.0,
+      "statements": 27,
       "missing_lines": 0,
+      "branches": 0,
       "missing_branches": 0
     },
     {
       "module": "_reference/__init__.py",
       "coverage": 100.0,
+      "statements": 0,
       "missing_lines": 0,
+      "branches": 0,
+      "missing_branches": 0
+    },
+    {
+      "module": "advanced_optional_workflows.py",
+      "coverage": 100.0,
+      "statements": 416,
+      "missing_lines": 0,
+      "branches": 134,
       "missing_branches": 0
     },
     {
       "module": "backends/__init__.py",
       "coverage": 100.0,
+      "statements": 268,
       "missing_lines": 0,
+      "branches": 56,
+      "missing_branches": 0
+    },
+    {
+      "module": "binary.py",
+      "coverage": 100.0,
+      "statements": 754,
+      "missing_lines": 0,
+      "branches": 216,
       "missing_branches": 0
     },
     {
       "module": "contracts.py",
       "coverage": 100.0,
+      "statements": 103,
       "missing_lines": 0,
+      "branches": 42,
+      "missing_branches": 0
+    },
+    {
+      "module": "design_support_diagnostics.py",
+      "coverage": 100.0,
+      "statements": 258,
+      "missing_lines": 0,
+      "branches": 80,
+      "missing_branches": 0
+    },
+    {
+      "module": "duration.py",
+      "coverage": 100.0,
+      "statements": 679,
+      "missing_lines": 0,
+      "branches": 176,
+      "missing_branches": 0
+    },
+    {
+      "module": "evidence_graphics_gg.py",
+      "coverage": 100.0,
+      "statements": 105,
+      "missing_lines": 0,
+      "branches": 18,
       "missing_branches": 0
     },
     {
       "module": "exceptions.py",
       "coverage": 100.0,
+      "statements": 2,
       "missing_lines": 0,
+      "branches": 0,
       "missing_branches": 0
     },
     {
       "module": "fitting.py",
       "coverage": 100.0,
+      "statements": 124,
       "missing_lines": 0,
+      "branches": 28,
+      "missing_branches": 0
+    },
+    {
+      "module": "hierarchical_effects_advanced.py",
+      "coverage": 100.0,
+      "statements": 199,
+      "missing_lines": 0,
+      "branches": 60,
+      "missing_branches": 0
+    },
+    {
+      "module": "loo.py",
+      "coverage": 100.0,
+      "statements": 143,
+      "missing_lines": 0,
+      "branches": 48,
       "missing_branches": 0
     },
     {
       "module": "parity.py",
       "coverage": 100.0,
+      "statements": 18,
       "missing_lines": 0,
+      "branches": 2,
+      "missing_branches": 0
+    },
+    {
+      "module": "posterior.py",
+      "coverage": 100.0,
+      "statements": 350,
+      "missing_lines": 0,
+      "branches": 110,
       "missing_branches": 0
     },
     {
       "module": "posterior_validation_core.py",
       "coverage": 100.0,
+      "statements": 80,
       "missing_lines": 0,
+      "branches": 32,
+      "missing_branches": 0
+    },
+    {
+      "module": "postfit_exploration.py",
+      "coverage": 100.0,
+      "statements": 354,
+      "missing_lines": 0,
+      "branches": 152,
+      "missing_branches": 0
+    },
+    {
+      "module": "ppc.py",
+      "coverage": 100.0,
+      "statements": 139,
+      "missing_lines": 0,
+      "branches": 30,
+      "missing_branches": 0
+    },
+    {
+      "module": "predictive.py",
+      "coverage": 100.0,
+      "statements": 1418,
+      "missing_lines": 0,
+      "branches": 504,
       "missing_branches": 0
     },
     {
       "module": "prior_posterior_bridge.py",
       "coverage": 100.0,
+      "statements": 202,
       "missing_lines": 0,
+      "branches": 64,
+      "missing_branches": 0
+    },
+    {
+      "module": "pupil.py",
+      "coverage": 100.0,
+      "statements": 3188,
+      "missing_lines": 0,
+      "branches": 1052,
+      "missing_branches": 0
+    },
+    {
+      "module": "readiness.py",
+      "coverage": 100.0,
+      "statements": 407,
+      "missing_lines": 0,
+      "branches": 186,
       "missing_branches": 0
     },
     {
       "module": "reporting.py",
       "coverage": 100.0,
+      "statements": 534,
       "missing_lines": 0,
+      "branches": 136,
+      "missing_branches": 0
+    },
+    {
+      "module": "reproducibility.py",
+      "coverage": 100.0,
+      "statements": 290,
+      "missing_lines": 0,
+      "branches": 120,
+      "missing_branches": 0
+    },
+    {
+      "module": "sensitivity.py",
+      "coverage": 100.0,
+      "statements": 522,
+      "missing_lines": 0,
+      "branches": 170,
       "missing_branches": 0
     },
     {
       "module": "specification.py",
       "coverage": 100.0,
+      "statements": 272,
       "missing_lines": 0,
+      "branches": 130,
+      "missing_branches": 0
+    },
+    {
+      "module": "specification_closure.py",
+      "coverage": 100.0,
+      "statements": 940,
+      "missing_lines": 0,
+      "branches": 276,
       "missing_branches": 0
     },
     {
       "module": "unified_workflow_api.py",
       "coverage": 100.0,
+      "statements": 154,
       "missing_lines": 0,
+      "branches": 56,
       "missing_branches": 0
     }
-  ],
-  "coverage_target_percent": 100.0,
-  "coverage_phase": "coverage-to-100 milestone 6 / phases J1-J8",
-  "coverage_exclusions_added": 0
+  ]
 }
