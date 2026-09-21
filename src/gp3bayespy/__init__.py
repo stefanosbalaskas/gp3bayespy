@@ -130,6 +130,96 @@ from .loo import (
     plot_loo_pareto_vs_elpd,
     plot_loo_pointwise_elpd,
 )
+from .multilevel_mediation import (
+    MediationConvergence as MediationConvergence,
+)
+from .multilevel_mediation import (
+    MediationEffect as MediationEffect,
+)
+from .multilevel_mediation import (
+    MediationPriorSpecification as MediationPriorSpecification,
+)
+from .multilevel_mediation import (
+    MultilevelMediationFit as MultilevelMediationFit,
+)
+from .multilevel_mediation import (
+    MultilevelMediationSpecification as MultilevelMediationSpecification,
+)
+from .multilevel_mediation import (
+    check_mediation_convergence as check_mediation_convergence,
+)
+from .multilevel_mediation import (
+    compare_multilevel_mediation_models as compare_multilevel_mediation_models,
+)
+from .multilevel_mediation import (
+    create_mediation_prior_specification as create_mediation_prior_specification,
+)
+from .multilevel_mediation import (
+    estimate_between_indirect_effect as estimate_between_indirect_effect,
+)
+from .multilevel_mediation import (
+    estimate_indirect_effect as estimate_indirect_effect,
+)
+from .multilevel_mediation import (
+    estimate_within_indirect_effect as estimate_within_indirect_effect,
+)
+from .multilevel_mediation import (
+    fit_multilevel_gaze_mediation as fit_multilevel_gaze_mediation,
+)
+from .multilevel_mediation import (
+    fit_multilevel_moderated_gaze_mediation as fit_multilevel_moderated_gaze_mediation,
+)
+from .multilevel_mediation import (
+    fit_multilevel_serial_gaze_mediation as fit_multilevel_serial_gaze_mediation,
+)
+from .multilevel_mediation import (
+    plot_indirect_effect_distribution as plot_indirect_effect_distribution,
+)
+from .multilevel_mediation import (
+    plot_mediation_posteriors as plot_mediation_posteriors,
+)
+from .multilevel_mediation import (
+    plot_participant_mediation_effects as plot_participant_mediation_effects,
+)
+from .multilevel_mediation import (
+    posterior_conditional_indirect_effect as posterior_conditional_indirect_effect,
+)
+from .multilevel_mediation import (
+    posterior_direct_effect as posterior_direct_effect,
+)
+from .multilevel_mediation import (
+    posterior_indirect_effect as posterior_indirect_effect,
+)
+from .multilevel_mediation import (
+    posterior_predictive_check_mediation as posterior_predictive_check_mediation,
+)
+from .multilevel_mediation import (
+    posterior_serial_indirect_effect as posterior_serial_indirect_effect,
+)
+from .multilevel_mediation import (
+    posterior_total_effect as posterior_total_effect,
+)
+from .multilevel_mediation import (
+    prior_predictive_check_mediation as prior_predictive_check_mediation,
+)
+from .multilevel_mediation import (
+    report_multilevel_gaze_mediation as report_multilevel_gaze_mediation,
+)
+from .multilevel_mediation import (
+    simulate_multilevel_gaze_mediation as simulate_multilevel_gaze_mediation,
+)
+from .multilevel_mediation import (
+    specify_multilevel_gaze_mediation as specify_multilevel_gaze_mediation,
+)
+from .multilevel_mediation import (
+    specify_multilevel_moderated_gaze_mediation as specify_multilevel_moderated_gaze_mediation,
+)
+from .multilevel_mediation import (
+    specify_multilevel_serial_gaze_mediation as specify_multilevel_serial_gaze_mediation,
+)
+from .multilevel_mediation import (
+    summarise_multilevel_mediation as summarise_multilevel_mediation,
+)
 from .parity import parity_counts, read_parity_manifest, reference_metadata
 from .posterior_validation_core import plot_sampling_diagnostics
 from .postfit_exploration import (
@@ -1005,6 +1095,37 @@ __all__ = [
     "write_reproducibility_report",
 ]
 
-from . import multilevel_mediation as _multilevel_mediation
-from .multilevel_mediation import *
-__all__ = list(dict.fromkeys([*__all__, *_multilevel_mediation.__all__]))
+# multilevel-mediation public exports
+__all__ = [
+    *__all__,
+    "MediationPriorSpecification",
+    "MultilevelMediationSpecification",
+    "MultilevelMediationFit",
+    "MediationConvergence",
+    "MediationEffect",
+    "create_mediation_prior_specification",
+    "specify_multilevel_gaze_mediation",
+    "fit_multilevel_gaze_mediation",
+    "specify_multilevel_serial_gaze_mediation",
+    "fit_multilevel_serial_gaze_mediation",
+    "posterior_serial_indirect_effect",
+    "specify_multilevel_moderated_gaze_mediation",
+    "fit_multilevel_moderated_gaze_mediation",
+    "posterior_conditional_indirect_effect",
+    "estimate_indirect_effect",
+    "estimate_within_indirect_effect",
+    "estimate_between_indirect_effect",
+    "posterior_indirect_effect",
+    "posterior_direct_effect",
+    "posterior_total_effect",
+    "summarise_multilevel_mediation",
+    "compare_multilevel_mediation_models",
+    "check_mediation_convergence",
+    "posterior_predictive_check_mediation",
+    "prior_predictive_check_mediation",
+    "plot_mediation_posteriors",
+    "plot_indirect_effect_distribution",
+    "plot_participant_mediation_effects",
+    "report_multilevel_gaze_mediation",
+    "simulate_multilevel_gaze_mediation",
+]

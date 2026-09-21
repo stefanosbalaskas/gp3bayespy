@@ -2,6 +2,9 @@ from __future__ import annotations
 
 import copy
 import importlib as pyimportlib
+import importlib.util
+import sys
+from pathlib import Path
 from types import SimpleNamespace
 
 import numpy as np
@@ -1025,11 +1028,21 @@ def test_sampler_empty_metrics_missing_stats_and_ppc_no_truncation(monkeypatch):
     out = mm.posterior_predictive_check_mediation(fit, draws=10)
     assert len(out) == 2
 
-    import matplotlib.pyplot as plt
+    from matplotlib.figure import Figure
 
     participant = passing_fit(posterior={"participant_indirect_within": np.ones((4, 3))})
-    _, ax = plt.subplots()
-    assert mm.plot_participant_mediation_effects(participant, ax=ax) is ax
+
+    # Headless by construction: do not require Tk/Qt or another GUI backend.
+    figure = Figure()
+    ax = figure.subplots()
+
+    assert (
+        mm.plot_participant_mediation_effects(
+            participant,
+            ax=ax,
+        )
+        is ax
+    )
 
 
 def test_serial_variation_false_branches_and_between_optional_builder(monkeypatch):
@@ -1147,3 +1160,56 @@ def test_serial_and_moderated_contract_guards_without_eyeprocess_dependency():
     moderated = augment_moderator(base)
     with pytest.raises(mm.GP3BayesError, match="random slopes are not yet implemented"):
         mm.specify_multilevel_moderated_gaze_mediation(moderated, random_slopes=("outcome_m",))
+
+
+def test_standalone_exception_fallback_contract():
+    """The module remains executable when its package exceptions are unavailable."""
+    source = Path(mm.__file__).resolve()
+    module_name = "_gp3bayespy_multilevel_mediation_standalone_coverage"
+
+    spec = importlib.util.spec_from_file_location(
+        module_name,
+        source,
+    )
+
+    assert spec is not None
+    assert spec.loader is not None
+
+    module = importlib.util.module_from_spec(spec)
+
+    # dataclasses and related runtime machinery expect the executing
+    # module to be registered while its class bodies are evaluated.
+    sys.modules[module_name] = module
+
+    try:
+        # Because this deliberately executes outside the gp3bayespy
+        # package namespace, `from .exceptions ...` fails naturally and
+        # exercises the documented standalone fallback path.
+        spec.loader.exec_module(module)
+    finally:
+        sys.modules.pop(module_name, None)
+
+    assert issubclass(module.GP3BayesError, ValueError)
+    assert issubclass(module.BackendUnavailableError, RuntimeError)
+    assert module.GP3BayesError.__name__ == "_FallbackGP3BayesError"
+    assert module.BackendUnavailableError.__name__ == "_FallbackBackendUnavailableError"
+
+
+def test_load_pymc_failure_is_fail_closed(monkeypatch):
+    """Backend import failures must become the public backend error."""
+
+    def fail_import(name):
+        assert name == "pymc"
+        raise ImportError("forced PyMC import failure")
+
+    monkeypatch.setattr(
+        mm,
+        "import_module",
+        fail_import,
+    )
+
+    with pytest.raises(
+        mm.BackendUnavailableError,
+        match="PyMC could not be imported",
+    ):
+        mm._load_pymc()

@@ -1,8 +1,8 @@
 """Failure-case demonstrations for trial-level mediation contracts."""
 
 import numpy as np
-
 from eyeprocesspy.multilevel_mediation import prepare_multilevel_mediation_data
+
 from gp3bayespy.multilevel_mediation import (
     GP3BayesError,
     simulate_multilevel_gaze_mediation,

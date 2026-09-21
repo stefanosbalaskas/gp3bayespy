@@ -1,8 +1,8 @@
 """Backend-independent family-contract examples for multilevel gaze mediation."""
 
 import numpy as np
-
 from eyeprocesspy.multilevel_mediation import prepare_multilevel_mediation_data
+
 from gp3bayespy.multilevel_mediation import (
     simulate_multilevel_gaze_mediation,
     specify_multilevel_gaze_mediation,

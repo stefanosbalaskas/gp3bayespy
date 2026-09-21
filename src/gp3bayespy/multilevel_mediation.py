@@ -24,15 +24,30 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
+GP3BayesError: type[ValueError]
+BackendUnavailableError: type[RuntimeError]
+
 try:  # integration path inside gp3bayespy
-    from .exceptions import BackendUnavailableError, GP3BayesError
+    from .exceptions import (
+        BackendUnavailableError as _PackageBackendUnavailableError,
+    )
+    from .exceptions import (
+        GP3BayesError as _PackageGP3BayesError,
+    )
+
+    GP3BayesError = _PackageGP3BayesError
+    BackendUnavailableError = _PackageBackendUnavailableError
+
 except Exception:  # standalone tranche validation
 
-    class GP3BayesError(ValueError):
+    class _FallbackGP3BayesError(ValueError):
         pass
 
-    class BackendUnavailableError(RuntimeError):
+    class _FallbackBackendUnavailableError(RuntimeError):
         pass
+
+    GP3BayesError = _FallbackGP3BayesError
+    BackendUnavailableError = _FallbackBackendUnavailableError
 
 
 _MEDIATOR_FAMILIES = {

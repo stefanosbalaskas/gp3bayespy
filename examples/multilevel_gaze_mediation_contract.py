@@ -5,6 +5,7 @@ sampling so it remains fast and deterministic in documentation/CI.
 """
 
 from eyeprocesspy.multilevel_mediation import prepare_multilevel_mediation_data
+
 from gp3bayespy.multilevel_mediation import (
     create_mediation_prior_specification,
     simulate_multilevel_gaze_mediation,

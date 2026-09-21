@@ -43,8 +43,8 @@ def test_all_59_articles_are_materialized_and_promoted():
     assert missing == []
 
 
-def test_all_eight_repository_examples_exist():
-    expected = {
+def test_canonical_repository_examples_are_preserved_and_mediation_examples_exist():
+    canonical = {
         "backend_status.py",
         "binary_workflow.py",
         "duration_workflow.py",
@@ -54,4 +54,19 @@ def test_all_eight_repository_examples_exist():
         "reproducibility_workflow.py",
         "sensitivity_workflow.py",
     }
-    assert {path.name for path in (ROOT / "examples").glob("*.py")} == expected
+
+    mediation = {
+        "multilevel_gaze_mediation_contract.py",
+        "multilevel_gaze_mediation_failure_cases.py",
+        "multilevel_gaze_mediation_family_contracts.py",
+        "multilevel_gaze_mediation_prior_sensitivity_contract.py",
+        "multilevel_gaze_mediation_simulation_recovery_contract.py",
+    }
+
+    discovered = {path.name for path in (ROOT / "examples").glob("*.py")}
+
+    # Backward compatibility: all eight frozen examples remain available.
+    assert canonical <= discovered
+
+    # New method tranche: all five mediation examples are shipped.
+    assert mediation <= discovered
