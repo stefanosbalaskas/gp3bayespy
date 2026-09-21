@@ -7,11 +7,7 @@ authors:
   - family-names: Balaskas
     given-names: Stefanos
     orcid: "https://orcid.org/0000-0003-2444-9796"
-version: 0.5.0
-identifiers:
-  - type: doi
-    value: "10.5281/zenodo.22150746"
-    description: "Archived gp3bayespy 0.5.0 software record on Zenodo."
+version: 0.6.0
 keywords:
   - Bayesian statistics
   - hierarchical models
@@ -23,4 +19,4 @@ keywords:
 license: MIT
 repository-code: "https://github.com/stefanosbalaskas/gp3bayespy"
 url: "https://stefanosbalaskas.github.io/gp3bayespy/"
-date-released: "2026-08-28"
+date-released: "2026-09-21"

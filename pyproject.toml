@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "gp3bayespy"
-version = "0.5.0"
+version = "0.6.0"
 description = "Contract-first Bayesian workflows for hierarchical behavioural data in Python, ported from gp3bayes 0.5.0."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -81,8 +81,8 @@ Repository = "https://github.com/stefanosbalaskas/gp3bayespy"
 Issues = "https://github.com/stefanosbalaskas/gp3bayespy/issues"
 "R reference" = "https://cran.r-project.org/package=gp3bayes"
 Documentation = "https://stefanosbalaskas.github.io/gp3bayespy/"
-DOI = "https://doi.org/10.5281/zenodo.22150746"
-Release = "https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.5.0"
+"Archived v0.5.0 DOI" = "https://doi.org/10.5281/zenodo.22150746"
+Release = "https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.6.0"
 
 [tool.setuptools.packages.find]
 where = ["src"]
