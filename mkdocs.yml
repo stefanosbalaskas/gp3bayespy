@@ -101,7 +101,7 @@ nav:
       - Multilevel mediation API: reference/multilevel-mediation.md
   - Project:
       - Citation: citation.md
-      - Release v0.5.0: release.md
+      - Release v0.6.1: release.md
       - Governance: governance.md
       - Coverage & visual QA: development/coverage.md
       - R → Python parity: development/parity.md
@@ -143,4 +143,4 @@ extra:
       name: gp3bayes R reference
     - icon: fontawesome/solid/fingerprint
       link: https://doi.org/10.5281/zenodo.22150746
-      name: gp3bayespy DOI on Zenodo
+      name: Archived gp3bayespy v0.5.0 DOI on Zenodo

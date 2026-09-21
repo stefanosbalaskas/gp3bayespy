@@ -107,6 +107,7 @@ The package separates **data readiness**, **prior declaration**, **model specifi
 
 | Goal | Start with |
 | --- | --- |
+| Model trial-level gaze mediation | [`examples/multilevel_gaze_mediation_contract.py`](examples/multilevel_gaze_mediation_contract.py) · [workflow](docs/articles/multilevel-mediation/index.md) |
 | Build a binary hierarchical workflow | [`examples/binary_workflow.py`](examples/binary_workflow.py) · [article](docs/articles/binary-end-to-end.md) |
 | Build a duration workflow | [`examples/duration_workflow.py`](examples/duration_workflow.py) · [article](docs/articles/duration-end-to-end.md) |
 | Inspect posterior/predictive diagnostics | [`examples/predictive_diagnostics.py`](examples/predictive_diagnostics.py) · [article](docs/articles/advanced-predictive-diagnostics.md) |
@@ -123,7 +124,7 @@ The documentation site is the primary user guide:
 - **[Getting started](https://stefanosbalaskas.github.io/gp3bayespy/)** — package orientation and first workflow.
 - **[API reference](https://stefanosbalaskas.github.io/gp3bayespy/reference/)** — public Python API.
 - **[59 articles](https://stefanosbalaskas.github.io/gp3bayespy/articles/)** — Python-facing ports of the canonical gp3bayes vignettes.
-- **[Executable examples](https://stefanosbalaskas.github.io/gp3bayespy/examples/)** — eight end-to-end scripts.
+- **[Executable examples](https://stefanosbalaskas.github.io/gp3bayespy/examples/)** — thirteen executable scripts spanning the core and mediation workflows.
 - **[Plot gallery](https://stefanosbalaskas.github.io/gp3bayespy/plot-gallery/)** — publication-oriented plotting workflows.
 - **[Migration guide](https://stefanosbalaskas.github.io/gp3bayespy/migration/)** — R-to-Python mapping for gp3bayes users.
 
@@ -137,12 +138,13 @@ The 0.5.0 release is frozen against the CRAN source archive `gp3bayes_0.5.0.tar.
 | Canonical articles | **59 / 59 ported** |
 | Public unrestricted `**kwargs` | **0** |
 | Released v0.5.0 test suite | **321 / 321 passing** |
-| 0.6.0 release test suite | **689 / 689 passing** |
+| Released v0.6.1 validation suite | **731 passed / 1 skipped** |
 | Released v0.5.0 branch-aware coverage | **47.9482%** |
-| Current `main` branch-aware coverage | **100.00%** |
+| v0.6.1 / current `main` branch-aware coverage | **100.00%** |
+| v0.6.1 statements / branches | **12,872 / 4,210, all covered** |
 | Current `main` coverage exclusions | **0** |
-| Source examples | **8 / 8** |
-| Installed-wheel examples | **8 / 8** |
+| Source examples | **13 / 13** |
+| Clean wheel / sdist installation | **PASS / PASS** |
 | Ruff / mypy | **PASS / PASS** |
 | Linux / macOS / Windows CI | **PASS** |
 | Strict documentation build | **PASS** |

@@ -6,7 +6,7 @@ hide:
 
 <div class="gp-hero">
   <div class="gp-hero__copy">
-    <div class="gp-kicker">gp3bayes 0.5.0 → Python · released</div>
+    <div class="gp-kicker">gp3bayespy 0.6.1 · gp3bayes 0.5.0 parity baseline</div>
     <h1>Bayesian workflows that keep every decision visible.</h1>
     <p class="gp-lead">
       Contract-first modelling for repeated-measures and hierarchical behavioural data,
@@ -52,7 +52,7 @@ print(audit.status)</code></pre>
   <div class="gp-stat"><strong>458 / 458</strong><span>frozen R exports implemented</span></div>
   <div class="gp-stat"><strong>+25</strong><span>new mediation functions beyond frozen parity</span></div>
   <div class="gp-stat"><strong>59 / 59</strong><span>canonical articles ported</span></div>
-  <div class="gp-stat"><strong>689 / 689</strong><span>current main tests passing</span></div>
+  <div class="gp-stat"><strong>731 passed</strong><span>1 skipped · v0.6.1 validation</span></div>
   <div class="gp-stat"><strong>100.00%</strong><span>current main branch coverage</span></div>
   <div class="gp-stat"><strong>3 OS × 3 Py</strong><span>Python 3.11 · 3.12 · 3.13 CI</span></div>
 </div>
@@ -203,14 +203,14 @@ print(audit.status)</code></pre>
 ## Current main confidence
 
 <div class="gp-release-strip">
-  <div><span>Tests</span><strong>689 / 689</strong></div>
+  <div><span>Tests</span><strong>731 passed · 1 skipped</strong></div>
   <div><span>Coverage</span><strong>100.00%</strong></div>
   <div><span>Exclusions</span><strong>0</strong></div>
   <div><span>CI matrix</span><strong>3 OS × 3 Py</strong></div>
   <div><span>Static gates</span><strong>Ruff + mypy PASS</strong></div>
 </div>
 
-These are the validation metrics for the current `main` branch after the exact-coverage hardening campaign. The historical **v0.5.0** release remains immutable and retains its original release-time validation record.
+These are the validation metrics for **v0.6.1** and the current `main` branch. The historical **v0.5.0** release remains immutable and retains its original release-time validation record.
 
 ### Frozen v0.5.0 release record
 
@@ -222,7 +222,7 @@ These are the validation metrics for the current `main` branch after the exact-c
   <div><span>Public `**kwargs`</span><strong>0</strong></div>
 </div>
 
-The release is frozen against **gp3bayes 0.5.0**. The full validation record is available in [Release v0.5.0](release.md) and the machine-readable closure evidence is documented under [R → Python parity](development/parity.md).
+The frozen parity baseline remains **gp3bayes 0.5.0**. The current validation record is available in [Release v0.6.1](release.md); the archived [GitHub v0.5.0 release](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.5.0) preserves the original release state. The machine-readable closure evidence is documented under [R → Python parity](development/parity.md).
 
 Archived software DOI: [**10.5281/zenodo.22150746**](https://doi.org/10.5281/zenodo.22150746). See [Citing gp3bayespy](citation.md) for citation-ready metadata.
 
