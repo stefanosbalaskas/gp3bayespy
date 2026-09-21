@@ -3,9 +3,9 @@
   "released_0_5_0_percent": 47.9482,
   "current_percent": 100.0,
   "coverage_floor_percent": 100.0,
-  "passing_tests": 689,
-  "statements": 11946,
-  "branches": 3878,
+  "passing_tests": 731,
+  "statements": 12872,
+  "branches": 4210,
   "missing_statements": 0,
   "missing_branches": 0,
   "coverage_configuration_exclusions": 0,
@@ -13,8 +13,8 @@
   "canonical_exports": 458,
   "canonical_articles": 59,
   "mediation_public_functions_beyond_frozen_parity": 25,
-  "package_version": "0.6.0",
-  "coverage_phase": "0.6.0 release candidate",
+  "package_version": "0.6.1",
+  "coverage_phase": "0.6.1 exact release candidate",
   "coverage_target_percent": 100.0,
   "module_coverage": [
     {
@@ -241,5 +241,8 @@
       "branches": 56,
       "missing_branches": 0
     }
-  ]
+  ],
+  "tests_total": 732,
+  "tests_skipped": 1,
+  "eyeprocesspy_validation_commit": "2bdc41acc895ea98460c32b14ccf5d79b388263c"
 }

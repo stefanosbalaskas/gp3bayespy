@@ -19,7 +19,7 @@
 [Examples](examples/) ·
 [Articles](docs/articles/) ·
 [Migration guide](docs/migration.md) ·
-[Release v0.6.0](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.6.0) ·
+[Release v0.6.1](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.6.1) ·
 [Archived v0.5.0 DOI](https://doi.org/10.5281/zenodo.22150746)
 
 </div>
@@ -28,7 +28,9 @@
 
 Version **0.5.0** is the first public Python release frozen against **gp3bayes 0.5.0**.
 
-Version **0.6.0** adds contract-first Bayesian multilevel gaze mediation while preserving the frozen gp3bayes 0.5.0 parity baseline.
+Version **0.6.1** adds contract-first Bayesian multilevel gaze mediation while preserving the frozen gp3bayes 0.5.0 parity baseline.
+
+`v0.6.0` is retained only as a withdrawn GitHub audit release; it was never published to PyPI.
 
 ## Why gp3bayespy?
 

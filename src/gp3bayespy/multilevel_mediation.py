@@ -572,7 +572,7 @@ def _observe_family(
             initval=init,
         )
         pm.OrderedLogistic(name, eta=eta, cutpoints=cutpoints, observed=observed.astype(int))
-    else:  # pragma: no cover - validation protects this
+    else:
         raise GP3BayesError(f"Unsupported family `{family}`.")
 
 

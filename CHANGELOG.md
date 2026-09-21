@@ -1,6 +1,16 @@
 # Changelog
 
-## 0.6.0 — 2026-09-21
+## 0.6.1 — 2026-09-21
+
+- Publish the corrected multilevel gaze-mediation release after the withdrawn GitHub-only v0.6.0 attempt.
+- Include the complete PR #14 mediation implementation, top-level API exports, documentation, examples, and scientific contracts.
+- Preserve repository-wide 100% branch-aware test coverage with zero missing statements, zero missing branches, and zero coverage exclusions.
+- Preserve explicit missingness, estimability, convergence, provenance, family-selection, sensitivity, simulation/recovery, and reporting contracts.
+- Validate all canonical and mediation examples in the release environment.
+- Validate the exact wheel and sdist independently in clean environments before tagging.
+- Retain the immutable v0.6.0 tag as the withdrawn audit record; v0.6.0 was never published to PyPI.
+
+## 0.6.0 — 2026-09-21 (withdrawn GitHub-only release)
 
 - Add contract-first Bayesian multilevel gaze mediation.
 - Separate within- and between-participant pathways with explicit estimability checks.
