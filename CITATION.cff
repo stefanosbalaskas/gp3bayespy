@@ -7,7 +7,7 @@ authors:
   - family-names: Balaskas
     given-names: Stefanos
     orcid: "https://orcid.org/0000-0003-2444-9796"
-version: 0.6.0
+version: 0.6.1
 keywords:
   - Bayesian statistics
   - hierarchical models
