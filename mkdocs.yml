@@ -62,6 +62,23 @@ nav:
       - Executable examples: examples/index.md
       - Migration from R: migration.md
   - Workflows:
+      - Trial-level gaze mediation:
+          - Overview: articles/multilevel-mediation/index.md
+          - Worked example: articles/multilevel-mediation/worked-example.md
+          - Family selection: articles/multilevel-mediation/family-selection.md
+          - Non-Gaussian family contracts: articles/multilevel-mediation/non-gaussian-family-contracts.md
+          - Estimands & interpretation: articles/multilevel-mediation/interpretation-and-estimands.md
+          - Assumptions & limitations: articles/multilevel-mediation/assumptions-and-limitations.md
+          - Analysis plan & preregistration: articles/multilevel-mediation/analysis-plan-and-preregistration.md
+          - Diagnostics & priors: articles/multilevel-mediation/diagnostics-and-priors.md
+          - Worked prior sensitivity: articles/multilevel-mediation/prior-sensitivity-worked-example.md
+          - Simulation & recovery: articles/multilevel-mediation/simulation-and-recovery.md
+          - Model comparison: articles/multilevel-mediation/model-comparison.md
+          - Serial & moderated extensions: articles/multilevel-mediation/serial-and-moderated.md
+          - Reporting: articles/multilevel-mediation/reporting.md
+          - Worked reporting example: articles/multilevel-mediation/reporting-example.md
+          - Troubleshooting: articles/multilevel-mediation/troubleshooting.md
+          - API map: articles/multilevel-mediation/reference.md
       - Binary models: articles/binary-end-to-end.md
       - Duration models: articles/duration-end-to-end.md
       - Predictive diagnostics: articles/advanced-predictive-diagnostics.md
@@ -81,6 +98,7 @@ nav:
           - Dynamic pupillometry: articles/pupil-gallery.md
   - Reference:
       - API reference: reference/index.md
+      - Multilevel mediation API: reference/multilevel-mediation.md
   - Project:
       - Citation: citation.md
       - Release v0.5.0: release.md
