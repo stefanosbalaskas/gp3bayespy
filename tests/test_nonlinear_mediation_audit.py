@@ -108,4 +108,4 @@ def test_unmeasured_mediator_outcome_common_cause_breaks_causal_interpretation()
     ]
     assert implied == pytest.approx(1.19, abs=1e-10)
     assert abs(implied - 0.84) == pytest.approx(0.35, abs=1e-10)
-    assert "not a Bayesian posterior" in result["claim_boundary"].lower()
+    assert "not a bayesian posterior" in result["claim_boundary"].lower()
