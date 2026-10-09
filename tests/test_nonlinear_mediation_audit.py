@@ -2,7 +2,14 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from research.methods_briefing_2026.nonlinear_mediation_audit import audit_mediation_functional_form
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+
+from research.methods_briefing_2026.nonlinear_mediation_audit import (  # noqa: E402
+    audit_mediation_functional_form,
+)
 
 
 def _sample():
