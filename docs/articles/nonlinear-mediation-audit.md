@@ -1,9 +1,9 @@
 # Experimental nonlinear mediation functional-form audit
 
-This is a **frequentist diagnostic** alongside, not inside, the existing Bayesian multilevel mediation models. It addresses the September 2026 BriDGE methods briefing while avoiding causal-discovery and Bayesian-posterior claims.
+This is a **source-checkout-only (not pip-installed) frequentist diagnostic** alongside, not inside, the existing Bayesian multilevel mediation models. It addresses the September 2026 BriDGE methods briefing while avoiding causal-discovery and Bayesian-posterior claims.
 
 ```python
-from gp3bayespy.nonlinear_mediation_audit import audit_mediation_functional_form
+from research.methods_briefing_2026.nonlinear_mediation_audit import audit_mediation_functional_form
 
 evidence = audit_mediation_functional_form(
     trial_data,
