@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 import pytest
 
-from gp3bayespy.nonlinear_mediation_audit import audit_mediation_functional_form
+from research.methods_briefing_2026.nonlinear_mediation_audit import audit_mediation_functional_form
 
 
 def _sample():
