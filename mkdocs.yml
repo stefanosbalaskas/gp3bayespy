@@ -62,7 +62,7 @@ nav:
       - Executable examples: examples/index.md
       - Migration from R: migration.md
   - Workflows:
-      - Experimental nonlinear mediation sensitivity: articles/nonlinear-mediation-audit.md
+      - Experimental nonlinear mediation sensitivity: methods/nonlinear-mediation-audit.md
       - Trial-level gaze mediation:
           - Overview: articles/multilevel-mediation/index.md
           - Worked example: articles/multilevel-mediation/worked-example.md
