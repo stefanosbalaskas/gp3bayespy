@@ -44,3 +44,44 @@ def test_nonbinary_treatment_and_small_cluster_count_are_rejected():
         audit_mediation_functional_form(
             d, treatment_col="x", mediator_col="m", outcome_col="y"
         )
+
+
+def test_known_truth_quadratic_mediator_shift_is_recovered():
+    """Balanced, noiseless known-truth benchmark with an analytic contrast."""
+    x = np.tile([0.0] * 5 + [1.0] * 5, 40)
+    residual = np.tile([-0.4, -0.2, 0.0, 0.2, 0.4] * 2, 40)
+    m = 0.4 + 0.7 * x + residual
+    y = 1.0 + 0.2 * x + 0.6 * m + 0.4 * m**2
+    data = pd.DataFrame({
+        "participant_id": np.repeat(np.arange(40), 10),
+        "x": x, "m": m, "y": y,
+    })
+    res = audit_mediation_functional_form(
+        data,
+        treatment_col="x", mediator_col="m", outcome_col="y",
+        bootstrap_replicates=30, seed=17,
+    )
+    fitted = res["estimates"].set_index("model")["model_based_indirect_contrast"]
+    # E[(.6 * (m0+.7) + .4 * (m0+.7)^2) - (.6*m0 + .4*m0^2)]
+    # = .6*.7 + .4*(2*.4*.7 + .7**2) = .84.
+    assert fitted["quadratic"] == pytest.approx(0.84, abs=1e-10)
+    assert abs(fitted["linear"] - fitted["quadratic"]) > 0.1
+    assert (res["estimates"]["bootstrap_successes"] == 30).all()
+
+
+def test_known_truth_null_mediator_shift_is_zero():
+    x = np.tile([0.0] * 5 + [1.0] * 5, 40)
+    residual = np.tile([-0.4, -0.2, 0.0, 0.2, 0.4] * 2, 40)
+    m = 0.4 + residual  # treatment does not move mediator
+    y = 1.0 + 0.2 * x + 0.6 * m + 0.4 * m**2
+    d = pd.DataFrame({
+        "participant_id": np.repeat(np.arange(40), 10),
+        "x": x, "m": m, "y": y,
+    })
+    r = audit_mediation_functional_form(
+        d, treatment_col="x", mediator_col="m", outcome_col="y",
+        bootstrap_replicates=0,
+    )
+    assert np.allclose(r["estimates"]["model_based_indirect_contrast"], 0, atol=1e-10)
+    assert (r["estimates"]["bootstrap_successes"] == 0).all()
+    assert (r["estimates"]["bootstrap_failures"] == 0).all()
