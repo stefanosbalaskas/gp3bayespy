@@ -20,4 +20,4 @@ print(evidence["estimates"])
 
 **Uncertainty:** participant-cluster bootstrap fully refits both models and records each failed replicate explicitly. Percentile limits are reported as sensitivity evidence, not Bayesian credible intervals. Prefer more resamples and robust variance design when publication is intended.
 
-**Next qualification:** simulation under nonlinear mechanisms, measured mediator confounding, heteroscedastic errors, treatment-induced confounding, sparse trial counts, and external method-comparison reference code. Work with the existing [trial-level mediation guide](articles/multilevel-mediation/index.md) rather than silently replacing it.
+**Next qualification:** simulation under nonlinear mechanisms, measured mediator confounding, heteroscedastic errors, treatment-induced confounding, sparse trial counts, and external method-comparison reference code. Work with the existing [trial-level mediation guide](multilevel-mediation/index.md) rather than silently replacing it.
