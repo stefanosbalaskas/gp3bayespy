@@ -96,6 +96,7 @@ nav:
           - Sensitivity & evidence: articles/sensitivity-and-recovery-gallery.md
           - Publication graphics: articles/publication-graphics-gallery.md
           - Dynamic pupillometry: articles/pupil-gallery.md
+          - Mediation estimation and causal limits: articles/mediation-estimation-graphics-showcase.md
   - Reference:
       - API reference: reference/index.md
       - Multilevel mediation API: reference/multilevel-mediation.md
