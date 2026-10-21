@@ -3,6 +3,10 @@ name: Release
 on:
   release:
     types: [published]
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/release.yml
 
 permissions:
   contents: read
@@ -10,7 +14,11 @@ permissions:
 jobs:
   build:
     name: Build and validate release distributions
-    if: ${{ !github.event.release.prerelease && !github.event.release.draft }}
+    if: >-
+      (github.event_name == 'release' &&
+       !github.event.release.prerelease && !github.event.release.draft) ||
+      (github.event_name == 'push' &&
+       github.event.head_commit.message == 'publish: gp3bayespy 0.6.2 from immutable tag')
     runs-on: ubuntu-latest
 
     permissions:
@@ -20,8 +28,31 @@ jobs:
       - name: Checkout released tag
         uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ github.event.release.tag_name || 'v0.6.2' }}
           persist-credentials: false
+
+      - name: Verify immutable GitHub release and no existing PyPI version for recovery
+        if: github.event_name == 'push'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git fetch --tags origin
+          TAG_SHA="$(git rev-parse "refs/tags/v0.6.2^{commit}")"
+          gh release view "v0.6.2" --repo "$GITHUB_REPOSITORY" --json isDraft,isPrerelease,tagName \
+            --jq 'select(.isDraft == false and .isPrerelease == false and .tagName == "v0.6.2") | .tagName' | grep -Fx 'v0.6.2'
+          echo "Validated existing immutable v0.6.2 at $TAG_SHA"
+          python - <<'PY'
+          import urllib.error, urllib.request
+          try:
+              urllib.request.urlopen("https://pypi.org/pypi/gp3bayespy/0.6.2/json", timeout=20)
+          except urllib.error.HTTPError as exc:
+              if exc.code != 404:
+                  raise
+          else:
+              raise SystemExit("gp3bayespy 0.6.2 already on PyPI: refuse duplicate upload")
+          PY
 
       - name: Set up Python
         uses: actions/setup-python@v7
@@ -42,7 +73,7 @@ jobs:
           )["project"]["version"]
 
           expected = f"v{version}"
-          actual = "${{ github.event.release.tag_name }}"
+          actual = "${{ github.event.release.tag_name || 'v0.6.2' }}"
 
           if actual != expected:
               raise SystemExit(
@@ -69,7 +100,7 @@ jobs:
           from importlib.metadata import version
           import gp3bayespy
 
-          expected = "${{ github.event.release.tag_name }}".removeprefix("v")
+          expected = "${{ github.event.release.tag_name || 'v0.6.2' }}".removeprefix("v")
 
           assert version("gp3bayespy") == expected
 
@@ -108,14 +139,18 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release upload \
-            "${{ github.event.release.tag_name }}" \
+            "${{ github.event.release.tag_name || 'v0.6.2' }}" \
             dist/* \
             SHA256SUMS.txt \
             --clobber
 
   publish:
     name: Publish exact distributions to PyPI
-    if: ${{ !github.event.release.prerelease && !github.event.release.draft }}
+    if: >-
+      (github.event_name == 'release' &&
+       !github.event.release.prerelease && !github.event.release.draft) ||
+      (github.event_name == 'push' &&
+       github.event.head_commit.message == 'publish: gp3bayespy 0.6.2 from immutable tag')
     needs: build
     runs-on: ubuntu-latest
 
