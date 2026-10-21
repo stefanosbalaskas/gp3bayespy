@@ -36,7 +36,7 @@ def extract_gaze_contingent_features(
         raise ValueError("radius_px>=1 and at least three orientation bins required")
     rows = []
     h, w = frames.shape[1:]
-    for i, (frame, xy) in enumerate(zip(frames, gaze)):
+    for i, (frame, xy) in enumerate(zip(frames, gaze, strict=True)):
         x = int(round(xy[0] * (w - 1)))
         y = int(round(xy[1] * (h - 1)))
         patch = frame[max(0, y - radius_px):min(h, y + radius_px + 1),
