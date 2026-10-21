@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.2 — 2026-10-21
+
+- Publish the illustrated October 2026 gaze-contingent visual covariates and pupillometry sensitivity methods article, with transparent synthetic figures.
+- Preserve existing multilevel mediation and frozen R 0.5.0 parity APIs. Research utilities under `research/october_2026/` remain source-only and are not validated Bayesian estimators or packaged public APIs.
+- Track independent photometric and Bayesian scientific qualification in issue #23; pass strict CI and wheel/sdist provenance before new GitHub/PyPI release.
+
+
 ## 0.6.1 — 2026-09-21
 
 - Publish the corrected multilevel gaze-mediation release after the withdrawn GitHub-only v0.6.0 attempt.

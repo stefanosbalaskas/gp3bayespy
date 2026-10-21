@@ -1,0 +1,92 @@
+name: Guarded maintenance release cutter
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "pyproject.toml"
+      - "CITATION.cff"
+      - "CHANGELOG.md"
+      - ".github/workflows/cut-maintenance-release.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: maintenance-release-${{ github.sha }}
+  cancel-in-progress: false
+
+jobs:
+  cut:
+    if: >-
+      startsWith(github.event.head_commit.message, 'release: gp3bayespy ')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.13"
+      - name: Validate version, citation, changelog and unoccupied identity
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import pathlib, re, tomllib
+          version = tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"]
+          if re.fullmatch(r"\d+\.\d+\.\d+", version) is None:
+              raise SystemExit("stable release requires a plain version")
+          cff = pathlib.Path("CITATION.cff").read_text()
+          if f"version: {version}" not in cff:
+              raise SystemExit("citation metadata mismatch")
+          if f"## {version} " not in pathlib.Path("CHANGELOG.md").read_text():
+              raise SystemExit("missing release-specific changelog")
+          print(version)
+          PY
+          VERSION=$(python -c 'import tomllib;print(tomllib.load(open("pyproject.toml","rb"))["project"]["version"])')
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          if git ls-remote --exit-code --tags origin "refs/tags/v$VERSION" >/dev/null 2>&1; then
+            echo "Release tag already exists" >&2; exit 1
+          fi
+          VERSION="$VERSION" python - <<'PY'
+          import os, urllib.error, urllib.request
+          try:
+              urllib.request.urlopen(f"https://pypi.org/pypi/gp3bayespy/{os.environ['VERSION']}/json", timeout=30)
+          except urllib.error.HTTPError as exc:
+              if exc.code != 404:
+                  raise
+          else:
+              raise SystemExit("Version already published on PyPI")
+          PY
+      - name: Validate exact candidate before public GitHub Release
+        run: |
+          python -m pip install -U pip
+          python -m pip install -e ".[all]" "build>=1.2" "twine>=6"
+          ruff check .
+          mypy src/gp3bayespy
+          pytest --cov=gp3bayespy --cov-branch --cov-fail-under=100 -q
+          mkdocs build --strict
+          python dev/site_audit.py site
+          python -m build
+          python -m twine check dist/*
+          python -m pip install --force-reinstall --no-deps dist/*.whl
+          python - <<'PY'
+          from importlib.metadata import version
+          import gp3bayespy
+          import tomllib
+          expected = tomllib.load(open("pyproject.toml","rb"))["project"]["version"]
+          assert version("gp3bayespy") == expected
+          assert hasattr(gp3bayespy, "fit_multilevel_gaze_mediation")
+          PY
+      - name: Create immutable tag and publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          test "$(git rev-parse origin/main)" = "$GITHUB_SHA"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a "v$VERSION" "$GITHUB_SHA" -m "gp3bayespy $VERSION"
+          git push origin "refs/tags/v$VERSION"
+          gh release create "v$VERSION" --repo "$GITHUB_REPOSITORY" --verify-tag --title "gp3bayespy $VERSION" --generate-notes
