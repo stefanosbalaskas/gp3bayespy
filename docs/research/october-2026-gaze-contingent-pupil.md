@@ -42,3 +42,9 @@ The optional `pupil_adjustment_design_audit()` compares a declared within-partic
 - Orientation entropy estimated from generic pictures is not yet a universal physiological complexity correction.
 - A covariate can be part of the experimental treatment mechanism; adjustment may change the estimand.
 - Video/gaze synchronization, frame provenance, contrast, viewing geometry and participant bootstrap validation remain necessary before any substantive pupillometry claim.
+
+## Publication and qualification status (21 October 2026)
+
+This page and its original synthetic figures are merged into the GitHub documentation source. The worked research modules are under `research/october_2026/` and **are not automatically included in installed PyPI wheels or exported as stable package APIs**. Their empirical accuracy, device transfer and inferential calibration are not implied by a green CI test or a successful website build.
+
+The explicit outstanding scientific acceptance criteria and eligible real-data benchmarks are tracked in [research-to-release issue #23](https://github.com/stefanosbalaskas/gp3bayespy/issues/23). This source-only research contribution is separate from the existing stable package version, and a new maintenance release must not claim these experiments as installed features.

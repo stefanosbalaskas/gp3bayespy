@@ -177,3 +177,9 @@ If you use `gp3bayespy`, cite the archived software record for the version you u
 ## License
 
 MIT License. See [`LICENSE`](LICENSE).
+
+## October 2026 research article and figure
+
+[**Pupil visual covariates and Bayesian qualification**](docs/research/october-2026-gaze-contingent-pupil.md) documents experimental, source-only validation methods and reproducible synthetic examples. It is available in the website navigation, while independently qualified external empirical claims and stable PyPI APIs remain separate ([scientific acceptance criteria](https://github.com/stefanosbalaskas/gp3bayespy/issues/23)).
+
+![Original synthetic research figure](docs/assets/october-2026-pupil-complexity.svg)
