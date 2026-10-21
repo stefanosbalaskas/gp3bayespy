@@ -1,5 +1,7 @@
 # Visual complexity and gaze-contingent luminance in pupil analysis
 
+![Rendered synthetic plot](../assets/october-2026-plot.svg)
+
 **Experimental visual-feature extraction and sensitivity diagnostics (October 2026).** The functions here are not Bayesian posterior estimators and do not supply a validated causal correction for pupil response.
 
 ![Original spatial luminance and gaze-patch illustration](../assets/october-2026-pupil-complexity.svg)
