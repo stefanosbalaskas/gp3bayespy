@@ -33,7 +33,7 @@ jobs:
           python - <<'PY'
           import pathlib, re, tomllib
           version = tomllib.loads(pathlib.Path("pyproject.toml").read_text())["project"]["version"]
-          if re.fullmatch(r"\\d+\\.\\d+\\.\\d+", version) is None:
+          if re.fullmatch(r"\d+\.\d+\.\d+", version) is None:
               raise SystemExit("stable release requires a plain version")
           cff = pathlib.Path("CITATION.cff").read_text()
           if f"version: {version}" not in cff:
