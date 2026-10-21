@@ -56,6 +56,7 @@ theme:
         name: Switch to light mode
 
 nav:
+  - October 2026 research validation: research/october-2026-gaze-contingent-pupil.md
   - Home: index.md
   - Get started:
       - Getting started: getting-started.md
