@@ -18,7 +18,8 @@ concurrency:
 
 jobs:
   cut:
-    if: startsWith(github.event.head_commit.message, 'release: gp3bayespy ')
+    if: >-
+      startsWith(github.event.head_commit.message, 'release: gp3bayespy ')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
