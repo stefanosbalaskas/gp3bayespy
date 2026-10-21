@@ -6,7 +6,7 @@ hide:
 
 <div class="gp-hero">
   <div class="gp-hero__copy">
-    <div class="gp-kicker">gp3bayespy 0.6.1 · gp3bayes 0.5.0 parity baseline</div>
+    <div class="gp-kicker">gp3bayespy 0.6.2 · gp3bayes 0.5.0 parity baseline</div>
     <h1>Bayesian workflows that keep every decision visible.</h1>
     <p class="gp-lead">
       Contract-first modelling for repeated-measures and hierarchical behavioural data,
@@ -210,7 +210,7 @@ print(audit.status)</code></pre>
   <div><span>Static gates</span><strong>Ruff + mypy PASS</strong></div>
 </div>
 
-These are the validation metrics for **v0.6.1** and the current `main` branch. The historical **v0.5.0** release remains immutable and retains its original release-time validation record.
+These are the frozen validation metrics for **v0.6.1** and its corresponding scientific core. **v0.6.2** is a documentation-only maintenance update published on 21 October 2026; no experimental source-only utilities were promoted to a stable Bayesian API. The historical **v0.5.0** release remains immutable and retains its original release-time validation record.
 
 ### Frozen v0.5.0 release record
 
@@ -222,7 +222,7 @@ These are the validation metrics for **v0.6.1** and the current `main` branch. T
   <div><span>Public `**kwargs`</span><strong>0</strong></div>
 </div>
 
-The frozen parity baseline remains **gp3bayes 0.5.0**. The current validation record is available in [Release v0.6.1](release.md); the archived [GitHub v0.5.0 release](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.5.0) preserves the original release state. The machine-readable closure evidence is documented under [R → Python parity](development/parity.md).
+The frozen parity baseline remains **gp3bayes 0.5.0**. The historical 0.6.1 validation record is available in [Release v0.6.1](release.md), while [GitHub v0.6.2](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.6.2) documents the current maintenance release; the archived [GitHub v0.5.0 release](https://github.com/stefanosbalaskas/gp3bayespy/releases/tag/v0.5.0) preserves the original release state. The machine-readable closure evidence is documented under [R → Python parity](development/parity.md).
 
 Archived software DOI: [**10.5281/zenodo.22150746**](https://doi.org/10.5281/zenodo.22150746). See [Citing gp3bayespy](citation.md) for citation-ready metadata.
 
